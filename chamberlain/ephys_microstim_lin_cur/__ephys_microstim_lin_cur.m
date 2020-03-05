@@ -24,15 +24,15 @@ z_offset_mm = 26; % mm, distance from chamber top to "brain entry", should be di
     end
     clear penetration_date xyz target notes
     
-    target              = tuning_per_unit_table(:,find_column_index(tuning_per_unit_table,'target'));
-    penetration_date    = tuning_per_unit_table(:,find_column_index(tuning_per_unit_table,'unit_ID'));      
+    target              = tuning_per_unit_table(:,DAG_find_column_index(tuning_per_unit_table,'target'));
+    penetration_date    = tuning_per_unit_table(:,DAG_find_column_index(tuning_per_unit_table,'unit_ID'));      
     row_index           = strcmp(target,target_area) & cellfun(@(x) ~isempty(strfind(x,monkey)),penetration_date); %% index by target location and monkey initials
     
-    idx_x=find_column_index(tuning_per_unit_table,'grid_x');
-    idx_y=find_column_index(tuning_per_unit_table,'grid_y');
-    idx_z=find_column_index(tuning_per_unit_table,'electrode_depth');
+    idx_x=DAG_find_column_index(tuning_per_unit_table,'grid_x');
+    idx_y=DAG_find_column_index(tuning_per_unit_table,'grid_y');
+    idx_z=DAG_find_column_index(tuning_per_unit_table,'electrode_depth');
     xyz                 = cell2mat(tuning_per_unit_table(row_index,[idx_x idx_y idx_z]));
     xyz(:,3)            = xyz(:,3)-repmat(z_offset_mm,sum(row_index),1);                                            %% Z relative to brain start
-    notes               = tuning_per_unit_table(row_index,find_column_index(tuning_per_unit_table,'unit_ID'));
+    notes               = tuning_per_unit_table(row_index,DAG_find_column_index(tuning_per_unit_table,'unit_ID'));
     target              = target(row_index);
     penetration_date    = penetration_date(row_index);

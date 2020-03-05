@@ -40,19 +40,19 @@ keys.tt.unselect={};
 [tuning_per_unit_table]=ph_reduce_tuning_table(tuning_per_unit_table,keys);
 switch experiment_id
 	case 'memory'
-		 task_column=find_column_index(tuning_per_unit_table,'in_epoch_main_Msac_opt');
-		 sign_column=find_column_index(tuning_per_unit_table,'in_NH_Cue_position_Msac_opt');
+		 task_column=DAG_find_column_index(tuning_per_unit_table,'in_epoch_main_Msac_opt');
+		 sign_column=DAG_find_column_index(tuning_per_unit_table,'in_NH_Cue_position_Msac_opt');
 	case 'direct'
-		 task_column=find_column_index(tuning_per_unit_table,'in_epoch_main_Vsac_opt');
-		 sign_column=find_column_index(tuning_per_unit_table,'in_NH_Cue_position_Vsac_opt');         
+		 task_column=DAG_find_column_index(tuning_per_unit_table,'in_epoch_main_Vsac_opt');
+		 sign_column=DAG_find_column_index(tuning_per_unit_table,'in_NH_Cue_position_Vsac_opt');         
 	case 'Ddre'
-		 task_column=find_column_index(tuning_per_unit_table,'in_epoch_main_Ddre_han');
-		 sign_column=find_column_index(tuning_per_unit_table,'in_NH_Cue_position_Ddre_han');   
+		 task_column=DAG_find_column_index(tuning_per_unit_table,'in_epoch_main_Ddre_han');
+		 sign_column=DAG_find_column_index(tuning_per_unit_table,'in_NH_Cue_position_Ddre_han');   
 	case 'visuomotor'
-		 task_column=find_column_index(tuning_per_unit_table,'in_epoch_main_Msac_opt');
-		 sign_column=[find_column_index(tuning_per_unit_table,'visual_Msac_opt'),...
-                      find_column_index(tuning_per_unit_table,'visuomotor_Msac_opt'),...
-                      find_column_index(tuning_per_unit_table,'motor_Msac_opt')];
+		 task_column=DAG_find_column_index(tuning_per_unit_table,'in_epoch_main_Msac_opt');
+		 sign_column=[DAG_find_column_index(tuning_per_unit_table,'visual_Msac_opt'),...
+                      DAG_find_column_index(tuning_per_unit_table,'visuomotor_Msac_opt'),...
+                      DAG_find_column_index(tuning_per_unit_table,'motor_Msac_opt')];
 end
 % switch monkey
 %     case 'Cur';
@@ -66,8 +66,8 @@ co = {'b','m','r'}; % visual,visuomotor, motor
 
 clear penetration_date xyz target notes
 
-target              = tuning_per_unit_table(:,find_column_index(tuning_per_unit_table,'target'));
-penetration_date    = tuning_per_unit_table(:,find_column_index(tuning_per_unit_table,'unit_ID'));
+target              = tuning_per_unit_table(:,DAG_find_column_index(tuning_per_unit_table,'target'));
+penetration_date    = tuning_per_unit_table(:,DAG_find_column_index(tuning_per_unit_table,'unit_ID'));
 task_type           = tuning_per_unit_table(:,task_column);
 for c=1:numel(sign_column)
 significant_c{c}       = tuning_per_unit_table(:,sign_column(c));
@@ -75,16 +75,16 @@ end
 
 row_index           = cellfun(@(x) ~isempty(strfind(x,target_area)),target) & cellfun(@(x) ~isempty(strfind(x,monkey)),penetration_date) & ~cellfun(@isempty,task_type); %% index by target location and monkey initials
 
-idx_x=find_column_index(tuning_per_unit_table,'grid_x');
-idx_y=find_column_index(tuning_per_unit_table,'grid_y');
-idx_z=find_column_index(tuning_per_unit_table,'electrode_depth');
+idx_x=DAG_find_column_index(tuning_per_unit_table,'grid_x');
+idx_y=DAG_find_column_index(tuning_per_unit_table,'grid_y');
+idx_z=DAG_find_column_index(tuning_per_unit_table,'electrode_depth');
 xyz                 = cell2mat(tuning_per_unit_table(row_index,[idx_x idx_y idx_z]));
 xyz(:,3)            = -xyz(:,3);   
 xyz_nojitter=xyz;
 
 xyz(:,1)            = xyz(:,1) + (rand(size(xyz(:,1)))-0.5)*1.5; % jitter
 % xyz(:,3)            = xyz(:,3)-repmat(z_offset_mm,sum(row_index),1);                                            %% Z relative to brain start
-notes               = tuning_per_unit_table(row_index,find_column_index(tuning_per_unit_table,'unit_ID'));
+notes               = tuning_per_unit_table(row_index,DAG_find_column_index(tuning_per_unit_table,'unit_ID'));
 target              = target(row_index);
 penetration_date    = penetration_date(row_index);
 %significant = cellfun(@(x) isempty(strfind(x,'-')),significant_c(row_index));

@@ -13,7 +13,7 @@ for Ta={'dPul'} %,'STP'
         Target=Ta{:};
         Baseline=BL{:};
         monkey='Cornelius';
-        dag_drive_IP=get_dag_drive_IP;
+        dag_drive_IP=DAG_get_server_IP;
         current_folder=[dag_drive_IP 'Projects\STS_PUL_MEM_S2S\behavior'];
         subfolder=[monkey '_S2S_saccades_' Target '_' Baseline];
         pdfpath=    [current_folder filesep subfolder];
@@ -141,12 +141,12 @@ for Ta={'dPul'} %,'STP'
         Inputsequal_for_batch={'Session'};
         DAG_combine_all_sheets_to_mastertable(xlspath,'Date');
         Inputsequal={'Target',Target};
-        filelist_formatted = get_filelist_from_xls_working({'use_mem_ina'},Inputsequal,Inputsrange,Inputslist, '', xlspath); %Inputslist
-        ina_filelist=get_batch_input_from_filelist_working(filelist_formatted,Inputsequal_for_batch,[monkey '_ina']);
+        filelist_formatted = DAG_get_filelist_from_xls({'use_mem_ina'},Inputsequal,Inputsrange,Inputslist, '', xlspath); %Inputslist
+        ina_filelist=DAG_get_batch_input_from_filelist(filelist_formatted,Inputsequal_for_batch,[monkey '_ina']);
         
         Inputsequal={};
-        filelist_formatted = get_filelist_from_xls_working({Baseline},Inputsequal,Inputsrange,Inputslist, '', xlspath); %Inputslist
-        bas_filelist=get_batch_input_from_filelist_working(filelist_formatted,Inputsequal_for_batch,[monkey '_ina']);
+        filelist_formatted = DAG_get_filelist_from_xls({Baseline},Inputsequal,Inputsrange,Inputslist, '', xlspath); %Inputslist
+        bas_filelist=DAG_get_batch_input_from_filelist(filelist_formatted,Inputsequal_for_batch,[monkey '_ina']);
         
         %[out_files tolerated_indexes]=match_closest_dates_batching(ina_filelist,bas_filelist,0);
         [out_files tolerated_indexes]=match_closest_dates_batching(ina_filelist,bas_filelist,1);

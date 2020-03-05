@@ -114,7 +114,7 @@ end
 monkey = 'Flaffus';
 range_of_dates = [20170402 20170402];
 path  = ['K:\Data' filesep monkey];
-[~, ~, dates] = arrange_trials(monkey,path, range_of_dates);
+[~, ~, dates] = DAG_arrange_trials(monkey,path, range_of_dates);
 for i_dates = 1:numel(dates)
     subject_ID{1}='Control';
     GLO.overwriten_date = dates(i_dates);

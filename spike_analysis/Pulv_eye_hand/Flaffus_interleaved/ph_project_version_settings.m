@@ -51,9 +51,14 @@ keys.EPOCHS_PER_TYPE{4}={...
     'PostR',	63,	0.05,   0.2,    'INI';...
     'Thol',     20,	-0.3,   0,      'INI';...
     };
+% keys.WINDOWS_PER_TYPE{4}={...
+%     'Initiation',   2,	-0.5,	0.4;...
+%     'Fixation',     3,	-1.2,   0.17;...
+%     'Delay Period', 6,	-0.33,  1.35;...
+%     'Saccade',      60,	-0.1,   0.6;...
+%     'Reach',        62,	-0.35,  0.7;...
+%     };
 keys.WINDOWS_PER_TYPE{4}={...
-    'Initiation',   2,	-0.5,	0.4;...
-    'Fixation',     3,	-1.2,   0.17;...
     'Delay Period', 6,	-0.33,  1.35;...
     'Saccade',      60,	-0.1,   0.6;...
     'Reach',        62,	-0.35,  0.7;...
@@ -103,26 +108,26 @@ keys.ccs(cc).plot_type              ='per_epoch';
 keys.ccs(cc).epochs.Ddre            ={'INI','Facq','Fhol','Cue','EDel','Del','PreS','PeriS','PostS','PreR','PeriR','PostR','Thol'}';
 keys.ccs(cc).epochs.Ddsa            ={'INI','Facq','Fhol','Cue','EDel','Del','PreS','PeriS','PostS','PreR','PeriR','PostR','Thol'}';
 keys.ccs(cc).epochs.Dcfr            ={'INI','Facq','Fhol','Cue','EDel','Del','PreS','PeriS','PostS','PreR','PeriR','PostR','Thol'}';
-
-cc=cc+1;
-keys.ccs(cc).tt.choices             =0;
-keys.ccs(cc).tt.hands               =0;
-keys.ccs(cc).factor                 ='space_x_hand';
-keys.ccs(cc).conditions_to_plot     ={'Ddre','Ddsa','Dcfr'};
-keys.ccs(cc).plot_type              ='space_x_hand';
-keys.ccs(cc).epochs.Ddre            ={'INI','Facq','Fhol','Cue','EDel','Del','PreS','PeriS','PostS','PreR','PeriR','PostR','Thol'}';
-keys.ccs(cc).epochs.Ddsa            ={'INI','Facq','Fhol','Cue','EDel','Del','PreS','PeriS','PostS','PreR','PeriR','PostR','Thol'}';
-keys.ccs(cc).epochs.Dcfr            ={'INI','Facq','Fhol','Cue','EDel','Del','PreS','PeriS','PostS','PreR','PeriR','PostR','Thol'}';
-
-cc=cc+1;
-keys.ccs(cc).tt.choices             =0;
-keys.ccs(cc).tt.hands               =[1 2];
-keys.ccs(cc).factor                 ='space_x_hand';
-keys.ccs(cc).conditions_to_plot     ={'Ddre','Ddsa','Dcfr'};
-keys.ccs(cc).plot_type              ='space_x_hand';
-keys.ccs(cc).epochs.Ddre            ={'INI','Facq','Fhol','Cue','EDel','Del','PreS','PeriS','PostS','PreR','PeriR','PostR','Thol'}';
-keys.ccs(cc).epochs.Ddsa            ={'INI','Facq','Fhol','Cue','EDel','Del','PreS','PeriS','PostS','PreR','PeriR','PostR','Thol'}';
-keys.ccs(cc).epochs.Dcfr            ={'INI','Facq','Fhol','Cue','EDel','Del','PreS','PeriS','PostS','PreR','PeriR','PostR','Thol'}';
+% 
+% cc=cc+1;
+% keys.ccs(cc).tt.choices             =0;
+% keys.ccs(cc).tt.hands               =0;
+% keys.ccs(cc).factor                 ='space_x_hand';
+% keys.ccs(cc).conditions_to_plot     ={'Ddre','Ddsa','Dcfr'};
+% keys.ccs(cc).plot_type              ='space_x_hand';
+% keys.ccs(cc).epochs.Ddre            ={'INI','Facq','Fhol','Cue','EDel','Del','PreS','PeriS','PostS','PreR','PeriR','PostR','Thol'}';
+% keys.ccs(cc).epochs.Ddsa            ={'INI','Facq','Fhol','Cue','EDel','Del','PreS','PeriS','PostS','PreR','PeriR','PostR','Thol'}';
+% keys.ccs(cc).epochs.Dcfr            ={'INI','Facq','Fhol','Cue','EDel','Del','PreS','PeriS','PostS','PreR','PeriR','PostR','Thol'}';
+% 
+% cc=cc+1;
+% keys.ccs(cc).tt.choices             =0;
+% keys.ccs(cc).tt.hands               =[1 2];
+% keys.ccs(cc).factor                 ='space_x_hand';
+% keys.ccs(cc).conditions_to_plot     ={'Ddre','Ddsa','Dcfr'};
+% keys.ccs(cc).plot_type              ='space_x_hand';
+% keys.ccs(cc).epochs.Ddre            ={'INI','Facq','Fhol','Cue','EDel','Del','PreS','PeriS','PostS','PreR','PeriR','PostR','Thol'}';
+% keys.ccs(cc).epochs.Ddsa            ={'INI','Facq','Fhol','Cue','EDel','Del','PreS','PeriS','PostS','PreR','PeriR','PostR','Thol'}';
+% keys.ccs(cc).epochs.Dcfr            ={'INI','Facq','Fhol','Cue','EDel','Del','PreS','PeriS','PostS','PreR','PeriR','PostR','Thol'}';
 
 %% population PSTH settings
 
@@ -140,7 +145,7 @@ keys.pop(cc).epoch_RF                  	= 'PreR';
 keys.pop(cc).epoch_BL                  	= 'INI';
 keys.pop(cc).epoch_GB                  	= 'Fhol';
 keys.pop(cc).epoch_for_normalization    = 'Fhol';
-
+keys.pop(cc).y_lim                  	= [0.8 2];
 
 cc=cc+1;
 keys.pop(cc).tt.choices                 = [0];
@@ -153,6 +158,7 @@ keys.pop(cc).epoch_RF                  	= 'PreS';
 keys.pop(cc).epoch_BL                  	= 'INI';
 keys.pop(cc).epoch_GB                  	= 'Fhol';
 keys.pop(cc).epoch_for_normalization    = 'Fhol';
+keys.pop(cc).y_lim                  	= [0.8 2];
 
 cc=cc+1;
 keys.pop(cc).tt.choices                 = [0];
@@ -165,6 +171,7 @@ keys.pop(cc).epoch_RF                  	= 'PreR';
 keys.pop(cc).epoch_BL                  	= 'INI';
 keys.pop(cc).epoch_GB                  	= 'Fhol';
 keys.pop(cc).epoch_for_normalization    = 'Fhol';
+keys.pop(cc).y_lim                  	= [0.5 3];
 
 cc=cc+1;
 keys.pop(cc).tt.choices                 = [0];
@@ -177,6 +184,7 @@ keys.pop(cc).epoch_RF                  	= 'PreS';
 keys.pop(cc).epoch_BL                  	= 'INI';
 keys.pop(cc).epoch_GB                  	= 'Fhol';
 keys.pop(cc).epoch_for_normalization    = 'Fhol';
+keys.pop(cc).y_lim                  	= [0.5 3];
 
  %% INI subtracted
 % cc=cc+1;

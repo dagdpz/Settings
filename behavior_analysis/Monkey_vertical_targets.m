@@ -96,7 +96,7 @@ end
 monkey = 'Linus_phys';
 range_of_dates = [20151118 20151118];
 path  = ['K:\Data' filesep monkey];
-[~, ~, dates] = arrange_trials(monkey,path, range_of_dates);
+[~, ~, dates] = DAG_arrange_trials(monkey,path, range_of_dates);
 for i_dates = 1:numel(dates)
     subject_ID{1}='Control';
     GLO.overwriten_date = dates(i_dates);

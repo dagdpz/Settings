@@ -13,7 +13,7 @@ warning('off','all')
 %         Target=Ta{:};
 %         Baseline=BL{:};
 monkey='Cornelius';
-dag_drive_IP=get_dag_drive_IP;
+dag_drive_IP=DAG_get_server_IP;
 current_folder=[dag_drive_IP 'Projects\STS_PUL_MEM_S2S\behavior'];
 subfolder=[monkey '_direct_saccades'];
 pdfpath=    [current_folder filesep subfolder];
