@@ -1,6 +1,5 @@
 %keys.project_version='Flaffus_interleaved';
 
-keys.plot.single_cells                  =1;         % perform single cell plotting
 %% to check carefully
 keys.position_and_plotting_arrangements         ={'hands'};
 
@@ -19,7 +18,7 @@ keys.Flaffus.date                   ='[20160203 20161206]';
 keys.Linus.date                     ='[20160203 20160606]';
 
 %% plotting
-keys.plot.single_cells                  =1;         % perform single cell plotting
+keys.plot.single_cells                  =0;         % perform single cell plotting
 
 %% cell count settings
 % keys.cc.factors                     ={'epoch','space','hand'};
