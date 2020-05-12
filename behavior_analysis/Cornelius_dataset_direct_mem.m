@@ -134,8 +134,8 @@ end
 
 
 %% file selection
-% MPA_clean_data('T:\Data\Cornelius',[20170703 20170712]);
-% MPA_clean_data('T:\Data\Cornelius_ina',[20170707 20170707]);
+% monkeypsych_clean_data('T:\Data\Cornelius',[20170703 20170712]);
+% monkeypsych_clean_data('T:\Data\Cornelius_ina',[20170707 20170707]);
 % datapath='Y:\Data\Cornelius'
 %dates=[20131223 20131227];
 
