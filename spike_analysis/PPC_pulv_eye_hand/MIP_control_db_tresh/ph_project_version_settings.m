@@ -11,7 +11,7 @@ keys.plot.population_PSTH_legends=1;
 keys.position_and_plotting_arrangements             ={'hands_inactivation'};
 
 %% computation settings
-keys.cal.datasets                   =[31];
+keys.cal.datasets                   =[41];
 keys.cal.effectors                  =[4];
 keys.cal.reach_hand                 =[1,2];
 keys.cal.types                      =[4];
@@ -23,7 +23,7 @@ keys.batching.targets                   ={'MIP_L','MIP_R'};
 keys.batching.monkeys                   ={'Linus'};
 % keys.Tesla.date                         ='[20160217 20180101]';
 %keys.Linus.date                         ='[20161103 20180101]';
-keys.Linus.date                         ='[20170622 20170818]';
+keys.Linus.date                         ='[20170714 20170817]';
 
 keys.plot.polars_on_extra_figure        =0;
 
@@ -34,7 +34,7 @@ keys.cal.single_rating                  =[1,2,3];                   % not assign
 keys.cal.SNR_rating                     =[1,2,3,4];                 % not assigning sorting table information if criterion is not met. Therefore only excludes when taking only units in the tabl
 keys.cal.min_trials_per_condition       =5;                         % minimum trials per conditon (look at ph_arrange_positions to see how conditions are defined)
 keys.cal.min_spikes_per_unit            =50;                        % excluding units that have in total less spikes (workaround for sortcode assignment bug) - to be removed
-keys.cal.perturbation_groups            ={0,3};       % which perturbation values from excel table will be assigned to control and perturbation for comparisons and population analysis
+keys.cal.perturbation_groups            ={0,[1,2,3]};       % which perturbation values from excel table will be assigned to control and perturbation for comparisons and population analysis
 
 %% epochs
 keys.EPOCHS_PER_TYPE{4}={...
@@ -229,8 +229,8 @@ keys.pop(cc).epoch_BL                   = 'Fhol';                % Epoch to subt
 keys.pop(cc).FR_subtract_baseline       = 0;   
 keys.pop(cc).unselect                   = {};
 keys.pop(cc).group_excluded             = {};%{'susu','ensu','suen','-su','su-','--'};
-keys.pop(cc).epoch_for_normalization    = 'none';               % epoch used for (divisive) normalization
-keys.pop(cc).normalization              = 'none';        % separate (divisive) normalization factor for trials grouped by effector; other options:
+keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
+keys.pop(cc).normalization              = 'by_all_trials';        % separate (divisive) normalization factor for trials grouped by effector; other options:
                                                                 % 'by_condition','by_effector','by_type','by_all_trials','z_score','none'
 
 %% scatter keys

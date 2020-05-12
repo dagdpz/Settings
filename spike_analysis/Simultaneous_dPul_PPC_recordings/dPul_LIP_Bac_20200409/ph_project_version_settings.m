@@ -3,8 +3,8 @@ keys.project_version='dPul_LIP_Bac_20200409'; %Is this still used ?
 keys.filelist_formatted={};
 
 %% what to plot
-keys.plot.single_cells =1;
-keys.plot.waveforms=1;
+keys.plot.single_cells =0;
+keys.plot.waveforms=0;
 keys.plot.population_PSTH_legends=1;  
 %% to check carefully
 keys.position_and_plotting_arrangements             ={'hands'};
@@ -22,8 +22,8 @@ keys.batching.combine_monkeys           =1;
 keys.batching.monkeys                   ={'Bacchus'};
 % keys.Tesla.date                      ='[20160217 20180101]';
 %keys.Linus.date                       ='[20161103 20180101]';
-keys.Bacchus.date                        ='[20200227 20200227]';
-keys.batching.targets                  = {'dPul_R','MIP_R'};
+keys.Bacchus.date                        ='[20200409 20200409]';
+keys.batching.targets                  = {'dPul_R','LIP_R'};
 
 keys.plot.polars_on_extra_figure        =0;
 
@@ -50,8 +50,8 @@ keys.EPOCHS_PER_TYPE{4}={...
 %     'PreR',     62,	-0.3, 	-0.05,  'INI';...
 %     'PeriR',	62,	-0.05, 	0.15,   'INI';...
 %     'PostR',	63,	0.05,   0.2,    'INI';...
-%     'Thol',     20,	-0.3,   0,      'INI';...
-%     };
+     'Thol',     20,	-0.3,   0,      'INI';...
+     };
 
 keys.WINDOWS_PER_TYPE{4}={...
     'Delay Period', 6,	-0.33,  1.1;... %1.35
@@ -100,7 +100,7 @@ keys.tt.choices                     =[0]; %IMPORTANT: and also not really perfec
 keys.tt.selection                   ={};                         % easy to use if there is a parameter in the tuning table for which you want your cells to have the same value
 %                                       'in_NH_TIhol_position_Msac_opt','true'};  % each row in the cell arryáy will be used to exclude cells that don't have the specifie characteristic
 keys.tt.unselect                    ={}; % easy to use if there is a parameter in the tuning table for which your cells shouldn't have a specific value
-keys.tt.combine_tuning_properties   ={'hand_tuning','in_IH_Facq_epoch_Ddre_han','in_CH_Facq_epoch_Ddre_han'}; % results in enen/ensu/suen/en-/-en/su-/-su/--
+keys.tt.combine_tuning_properties   ={'hand_tuning','in_IH_Facq_epoch_Ddsa_han','in_CH_Facq_epoch_Ddsa_han'}; % results in enen/ensu/suen/en-/-en/su-/-su/--
 % ph_load_extended_tuning_table will create an additional column from combining existing columns: 
 % 1st entry is the name of the new column (to refer to it), and the following entries specify the columns which should be combined.
 % this additional column can be used for grouping, specific selection and/or unselection ph_load_extended_tuning_table also creates new columns which can be used
