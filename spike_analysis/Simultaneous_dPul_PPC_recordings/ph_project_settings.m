@@ -25,6 +25,8 @@ keys.Linus.date                         ='[20161103 20180101]';
 % keys.Linus.sorted_neurons_sheetname     ='Linus';
 %  keys.Bacchus.sorted_neurons_sheetname     ='final_sorting';
 %  keys.Bacchus.sorted_neurons_filename      ='Bac_sorted_neurons';
+keys.cal.MA_selection                   ={'display',0,'keep_raw_data',1,'saccade_definition',4,'reach_1st_pos',1,'correlation_conditions',{}};                        % if you want to run MA with specific settings
+
 
 
 

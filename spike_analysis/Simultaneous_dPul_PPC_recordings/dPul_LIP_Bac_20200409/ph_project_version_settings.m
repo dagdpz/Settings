@@ -54,9 +54,9 @@ keys.EPOCHS_PER_TYPE{4}={...
      };
 
 keys.WINDOWS_PER_TYPE{4}={...
-    'Delay Period', 6,	-0.33,  1.3;... %1.35
+    'Delay Period', 6,	-0.33,  0.8;... %1.35
 %     'Reach',        62,	-0.35,  0.7;... %-0.35
-     'Saccade',        60,	-0.25,  0.4;... %-0.35
+     'Saccade',        60,	-0.8,  0.3;... %-0.35
     };  
     
     keys.ANOVAS_PER_TYPE(4).epoch={'INI' 'Facq';...
