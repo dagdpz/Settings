@@ -1,5 +1,5 @@
 keys.project_versions={''};
-keys.project_version='dPul_LIP_Bac_20200522'; %Is this still used ?
+keys.project_version='dPul_LIP_Bac_20200423'; %Is this still used ?
 keys.filelist_formatted={};
 
 %% what to plot
@@ -22,7 +22,7 @@ keys.batching.combine_monkeys           =1;
 keys.batching.monkeys                   ={'Bacchus'};
 % keys.Tesla.date                      ='[20160217 20180101]';
 %keys.Linus.date                       ='[20161103 20180101]';
-keys.Bacchus.date                        ='[20200522 20200522]';
+keys.Bacchus.date                        ='[20200423 20200423]';
 keys.batching.targets                  = {'dPul_R','LIP_R'};
 
 keys.plot.polars_on_extra_figure        =0;
@@ -118,7 +118,7 @@ cc=0;
 cc=cc+1;
 keys.pop(cc).tt.hands                 	= [1 2];
 keys.pop(cc).tt.perturbations          	= 0;
-keys.pop(cc).tt.choices                	= 1;
+keys.pop(cc).tt.choices                	= 0;
 keys.pop(cc).tt.selection             	= {};
 keys.pop(cc).tt.tasktypes               = {'Ddsa_han'};
 keys.pop(cc).group_parameter            = 'ungrouped'; %hand_tuning
