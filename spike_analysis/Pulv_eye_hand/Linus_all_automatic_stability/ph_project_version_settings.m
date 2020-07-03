@@ -1,11 +1,18 @@
 %keys.project_version='Linus_blocked';
+keys.cal.process_spikes                  =1;      % you can choose not to run spikes at all           
+keys.cal.process_sites                   =0;      % you can choose not to run lfp sites at all (saving processing time)             
+keys.cal.process_by_block                =0;      % you can choose not to run by block (body signals f.e.) at all (saving processing time)                   
+
 
 %% to check carefully
 keys.position_and_plotting_arrangements         ={'hands'};
 
 %% computation settings
-keys.cal.stablity       =[1];
-keys.cal.single_rating  =[1,2];
+keys.cal.units_from_sorting_table       =1; 
+keys.cal.stablity       =[0,1,2,3];
+keys.cal.automatic_stablity             =1; 
+keys.cal.single_rating  =[1,2,3,4];
+keys.cal.SNR_rating     =[1,2,3,4];
 keys.cal.effectors      =[3,4,6];
 keys.cal.reach_hand     =[1,2];
 keys.cal.types          =[4];
@@ -18,7 +25,7 @@ keys.Flaffus.date                   ='[20160203 20161206]';
 keys.Linus.date                     ='[20160203 20160606]';
 
 %% plotting
-keys.plot.single_cells                  =0;         % perform single cell plotting
+keys.plot.single_cells                  =1;         % perform single cell plotting
 
 %% cell count settings
 % keys.cc.factors                     ={'epoch','space','hand'};

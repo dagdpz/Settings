@@ -32,7 +32,7 @@ keys.tt.type_effectors              ={'Dcfr','Ddre','Ddsa'};
 % keys.tt.trial_criterion_in          ='per_position';
 keys.cal.min_trials_per_condition       =5;
 keys.tt.trial_criterion_in          ='per_hemifield';
-keys.tt.trial_criterion_ch          ='per_hemifield';
+keys.tt.trial_criterion_ch          ='per_congruent_hand_hemifield';
 
 %% Delay type
 keys.EPOCHS_PER_TYPE{4}={...
@@ -134,7 +134,7 @@ cc=0;
 
 %% divided by Fhol
 cc=cc+1;
-keys.pop(cc).tt.choices                 = [0];
+keys.pop(cc).tt.choices                 = [0 1];
 keys.pop(cc).tt.hands                   = [1 2];
 keys.pop(cc).normalization              = 'by_effector';
 keys.pop(cc).group_parameter            = 'ungrouped';
@@ -147,7 +147,7 @@ keys.pop(cc).epoch_for_normalization    = 'Fhol';
 keys.pop(cc).y_lim                  	= [0.8 2];
 
 cc=cc+1;
-keys.pop(cc).tt.choices                 = [0];
+keys.pop(cc).tt.choices                 = [0 1];
 keys.pop(cc).tt.hands                   = [1 2];
 keys.pop(cc).normalization              = 'by_effector';
 keys.pop(cc).group_parameter            = 'ungrouped';
@@ -160,7 +160,7 @@ keys.pop(cc).epoch_for_normalization    = 'Fhol';
 keys.pop(cc).y_lim                  	= [0.8 2];
 
 cc=cc+1;
-keys.pop(cc).tt.choices                 = [0];
+keys.pop(cc).tt.choices                 = [0 1];
 keys.pop(cc).tt.hands                   = [1 2];
 keys.pop(cc).normalization              = 'by_effector';
 keys.pop(cc).group_parameter            = 'in_PreR_spaceLR_Ddre_han';
@@ -173,7 +173,7 @@ keys.pop(cc).epoch_for_normalization    = 'Fhol';
 keys.pop(cc).y_lim                  	= [0.5 3];
 
 cc=cc+1;
-keys.pop(cc).tt.choices                 = [0];
+keys.pop(cc).tt.choices                 = [0 1];
 keys.pop(cc).tt.hands                   = [1 2];
 keys.pop(cc).normalization              = 'by_effector';
 keys.pop(cc).group_parameter            = 'in_PreS_spaceLR_Ddsa_han';
