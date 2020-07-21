@@ -24,7 +24,7 @@ keys.batching.monkeys                   ={'Bacchus'};
 %keys.Linus.date                       ='[20161103 20180101]';
 keys.Bacchus.date                        ='[20200325 20200619]';
 % keys.batching.targets                  = {'dPul_R','LIP_R'};
-keys.batching.targets                  = {'dPul_R'};
+keys.batching.targets                  = {'dPul_R','LIP_R'};
 
 keys.plot.polars_on_extra_figure        =0;
 keys.contra_ipsi_relative_to='target';
