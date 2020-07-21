@@ -22,9 +22,9 @@ keys.batching.combine_monkeys           =1;
 keys.batching.monkeys                   ={'Bacchus'};
 % keys.Tesla.date                      ='[20160217 20180101]';
 %keys.Linus.date                       ='[20161103 20180101]';
-keys.Bacchus.date                        ='[20200619 20200619]';
-keys.batching.targets                  = {'dPul_R','LIP_R'};
-
+keys.Bacchus.date                       ='[20200619 20200619]';
+keys.batching.targets                  = {'LIP_R'};
+keys.contra_ipsi_relative_to           ='target';
 keys.plot.polars_on_extra_figure        =0;
 
 %% criterions to exclude trials and units
