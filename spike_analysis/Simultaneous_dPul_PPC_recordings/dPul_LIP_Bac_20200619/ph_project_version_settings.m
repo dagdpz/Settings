@@ -23,7 +23,7 @@ keys.batching.monkeys                   ={'Bacchus'};
 % keys.Tesla.date                      ='[20160217 20180101]';
 %keys.Linus.date                       ='[20161103 20180101]';
 keys.Bacchus.date                       ='[20200619 20200619]';
-keys.batching.targets                  = {'LIP_R'};
+keys.batching.targets                  = {'dPul','LIP_R'};
 keys.contra_ipsi_relative_to           ='target';
 keys.plot.polars_on_extra_figure        =0;
 
