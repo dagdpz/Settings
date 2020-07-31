@@ -22,7 +22,7 @@ keys.batching.combine_monkeys       =0;
 keys.batching.targets               ={'dPulv'};
 keys.batching.monkeys               ={'Linus'};%,'Flaffus'};%'Flaffus',
 keys.Flaffus.date                   ='[20160203 20161206]';
-keys.Linus.date                     ='[20160203 20160606]';
+keys.Linus.date                     ='[20160119 20160606]';
 
 %% plotting
 keys.plot.single_cells                  =1;         % perform single cell plotting
