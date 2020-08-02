@@ -21,7 +21,8 @@ keys.cal.types          =[4];
 keys.batching.combine_monkeys       =0;
 keys.batching.targets               ={'dPulv'};
 keys.batching.monkeys               ={'Flaffus'};%,'Flaffus'};%'Flaffus',
-keys.Flaffus.date                   ='[20160203 20161206]';
+%keys.Flaffus.date                   ='[20160203 20161206]';
+keys.Flaffus.date                   ='[20160617 20161206]';
 keys.Linus.date                     ='[20160203 20160606]';
 
 %% plotting
