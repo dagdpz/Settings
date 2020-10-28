@@ -23,6 +23,8 @@ keys.batching.targets               ={'dPulv'};
 keys.batching.monkeys               ={'Linus'};%,'Flaffus'};%'Flaffus',
 keys.Flaffus.date                   ='[20160203 20161206]';
 keys.Linus.date                     ='[20160119 20160606]';
+%keys.Linus.date                     ='[20160203 20160606]';
+keys.Linus.date                     ='[20160302 20160606]';
 
 %% plotting
 keys.plot.single_cells                  =1;         % perform single cell plotting
@@ -44,7 +46,7 @@ keys.EPOCHS_PER_TYPE{4}={...
     'INI',      2,	-0.4,	-0.1,   'INI';...
     'Facq',     3,	-0.4,	-0.1,   'INI';...
     'Fhol',     6,	-0.3,	0,      'INI';...
-    'Cue',      6,	0.05,   0.15,   'INI';...
+    'Cue',      6,	0.04,   0.24,   'INI';...
     'EDel',     4, 	-0.6,   -0.3,   'INI';...
     'Del',      4, 	-0.3,   0,      'INI';...
     'PreS',     60,	-0.1, 	-0.01,  'INI';...
@@ -128,7 +130,7 @@ cc=0;
 
 %% Divided by Fhol
 cc=cc+1;
-keys.pop(cc).tt.choices                 = [0 1];
+keys.pop(cc).tt.choices                 = 0;
 keys.pop(cc).tt.hands                   = [1 2];
 keys.pop(cc).normalization              = 'by_effector';
 keys.pop(cc).group_parameter            = 'ungrouped';
@@ -141,7 +143,7 @@ keys.pop(cc).epoch_for_normalization    = 'Fhol';
 keys.pop(cc).y_lim                  	= [0.8 2];
 
 cc=cc+1;
-keys.pop(cc).tt.choices                 = [0 1];
+keys.pop(cc).tt.choices                 = 0;
 keys.pop(cc).tt.hands                   = [1 2];
 keys.pop(cc).normalization              = 'by_effector';
 keys.pop(cc).group_parameter            = 'ungrouped';
@@ -154,7 +156,20 @@ keys.pop(cc).epoch_for_normalization    = 'Fhol';
 keys.pop(cc).y_lim                  	= [0.8 2];
 
 cc=cc+1;
-keys.pop(cc).tt.choices                 = [0 1];
+keys.pop(cc).tt.choices                 = 0;
+keys.pop(cc).tt.hands                   = [1 2];
+keys.pop(cc).normalization              = 'by_effector';
+keys.pop(cc).group_parameter            = 'ungrouped';
+keys.pop(cc).conditions_to_plot         = {'Dcfr'}; 
+keys.pop(cc).epoch_PF                  	= 'PreR';
+keys.pop(cc).epoch_RF                  	= 'PreR';
+keys.pop(cc).epoch_BL                  	= 'INI';
+keys.pop(cc).epoch_GB                  	= 'Fhol';
+keys.pop(cc).epoch_for_normalization    = 'Fhol';
+keys.pop(cc).y_lim                  	= [0.8 2];
+
+cc=cc+1;
+keys.pop(cc).tt.choices                 = 0;
 keys.pop(cc).tt.hands                   = [1 2];
 keys.pop(cc).normalization              = 'by_effector';
 keys.pop(cc).group_parameter            = 'in_PreR_spaceLR_Ddre_han';
@@ -167,13 +182,26 @@ keys.pop(cc).epoch_for_normalization    = 'Fhol';
 keys.pop(cc).y_lim                  	= [0.5 3];
 
 cc=cc+1;
-keys.pop(cc).tt.choices                 = [0 1];
+keys.pop(cc).tt.choices                 = 0;
 keys.pop(cc).tt.hands                   = [1 2];
 keys.pop(cc).normalization              = 'by_effector';
 keys.pop(cc).group_parameter            = 'in_PreS_spaceLR_Ddsa_han';
 keys.pop(cc).conditions_to_plot         = {'Ddsa'}; 
 keys.pop(cc).epoch_PF                  	= 'PreS';
 keys.pop(cc).epoch_RF                  	= 'PreS';
+keys.pop(cc).epoch_BL                  	= 'INI';
+keys.pop(cc).epoch_GB                  	= 'Fhol';
+keys.pop(cc).epoch_for_normalization    = 'Fhol';
+keys.pop(cc).y_lim                  	= [0.5 3];
+
+cc=cc+1;
+keys.pop(cc).tt.choices                 = 0;
+keys.pop(cc).tt.hands                   = [1 2];
+keys.pop(cc).normalization              = 'by_effector';
+keys.pop(cc).group_parameter            = 'in_PreR_spaceLR_Dcfr_han';
+keys.pop(cc).conditions_to_plot         = {'Dcfr'}; 
+keys.pop(cc).epoch_PF                  	= 'PreR';
+keys.pop(cc).epoch_RF                  	= 'PreR';
 keys.pop(cc).epoch_BL                  	= 'INI';
 keys.pop(cc).epoch_GB                  	= 'Fhol';
 keys.pop(cc).epoch_for_normalization    = 'Fhol';

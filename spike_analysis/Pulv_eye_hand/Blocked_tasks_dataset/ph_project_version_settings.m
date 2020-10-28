@@ -9,22 +9,22 @@ keys.position_and_plotting_arrangements         ={'hands'};
 
 %% computation settings
 keys.cal.units_from_sorting_table       =1; 
-keys.cal.stablity       =[0,1,2,3];
+keys.cal.stablity       =[0,1,2,3]; %??
 keys.cal.automatic_stablity             =1; 
-keys.cal.single_rating  =[1,2,3,4];
-keys.cal.SNR_rating     =[1,2,3,4];
+keys.cal.single_rating  =[1,2,3,4,5,6]; % 1-3
+keys.cal.SNR_rating     =[1,2,3,4,5,6]; % 
 keys.cal.effectors      =[3,4,6];
 keys.cal.reach_hand     =[1,2];
 keys.cal.types          =[4];
+keys.cal.datasets       =[3.6];
 
 %% batching
 keys.batching.combine_monkeys       =0;
 keys.batching.targets               ={'dPulv'};
-keys.batching.monkeys               ={'Flaffus'};%,'Flaffus'};%'Flaffus',
-%keys.Flaffus.date                   ='[20160203 20161206]';
-%keys.Flaffus.date                   ='[20160617 20161206]';
-keys.Flaffus.date                   ='[20160203 20160616]';
-keys.Linus.date                     ='[20160203 20160606]';
+keys.batching.monkeys               ={'Linus'};%,'Flaffus'};%'Flaffus',
+keys.Flaffus.date                   ='[20160203 20161206]';
+keys.Linus.date                     ='[20170119 20170430]';
+%keys.Linus.date                     ='[20160203 20160606]';
 
 %% plotting
 keys.plot.single_cells                  =1;         % perform single cell plotting
@@ -37,7 +37,7 @@ keys.tt.position_criterion          ='none';
 keys.tt.space_criterion             ='none';
 keys.tt.type_effectors              ={'Dcfr','Ddre','Ddsa'};
 
-keys.cal.min_trials_per_condition       =5;
+keys.cal.min_trials_per_condition       =10;
 keys.tt.trial_criterion_in          ='per_hemifield';
 keys.tt.trial_criterion_ch          ='per_congruent_hand_hemifield';
 
@@ -46,7 +46,7 @@ keys.EPOCHS_PER_TYPE{4}={...
     'INI',      2,	-0.4,	-0.1,   'INI';...
     'Facq',     3,	-0.4,	-0.1,   'INI';...
     'Fhol',     6,	-0.3,	0,      'INI';...
-    'Cue',      6,	0.05,   0.15,   'INI';...
+    'Cue',      6,	0.04,   0.24,   'INI';...
     'EDel',     4, 	-0.6,   -0.3,   'INI';...
     'Del',      4, 	-0.3,   0,      'INI';...
     'PreS',     60,	-0.1, 	-0.01,  'INI';...
@@ -66,7 +66,7 @@ keys.EPOCHS_PER_TYPE{4}={...
 %     };
 keys.WINDOWS_PER_TYPE{4}={...
     'Delay Period', 6,	-0.33,  1.35;...
-    'Saccade',      60,	-0.1,   0.6;...
+    'Saccade',      60,	-0.1,   0.5;...
     'Reach',        62,	-0.35,  0.7;...
     };
 keys.ANOVAS_PER_TYPE(4).epoch={'INI' 'Facq';...
@@ -115,6 +115,19 @@ cc=0;
 % keys.ccs(cc).epochs.Ddsa            ={'INI','Facq','Fhol','Cue','EDel','Del','PreS','PeriS','PostS','PreR','PeriR','PostR','Thol'}';
 % keys.ccs(cc).epochs.Dcfr            ={'INI','Facq','Fhol','Cue','EDel','Del','PreS','PeriS','PostS','PreR','PeriR','PostR','Thol'}';
 
+
+
+cc=cc+1;
+keys.ccs(cc).tt.choices             =0;
+keys.ccs(cc).tt.hands               =[1 2];
+keys.ccs(cc).factor                 ='CH_CS';
+keys.ccs(cc).conditions_to_plot     ={'Ddsa';'Dcfr'};
+keys.ccs(cc).plot_type              ='effector';
+keys.ccs(cc).epochs.Ddre            ={'INI','Facq','Fhol','Cue','EDel','Del','PreS','PeriS','PostS','PreR','PeriR','PostR','Thol'}';
+keys.ccs(cc).epochs.Ddsa            ={'INI','Facq','Fhol','Cue','EDel','Del','PreS','PeriS','PostS','PreR','PeriR','PostR','Thol'}';
+keys.ccs(cc).epochs.Dcfr            ={'INI','Facq','Fhol','Cue','EDel','Del','PreS','PeriS','PostS','PreR','PeriR','PostR','Thol'}';
+
+
 cc=cc+1;
 keys.ccs(cc).tt.choices             =0;
 keys.ccs(cc).tt.hands               =[1 2];
@@ -125,12 +138,54 @@ keys.ccs(cc).epochs.Ddre            ={'INI','Facq','Fhol','Cue','EDel','Del','Pr
 keys.ccs(cc).epochs.Ddsa            ={'INI','Facq','Fhol','Cue','EDel','Del','PreS','PeriS','PostS','PreR','PeriR','PostR','Thol'}';
 keys.ccs(cc).epochs.Dcfr            ={'INI','Facq','Fhol','Cue','EDel','Del','PreS','PeriS','PostS','PreR','PeriR','PostR','Thol'}';
 
+
+%% tuning onset settings
+cc= 0;
+
+
+cc=cc+1;% 'Msac epoch tuning';
+ce=0;
+keys.ons(cc).comparisons_title       = 'Saccades vs Combined';
+keys.ons(cc).group_parameter         = 'ungrouped';
+keys.ons(cc).conditions_to_plot      = {'Ddsa';'Dcfr'};
+keys.ons(cc).choices=0; %for cell exclusion
+keys.ons(cc).hands=[1,2]; %for cell exclusion
+keys.ons(cc).tt.choices=0; %for cell exclusion
+keys.ons(cc).tt.hands=[1,2]; %for cell exclusion
+ce=ce+1;
+keys.ons(cc).comparisons_per_effector(ce).reach_hand{1}=[1 2];
+keys.ons(cc).comparisons_per_effector(ce).reach_hand{2}=[1 2];
+keys.ons(cc).comparisons_per_effector(ce).hemifield{1}=[-1 1];
+keys.ons(cc).comparisons_per_effector(ce).hemifield{2}=[-1 1];
+keys.ons(cc).comparisons_per_effector(ce).effector{1}=[3];
+keys.ons(cc).comparisons_per_effector(ce).effector{2}=[6];
+keys.ons(cc).comparisons_per_effector(ce).choice{1}=[0];
+keys.ons(cc).comparisons_per_effector(ce).choice{2}=[0];
+keys.ons(cc).comparisons_per_effector(ce).order_onset={'Delay Period', -0.3, 1.3};
+keys.ons(cc).comparisons_per_effector(ce).colors=[1 0 0; 0 1 0];
+keys.ons(cc).comparisons_per_effector(ce).baseline_epoch='Fhol';
+keys.ons(cc).comparisons_per_effector(ce).title='Aligned to Cue';
+ce=ce+1;
+keys.ons(cc).comparisons_per_effector(ce).reach_hand{1}=[1 2];
+keys.ons(cc).comparisons_per_effector(ce).reach_hand{2}=[1 2];
+keys.ons(cc).comparisons_per_effector(ce).hemifield{1}=[-1 1];
+keys.ons(cc).comparisons_per_effector(ce).hemifield{2}=[-1 1];
+keys.ons(cc).comparisons_per_effector(ce).effector{1}=[3];
+keys.ons(cc).comparisons_per_effector(ce).effector{2}=[6];
+keys.ons(cc).comparisons_per_effector(ce).choice{1}=[0];
+keys.ons(cc).comparisons_per_effector(ce).choice{2}=[0];
+keys.ons(cc).comparisons_per_effector(ce).order_onset={'Saccade', -0.1, 0.5};
+keys.ons(cc).comparisons_per_effector(ce).colors=[1 0 0; 0 1 0];
+keys.ons(cc).comparisons_per_effector(ce).baseline_epoch='Del';
+keys.ons(cc).comparisons_per_effector(ce).title='Aligned to Saccade';
+
+
 %% population PSTH settings
 cc=0;
 
 %% Divided by Fhol
 cc=cc+1;
-keys.pop(cc).tt.choices                 = [0 1];
+keys.pop(cc).tt.choices                 = 0;
 keys.pop(cc).tt.hands                   = [1 2];
 keys.pop(cc).normalization              = 'by_effector';
 keys.pop(cc).group_parameter            = 'ungrouped';
@@ -143,7 +198,7 @@ keys.pop(cc).epoch_for_normalization    = 'Fhol';
 keys.pop(cc).y_lim                  	= [0.8 2];
 
 cc=cc+1;
-keys.pop(cc).tt.choices                 = [0 1];
+keys.pop(cc).tt.choices                 = 0;
 keys.pop(cc).tt.hands                   = [1 2];
 keys.pop(cc).normalization              = 'by_effector';
 keys.pop(cc).group_parameter            = 'ungrouped';
@@ -156,7 +211,20 @@ keys.pop(cc).epoch_for_normalization    = 'Fhol';
 keys.pop(cc).y_lim                  	= [0.8 2];
 
 cc=cc+1;
-keys.pop(cc).tt.choices                 = [0 1];
+keys.pop(cc).tt.choices                 = 0;
+keys.pop(cc).tt.hands                   = [1 2];
+keys.pop(cc).normalization              = 'by_effector';
+keys.pop(cc).group_parameter            = 'ungrouped';
+keys.pop(cc).conditions_to_plot         = {'Dcfr'}; 
+keys.pop(cc).epoch_PF                  	= 'PreR';
+keys.pop(cc).epoch_RF                  	= 'PreR';
+keys.pop(cc).epoch_BL                  	= 'INI';
+keys.pop(cc).epoch_GB                  	= 'Fhol';
+keys.pop(cc).epoch_for_normalization    = 'Fhol';
+keys.pop(cc).y_lim                  	= [0.8 2];
+
+cc=cc+1;
+keys.pop(cc).tt.choices                 = 0;
 keys.pop(cc).tt.hands                   = [1 2];
 keys.pop(cc).normalization              = 'by_effector';
 keys.pop(cc).group_parameter            = 'in_PreR_spaceLR_Ddre_han';
@@ -169,13 +237,26 @@ keys.pop(cc).epoch_for_normalization    = 'Fhol';
 keys.pop(cc).y_lim                  	= [0.5 3];
 
 cc=cc+1;
-keys.pop(cc).tt.choices                 = [0 1];
+keys.pop(cc).tt.choices                 = 0;
 keys.pop(cc).tt.hands                   = [1 2];
 keys.pop(cc).normalization              = 'by_effector';
 keys.pop(cc).group_parameter            = 'in_PreS_spaceLR_Ddsa_han';
 keys.pop(cc).conditions_to_plot         = {'Ddsa'}; 
 keys.pop(cc).epoch_PF                  	= 'PreS';
 keys.pop(cc).epoch_RF                  	= 'PreS';
+keys.pop(cc).epoch_BL                  	= 'INI';
+keys.pop(cc).epoch_GB                  	= 'Fhol';
+keys.pop(cc).epoch_for_normalization    = 'Fhol';
+keys.pop(cc).y_lim                  	= [0.5 3];
+
+cc=cc+1;
+keys.pop(cc).tt.choices                 = 0;
+keys.pop(cc).tt.hands                   = [1 2];
+keys.pop(cc).normalization              = 'by_effector';
+keys.pop(cc).group_parameter            = 'in_PreR_spaceLR_Dcfr_han';
+keys.pop(cc).conditions_to_plot         = {'Dcfr'}; 
+keys.pop(cc).epoch_PF                  	= 'PreR';
+keys.pop(cc).epoch_RF                  	= 'PreR';
 keys.pop(cc).epoch_BL                  	= 'INI';
 keys.pop(cc).epoch_GB                  	= 'Fhol';
 keys.pop(cc).epoch_for_normalization    = 'Fhol';
