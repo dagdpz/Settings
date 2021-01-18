@@ -7,14 +7,14 @@ keys.cal.process_by_block                =0;      % you can choose not to run by
 keys.position_and_plotting_arrangements         ={'hands'};
 % keys.cal.divide_baseline_for_ANOVA      =1;
 keys.batching.combine_monkeys           =1;
-keys.plot.single_cells                  =1;         % perform single cell plotting
+keys.plot.single_cells                  =0;         % perform single cell plotting
 
 %% computation settings
-keys.cal.units_from_sorting_table       =1; 
 keys.cal.stablity       =[1,2]; %??
 keys.cal.automatic_stablity             =1; 
 keys.cal.single_rating  =[1,2,3]; % 1-3
 keys.cal.SNR_rating     =[1,2,3]; % 
+keys.cal.units_from_sorting_table       =1; 
 keys.cal.effectors      =[3,4,6];
 keys.cal.reach_hand     =[1,2];
 keys.cal.types          =[4];
@@ -26,62 +26,60 @@ keys.Linus.marker      ='o';
 
 
 %% Delay type
-% keys.EPOCHS_PER_TYPE{4}={...
-%     'INI',      2,	-0.4,	-0.1,   'INI';...
-%     'Facq',     3,	-0.4,	-0.1,   'INI';...
-%     'Fhol',     6,	-0.5,	0,      'INI';...
-%     'Cue',      6,	0.04,   0.14,   'INI';...
-%     'Cue2',     6,	0.14,   0.29,   'INI';...
-%     'EDel',     4, 	-1,   -0.5,   'INI';...
-%     'Del',      4, 	-0.5,   0,      'INI';...
-%     'PreS',     60,	-0.22, 	-0.02,  'INI';...
-%     'PeriS',	60,	-0.02, 	0.08,   'INI';...
-%     'PostS',	61,	0.05,   0.2,    'INI';...
-%     'PreR',     62,	-0.4, 	-0.1,  'INI';...
-%     'PeriR',	62,	-0.05, 	0.25,   'INI';...
-%     'PostR',	63,	0.1,   0.4,    'INI';...
-%     'Thol',     20,	-0.3,   0,      'INI';...
-%     };
 keys.EPOCHS_PER_TYPE{4}={...
     'INI',      2,	-0.4,	-0.1,   'INI';...
     'Facq',     3,	-0.4,	-0.1,   'INI';...
-    'Fhol',     6,	-0.5,	0,      'INI';...
+    'Fhol',     6,	-0.3,	0,      'INI';...
     'Cue',      6,	0.06,   0.12,   'INI';...
     'Cue2',     6,	0.12,   0.30,   'INI';...
-    'EDel',     4, 	-1,   -0.5,   'INI';...
-    'Del',      4, 	-0.5,   0,      'INI';...
+    'EDel',     4, 	-1,   -0.7,   'INI';...
+    'Del',      4, 	-0.3,   0,      'INI';...
     'PreS',     60,	-0.22, 	-0.02,  'INI';...
     'PeriS',	60,	-0.02, 	0.08,   'INI';...
     'PostS',	61,	0.05,   0.2,    'INI';...
     'PreR',     62,	-0.4, 	-0.1,  'INI';...
     'PeriR',	62,	-0.05, 	0.25,   'INI';...
     'PostR',	63,	0.1,   0.4,    'INI';...
+    'PreM',     68,	-0.4, 	-0.1,  'INI';...
+    'PeriM',	68,	-0.05, 	0.25,   'INI';...
+    'PostM',	69,	0.1,   0.4,    'INI';...
     'Thol',     20,	-0.3,   0,      'INI';...
     };
 keys.WINDOWS_PER_TYPE{4}={...
     'Fixation',     3,	-1,   0;...
-    'Delay Period', 6,	-0.5,  0.85;...
+    'Delay Period', 6,	-0.5,  1.7;...
     'Saccade',      60,	-0.70,   0.45;...
     'Reach',        62,	-0.90,  0.65;...
+    'Movement',     68,	-0.90,  0.45;...
     };
 
-
+% keys.EPOCHS_PER_TYPE{4}={...
+%     'INI',      2,	-0.4,	-0.1,   'INI';...
+%     'Facq',     3,	-0.4,	-0.1,   'INI';...
+%     'Fhol',     6,	-0.3,	0,      'INI';...
+%     'Cue',      6,	0.06,   0.12,   'INI';...
+%     'Cue2',     6,	0.12,   0.30,   'INI';...
+%     'EDel',     4, 	-1,   -0.7,   'INI';...
+%     'Del',      4, 	-0.3,   0,      'INI';...
+%     'PreS',     60,	-0.22, 	-0.02,  'INI';...
+%     'PeriS',	60,	-0.02, 	0.08,   'INI';...
+%     'PostS',	61,	0.05,   0.2,    'INI';...
+%     'PreR',     62,	-0.4, 	-0.1,  'INI';...
+%     'PeriR',	62,	-0.05, 	0.25,   'INI';...
+%     'PostR',	63,	0.1,   0.4,    'INI';...
+%     'PreM',     68,	-0.4, 	-0.1,  'INI';...
+%     'PeriM',	68,	-0.05, 	0.25,   'INI';...
+%     'PostM',	69,	0.1,   0.4,    'INI';...
+%     'Thol',     20,	-0.3,   0,      'INI';...
+%     };
 % keys.WINDOWS_PER_TYPE{4}={...
-%     'Delay Period', 6,	-0.5,  2;...
+%     'Fixation',     3,	-1,   0;...
+%     'Delay Period', 6,	-0.5,  0.85;...
+%     'Saccade',      60,	-0.70,   0.45;...
+%     'Reach',        62,	-0.90,  0.65;...
+%     'Movement',     68,	-0.90,  0.65;...
 %     };
 
-% keys.ANOVAS_PER_TYPE(4).epoch={'INI' 'Facq';...
-%     'INI' 'Fhol';...
-%     'Fhol' 'Cue';...
-%     'Fhol' 'EDel';...
-%     'EDel' 'Del';...
-%     'EDel' 'PreS';...
-%     'EDel' 'PeriS';...
-%     'EDel' 'PostS';...
-%     'EDel' 'PreR';...
-%     'EDel' 'PeriR';...
-%     'EDel' 'PostR';...
-%     'Fhol' 'Thol'};
 keys.ANOVAS_PER_TYPE(4).epoch={'INI' 'Facq';...
     'INI' 'Fhol';...
     'Fhol' 'Cue';...
@@ -131,6 +129,19 @@ keys.hst(cc).epochs.Dcfr            ={'Facq','Fhol','Cue','EDel','Del','PreS','P
 %% copy single units settings
 cc=0;
 
+
+cc=cc+1;
+keys.cpy(cc).foldername                 ='fhold_handtuned';
+keys.cpy(cc).tt.unselect                        = {'handinbpothtasks','--';'handinbpothtasks','IH-';'handinbpothtasks','CH-';'handinbpothtasks','-IH';'handinbpothtasks','-CH';'handinbpothtasks','IHCH';'handinbpothtasks','CHIH'};
+keys.cpy(cc).tt.combine_tuning_properties       = {'handinbpothtasks','in_Fhol_hands_perspace_Ddre_han','in_Fhol_hands_perspace_Ddsa_han'};
+keys.cpy(cc).tt.selection                 ={};
+% 
+% cc=cc+1;
+% keys.cpy(cc).foldername                 ='contra_hand';
+% keys.cpy(cc).tt.unselect                        = {};
+% keys.cpy(cc).tt.combine_tuning_properties       = {};
+% keys.cpy(cc).tt.selection                 ={'in_PreR_hands_perspace_Ddre_han','CH'};
+
 % cc=cc+1;
 % keys.cpy(cc).foldername                 ='CUE_CS_in_Ddre_not_Dcfr';
 % keys.cpy(cc).tt.unselect                        = {'in_Cue_spaceLR_Dcfr_han','CS'};
@@ -175,11 +186,11 @@ cc=0;
 % keys.cpy(cc).tt.unselect                        = {'in_CH_Cue_spaceLR_Ddre_han','CS';'in_IH_Cue_spaceLR_Ddre_han','CS'};
 % keys.cpy(cc).tt.combine_tuning_properties       = {};
 % keys.cpy(cc).tt.selection                 ={'in_IH_Cue_spaceLR_Dcfr_han','CS'};
-
-cc=cc+1;
-keys.cpy(cc).foldername                 ='perhandPreR_CS_in_Ddre';
-keys.cpy(cc).tt.combine_tuning_properties       = {};
-keys.cpy(cc).tt.selection                 ={'in_PreR_space_perhand_Ddre_han','CS'};
+% 
+% cc=cc+1;
+% keys.cpy(cc).foldername                 ='perhandPreR_CS_in_Ddre';
+% keys.cpy(cc).tt.combine_tuning_properties       = {};
+% keys.cpy(cc).tt.selection                 ={'in_PreR_space_perhand_Ddre_han','CS'};
 
 %% cell count settings
 cc=0;
@@ -188,18 +199,36 @@ epochs.Ddre            =epochs_all;
 epochs.Ddsa            =epochs_all;
 epochs.Dcfr            =epochs_all;
 
+% 
+% cc=cc+1;
+% keys.ccs(cc).factor                 ='space_hand';
+% keys.ccs(cc).conditions_to_plot     ={'Ddre'};
+% keys.ccs(cc).plot_type              ='per_epoch_2levels';
+% keys.ccs(cc).epochs                 =epochs;
+% keys.ccs(cc).first_level_factor     ='space_hand';
+% keys.ccs(cc).first_level_epochs      ={'Fhol'};
 
 cc=cc+1;
-keys.ccs(cc).factor                 ='space_hand';
+keys.ccs(cc).factor                 ='hand';
 keys.ccs(cc).conditions_to_plot     ={'Ddre'};
-keys.ccs(cc).plot_type              ='per_epoch';
+keys.ccs(cc).plot_type              ='per_epoch_2levels';
 keys.ccs(cc).epochs                 =epochs;
+keys.ccs(cc).first_level_factor     ='space_hand';
+keys.ccs(cc).first_level_epochs      ={'Fhol'};
 
-cc=cc+1;
-keys.ccs(cc).factor                 ='space_and_hand';
-keys.ccs(cc).conditions_to_plot     ={'Ddre'};
-keys.ccs(cc).plot_type              ='per_epoch';
-keys.ccs(cc).epochs                 =epochs;
+
+% 
+% cc=cc+1;
+% keys.ccs(cc).factor                 ='space_hand';
+% keys.ccs(cc).conditions_to_plot     ={'Ddre'};
+% keys.ccs(cc).plot_type              ='per_epoch';
+% keys.ccs(cc).epochs                 =epochs;
+% 
+% cc=cc+1;
+% keys.ccs(cc).factor                 ='space_and_hand';
+% keys.ccs(cc).conditions_to_plot     ={'Ddre'};
+% keys.ccs(cc).plot_type              ='per_epoch';
+% keys.ccs(cc).epochs                 =epochs;
 
 
 % 
@@ -366,27 +395,27 @@ cc= 0;
 % keys.ons(cc).comparisons_per_effector(ce).colors=[1 0 0; 0 1 0]; 
 % end
 
-cc=cc+1;% 'Reaches vs Saccades for space tuned units
-keys.ons(cc).comparisons_title       = 'Reaches vs Saccades';
-keys.ons(cc).group_parameter         = 'in_Cue_space_perhand_Ddre_or_Ddsa';
-keys.ons(cc).group_excluded          = {''};
-keys.ons(cc).conditions_to_plot      = {'Ddsa';'Ddre'};
-CM={[1 2],[1 2],1,1;[1 2],[1 2],-1,-1};
-TI={'CS','IS'};
-for ce=1:2
-keys.ons(cc).comparisons_per_effector(ce).reach_hand{1}=CM{ce,1};
-keys.ons(cc).comparisons_per_effector(ce).reach_hand{2}=CM{ce,2};
-keys.ons(cc).comparisons_per_effector(ce).hemifield{1}=CM{ce,3};
-keys.ons(cc).comparisons_per_effector(ce).hemifield{2}=CM{ce,4};
-keys.ons(cc).comparisons_per_effector(ce).title=TI{ce};
-keys.ons(cc).comparisons_per_effector(ce).effector{1}=[3];
-keys.ons(cc).comparisons_per_effector(ce).effector{2}=[4];
-keys.ons(cc).comparisons_per_effector(ce).choice{1}=[0];
-keys.ons(cc).comparisons_per_effector(ce).choice{2}=[0];
-keys.ons(cc).comparisons_per_effector(ce).order_onset={'Delay Period', 0, 1.3};
-keys.ons(cc).comparisons_per_effector(ce).baseline_epoch='Fhol';
-keys.ons(cc).comparisons_per_effector(ce).colors=[1 0 0; 0 1 0]; 
-end
+% cc=cc+1;% 'Reaches vs Saccades for space tuned units
+% keys.ons(cc).comparisons_title       = 'Reaches vs Saccades';
+% keys.ons(cc).group_parameter         = 'in_Cue_space_perhand_Ddre_or_Ddsa';
+% keys.ons(cc).group_excluded          = {''};
+% keys.ons(cc).conditions_to_plot      = {'Ddsa';'Ddre'};
+% CM={[1 2],[1 2],1,1;[1 2],[1 2],-1,-1};
+% TI={'CS','IS'};
+% for ce=1:2
+% keys.ons(cc).comparisons_per_effector(ce).reach_hand{1}=CM{ce,1};
+% keys.ons(cc).comparisons_per_effector(ce).reach_hand{2}=CM{ce,2};
+% keys.ons(cc).comparisons_per_effector(ce).hemifield{1}=CM{ce,3};
+% keys.ons(cc).comparisons_per_effector(ce).hemifield{2}=CM{ce,4};
+% keys.ons(cc).comparisons_per_effector(ce).title=TI{ce};
+% keys.ons(cc).comparisons_per_effector(ce).effector{1}=[3];
+% keys.ons(cc).comparisons_per_effector(ce).effector{2}=[4];
+% keys.ons(cc).comparisons_per_effector(ce).choice{1}=[0];
+% keys.ons(cc).comparisons_per_effector(ce).choice{2}=[0];
+% keys.ons(cc).comparisons_per_effector(ce).order_onset={'Delay Period', 0, 1.3};
+% keys.ons(cc).comparisons_per_effector(ce).baseline_epoch='Fhol';
+% keys.ons(cc).comparisons_per_effector(ce).colors=[1 0 0; 0 1 0]; 
+% end
 
 % cc=cc+1;% 'Reaches vs Saccades for space tuned units
 % keys.ons(cc).comparisons_title       = 'Reaches vs Saccades';
@@ -433,27 +462,99 @@ end
 % keys.ons(cc).comparisons_per_effector(ce).colors=[1 0 0; 0 1 0]; 
 % end
 
-% 
-% cc=cc+1;%' Reaches vs Combined';
-% keys.ons(cc).comparisons_title       = 'Reaches vs Combined';
-% keys.ons(cc).group_parameter         = 'ungrouped';
-% keys.ons(cc).conditions_to_plot      = {'Ddre';'Dcfr'};
-% CM=[2 2 1 1; 1 1 1 1; 2 2 -1 -1; 1 1 -1 -1];
-% TI={'CHCS','IHCS','CHIS','IHIS'};
-% for ce=1:4
-% keys.ons(cc).comparisons_per_effector(ce).reach_hand{1}=CM(ce,1);
-% keys.ons(cc).comparisons_per_effector(ce).reach_hand{2}=CM(ce,2);
-% keys.ons(cc).comparisons_per_effector(ce).hemifield{1}=CM(ce,3);
-% keys.ons(cc).comparisons_per_effector(ce).hemifield{2}=CM(ce,4);
-% keys.ons(cc).comparisons_per_effector(ce).title=TI{ce};
-% keys.ons(cc).comparisons_per_effector(ce).effector{1}=[4];
-% keys.ons(cc).comparisons_per_effector(ce).effector{2}=[6];
-% keys.ons(cc).comparisons_per_effector(ce).choice{1}=[0];
-% keys.ons(cc).comparisons_per_effector(ce).choice{2}=[0];
-% keys.ons(cc).comparisons_per_effector(ce).order_onset={'Delay Period', 0, 1.3};
-% keys.ons(cc).comparisons_per_effector(ce).baseline_epoch='Fhol';
-% keys.ons(cc).comparisons_per_effector(ce).colors=[0 1 0; 0 0 1]; 
-% end
+
+cc=cc+1;%' Reaches vs Combined';
+keys.ons(cc).comparisons_title       = 'Reaches vs Combined NORM';
+keys.ons(cc).group_parameter         = 'ungrouped';
+keys.ons(cc).conditions_to_plot      = {'Ddre';'Dcfr'};
+keys.ons(cc).normalization              = 'by_effector';
+keys.ons(cc).epoch_for_normalization    = 'Fhol';
+CM=[2 2 1 1; 1 1 1 1; 2 2 -1 -1; 1 1 -1 -1];
+TI={'CHCS','IHCS','CHIS','IHIS'};
+for ce=1:4
+keys.ons(cc).comparisons_per_effector(ce).reach_hand{1}=CM(ce,1);
+keys.ons(cc).comparisons_per_effector(ce).reach_hand{2}=CM(ce,2);
+keys.ons(cc).comparisons_per_effector(ce).hemifield{1}=CM(ce,3);
+keys.ons(cc).comparisons_per_effector(ce).hemifield{2}=CM(ce,4);
+keys.ons(cc).comparisons_per_effector(ce).title=TI{ce};
+keys.ons(cc).comparisons_per_effector(ce).effector{1}=[4];
+keys.ons(cc).comparisons_per_effector(ce).effector{2}=[6];
+keys.ons(cc).comparisons_per_effector(ce).choice{1}=[0];
+keys.ons(cc).comparisons_per_effector(ce).choice{2}=[0];
+keys.ons(cc).comparisons_per_effector(ce).order_onset={'Delay Period', 0, 1.3};
+keys.ons(cc).comparisons_per_effector(ce).baseline_epoch='Fhol';
+keys.ons(cc).comparisons_per_effector(ce).colors=[0 1 0; 0 0 1]; 
+end
+
+
+cc=cc+1;% to delete in a second; 
+keys.ons(cc).comparisons_title       = 'Reaches vs Saccades NORM ';
+keys.ons(cc).group_parameter         = 'ungrouped';
+keys.ons(cc).conditions_to_plot      = {'Ddsa';'Ddre'};
+keys.ons(cc).normalization              = 'by_effector';
+keys.ons(cc).epoch_for_normalization    = 'Fhol';
+CM={[1 2],[1 2],1,1;[1 2],[1 2],-1,-1};
+TI={'CS','IS'};
+for ce=1:2
+keys.ons(cc).comparisons_per_effector(ce).reach_hand{1}=CM{ce,1};
+keys.ons(cc).comparisons_per_effector(ce).reach_hand{2}=CM{ce,2};
+keys.ons(cc).comparisons_per_effector(ce).hemifield{1}=CM{ce,3};
+keys.ons(cc).comparisons_per_effector(ce).hemifield{2}=CM{ce,4};
+keys.ons(cc).comparisons_per_effector(ce).title=TI{ce};
+keys.ons(cc).comparisons_per_effector(ce).effector{1}=[3];
+keys.ons(cc).comparisons_per_effector(ce).effector{2}=[4];
+keys.ons(cc).comparisons_per_effector(ce).choice{1}=[0];
+keys.ons(cc).comparisons_per_effector(ce).choice{2}=[0];
+keys.ons(cc).comparisons_per_effector(ce).order_onset={'Delay Period', 0, 1.3};
+keys.ons(cc).comparisons_per_effector(ce).baseline_epoch='Fhol';
+keys.ons(cc).comparisons_per_effector(ce).colors=[1 0 0; 0 1 0]; 
+end
+
+
+cc=cc+1;%' Reaches vs Combined';
+keys.ons(cc).comparisons_title       = 'Reaches vs Combined';
+keys.ons(cc).group_parameter         = 'ungrouped';
+keys.ons(cc).conditions_to_plot      = {'Ddre';'Dcfr'};
+CM=[2 2 1 1; 1 1 1 1; 2 2 -1 -1; 1 1 -1 -1];
+TI={'CHCS','IHCS','CHIS','IHIS'};
+for ce=1:4
+keys.ons(cc).comparisons_per_effector(ce).reach_hand{1}=CM(ce,1);
+keys.ons(cc).comparisons_per_effector(ce).reach_hand{2}=CM(ce,2);
+keys.ons(cc).comparisons_per_effector(ce).hemifield{1}=CM(ce,3);
+keys.ons(cc).comparisons_per_effector(ce).hemifield{2}=CM(ce,4);
+keys.ons(cc).comparisons_per_effector(ce).title=TI{ce};
+keys.ons(cc).comparisons_per_effector(ce).effector{1}=[4];
+keys.ons(cc).comparisons_per_effector(ce).effector{2}=[6];
+keys.ons(cc).comparisons_per_effector(ce).choice{1}=[0];
+keys.ons(cc).comparisons_per_effector(ce).choice{2}=[0];
+keys.ons(cc).comparisons_per_effector(ce).order_onset={'Delay Period', 0, 1.3};
+keys.ons(cc).comparisons_per_effector(ce).baseline_epoch='Fhol';
+keys.ons(cc).comparisons_per_effector(ce).colors=[0 1 0; 0 0 1]; 
+end
+
+
+cc=cc+1;% to delete in a second; 
+keys.ons(cc).comparisons_title       = 'Reaches vs Saccades';
+keys.ons(cc).group_parameter         = 'ungrouped';
+keys.ons(cc).conditions_to_plot      = {'Ddsa';'Ddre'};
+CM={[1 2],[1 2],1,1;[1 2],[1 2],-1,-1};
+TI={'CS','IS'};
+for ce=1:2
+keys.ons(cc).comparisons_per_effector(ce).reach_hand{1}=CM{ce,1};
+keys.ons(cc).comparisons_per_effector(ce).reach_hand{2}=CM{ce,2};
+keys.ons(cc).comparisons_per_effector(ce).hemifield{1}=CM{ce,3};
+keys.ons(cc).comparisons_per_effector(ce).hemifield{2}=CM{ce,4};
+keys.ons(cc).comparisons_per_effector(ce).title=TI{ce};
+keys.ons(cc).comparisons_per_effector(ce).effector{1}=[3];
+keys.ons(cc).comparisons_per_effector(ce).effector{2}=[4];
+keys.ons(cc).comparisons_per_effector(ce).choice{1}=[0];
+keys.ons(cc).comparisons_per_effector(ce).choice{2}=[0];
+keys.ons(cc).comparisons_per_effector(ce).order_onset={'Delay Period', 0, 1.3};
+keys.ons(cc).comparisons_per_effector(ce).baseline_epoch='Fhol';
+keys.ons(cc).comparisons_per_effector(ce).colors=[1 0 0; 0 1 0]; 
+end
+
+
 % 
 % cc=cc+1;% 'Saccades vs Combined';
 % keys.ons(cc).comparisons_title       = 'Saccades vs Combined';
@@ -1221,7 +1322,7 @@ cc=0;
 % keys.pop(cc).epoch_GB                  	= 'Fhol';
 % keys.pop(cc).epoch_for_normalization    = 'Fhol';
 % keys.pop(cc).plot_per_position          = 0;
-% 
+
 cc=cc+1;
 keys.pop(cc).tt.choices                 = 0;
 keys.pop(cc).tt.hands                   = [1 2];
@@ -1249,7 +1350,7 @@ keys.pop(cc).epoch_GB                  	= 'Fhol';
 keys.pop(cc).epoch_for_normalization    = 'Fhol';
  keys.pop(cc).group_excluded             = {'incongruent'}; 
 keys.pop(cc).plot_per_position          = 0;
-
+% 
 cc=cc+1;
 keys.pop(cc).tt.choices                 = 0;
 keys.pop(cc).tt.hands                   = [1 2];
