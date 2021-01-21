@@ -23,7 +23,7 @@ keys.cal.units_from_sorting_table       =0;
 %keys.batching.combine_monkeys       =0;                        % for population analysis
 %keys.batching.targets               ={'dPulv'};
 keys.batching.monkeys               ={'Curius'};
-keys.Curius.date                    ='[20210115 20210115]';
+keys.Curius.date                    ='[20210119 20210119]';
 % 
 % keys.batching.monkeys               ={'Curius'};
 % keys.Curius.date                    ='[20190828 20190828]';
