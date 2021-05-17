@@ -222,30 +222,11 @@ keys.ccs(cc).first_level_epochs      ={'Fhol'};
 % keys.ccs(cc).first_level_factor     ='space_hand';
 % keys.ccs(cc).first_level_epochs      ={'Fhol'};
 % 
-cc=cc+1;
-keys.ccs(cc).factor                 ='space_hand';
-keys.ccs(cc).conditions_to_plot     ={'Ddre'};
-keys.ccs(cc).plot_type              ='per_epoch';
-keys.ccs(cc).epochs                 =epochs;
-
-cc=cc+1;
-keys.ccs(cc).factor                 ='space_hand';
-keys.ccs(cc).conditions_to_plot     ={'Ddsa'};
-keys.ccs(cc).plot_type              ='per_epoch';
-keys.ccs(cc).epochs                 =epochs;
-
-cc=cc+1;
-keys.ccs(cc).factor                 ='space_hand';
-keys.ccs(cc).conditions_to_plot     ={'Dcfr'};
-keys.ccs(cc).plot_type              ='per_epoch';
-keys.ccs(cc).epochs                 =epochs;
-
-
-cc=cc+1;
-keys.ccs(cc).factor                 ='space_hand';
-keys.ccs(cc).conditions_to_plot     ={'Ddsa';'Ddre';'Dcfr'};
-keys.ccs(cc).plot_type              ='per_epoch';
-keys.ccs(cc).epochs                 =epochs;
+% cc=cc+1;
+% keys.ccs(cc).factor                 ='space_hand';
+% keys.ccs(cc).conditions_to_plot     ={'Ddre'};
+% keys.ccs(cc).plot_type              ='per_epoch';
+% keys.ccs(cc).epochs                 =epochs;
 % 
 % cc=cc+1;
 % keys.ccs(cc).factor                 ='space_and_hand';
@@ -671,29 +652,29 @@ keys.ons(cc).comparisons_per_effector(ce).order_onset={'Delay Period', 0, 1.3};
 keys.ons(cc).comparisons_per_effector(ce).baseline_epoch='Fhol';
 keys.ons(cc).comparisons_per_effector(ce).colors=[1 0 0; 0 1 0]; 
 end
-
-
-cc=cc+1;% 'Reaches vs Saccades for hand tuned units
-keys.ons(cc).comparisons_title       = 'Reaches vs Saccades handtuned';
-keys.ons(cc).group_parameter         = 'in_Pre_hands_perspace_Ddre_or_Ddsa';
-keys.ons(cc).group_excluded          = {''};
-keys.ons(cc).conditions_to_plot      = {'Ddsa';'Ddre'};
-CM={[1 2],[1 2],1,1;[1 2],[1 2],-1,-1};
-TI={'CS','IS'};
-for ce=1:2
-keys.ons(cc).comparisons_per_effector(ce).reach_hand{1}=CM{ce,1};
-keys.ons(cc).comparisons_per_effector(ce).reach_hand{2}=CM{ce,2};
-keys.ons(cc).comparisons_per_effector(ce).hemifield{1}=CM{ce,3};
-keys.ons(cc).comparisons_per_effector(ce).hemifield{2}=CM{ce,4};
-keys.ons(cc).comparisons_per_effector(ce).title=TI{ce};
-keys.ons(cc).comparisons_per_effector(ce).effector{1}=[3];
-keys.ons(cc).comparisons_per_effector(ce).effector{2}=[4];
-keys.ons(cc).comparisons_per_effector(ce).choice{1}=[0];
-keys.ons(cc).comparisons_per_effector(ce).choice{2}=[0];
-keys.ons(cc).comparisons_per_effector(ce).order_onset={'Delay Period', 0, 1.3};
-keys.ons(cc).comparisons_per_effector(ce).baseline_epoch='Fhol';
-keys.ons(cc).comparisons_per_effector(ce).colors=[1 0 0; 0 1 0]; 
-end
+% 
+% 
+% cc=cc+1;% 'Reaches vs Saccades for hand tuned units
+% keys.ons(cc).comparisons_title       = 'Reaches vs Saccades handtuned';
+% keys.ons(cc).group_parameter         = 'in_Pre_hands_perspace_Ddre_or_Ddsa';
+% keys.ons(cc).group_excluded          = {''};
+% keys.ons(cc).conditions_to_plot      = {'Ddsa';'Ddre'};
+% CM={[1 2],[1 2],1,1;[1 2],[1 2],-1,-1};
+% TI={'CS','IS'};
+% for ce=1:2
+% keys.ons(cc).comparisons_per_effector(ce).reach_hand{1}=CM{ce,1};
+% keys.ons(cc).comparisons_per_effector(ce).reach_hand{2}=CM{ce,2};
+% keys.ons(cc).comparisons_per_effector(ce).hemifield{1}=CM{ce,3};
+% keys.ons(cc).comparisons_per_effector(ce).hemifield{2}=CM{ce,4};
+% keys.ons(cc).comparisons_per_effector(ce).title=TI{ce};
+% keys.ons(cc).comparisons_per_effector(ce).effector{1}=[3];
+% keys.ons(cc).comparisons_per_effector(ce).effector{2}=[4];
+% keys.ons(cc).comparisons_per_effector(ce).choice{1}=[0];
+% keys.ons(cc).comparisons_per_effector(ce).choice{2}=[0];
+% keys.ons(cc).comparisons_per_effector(ce).order_onset={'Delay Period', 0, 1.3};
+% keys.ons(cc).comparisons_per_effector(ce).baseline_epoch='Fhol';
+% keys.ons(cc).comparisons_per_effector(ce).colors=[1 0 0; 0 1 0]; 
+% end
 
 %% ENSU
 
