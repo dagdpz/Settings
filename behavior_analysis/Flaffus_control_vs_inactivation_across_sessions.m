@@ -7,6 +7,16 @@ warning('off','all')
 % EH_compare_groups(batch,testing)
 
 global GLO
+GLO.saccades_effectors={'0','3','6'};
+GLO.reaches_effectors={'4','6'};
+GLO.types_to_plot={'2'};
+GLO.saccades.effectors_raw_xy={'3','6'};
+GLO.reaches.effectors_raw_xy={'4','6'};
+
+GLO.state_raw_traces=4;
+
+GLO.only_successful_side_selection  =   1;
+
 GLO.accuracy_as_absolute            =   1; %% 1 meaning it computes the averages of x and y first and then creates the euclidean
 GLO.delete_last                     =   0;
 GLO.fontsize_titles_big             =   16;
@@ -35,7 +45,7 @@ GLO.choice_only                     =   0;
 GLO.only_significant                =   1;
 GLO.only_success_for_accuracy       =   0;
 GLO.only_between_group_comparissons =   1;
-GLO.point_per_batch                 =   1;
+GLO.point_per_batch                 =   0;
 GLO.summary                         =   [-1];
 GLO.target_locations_in_raw         =   0;
 GLO.saccade_in_raw                  =   0;
@@ -117,14 +127,7 @@ else
 end
 
 
-% EPHYS DATASET STARTS
-% subject_ID{1}='Control';
-% group{1}                        = {'Linus_phys'};
-% dates_subject_in{1}                = {[20160203 20160527]};
-% batching_type{1}                = 2; % 1 run by run, 2 session by session, 3 group by group
-% batching{1}.range_of_dates      = 1;
-% batching{1}.runs                = {};  % either empty or specific runs specified
-
+%% FLAFFUS INACTIVATION DATASET STARTS
 % Date
 subject_ID{1}='Control';
 group{1}                        = {'Flaffus', 'Flaffus', 'Flaffus'};
@@ -133,29 +136,48 @@ batching{1}.runs                = {1; 1; 1}; % 1 run by run, 2 session by sessio
 batching_type{1}                = 3;
 batching{1}.range_of_dates      = 0;
 
-
-
 % Repetition
 subject_ID{2}='Experimental';
-group{2}                        = {'Flaffus_ina', 'Flaffus_ina', 'Flaffus_ina'};
-dates_subject_in{2}             = {20170403; 20170410; 20170412};
-batching{2}.runs                = {[1 2]; 1; [1 2]};  % either empty or specific runs specified % either empty or specific runs specified
+group{2}                        = {'Flaffus', 'Flaffus', 'Flaffus'}; %% here we should increase the run number!
+dates_subject_in{2}             = {20170403; 20170410; 20170412}; % had to change run number here (not to overwrite the controls)
+batching{2}.runs                = {[1 2]; 2; [2 3]};  % either empty or specific runs specified % either empty or specific runs specified
 batching_type{2}                = 3; % 1 run by run, 2 session by session, 3 group by group
 batching{2}.range_of_dates      = 0;
-
-%% FLAFFUS EPHYS DATASET ENDS
+GLO.folder_to_save                  =   'Y:\Projects\Pulv_eye_hand\behavior\Flaffus_inactivation';
+%% FLAFFUS INACTIVATION DATASET ENDS
 
 
 
 % 
-% % Repetition
+% %% RETREAT CONTROL VS INACTIVATION STARTS
+% subject_ID{1}='Control';
+% group{1}                        = {'Linus',     'Linus',    'Linus',    'Linus',        'Linus',        'Linus'};
+% dates_subject_in{1}             = {20160610;        20160615;       20160624;       20160630;       20160707;       20160804};
+% batching{1}.runs                = {3;               1;              1;              1;              4;              1}; % 1 run by run, 2 session by session, 3 group by group
+% batching_type{1}                = 3;
+% batching{1}.range_of_dates      = 0;
+% 
+% 
+% 
+% % % only one inactivation session
+% % subject_ID{2}='Experimental';
+% % group{2}                        = {'Linus_ina',     'Linus_ina',    'Linus_ina',    'Linus_ina',     'Linus_ina',   'Linus_ina'};
+% % dates_subject_in{2}             = {20160610;        20160615;       20160624;       20160701;         20160708;      20160805};
+% % batching{2}.runs                = {[4];           2;              2;              [1];           [1];       [1]};  % either empty or specific runs specified
+% % batching_type{2}                = 3; % 1 run by run, 2 session by session, 3 group by group
+% % batching{2}.range_of_dates      = 0;
+% % %% RETREAT CONTROL VS INACTIVATION ENDS
+% 
+% % as retreat
 % subject_ID{2}='Experimental';
-% group{2}                        = {'Flaffus_phys'};
-% dates_subject_in{2}             = {[20160603 20160722]};
-% batching_type{2}                = 2; % 1 run by run, 2 session by session, 3 group by group
-% batching{2}.range_of_dates      = 1;
-% batching{2}.runs                = {};  % either empty or specific runs specified
-% %% FLAFFUS EPHYS DATASET ENDS
+% group{2}                        = {'Linus',         'Linus',        'Linus',        'Linus',        'Linus',        'Linus'};
+% dates_subject_in{2}             = {20160610;        20160615;       20160624;       20160701;         20160708;      20160805};
+% batching{2}.runs                = {[4 5];           2;              2;              [1, 2];           [1 2 3];       [1 2]};  % either empty or specific runs specified
+% batching_type{2}                = 3; % 1 run by run, 2 session by session, 3 group by group
+% batching{2}.range_of_dates      = 0;
+% 
+% 
+% GLO.folder_to_save                  =   'Y:\Projects\Pulv_eye_hand\behavior\Linus_inactivation';
+% %% RETREAT CONTROL VS INACTIVATION ENDS
 
-
- run summ_controls
+ run beh_run_analysis

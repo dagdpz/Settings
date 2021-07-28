@@ -8,7 +8,7 @@ warning('off','all')
 
 global GLO
 
-GLO.saccades_effectors={'3','6'};
+GLO.saccades_effectors={'0','3','6'};
 GLO.reaches_effectors={'4','6'};
 GLO.types_to_plot={'4'};
 GLO.saccades.effectors_raw_xy={'3','6'};
@@ -126,7 +126,7 @@ else
     steady.downsampling                 = 1;
 end
 
-
+%% INTERLEAVED
 load('Y:\Projects\Pulv_eye_hand\ephys\Interleaved\behaviour_filelist.mat');
 
 filelist_formatted_control_tmp=[filelist_formatted.Lin_dPulv_PT0_Ddre_han;filelist_formatted.Lin_dPulv_PT0_Ddsa_han;filelist_formatted.Lin_dPulv_PT0_Dcfr_han];
@@ -177,4 +177,47 @@ batching{2}.range_of_dates      = 0;
 
 %% over all
 GLO.folder_to_save                  = 'Y:\Projects\Pulv_eye_hand\behavior\ephys_interleaved';
+run beh_run_analysis
+
+
+%% BLOCKED TASKS
+load('Y:\Projects\Pulv_eye_hand\ephys\Blocked_tasks_Stable\behaviour_filelist.mat');
+
+filelist_formatted_control_tmp=[filelist_formatted.Lin_dPulv_PT0_Ddre_han;filelist_formatted.Lin_dPulv_PT0_Ddsa_han;filelist_formatted.Lin_dPulv_PT0_Dcfr_han];
+%filelist_formatted_inactivation_tmp=[filelist_formatted.Fla_dPulv_PT0_Ddre_han;filelist_formatted.Fla_dPulv_PT0_Ddsa_han;filelist_formatted.Fla_dPulv_PT0_Dcfr_han];
+
+u_dates=unique(vertcat(filelist_formatted_control_tmp{:,1}));
+for d=1:numel(u_dates)
+    filelist_formatted_control{d,1}=u_dates(d);
+    sess=find(ismember(vertcat(filelist_formatted_control_tmp{:,1}),u_dates(d)));
+    
+    runs_d=[];
+    for s=1:numel(sess)
+        runs_d=[runs_d,filelist_formatted_control_tmp{sess(s),2}];
+    end
+    runs_d=unique(runs_d);
+    filelist_formatted_control{d,2}=runs_d;
+end
+
+
+
+% Linus dPul inactivation MIP recordings datasets
+subject_ID{1}='Control';
+group{1}                        = repmat({'Linus'},size(filelist_formatted_control,1),1);
+dates_subject_in{1}             = filelist_formatted_control(:,1);
+batching{1}.runs                = filelist_formatted_control(:,2);  % either empty or specific runs specified
+batching_type{1}                = 1; % 1 run by run, 2 session by session, 3 group by group
+batching{1}.range_of_dates      = 0;
+
+subject_ID{2}='Experimental';
+group{2}                        = repmat({'Linus'},size(filelist_formatted_control,1),1);
+dates_subject_in{2}                = filelist_formatted_control(:,1);
+batching{2}.runs                = filelist_formatted_control(:,2);  % either empty or specific runs specified
+batching_type{2}                = 1; % 1 run by run, 2 session by session, 3 group by group
+batching{2}.range_of_dates      = 0;
+
+
+%% over all
+GLO.one_subject                     =   1;
+GLO.folder_to_save                  = 'Y:\Projects\Pulv_eye_hand\behavior\ephys_blocked';
 run beh_run_analysis

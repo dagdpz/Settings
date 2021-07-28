@@ -22,10 +22,11 @@ keys.labels.choices={'in','ch'};
 keys.tt.tasktypes = {'Ddre_han','Dcfr_han','Ddsa_han'};
 keys.tt.selection = {};
 keys.tt.unselect = {};
+keys.tt.unselected_list = {};
 
-%% interleaved dataset
-mainfolder='Y:\Projects\Pulv_eye_hand\ephys\Interleaved_dataset';
-keys.anova_table_file='Y:\Projects\Pulv_eye_hand\ephys\Interleaved_dataset\tuning_table_combined_CI.mat';
+%% interleaved 
+mainfolder='Y:\Projects\Pulv_eye_hand\ephys\Interleaved';
+keys.anova_table_file='Y:\Projects\Pulv_eye_hand\ephys\Interleaved\tuning_table_combined_CI.mat';
 
 % Linus right
 keys.vmr_path = 'Y:\Projects\Pulv_microstim_behavior\behavior\electrode_localization\Linus\LI_20130614_STEREO_neurological-TO-LI_20150619_chamR_normal_128.vmr';
@@ -50,8 +51,10 @@ keys.grid_id = 'GRID.22.2';
 CL_plot_electrode_localization(keys,'Ddre_han');
 export_fig([mainfolder filesep 'Ddre_han_lin_left_x1' ], '-pdf','-transparent')
 close gcf
-export_fig([mainfolder filesep 'Ddre_han_lin_left_x2' ], '-pdf','-transparent')
-close gcf
+% export_fig([mainfolder filesep 'Ddre_han_lin_left_x2' ], '-pdf','-transparent')
+% close gcf
+
+
 
 %% Flaffus missing!!
 
@@ -59,13 +62,9 @@ close gcf
 
 
 
-
-
-
-
-%% Blocked_tasks_dataset
-mainfolder='Y:\Projects\Pulv_eye_hand\ephys\Blocked_tasks_dataset';
-keys.anova_table_file='Y:\Projects\Pulv_eye_hand\ephys\Blocked_tasks_dataset\tuning_table_combined_CI.mat';
+%% Blocked_tasks
+mainfolder='Y:\Projects\Pulv_eye_hand\ephys\Blocked_tasks';
+keys.anova_table_file='Y:\Projects\Pulv_eye_hand\ephys\Blocked_tasks\tuning_table_combined_CI.mat';
 
 % Linus right
 keys.vmr_path = 'Y:\Projects\Pulv_microstim_behavior\behavior\electrode_localization\Linus\LI_20130614_STEREO_neurological-TO-LI_20150619_chamR_normal_128.vmr';
@@ -94,9 +93,41 @@ export_fig([mainfolder filesep 'Ddre_han_lin_left_x1' ], '-pdf','-transparent')
 close gcf
 
 
-%% Blocked_hands_dataset
-mainfolder='Y:\Projects\Pulv_eye_hand\ephys\Blocked_hands_dataset';
-keys.anova_table_file='Y:\Projects\Pulv_eye_hand\ephys\Blocked_hands_dataset\tuning_table_combined_CI.mat';
+
+%% Blocked_tasks_Stable
+mainfolder='Y:\Projects\Pulv_eye_hand\ephys\Blocked_tasks_Stable';
+keys.anova_table_file='Y:\Projects\Pulv_eye_hand\ephys\Blocked_tasks_Stable\tuning_table_combined_CI.mat';
+
+% Linus right
+keys.vmr_path = 'Y:\Projects\Pulv_microstim_behavior\behavior\electrode_localization\Linus\LI_20130614_STEREO_neurological-TO-LI_20150619_chamR_normal_128.vmr';
+keys.z_offset_mm = 26; % mm, distance from chamber top to "brain entry", should be different from 0 if z is from top of the chamber, was 26!!!!
+keys.monkey_prefix = 'LI_';
+keys.monkey='Lin';
+keys.target_area='dPulv_R';
+keys.grid_id = 'GRID.22.2';
+
+CL_plot_electrode_localization(keys,'Ddre_han');
+export_fig([mainfolder filesep 'Ddre_han_lin_right_x1' ], '-pdf','-transparent')
+close gcf
+% export_fig([mainfolder filesep 'Ddre_han_lin_right_x2' ], '-pdf','-transparent')
+% close gcf
+
+% Linus left
+keys.vmr_path = 'Y:\MRI\Linus\20130614anat\LI_20130614_ACPC_neurological-TO-LI_20150619_chamL_normal_128.vmr';
+keys.z_offset_mm = 27.5; % mm, distance from chamber top to "brain entry", should be different from 0 if z is from top of the chamber, was 26!!!!
+keys.monkey_prefix = 'LI_';
+keys.monkey='Lin';
+keys.target_area='dPulv_L';
+keys.grid_id = 'GRID.22.2';
+
+CL_plot_electrode_localization(keys,'Ddre_han');
+export_fig([mainfolder filesep 'Ddre_han_lin_left_x1' ], '-pdf','-transparent')
+close gcf
+
+
+%% Blocked_hands
+mainfolder='Y:\Projects\Pulv_eye_hand\ephys\Blocked_hands';
+keys.anova_table_file='Y:\Projects\Pulv_eye_hand\ephys\Blocked_hands\tuning_table_combined_CI.mat';
 
 % Linus right
 keys.vmr_path = 'Y:\Projects\Pulv_microstim_behavior\behavior\electrode_localization\Linus\LI_20130614_STEREO_neurological-TO-LI_20150619_chamR_normal_128.vmr';
@@ -109,8 +140,8 @@ keys.grid_id = 'GRID.22.2';
 CL_plot_electrode_localization(keys,'Ddre_han');
 export_fig([mainfolder filesep 'Ddre_han_lin_right_x1' ], '-pdf','-transparent')
 close gcf
-export_fig([mainfolder filesep 'Ddre_han_lin_right_x2' ], '-pdf','-transparent')
-close gcf
+% export_fig([mainfolder filesep 'Ddre_han_lin_right_x2' ], '-pdf','-transparent')
+% close gcf
 
 % Linus left
 keys.vmr_path = 'Y:\MRI\Linus\20130614anat\LI_20130614_ACPC_neurological-TO-LI_20150619_chamL_normal_128.vmr';
@@ -123,5 +154,5 @@ keys.grid_id = 'GRID.22.2';
 CL_plot_electrode_localization(keys,'Ddre_han');
 export_fig([mainfolder filesep 'Ddre_han_lin_left_x1' ], '-pdf','-transparent')
 close gcf
-export_fig([mainfolder filesep 'Ddre_han_lin_left_x2' ], '-pdf','-transparent')
-close gcf
+% export_fig([mainfolder filesep 'Ddre_han_lin_left_x2' ], '-pdf','-transparent')
+% close gcf
