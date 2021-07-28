@@ -2,7 +2,7 @@
 % to check carefully
 %keys.task_types             ={'mem'};
 %keys.datasets               ={'Msac'};
-keys.position_and_plotting_arrangements         ={'SglStimuli_Difficulty_Position_ErrorVsCorrect'};
+keys.position_and_plotting_arrangements         ={'StimulusType_Difficulty_Position_ErrorVsCorrect_lastVers'};
 %keys.position_and_plotting_arrangements         ={'movement vectors','target location by origin'};
 %keys.plot.vertical_positons_PSTH        =1;
 %keys.plot.average_heat_maps             =1;
@@ -23,11 +23,10 @@ keys.cal.units_from_sorting_table       =1;
 % batching
 %keys.batching.combine_monkeys       =0;                        % for population analysis
 %keys.batching.targets               ={'dPulv'};
-keys.batching.monkeys               ={'Curius'};
-%keys.Curius.date                    ='[20210211 20210211]';
-keys.Curius.date                    ='[20210211 20210211]';
+keys.batching.monkeys               ={'Bacchus'};
+keys.Bacchus.date                    ='[20210723 20210723]';
 %keys.filelist_as_blocks     =1;
-%keys.Curius.filelist_formatted          ={20210211, 1};
+%keys.Curius.filelist_formatted          ={20210302, 2};
 %  onlz one Block
 % keys.batching.monkeys               ={'Curius'};
 % keys.Curius.date                    ='[20190828 20190828]';
@@ -43,8 +42,7 @@ keys.EPOCHS_PER_TYPE{2}={...
     'Tacq',     5,	0,      0.15,   'INI';...
     'Thol',     20,	-0.3,	0,      'INI';...
     };
-keys.ANOVAS_PER_TYPE(2).epoch={'INI' 'Facq';...
-    'INI' 'Fhol';...
+keys.ANOVAS_PER_TYPE(2).epoch={ 'INI' 'Fhol';...
     'Fhol' 'Cue';...
     'Fhol' 'PreS';...
     'Fhol' 'PeriS';...
@@ -55,11 +53,11 @@ keys.WINDOWS_PER_TYPE{2}={...
     'Saccade',      60,	-0.01,  0.22;...
     'T hold',       20,	-0.3,   0.1;...
     };
-keys.ANOVAS_PER_TYPE(2).spaceLR            ={'Cue','PreS','PeriS','Tacq','Thol'}';
-keys.ANOVAS_PER_TYPE(2).positions          ={'Cue','PreS','PeriS','Tacq','Thol'}';
-keys.ANOVAS_PER_TYPE(2).hands              ={'Facq','Fhol','Cue','PreS','PeriS','Tacq','Thol'}';
-keys.ANOVAS_PER_TYPE(2).SxH                ={'Cue','PreS','PeriS','Tacq','Thol'}';
-keys.ANOVAS_PER_TYPE(2).main               ={'Facq','Fhol','Cue','PreS','PeriS','Tacq','Thol'}';
+% keys.ANOVAS_PER_TYPE(2).spaceLR            ={'Cue','PreS','PeriS','Tacq','Thol'}';
+% keys.ANOVAS_PER_TYPE(2).positions          ={'Cue','PreS','PeriS','Tacq','Thol'}';
+% keys.ANOVAS_PER_TYPE(2).hands              ={'Facq','Fhol','Cue','PreS','PeriS','Tacq','Thol'}';
+% keys.ANOVAS_PER_TYPE(2).SxH                ={'Cue','PreS','PeriS','Tacq','Thol'}';
+% keys.ANOVAS_PER_TYPE(2).main               ={'Facq','Fhol','Cue','PreS','PeriS','Tacq','Thol'}';
 
 % %% population PSTH settings
 % %keys.limit_conditions.hands=0;
