@@ -1,17 +1,17 @@
 keys.project_versions={''};
-keys.project_version='dPul_inj_LIP_Bac_20201217'; %Is this still used ?
+keys.project_version='dPul_inj_LIP_Bac_20210203'; %Is this still used ?
 keys.filelist_formatted={};
 
 %% what to plot
-keys.plot.single_cells =1;
-keys.plot.waveforms=1;
+keys.plot.single_cells =0;
+keys.plot.waveforms=0;
 keys.plot.population_PSTH_legends=1;  
 %% to check carefully
 % keys.position_and_plotting_arrangements             ={'hands'};
 keys.position_and_plotting_arrangements             ={'hands_inactivation'};
 
 %% computation settings
-keys.cal.datasets                   =[10];
+keys.cal.datasets                   =[11];
 keys.cal.effectors                  =[0];
 keys.cal.reach_hand                 =[0];
 keys.cal.types                      =[4];
@@ -22,7 +22,7 @@ keys.batching.combine_monkeys           =1;
 keys.batching.monkeys                   ={'Bacchus'};
 % keys.Tesla.date                      ='[20160217 20180101]';
 %keys.Linus.date                       ='[20161103 20180101]';
-keys.Bacchus.date                       ='[20201217 20201217]';
+keys.Bacchus.date                       ='[20210203 20210203]';
 keys.batching.targets                  = {'LIP_L','LIP_R'};
 keys.contra_ipsi_relative_to           ='target';
 keys.plot.polars_on_extra_figure        =0;
@@ -34,7 +34,7 @@ keys.cal.single_rating                  =[1,2,3];                   % not assign
 keys.cal.SNR_rating                     =[1,2,3];                 % not assigning sorting table information if criterion is not met. Therefore only excludes when taking only units in the tabl
 keys.cal.min_trials_per_condition       =5;                         % minimum trials per conditon (look at ph_arrange_positions to see how conditions are defined)
 keys.cal.min_spikes_per_unit            =10;                        % excluding units that have in total less spikes (workaround for sortcode assignment bug) - to be removed
-keys.cal.perturbation_groups            ={2,3};       % which perturbation values from excel table will be assigned to control and perturbation for comparisons and population analysis
+keys.cal.perturbation_groups            ={0,2};       % which perturbation values from excel table will be assigned to control and perturbation for comparisons and population analysis
 
 %% epochs
 

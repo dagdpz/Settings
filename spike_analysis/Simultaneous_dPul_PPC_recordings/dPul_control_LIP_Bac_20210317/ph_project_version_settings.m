@@ -1,5 +1,5 @@
 keys.project_versions={''};
-keys.project_version='dPul_inj_LIP_Bac_20201217'; %Is this still used ?
+keys.project_version='dPul_inj_LIP_Bac_20210317'; %Is this still used ?
 keys.filelist_formatted={};
 
 %% what to plot
@@ -11,7 +11,7 @@ keys.plot.population_PSTH_legends=1;
 keys.position_and_plotting_arrangements             ={'hands_inactivation'};
 
 %% computation settings
-keys.cal.datasets                   =[10];
+keys.cal.datasets                   =[11];
 keys.cal.effectors                  =[0];
 keys.cal.reach_hand                 =[0];
 keys.cal.types                      =[4];
@@ -22,9 +22,9 @@ keys.batching.combine_monkeys           =1;
 keys.batching.monkeys                   ={'Bacchus'};
 % keys.Tesla.date                      ='[20160217 20180101]';
 %keys.Linus.date                       ='[20161103 20180101]';
-keys.Bacchus.date                       ='[20201217 20201217]';
+keys.Bacchus.date                       ='[20210317 20210317]';
 keys.batching.targets                  = {'LIP_L','LIP_R'};
-keys.contra_ipsi_relative_to           ='target';
+keys.contra_ipsi_relative_to           ='perturbation_site';
 keys.plot.polars_on_extra_figure        =0;
 
 %% criterions to exclude trials and units
@@ -34,7 +34,7 @@ keys.cal.single_rating                  =[1,2,3];                   % not assign
 keys.cal.SNR_rating                     =[1,2,3];                 % not assigning sorting table information if criterion is not met. Therefore only excludes when taking only units in the tabl
 keys.cal.min_trials_per_condition       =5;                         % minimum trials per conditon (look at ph_arrange_positions to see how conditions are defined)
 keys.cal.min_spikes_per_unit            =10;                        % excluding units that have in total less spikes (workaround for sortcode assignment bug) - to be removed
-keys.cal.perturbation_groups            ={2,3};       % which perturbation values from excel table will be assigned to control and perturbation for comparisons and population analysis
+keys.cal.perturbation_groups            ={10,12};       % which perturbation values from excel table will be assigned to control and perturbation for comparisons and population analysis
 
 %% epochs
 
@@ -110,8 +110,8 @@ keys.tt.epoch_criterion             ='none'; % only relevant for cell counts
 keys.tt.space_criterion             ='none';
 keys.tt.hands_criterion             ='none';
 keys.tt.SXH_criterion               ='none';
-keys.tt.trial_criterion_in          = 'per_hemifield';
-keys.tt.trial_criterion_ch          = 'per_congruent_hand_hemifield';
+keys.tt.trial_criterion_in          = 'per_hemifield_and_perturbation';
+keys.tt.trial_criterion_ch          = 'per_hemifield_and_perturbation';
 
 %% population PSTH settings
 cc=0;
@@ -121,7 +121,7 @@ keys.pop(cc).tt.hands                 	= [0];
 keys.pop(cc).tt.perturbations          	= [0 1];
 keys.pop(cc).tt.choices                	= 0;
 keys.pop(cc).tt.selection             	= {};
-keys.pop(cc).tt.tasktypes               = {'Ddsa_han'};
+keys.pop(cc).tt.tasktypes               = {'Dsa_han'};
 keys.pop(cc).group_parameter            = 'ungrouped'; %hand_tuning
 keys.pop(cc).conditions_to_plot         = {'Dsac'}; 
 keys.pop(cc).epoch_PF                   = 'Cue';               % epoch in which preference defines target location for "pref" plots

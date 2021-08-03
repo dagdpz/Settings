@@ -1,10 +1,10 @@
 keys.project_versions={''};
-keys.project_version='dPul_inj_LIP_Bac_20201217'; %Is this still used ?
+keys.project_version='dPul_inj_LIP_Bac_8s_post_post_ina'; %Is this still used ?
 keys.filelist_formatted={};
 
 %% what to plot
-keys.plot.single_cells =1;
-keys.plot.waveforms=1;
+keys.plot.single_cells =0;
+keys.plot.waveforms=0;
 keys.plot.population_PSTH_legends=1;  
 %% to check carefully
 % keys.position_and_plotting_arrangements             ={'hands'};
@@ -22,9 +22,9 @@ keys.batching.combine_monkeys           =1;
 keys.batching.monkeys                   ={'Bacchus'};
 % keys.Tesla.date                      ='[20160217 20180101]';
 %keys.Linus.date                       ='[20161103 20180101]';
-keys.Bacchus.date                       ='[20201217 20201217]';
+keys.Bacchus.date                       ='[20201112 20210311]';
 keys.batching.targets                  = {'LIP_L','LIP_R'};
-keys.contra_ipsi_relative_to           ='target';
+keys.contra_ipsi_relative_to           ='perturbation_site';
 keys.plot.polars_on_extra_figure        =0;
 
 %% criterions to exclude trials and units
@@ -100,7 +100,8 @@ keys.tt.choices                     =[0]; %IMPORTANT: and also not really perfec
 % Each unique combination of the above parameters has to contain at least keys.cal.min_trials_per_condition trials, if not the cell is excluded in ph_reduce_tuning_table
 keys.tt.selection                   ={};                         % easy to use if there is a parameter in the tuning table for which you want your cells to have the same value
 %                                       'in_NH_TIhol_position_Msac_opt','true'};  % each row in the cell arryáy will be used to exclude cells that don't have the specifie characteristic
-keys.tt.unselect                    ={}; % easy to use if there is a parameter in the tuning table for which your cells shouldn't have a specific value
+% keys.tt.unselect                    ={'SNR_rating',3,'Single_rating',3}; % easy to use if there is a parameter in the tuning table for which your cells shouldn't have a specific value
+keys.tt.unselect                    ={};
 keys.tt.combine_tuning_properties   ={'hand_tuning','in_IH_Facq_epoch_Ddsa_han','in_CH_Facq_epoch_Ddsa_han'}; % results in enen/ensu/suen/en-/-en/su-/-su/--
 % ph_load_extended_tuning_table will create an additional column from combining existing columns: 
 % 1st entry is the name of the new column (to refer to it), and the following entries specify the columns which should be combined.
@@ -110,8 +111,8 @@ keys.tt.epoch_criterion             ='none'; % only relevant for cell counts
 keys.tt.space_criterion             ='none';
 keys.tt.hands_criterion             ='none';
 keys.tt.SXH_criterion               ='none';
-keys.tt.trial_criterion_in          = 'per_hemifield';
-keys.tt.trial_criterion_ch          = 'per_congruent_hand_hemifield';
+keys.tt.trial_criterion_in          = 'per_hemifield_and_perturbation';
+keys.tt.trial_criterion_ch          = 'per_hemifield_and_perturbation';
 
 %% population PSTH settings
 cc=0;
@@ -121,17 +122,18 @@ keys.pop(cc).tt.hands                 	= [0];
 keys.pop(cc).tt.perturbations          	= [0 1];
 keys.pop(cc).tt.choices                	= 0;
 keys.pop(cc).tt.selection             	= {};
-keys.pop(cc).tt.tasktypes               = {'Ddsa_han'};
+% keys.pop(cc).tt.unselect                ={'SNR_rating',3,'Single_rating',3}; 
+keys.pop(cc).tt.unselect                ={}; 
+keys.pop(cc).tt.tasktypes               = {'Dsa_han'};
 keys.pop(cc).group_parameter            = 'ungrouped'; %hand_tuning
 keys.pop(cc).conditions_to_plot         = {'Dsac'}; 
 keys.pop(cc).epoch_PF                   = 'Cue';               % epoch in which preference defines target location for "pref" plots
 keys.pop(cc).epoch_RF                   = 'Cue';               % epoch for which gaussian response fields will be plotted (if plot_RF ~ 0)
 keys.pop(cc).epoch_BL                   = 'Fhol';                % Epoch to subtract trial by trial (if FR_subtract_baseline ~ 0)
 keys.pop(cc).FR_subtract_baseline       = 0;   
-keys.pop(cc).unselect                   = {};
 keys.pop(cc).group_excluded             = {};%{'susu','ensu','suen','-su','su-','--'};
 keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
-keys.pop(cc).normalization              = 'by_all_trials';        % separate (divisive) normalization factor for trials grouped by effector; other options:
+keys.pop(cc).normalization              = 'by_perturbation';        % separate (divisive) normalization factor for trials grouped by effector; other options:
                                                                 % 'by_condition','by_effector','by_type','by_all_trials','z_score','none'
 
 % %% state_space settings
