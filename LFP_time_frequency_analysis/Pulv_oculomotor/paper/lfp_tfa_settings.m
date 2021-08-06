@@ -508,7 +508,7 @@ lfp_tfa_cfg.noise.plottrials = 0;
 % onset as the reference state for baseline period
 % 2. lfp_tfa_cfg.baseline_ref_state = ''; consider the whole trial period
 % for baseline
-lfp_tfa_cfg.baseline_ref_state = lfp_tfa_states.FIX_HOL; 
+lfp_tfa_cfg.baseline_ref_state = lfp_tfa_states.CUE_ON; 
 
 % period of interest relative to onset of baseline_ref_state for baseline power calculation, 
 % Examples: 
@@ -522,7 +522,7 @@ lfp_tfa_cfg.baseline_ref_state = lfp_tfa_states.FIX_HOL;
 if isempty(lfp_tfa_cfg.baseline_ref_state)
 	lfp_tfa_cfg.baseline_ref_period = 'trial';
 else
-	lfp_tfa_cfg.baseline_ref_period = [0 0.5]; % SET LIMITS OF baseline_ref_period here
+	lfp_tfa_cfg.baseline_ref_period = [-0.5 0]; % SET LIMITS OF baseline_ref_period here
 end
 
 % which perturbation blocks to be considered for baseline power calculation
