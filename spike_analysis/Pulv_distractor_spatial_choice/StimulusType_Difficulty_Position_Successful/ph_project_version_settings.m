@@ -19,6 +19,7 @@ keys.cal.SNR_rating                 =[1,2,3];
 keys.cal.choice                         =[0]; 
 keys.cal.min_trials_per_condition       =4; %Ppopulation analysis
 keys.cal.units_from_sorting_table       =1;
+keys.cal.MA_selection                   ={'display',0,'keep_raw_data',1,'saccade_definition',4,'reach_1st_pos',1,'success',1,'correlation_conditions',{}};    
 
 % batching
 %keys.batching.combine_monkeys       =0;                        % for population analysis
