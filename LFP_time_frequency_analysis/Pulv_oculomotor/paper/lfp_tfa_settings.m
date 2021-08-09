@@ -234,7 +234,7 @@ lfp_tfa_cfg.error_measure = 'bootci';
 % and type = 2 separately
 % 2. lfp_tfa_cfg.compare.types = nan; Ignore trial type (trials with any
 % type value are combined)
-lfp_tfa_cfg.compare.types = [2,3];
+lfp_tfa_cfg.compare.types = [3];
 
 % effectors to be included in the analysis
 % should be a vector of integers specifying the effectors
@@ -522,7 +522,7 @@ lfp_tfa_cfg.baseline_ref_state = lfp_tfa_states.CUE_ON;
 if isempty(lfp_tfa_cfg.baseline_ref_state)
 	lfp_tfa_cfg.baseline_ref_period = 'trial';
 else
-	lfp_tfa_cfg.baseline_ref_period = [-0.5 0]; % SET LIMITS OF baseline_ref_period here
+	lfp_tfa_cfg.baseline_ref_period = [-0.6 -0.1]; % SET LIMITS OF baseline_ref_period here
 end
 
 % which perturbation blocks to be considered for baseline power calculation
