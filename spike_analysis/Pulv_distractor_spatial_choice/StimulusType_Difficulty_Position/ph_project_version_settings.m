@@ -10,24 +10,24 @@ keys.position_and_plotting_arrangements         ={'StimulusType_Difficulty_Posit
 %keys.plot.single_cells                  =1;         % perform single cell plotting
 
 % computation settings
-% keys.cal.stablity                   =[0.5,1];
-% keys.cal.single_rating              =[1,2,3];                   % not assigning sorting table information if criterion is not met. Therefore only excludes when taking only units in the tabl
-% keys.cal.SNR_rating                 =[1,2,3];
+keys.cal.stablity                   =[0.5,1];
+keys.cal.single_rating              =[1,2,3];                   % not assigning sorting table information if criterion is not met. Therefore only excludes when taking only units in the tabl
+keys.cal.SNR_rating                 =[1,2,3];
  keys.cal.effectors                  =[0];
  keys.cal.reach_hand                 =[0];
  keys.cal.types                      =[2];
-% keys.cal.choice                         =[0]; 
-% keys.cal.min_trials_per_condition       =4; %Ppopulation analysis
-% keys.cal.units_from_sorting_table       =1;
+keys.cal.choice                         =[0]; 
+keys.cal.min_trials_per_condition       =4; %Ppopulation analysis
+keys.cal.units_from_sorting_table       =1;
 
 % batching
 %keys.batching.combine_monkeys       =0;                        % for population analysis
 %keys.batching.targets               ={'dPulv'};
 keys.batching.monkeys               ={'Bacchus'};
 %keys.Curius.date                    ='[20210211 20210211]';
-keys.Bacchus.date                    ='[20210730 20210730]';
+keys.Bacchus.date                    ='[20210723 20210723]';
 keys.filelist_as_blocks     =1;
-keys.Bacchus.filelist_formatted          ={20210730, 4};
+keys.Bacchus.filelist_formatted          ={20210723,2};
 %  onlz one Block
 % keys.batching.monkeys               ={'Curius'};
 % keys.Curius.date                    ='[20190828 20190828]';
@@ -42,7 +42,7 @@ keys.EPOCHS_PER_TYPE{2}={...
   %  'Cue',      4,	0.05,	0.15,   'INI';...
     'PreS',     60,	-0.1,	-0.01,  'INI';...
     'PeriS',    60,	-0.01,	0.05,   'INI';...
-    'Tacq',     5,	0,      0.15,   'INI';...
+    'Tacq',     4,	0,      0.15,   'INI';...
     'Thol',     5,	0.2,	0.5,    'INI';...
     };
 keys.ANOVAS_PER_TYPE(2).epoch={'INI' 'Facq';...
@@ -52,16 +52,16 @@ keys.ANOVAS_PER_TYPE(2).epoch={'INI' 'Facq';...
     'Fhol' 'PeriS';...
     'Fhol' 'Tacq';...
     'Fhol' 'Thol'};
-keys.WINDOWS_PER_TYPE{2}={...
-    'Visual onset', 4,	-0.8,   0.17;...
-    'Saccade',      60,	-0.01,  0.22;...
+ keys.WINDOWS_PER_TYPE{2}={...
+    'Visual onset', 4,	-0.6,   0.17;...
+    'Saccade',      60,	-0.2,  0.22;...
     'T hold',       5,	0,   0.5;...
     };
-keys.ANOVAS_PER_TYPE(2).spaceLR            ={'Cue','PreS','PeriS','Tacq','Thol'}';
-keys.ANOVAS_PER_TYPE(2).positions          ={'Cue','PreS','PeriS','Tacq','Thol'}';
-keys.ANOVAS_PER_TYPE(2).hands              ={'Facq','Fhol','Cue','PreS','PeriS','Tacq','Thol'}';
+keys.ANOVAS_PER_TYPE(2).spaceLR            ={'PreS','PeriS','Tacq','Thol'}';
+keys.ANOVAS_PER_TYPE(2).positions          ={'PreS','PeriS','Tacq','Thol'}';
+keys.ANOVAS_PER_TYPE(2).hands              ={'Fhol','PreS','PeriS','Tacq','Thol'}';
 keys.ANOVAS_PER_TYPE(2).SxH                ={'Cue','PreS','PeriS','Tacq','Thol'}';
-keys.ANOVAS_PER_TYPE(2).main               ={'Facq','Fhol','Cue','PreS','PeriS','Tacq','Thol'}';
+keys.ANOVAS_PER_TYPE(2).main               ={'Fhol','PreS','PeriS','Tacq','Thol'}';
 
 % %% population PSTH settings
 % %keys.limit_conditions.hands=0;
