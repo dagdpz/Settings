@@ -1,5 +1,7 @@
 %% Initialization
 
+base_drive = 'E:';
+
 % initialize configuration structure
 lfp_tfa_cfg = [];
 
@@ -9,7 +11,7 @@ lfp_tfa_cfg.monkeys={'Cur','Lin',''};
 %% Settings for data folders
 
 % absolute path to the folder where the results of analysis should be stored
-lfp_tfa_cfg.results_folder = 'Y:\Projects\Pulv_oculomotor\LFP';
+lfp_tfa_cfg.results_folder = [base_drive filesep 'Projects\Pulv_oculomotor\LFP'];
 
 % versioning, a unique version for the settings file and analysis results
 % the results produced using this settings file would be saved under 
@@ -34,7 +36,7 @@ lfp_tfa_cfg.process_LFP = false;
 lfp_tfa_cfg.proc_lfp_folder = [];
 if ~lfp_tfa_cfg.process_LFP
     lfp_tfa_cfg.proc_lfp_folder = ...
-        'Y:\Projects\Pulv_oculomotor\LFP\paper\Processed LFP';
+        [base_drive filesep 'Projects\Pulv_oculomotor\LFP\paper\Processed LFP'];
 end
 
 % whether to calculate the site-wise averages
@@ -54,7 +56,7 @@ lfp_tfa_cfg.compute_site_average = false;
 lfp_tfa_cfg.analyse_lfp_folder = [];
 if ~lfp_tfa_cfg.compute_site_average
     lfp_tfa_cfg.analyse_lfp_folder = ...
-        'Y:\Projects\Pulv_oculomotor\LFP\paper\LFP Analysis';
+        [base_drive filesep 'Projects\Pulv_oculomotor\LFP\paper\LFP Analysis'];
 end
 
 %%
@@ -86,7 +88,7 @@ lfp_tfa_cfg.use_datasets = [1];
 %       be combined)
 sess=0;
 
-mainfolder='Y:\Projects\Pulv_oculomotor\ephys\paper\';
+mainfolder=[base_drive filesep 'Projects\Pulv_oculomotor\ephys\paper\'];
 sitefiles=dir([mainfolder 'sites_*']);
 sitenames={sitefiles.name};
 
@@ -178,10 +180,9 @@ lfp_tfa_cfg.random_seed = rng;
 % 
 % Example row: 
 %   lfp_tfa_states.CUE_ON,     'Cue',    -1.0 ,    0.5
-lfp_tfa_cfg.analyse_states = {'single', lfp_tfa_states.CUE_ON,    'Cue',      -0.8,   0.78;...
-                             'single', lfp_tfa_states.SAC_INI,    'Saccade',  -0.7,   0.45;...
-                             'single', lfp_tfa_states.TAR_ACQ_INV,'Go',       -0.2,   0.3;...
-                             'single', lfp_tfa_states.TAR_ACQ,    'Target',   -0.2,   0.7};                    
+lfp_tfa_cfg.analyse_states = {'single', lfp_tfa_states.CUE_ON,    'Cue',      -0.5,   0.9;...
+                             'single', lfp_tfa_states.SAC_INI,    'Saccade',  -0.5,   0.5;...
+                             };                    
     
 % define the epochs to analyse for LFP power spectrum
 % Must be a Nx4 cell array, N = number of epochs to analyse
@@ -234,7 +235,7 @@ lfp_tfa_cfg.error_measure = 'bootci';
 % and type = 2 separately
 % 2. lfp_tfa_cfg.compare.types = nan; Ignore trial type (trials with any
 % type value are combined)
-lfp_tfa_cfg.compare.types = [2,3];
+lfp_tfa_cfg.compare.types = [3];
 
 % effectors to be included in the analysis
 % should be a vector of integers specifying the effectors
@@ -522,7 +523,7 @@ lfp_tfa_cfg.baseline_ref_state = lfp_tfa_states.CUE_ON;
 if isempty(lfp_tfa_cfg.baseline_ref_state)
 	lfp_tfa_cfg.baseline_ref_period = 'trial';
 else
-	lfp_tfa_cfg.baseline_ref_period = [-0.5 0]; % SET LIMITS OF baseline_ref_period here
+	lfp_tfa_cfg.baseline_ref_period = [-0.6 -0.1]; % SET LIMITS OF baseline_ref_period here
 end
 
 % which perturbation blocks to be considered for baseline power calculation
