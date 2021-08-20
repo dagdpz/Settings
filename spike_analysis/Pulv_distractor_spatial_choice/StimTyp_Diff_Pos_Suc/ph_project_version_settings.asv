@@ -19,7 +19,7 @@ keys.cal.SNR_rating                 =[1,2,3];
 keys.cal.choice                         =[0]; 
 keys.cal.min_trials_per_condition       =4; %Ppopulation analysis
 keys.cal.units_from_sorting_table       =1;
-keys.cal.MA_selection                   ={'display',0,'keep_raw_data',1,'saccade_definition',4,'reach_1st_pos',1,'success',1,'n_targets', 2, 'correlation_conditions',{}};    
+keys.cal.MA_selection                   ={'display',0,'keep_raw_data',1,'saccade_definition',4,'reach_1st_pos',1,'success',1,'correlation_conditions',{}};    
 
 % batching
 %keys.batching.combine_monkeys       =0;                        % for population analysis
@@ -27,8 +27,8 @@ keys.cal.MA_selection                   ={'display',0,'keep_raw_data',1,'saccade
 keys.batching.monkeys               ={'Bacchus'};
 %keys.Curius.date                    ='[20210211 20210211]';
 keys.Bacchus.date                    ='[20210729 20210730]';
-keys.filelist_as_blocks     =1;
-keys.Bacchus.filelist_formatted          ={20210820,7};
+ keys.filelist_as_blocks     =1;
+ keys.Bacchus.filelist_formatted          ={20210729,6};
 %  onlz one Block
 % keys.batching.monkeys               ={'Curius'};
 % keys.Curius.date                    ='[20190828 20190828]';
