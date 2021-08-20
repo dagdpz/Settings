@@ -28,7 +28,7 @@ keys.batching.monkeys               ={'Bacchus'};
 %keys.Curius.date                    ='[20210211 20210211]';
 keys.Bacchus.date                    ='[20210729 20210730]';
 keys.filelist_as_blocks     =1;
-keys.Bacchus.filelist_formatted          ={20210820,7};
+keys.Bacchus.filelist_formatted          ={20210706,1};
 %  onlz one Block
 % keys.batching.monkeys               ={'Curius'};
 % keys.Curius.date                    ='[20190828 20190828]';
