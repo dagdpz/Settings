@@ -1350,3 +1350,8 @@ keys.prf(cc).WINDOWS_PER_TYPE{4}={...
 % keys.pop(cc).group_excluded             = {'incongruent'}; 
 % keys.pop(cc).plot_per_position          = 0;
 
+%% decoding
+cc=0;
+cc=cc+1;
+keys.ndt(cc).plot_per_position          = 0;
+
