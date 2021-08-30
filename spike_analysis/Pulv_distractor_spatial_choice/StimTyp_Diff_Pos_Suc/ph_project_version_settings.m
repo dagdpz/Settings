@@ -16,7 +16,7 @@ keys.cal.SNR_rating                 =[1,2,3];
  keys.cal.effectors                  =[0];
  keys.cal.reach_hand                 =[0];
  keys.cal.types                      =[2];
-keys.cal.choice                         =[0]; 
+keys.cal.choice                         =[1]; 
 keys.cal.min_trials_per_condition       =4; %Ppopulation analysis
 keys.cal.units_from_sorting_table       =1;
 keys.cal.MA_selection                   ={'display',0,'keep_raw_data',1,'saccade_definition',4,'reach_1st_pos',1,'success',1,'n_targets', 2, 'correlation_conditions',{}};    
@@ -25,10 +25,13 @@ keys.cal.MA_selection                   ={'display',0,'keep_raw_data',1,'saccade
 %keys.batching.combine_monkeys       =0;                        % for population analysis
 %keys.batching.targets               ={'dPulv'};
 keys.batching.monkeys               ={'Bacchus'};
-%keys.Curius.date                    ='[20210211 20210211]';
+%keys.Curius.date                    ='[20210311 20210318]';
+%keys.batching.monkeys               ={'Curius'};
+% keys.filelist_as_blocks     =1;
+% keys.Curius.filelist_formatted          ={20210318,4}; % 1, 3; 2, 4 ; 
 keys.Bacchus.date                    ='[20210729 20210730]';
-keys.filelist_as_blocks     =1;
-keys.Bacchus.filelist_formatted          ={20210706,1};
+ keys.filelist_as_blocks     =1;
+ keys.Bacchus.filelist_formatted          ={20210827,3};
 %  onlz one Block
 % keys.batching.monkeys               ={'Curius'};
 % keys.Curius.date                    ='[20190828 20190828]';
@@ -40,7 +43,7 @@ keys.Bacchus.filelist_formatted          ={20210706,1};
 keys.EPOCHS_PER_TYPE{2}={...
  %   'Facq',     3,	0.05,	0.15,   'INI';...
     'Fhol',     4,	-0.25,	0,      'INI';...
-    'Tacq',     4,	0.00,      0.11,   'INI';...
+    'Tacq',     4,	0.015,      0.12,   'INI';...
   %  'Cue',      4,	0.05,	0.15,   'INI';...
     'PreS',     60,	-0.1,	 0.00,  'INI';...
     'PeriS',    60,	-0.01,	0.1,   'INI';...
