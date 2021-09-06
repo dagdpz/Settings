@@ -16,23 +16,24 @@ keys.cal.SNR_rating                 =[1,2,3];
  keys.cal.effectors                  =[0];
  keys.cal.reach_hand                 =[0];
  keys.cal.types                      =[2];
-keys.cal.choice                         =[1]; 
+keys.cal.choice                         =[0,1]; 
 keys.cal.min_trials_per_condition       =4; %Ppopulation analysis
 keys.cal.units_from_sorting_table       =1;
-keys.cal.MA_selection                   ={'display',0,'keep_raw_data',1,'type',2,'saccade_definition',4,'reach_1st_pos',1,'success',1,'n_targets', 2, 'correlation_conditions',{}};    
-%keys.cal.perturbation_groups            ={0}; 
+keys.cal.MA_selection                   ={'display',0,'keep_raw_data',1,'saccade_definition',4,'reach_1st_pos',1,'success',1,'n_targets', 2, 'correlation_conditions',{}};    
+keys.cal.perturbation_groups            ={1,5}; 
 
 % batching
-%keys.batching.combine_monkeys       =0;                        % for population analysis
+keys.batching.combine_monkeys       =0;                        % for population analysis
 keys.batching.targets               ={'dPul'};
 keys.batching.monkeys               ={'Bacchus'};
-%keys.Curius.date                    ='[20210311 20210318]';
-%keys.batching.monkeys               ={'Curius'};
+keys.Bacchus.date                   ='[20210903 202100905]';
+% keys.Curius.date                    ='[20210311 20210318]';
+% keys.batching.monkeys               ={'Curius'};
 % keys.filelist_as_blocks     =1;
 % keys.Curius.filelist_formatted          ={20210318,4}; % 1, 3; 2, 4 ; 
-keys.Bacchus.date                    ='[20210706 20210830]';
+
 %  keys.filelist_as_blocks     =1;
-%  keys.Bacchus.filelist_formatted          ={20210706,1};
+%  keys.Bacchus.filelist_formatted          ={20210829,1};
 %  onlz one Block
 % keys.batching.monkeys               ={'Curius'};
 % keys.Curius.date                    ='[20190828 20190828]';
@@ -81,11 +82,12 @@ keys.pop(cc).tt.selection             	= {};
 % keys.pop(cc).tt.unselect                ={'SNR_rating',3,'Single_rating',3}; 
 keys.pop(cc).tt.unselect                ={}; 
 keys.pop(cc).tt.tasktypes               = {'dist_2Diff_sac'};
-keys.pop(cc).group_parameter            = 'ungrouped'; %hand_tuning
+keys.pop(cc).group_parameter            = 'ungrouped'; %hand_tuning from the Tuning-table
 keys.pop(cc).conditions_to_plot         = {'Vsac'}; 
 keys.pop(cc).epoch_PF                   = 'Tacq';               % epoch in which preference defines target location for "pref" plots
 keys.pop(cc).epoch_RF                   = 'Tacq';               % epoch for which gaussian response fields will be plotted (if plot_RF ~ 0)
 keys.pop(cc).epoch_BL                   = 'Fhol';                % Epoch to subtract trial by trial (if FR_subtract_baseline ~ 0)
+keys.pop(cc).epoch_GB                   = 'Fhol';
 keys.pop(cc).FR_subtract_baseline       = 0;   
 keys.pop(cc).group_excluded             = {};%{'susu','ensu','suen','-su','su-','--'};
 keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
