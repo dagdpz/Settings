@@ -26,14 +26,14 @@ keys.cal.perturbation_groups            ={1,5};
 keys.batching.combine_monkeys       =0;                        % for population analysis
 keys.batching.targets               ={'dPul'};
 keys.batching.monkeys               ={'Bacchus'};
-keys.Bacchus.date                   ='[20210903 202100905]';
+keys.Bacchus.date                   ='[20210706 202100805]';
 % keys.Curius.date                    ='[20210311 20210318]';
 % keys.batching.monkeys               ={'Curius'};
 % keys.filelist_as_blocks     =1;
 % keys.Curius.filelist_formatted          ={20210318,4}; % 1, 3; 2, 4 ; 
 
-%  keys.filelist_as_blocks     =1;
-%  keys.Bacchus.filelist_formatted          ={20210829,1};
+%   keys.filelist_as_blocks     =1;
+%   keys.Bacchus.filelist_formatted          ={20210806,2};
 %  onlz one Block
 % keys.batching.monkeys               ={'Curius'};
 % keys.Curius.date                    ='[20190828 20190828]';
@@ -86,11 +86,11 @@ keys.pop(cc).group_parameter            = 'ungrouped'; %hand_tuning from the Tun
 keys.pop(cc).conditions_to_plot         = {'Vsac'}; 
 keys.pop(cc).epoch_PF                   = 'Tacq';               % epoch in which preference defines target location for "pref" plots
 keys.pop(cc).epoch_RF                   = 'Tacq';               % epoch for which gaussian response fields will be plotted (if plot_RF ~ 0)
-keys.pop(cc).epoch_BL                   = 'Fhol';                % Epoch to subtract trial by trial (if FR_subtract_baseline ~ 0)
-keys.pop(cc).epoch_GB                   = 'Fhol';
+keys.pop(cc).epoch_BL                   = 'Tacq';                % Epoch to subtract trial by trial (if FR_subtract_baseline ~ 0)
+keys.pop(cc).epoch_GB                   = 'Tacq';
 keys.pop(cc).FR_subtract_baseline       = 0;   
 keys.pop(cc).group_excluded             = {};%{'susu','ensu','suen','-su','su-','--'};
-keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
+keys.pop(cc).epoch_for_normalization    = 'Tacq';               % epoch used for (divisive) normalization
 keys.pop(cc).normalization              = 'none';        % none, bz?pertubation, effector, separate (divisive) normalization factor for trials grouped by effector; other options:
             
 
