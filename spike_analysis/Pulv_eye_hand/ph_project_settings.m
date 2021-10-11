@@ -1,13 +1,13 @@
 
-keys.cal.process_spikes                  =0;      % you can choose not to run spikes at all           
-keys.cal.process_sites                   =1;      % you can choose not to run lfp sites at all (saving processing time)             
+keys.cal.process_spikes                  =1;      % you can choose not to run spikes at all           
+keys.cal.process_sites                   =0;      % you can choose not to run lfp sites at all (saving processing time)             
 keys.cal.process_by_block                =0;      % you can choose not to run by block (body signals f.e.) at all (saving processing time)        
 
 %% to check carefully
 keys.position_and_plotting_arrangements         ={'hands'};
 % keys.cal.divide_baseline_for_ANOVA      =1;
 keys.batching.combine_monkeys           =1;
-keys.plot.single_cells                  =0;         % perform single cell plotting
+keys.plot.single_cells                  =1;         % perform single cell plotting
 
 %% computation settings
 
