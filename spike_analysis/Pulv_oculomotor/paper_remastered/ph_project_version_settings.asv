@@ -925,6 +925,14 @@ keys.pop(cc).plot_RF                 = 1;
 cs=0;  
 
 
+cs=cs+1;
+keys.sct(cs).tt.tasktypes={'Msac_opt'};
+keys.sct(cs).X='in_AH_Cue_prefH_FR_Msac_opt';
+keys.sct(cs).Y='ch_AH_Cue_prefH_FR_Msac_opt';
+keys.sct(cs).X_sig='in_AH_Cue_prefH_Msac_opt';
+keys.sct(cs).Y_sig='ch_AH_Cue_prefH_Msac_opt';
+keys.sct(cs).color_option='monkeys_by_marker';
+keys.sct(cs).tt.choices=[0,1];
 
 %% unselect two most significant units
 cs=cs+1;
@@ -935,16 +943,7 @@ keys.sct(cs).X_sig='in_AH_Cue_prefH_Msac_opt';
 keys.sct(cs).Y_sig='ch_AH_Cue_prefH_Msac_opt';
 keys.sct(cs).color_option='monkeys_by_marker';
 keys.sct(cs).tt.choices=[0,1];
-keys.sct(cs).tt.unselect={'unit_ID','Lin_20150916_05';'unit_ID','Lin_20151028_18'};
-
-cs=cs+1;
-keys.sct(cs).tt.tasktypes={'Msac_opt'};
-keys.sct(cs).X='in_AH_Cue_prefH_FR_Msac_opt';
-keys.sct(cs).Y='ch_AH_Cue_prefH_FR_Msac_opt';
-keys.sct(cs).X_sig='in_AH_Cue_prefH_Msac_opt';
-keys.sct(cs).Y_sig='ch_AH_Cue_prefH_Msac_opt';
-keys.sct(cs).color_option='monkeys_by_marker';
-keys.sct(cs).tt.choices=[0,1];
+keys.sct(cs).tt.unselect={'unit_ID',};
 
 % to test
 % 
