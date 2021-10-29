@@ -384,41 +384,41 @@ keys.ons(cc).comparisons_per_effector(ce).title='Aligned to Target';
 
 %% population PSTH settings
 cc=0;
- 
-cc=cc+1;% enhancement/suppression, POS-NEG
-keys.pop(cc).epoch_PF                = 'Thol';
-keys.pop(cc).epoch_RF                = 'Thol';
-keys.pop(cc).epoch_BL                = 'Fhol';
-keys.pop(cc).epoch_GB                = 'none';
-keys.pop(cc).epoch_for_normalization = 'Thol'; % for percent change, use this isntead!
-keys.pop(cc).normalization           = 'percent_change';
-keys.pop(cc).group_parameter         = 'in_AH_Thol_position_Msac_opt';
-keys.pop(cc).conditions_to_plot      = {'Vsac'};
-keys.pop(cc).position_and_plotting_arrangements      = {'options'};
-keys.pop(cc).FR_subtract_baseline    = 0;
-keys.pop(cc).ylim                    = [];
-keys.pop(cc).plot_per_position       = 1;
-keys.pop(cc).tt.choices              = 0;
-keys.pop(cc).tt.hands                = 0;
-keys.pop(cc).plot_RF                 = 0;
-
-cc=cc+1;% enhancement/suppression, POS-NEG
-keys.pop(cc).epoch_PF                = 'Thol';
-keys.pop(cc).epoch_RF                = 'Thol';
-keys.pop(cc).epoch_BL                = 'Fhol';
-keys.pop(cc).epoch_GB                = 'none';
-keys.pop(cc).epoch_for_normalization = 'Thol'; % for percent change, use this isntead!
-keys.pop(cc).normalization           = 'percent_change';
-keys.pop(cc).group_parameter         = 'in_AH_Thol_position_Msac_opt';
-keys.pop(cc).group_parameter         = 'ungrouped';
-keys.pop(cc).conditions_to_plot      = {'Msac'};
-keys.pop(cc).position_and_plotting_arrangements      = {'options'};
-keys.pop(cc).FR_subtract_baseline    = 0;
-keys.pop(cc).ylim                    = [];
-keys.pop(cc).plot_per_position       = 1;
-keys.pop(cc).tt.choices              = 0;
-keys.pop(cc).tt.hands                = 0;
-keys.pop(cc).plot_RF                 = 0;
+%  
+% cc=cc+1;% enhancement/suppression, POS-NEG
+% keys.pop(cc).epoch_PF                = 'Thol';
+% keys.pop(cc).epoch_RF                = 'Thol';
+% keys.pop(cc).epoch_BL                = 'Fhol';
+% keys.pop(cc).epoch_GB                = 'none';
+% keys.pop(cc).epoch_for_normalization = 'Thol'; % for percent change, use this isntead!
+% keys.pop(cc).normalization           = 'percent_change';
+% keys.pop(cc).group_parameter         = 'in_AH_Thol_position_Msac_opt';
+% keys.pop(cc).conditions_to_plot      = {'Vsac'};
+% keys.pop(cc).position_and_plotting_arrangements      = {'options'};
+% keys.pop(cc).FR_subtract_baseline    = 0;
+% keys.pop(cc).ylim                    = [];
+% keys.pop(cc).plot_per_position       = 1;
+% keys.pop(cc).tt.choices              = 0;
+% keys.pop(cc).tt.hands                = 0;
+% keys.pop(cc).plot_RF                 = 0;
+% 
+% cc=cc+1;% enhancement/suppression, POS-NEG
+% keys.pop(cc).epoch_PF                = 'Thol';
+% keys.pop(cc).epoch_RF                = 'Thol';
+% keys.pop(cc).epoch_BL                = 'Fhol';
+% keys.pop(cc).epoch_GB                = 'none';
+% keys.pop(cc).epoch_for_normalization = 'Thol'; % for percent change, use this isntead!
+% keys.pop(cc).normalization           = 'percent_change';
+% keys.pop(cc).group_parameter         = 'in_AH_Thol_position_Msac_opt';
+% keys.pop(cc).group_parameter         = 'ungrouped';
+% keys.pop(cc).conditions_to_plot      = {'Msac'};
+% keys.pop(cc).position_and_plotting_arrangements      = {'options'};
+% keys.pop(cc).FR_subtract_baseline    = 0;
+% keys.pop(cc).ylim                    = [];
+% keys.pop(cc).plot_per_position       = 1;
+% keys.pop(cc).tt.choices              = 0;
+% keys.pop(cc).tt.hands                = 0;
+% keys.pop(cc).plot_RF                 = 0;
 
 
 %% these 4!
@@ -482,54 +482,12 @@ keys.pop(cc).plot_RF                 = 0;
 %% all
 
 %% Response fields
-
-
-cc=cc+1;% cue response fields 
-keys.pop(cc).normalization              = 'by_effector';
-keys.pop(cc).group_parameter            = 'in_AH_Cue_epoch_Msac_opt';
-keys.pop(cc).group_excluded             = {'-'};
-keys.pop(cc).epoch_PF                  	= 'Cue';
-keys.pop(cc).epoch_RF                  	= 'Cue';
-keys.pop(cc).epoch_BL                  	= 'Fhol';
-keys.pop(cc).epoch_GB                  	= 'Fhol';
-keys.pop(cc).epoch_for_normalization  	= 'Fhol';
-keys.pop(cc).conditions_to_plot       	= {'Msac'};
-keys.pop(cc).tt.combine_tuning_properties       = {'tuning','in_Cue_spaceLR_Msac_opt','in_AH_Cue_position_Msac_opt'};
-keys.pop(cc).tt.choices                    = [0];
-keys.pop(cc).tt.hands                      = [0];
-keys.pop(cc).plot_RF                 	= 1;
-keys.pop(cc).RF_frame_colors                 	= {keys.colors.CS_IN,keys.colors.CS_CH,keys.colors.IS_IN,keys.colors.IS_CH,[0 255 0],[127 127 127]};
-keys.pop(cc).RF_frame_entries                 	= {'CStrue','CSfalse','IStrue','ISfalse','-true','-false'};
-keys.pop(cc).RF_frame_parameter                 = 'tuning';
-keys.pop(cc).RF_columns                 = 16;
-keys.pop(cc).RF_rows                    = 10;
-keys.pop(cc).fittypes={'gaussian1','gaussian15'}; 
-
-cc=cc+1;% PostS response fields 
-keys.pop(cc).normalization              = 'by_effector';
-keys.pop(cc).group_parameter            = 'in_AH_TIhol_epoch_Msac_opt';
-keys.pop(cc).group_excluded             = {'-'};
-keys.pop(cc).epoch_PF                  	= 'TIhol';
-keys.pop(cc).epoch_RF                  	= 'TIhol';
-keys.pop(cc).epoch_BL                  	= 'MemL';
-keys.pop(cc).epoch_GB                  	= 'MemL';
-keys.pop(cc).epoch_for_normalization  	= 'MemL';
-keys.pop(cc).conditions_to_plot       	= {'Msac'};
-keys.pop(cc).tt.combine_tuning_properties       = {'tuning','in_TIhol_spaceLR_Msac_opt','in_AH_TIhol_position_Msac_opt'};
-keys.pop(cc).tt.choices                    = [0];
-keys.pop(cc).tt.hands                      = [0];
-keys.pop(cc).plot_RF                 	= 1;
-keys.pop(cc).RF_frame_colors                 	= {keys.colors.CS_IN,keys.colors.CS_CH,keys.colors.IS_IN,keys.colors.IS_CH,[0 255 0],[127 127 127]};
-keys.pop(cc).RF_frame_entries                 	= {'CStrue','CSfalse','IStrue','ISfalse','-true','-false'};
-keys.pop(cc).RF_frame_parameter                 = 'tuning';
-keys.pop(cc).RF_columns                 = 16;
-keys.pop(cc).RF_rows                    = 10;
-keys.pop(cc).fittypes={'gaussian1','gaussian15'}; 
-
+% 
 % 
 % cc=cc+1;% cue response fields 
 % keys.pop(cc).normalization              = 'by_effector';
-% keys.pop(cc).group_parameter            = 'ungrouped';
+% keys.pop(cc).group_parameter            = 'in_AH_Cue_epoch_Msac_opt';
+% keys.pop(cc).group_excluded             = {'-'};
 % keys.pop(cc).epoch_PF                  	= 'Cue';
 % keys.pop(cc).epoch_RF                  	= 'Cue';
 % keys.pop(cc).epoch_BL                  	= 'Fhol';
@@ -543,9 +501,53 @@ keys.pop(cc).fittypes={'gaussian1','gaussian15'};
 % keys.pop(cc).RF_frame_colors                 	= {keys.colors.CS_IN,keys.colors.CS_CH,keys.colors.IS_IN,keys.colors.IS_CH,[0 255 0],[127 127 127]};
 % keys.pop(cc).RF_frame_entries                 	= {'CStrue','CSfalse','IStrue','ISfalse','-true','-false'};
 % keys.pop(cc).RF_frame_parameter                 = 'tuning';
-% % keys.pop(cc).RF_columns                 = 16;
-% % keys.pop(cc).RF_rows                    = 10;
+% keys.pop(cc).RF_columns                 = 16;
+% keys.pop(cc).RF_rows                    = 10;
 % keys.pop(cc).fittypes={'gaussian1','gaussian15'}; 
+% 
+% cc=cc+1;% PostS response fields 
+% keys.pop(cc).normalization              = 'by_effector';
+% keys.pop(cc).group_parameter            = 'in_AH_TIhol_epoch_Msac_opt';
+% keys.pop(cc).group_excluded             = {'-'};
+% keys.pop(cc).epoch_PF                  	= 'TIhol';
+% keys.pop(cc).epoch_RF                  	= 'TIhol';
+% keys.pop(cc).epoch_BL                  	= 'MemL';
+% keys.pop(cc).epoch_GB                  	= 'MemL';
+% keys.pop(cc).epoch_for_normalization  	= 'MemL';
+% keys.pop(cc).conditions_to_plot       	= {'Msac'};
+% keys.pop(cc).tt.combine_tuning_properties       = {'tuning','in_TIhol_spaceLR_Msac_opt','in_AH_TIhol_position_Msac_opt'};
+% keys.pop(cc).tt.choices                    = [0];
+% keys.pop(cc).tt.hands                      = [0];
+% keys.pop(cc).plot_RF                 	= 1;
+% keys.pop(cc).RF_frame_colors                 	= {keys.colors.CS_IN,keys.colors.CS_CH,keys.colors.IS_IN,keys.colors.IS_CH,[0 255 0],[127 127 127]};
+% keys.pop(cc).RF_frame_entries                 	= {'CStrue','CSfalse','IStrue','ISfalse','-true','-false'};
+% keys.pop(cc).RF_frame_parameter                 = 'tuning';
+% keys.pop(cc).RF_columns                 = 16;
+% keys.pop(cc).RF_rows                    = 10;
+% keys.pop(cc).fittypes={'gaussian1','gaussian15'}; 
+
+
+cc=cc+1;% cue response fields 
+keys.pop(cc).normalization              = 'by_position';
+keys.pop(cc).group_parameter            = 'ungrouped';
+keys.pop(cc).epoch_PF                  	= 'Cue';
+keys.pop(cc).epoch_RF                  	= 'Cue';
+keys.pop(cc).epoch_BL                  	= 'Fhol';
+%keys.pop(cc).epoch_GB                  	= 'Fhol';
+keys.pop(cc).epoch_for_normalization  	= 'none';
+keys.pop(cc).FR_subtract_baseline       = 1;
+
+keys.pop(cc).conditions_to_plot       	= {'Msac'};
+keys.pop(cc).tt.combine_tuning_properties       = {'tuning','in_Cue_spaceLR_Msac_opt','in_AH_Cue_position_Msac_opt'};
+keys.pop(cc).tt.choices                    = [0];
+keys.pop(cc).tt.hands                      = [0];
+keys.pop(cc).plot_RF                 	= 1;
+keys.pop(cc).RF_frame_colors                 	= {keys.colors.CS_IN,keys.colors.CS_CH,keys.colors.IS_IN,keys.colors.IS_CH,[0 255 0],[127 127 127]};
+keys.pop(cc).RF_frame_entries                 	= {'CStrue','CSfalse','IStrue','ISfalse','-true','-false'};
+keys.pop(cc).RF_frame_parameter                 = 'tuning';
+% keys.pop(cc).RF_columns                 = 16;
+% keys.pop(cc).RF_rows                    = 10;
+keys.pop(cc).fittypes={'gaussian1','gaussian15'}; 
 % 
 % cc=cc+1;% PostS response fields 
 % keys.pop(cc).normalization              = 'by_effector';
@@ -643,58 +645,58 @@ keys.pop(cc).fittypes={'gaussian1','gaussian15'};
 % keys.pop(cc).plot_RF                 	= 1;
 
 %% categories
-
-cc=cc+1;% visual response?
-keys.pop(cc).group_parameter         = 'visual_Msac_opt';
-keys.pop(cc).group_excluded          ={'0'};
-keys.pop(cc).conditions_to_plot      = {'Msac'};
-keys.pop(cc).tt.choices                 = [0];
-keys.pop(cc).tt.hands                   = [0];
-keys.pop(cc).normalization           = 'by_effector';
-keys.pop(cc).epoch_PF                = 'Cue';
-keys.pop(cc).epoch_RF                = 'Cue';
-keys.pop(cc).epoch_for_normalization = 'Fhol'; %%!!!
-keys.pop(cc).FR_subtract_baseline    = 0;
-keys.pop(cc).plot_RF                 = 1;
-
-cc=cc+1;% motor output only?
-keys.pop(cc).group_parameter         = 'motor_Msac_opt';
-keys.pop(cc).group_excluded          ={'0'};
-keys.pop(cc).conditions_to_plot      = {'Msac'};
-keys.pop(cc).tt.choices                 = [0];
-keys.pop(cc).tt.hands                   = [0];
-keys.pop(cc).normalization           = 'by_effector';
-keys.pop(cc).epoch_PF                = 'TIhol';
-keys.pop(cc).epoch_RF                = 'TIhol';
-keys.pop(cc).epoch_for_normalization = 'Fhol'; %%!!!
-keys.pop(cc).FR_subtract_baseline    = 0;
-keys.pop(cc).plot_RF                 = 1;
-
-cc=cc+1;% visuomotor cells???
-keys.pop(cc).group_parameter         = 'visuomotor_Msac_opt';
-keys.pop(cc).group_excluded          ={'0'};
-keys.pop(cc).conditions_to_plot      = {'Msac'};
-keys.pop(cc).tt.choices                 = [0];
-keys.pop(cc).tt.hands                   = [0];
-keys.pop(cc).normalization           = 'by_effector';
-keys.pop(cc).epoch_PF                = 'Cue';
-keys.pop(cc).epoch_RF                = 'Cue';
-keys.pop(cc).epoch_for_normalization = 'Fhol'; %%!!!
-keys.pop(cc).FR_subtract_baseline    = 0;
-keys.pop(cc).plot_RF                 = 1;
-
-cc=cc+1;% visuomotor cells???
-keys.pop(cc).group_parameter         = 'visuomotor_Msac_opt';
-keys.pop(cc).group_excluded          ={'0'};
-keys.pop(cc).conditions_to_plot      = {'Msac'};
-keys.pop(cc).tt.choices                 = [0];
-keys.pop(cc).tt.hands                   = [0];
-keys.pop(cc).normalization           = 'by_effector';
-keys.pop(cc).epoch_PF                = 'TIhol';
-keys.pop(cc).epoch_RF                = 'TIhol';
-keys.pop(cc).epoch_for_normalization = 'Fhol'; %%!!!
-keys.pop(cc).FR_subtract_baseline    = 0;
-keys.pop(cc).plot_RF                 = 1;
+% 
+% cc=cc+1;% visual response?
+% keys.pop(cc).group_parameter         = 'visual_Msac_opt';
+% keys.pop(cc).group_excluded          ={'0'};
+% keys.pop(cc).conditions_to_plot      = {'Msac'};
+% keys.pop(cc).tt.choices                 = [0];
+% keys.pop(cc).tt.hands                   = [0];
+% keys.pop(cc).normalization           = 'by_effector';
+% keys.pop(cc).epoch_PF                = 'Cue';
+% keys.pop(cc).epoch_RF                = 'Cue';
+% keys.pop(cc).epoch_for_normalization = 'Fhol'; %%!!!
+% keys.pop(cc).FR_subtract_baseline    = 0;
+% keys.pop(cc).plot_RF                 = 1;
+% 
+% cc=cc+1;% motor output only?
+% keys.pop(cc).group_parameter         = 'motor_Msac_opt';
+% keys.pop(cc).group_excluded          ={'0'};
+% keys.pop(cc).conditions_to_plot      = {'Msac'};
+% keys.pop(cc).tt.choices                 = [0];
+% keys.pop(cc).tt.hands                   = [0];
+% keys.pop(cc).normalization           = 'by_effector';
+% keys.pop(cc).epoch_PF                = 'TIhol';
+% keys.pop(cc).epoch_RF                = 'TIhol';
+% keys.pop(cc).epoch_for_normalization = 'Fhol'; %%!!!
+% keys.pop(cc).FR_subtract_baseline    = 0;
+% keys.pop(cc).plot_RF                 = 1;
+% 
+% cc=cc+1;% visuomotor cells???
+% keys.pop(cc).group_parameter         = 'visuomotor_Msac_opt';
+% keys.pop(cc).group_excluded          ={'0'};
+% keys.pop(cc).conditions_to_plot      = {'Msac'};
+% keys.pop(cc).tt.choices                 = [0];
+% keys.pop(cc).tt.hands                   = [0];
+% keys.pop(cc).normalization           = 'by_effector';
+% keys.pop(cc).epoch_PF                = 'Cue';
+% keys.pop(cc).epoch_RF                = 'Cue';
+% keys.pop(cc).epoch_for_normalization = 'Fhol'; %%!!!
+% keys.pop(cc).FR_subtract_baseline    = 0;
+% keys.pop(cc).plot_RF                 = 1;
+% 
+% cc=cc+1;% visuomotor cells???
+% keys.pop(cc).group_parameter         = 'visuomotor_Msac_opt';
+% keys.pop(cc).group_excluded          ={'0'};
+% keys.pop(cc).conditions_to_plot      = {'Msac'};
+% keys.pop(cc).tt.choices                 = [0];
+% keys.pop(cc).tt.hands                   = [0];
+% keys.pop(cc).normalization           = 'by_effector';
+% keys.pop(cc).epoch_PF                = 'TIhol';
+% keys.pop(cc).epoch_RF                = 'TIhol';
+% keys.pop(cc).epoch_for_normalization = 'Fhol'; %%!!!
+% keys.pop(cc).FR_subtract_baseline    = 0;
+% keys.pop(cc).plot_RF                 = 1;
 
 % 
 % cc=cc+1;% visual response?
@@ -923,8 +925,50 @@ keys.pop(cc).plot_RF                 = 1;
 
 %% Scatter keys
 cs=0;  
+% 
+% 
+% cs=cs+1;
+% keys.sct(cs).tt.tasktypes={'Msac_opt'};
+% keys.sct(cs).X='NH_IN_Cue_center_x_Msac_opt';
+% keys.sct(cs).Y='NH_IN_Cue_size_x_Msac_opt';
+% keys.sct(cs).X_sig='in_AH_Cue_prefH_Msac_opt';
+% keys.sct(cs).Y_sig='ch_AH_Cue_prefH_Msac_opt';
+% keys.sct(cs).color_option='monkeys_by_marker';
+% keys.sct(cs).tt.choices=[0,1];
+% keys.sct(cs).tt.selection={'in_AH_Cue_prefH_Msac_opt','in'};
+% 
+% cs=cs+1;
+% keys.sct(cs).tt.tasktypes={'Msac_opt'};
+% keys.sct(cs).X='NH_IN_Cue_center_x_Msac_opt';
+% keys.sct(cs).Y='NH_IN_Cue_size_x_Msac_opt';
+% keys.sct(cs).X_sig='in_AH_Cue_prefH_Msac_opt';
+% keys.sct(cs).Y_sig='ch_AH_Cue_prefH_Msac_opt';
+% keys.sct(cs).color_option='monkeys_by_marker';
+% keys.sct(cs).tt.choices=[0,1];
+% keys.sct(cs).tt.selection={'in_AH_Cue_prefH_Msac_opt','ch'};
+% 
+% cs=cs+1;
+% keys.sct(cs).tt.tasktypes={'Msac_opt'};
+% keys.sct(cs).X='NH_IN_Cue_center_x_Msac_opt';
+% keys.sct(cs).Y='NH_IN_Cue_size_x_Msac_opt';
+% keys.sct(cs).X_sig='in_AH_Cue_prefH_Msac_opt';
+% keys.sct(cs).Y_sig='ch_AH_Cue_prefH_Msac_opt';
+% keys.sct(cs).color_option='monkeys_by_marker';
+% keys.sct(cs).tt.choices=[0,1];
+% keys.sct(cs).tt.selection={'in_AH_Cue_prefH_Msac_opt','-'};
 
 
+%% unselect nonenhanced
+cs=cs+1;
+keys.sct(cs).tt.tasktypes={'Msac_opt'};
+keys.sct(cs).X='in_AH_Cue_prefH_FR_Msac_opt';
+keys.sct(cs).Y='ch_AH_Cue_prefH_FR_Msac_opt';
+keys.sct(cs).X_sig='in_AH_Cue_prefH_Msac_opt';
+keys.sct(cs).Y_sig='ch_AH_Cue_prefH_Msac_opt';
+keys.sct(cs).color_option='monkeys_by_color';
+keys.sct(cs).tt.choices=[0,1];
+keys.sct(cs).tt.combine_tuning_properties       = {'en','in_AH_Cue_epoch_Msac_opt','ch_AH_Cue_epoch_Msac_opt'};
+keys.sct(cs).tt.unselect={'en','susu';'en','su-';'en','-su';'en','--'};
 
 %% unselect two most significant units
 cs=cs+1;
@@ -933,7 +977,7 @@ keys.sct(cs).X='in_AH_Cue_prefH_FR_Msac_opt';
 keys.sct(cs).Y='ch_AH_Cue_prefH_FR_Msac_opt';
 keys.sct(cs).X_sig='in_AH_Cue_prefH_Msac_opt';
 keys.sct(cs).Y_sig='ch_AH_Cue_prefH_Msac_opt';
-keys.sct(cs).color_option='monkeys_by_marker';
+keys.sct(cs).color_option='monkeys_by_color';
 keys.sct(cs).tt.choices=[0,1];
 keys.sct(cs).tt.unselect={'unit_ID','Lin_20150916_05';'unit_ID','Lin_20151028_18'};
 
@@ -943,8 +987,9 @@ keys.sct(cs).X='in_AH_Cue_prefH_FR_Msac_opt';
 keys.sct(cs).Y='ch_AH_Cue_prefH_FR_Msac_opt';
 keys.sct(cs).X_sig='in_AH_Cue_prefH_Msac_opt';
 keys.sct(cs).Y_sig='ch_AH_Cue_prefH_Msac_opt';
-keys.sct(cs).color_option='monkeys_by_marker';
+keys.sct(cs).color_option='monkeys_by_color';
 keys.sct(cs).tt.choices=[0,1];
+
 
 % to test
 % 
@@ -1330,7 +1375,7 @@ keys.clf(cc).conditions_to_plot={'Msac'};
 keys.clf(cc).position_and_plotting_arrangements={'options'};
 keys.clf(cc).tt.hands=0;
 keys.clf(cc).tt.choices=0;
-keys.gfl(cc).tt.perturbations=0;
+keys.clf(cc).tt.perturbations=0;
 
 %% behavior
 cc=0;
@@ -1367,5 +1412,29 @@ keys.cpy(cc).tt.unselect                        = {};
 keys.cpy(cc).tt.combine_tuning_properties       = {};
 keys.cpy(cc).tt.selection                 ={'in_AH_Cue_prefH_Msac_opt','ch'};
 keys.cpy(cc).conditions_to_plot       = {'Msac'};
+
+
+
+cc=cc+1;
+keys.cpy(cc).foldername                 ='Cue_IN_over_CH_en';
+keys.cpy(cc).tt.unselect                        = {};
+keys.cpy(cc).tt.combine_tuning_properties       = {};
+keys.cpy(cc).tt.selection                 ={'in_AH_Cue_prefH_Msac_opt','in'};
+keys.cpy(cc).conditions_to_plot       = {'Msac'};
+keys.cpy(cc).tt.combine_tuning_properties       = {'en','in_AH_Cue_epoch_Msac_opt','ch_AH_Cue_epoch_Msac_opt'};
+keys.cpy(cc).tt.unselect={'en','susu';'en','su-';'en','-su';'en','--'};
+
+
+cc=cc+1;
+keys.cpy(cc).foldername                 ='Cue_CH_over_IN_en';
+keys.cpy(cc).tt.unselect                        = {};
+keys.cpy(cc).tt.combine_tuning_properties       = {};
+keys.cpy(cc).tt.selection                 ={'in_AH_Cue_prefH_Msac_opt','ch'};
+keys.cpy(cc).conditions_to_plot       = {'Msac'};
+keys.cpy(cc).tt.combine_tuning_properties       = {'en','in_AH_Cue_epoch_Msac_opt','ch_AH_Cue_epoch_Msac_opt'};
+keys.cpy(cc).tt.unselect={'en','susu';'en','su-';'en','-su';'en','--'};
+
+
+
 
 
