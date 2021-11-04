@@ -95,29 +95,3 @@ keys.ANOVAS_PER_TYPE(3).spaceLR            ={'Cue','MemE','MemL','PreS','PeriS',
 keys.ANOVAS_PER_TYPE(3).positions          ={'Fhol','Cue','MemE','MemL','PreS','PeriS','TIhol','Thol'}';
 keys.ANOVAS_PER_TYPE(3).hands              ={'Facq','Fhol','Cue','MemE','MemL','PreS','PeriS','TIhol','Thol'}';
 keys.ANOVAS_PER_TYPE(3).SxH                ={'Cue','MemE','MemL','PreS','PeriS','TIhol','Thol'}';
-% 
-% %% population PSTH settings
-% keys.limit_conditions.hands=0;
-% cc=0;
-
-% cc=cc+1;% 1 ungrouped raw
-% keys.pop(cc).normalization           = 'none';
-% keys.pop(cc).group_parameter         = 'ungrouped';
-% keys.pop(cc).conditions_to_plot      = {'Vsac','Msac'};
-% keys.pop(cc).ylim                    = [-0.5 3.5];
-% 
-% cc=cc+1;% 1 ungrouped baseline subtraction
-% keys.pop(cc).normalization           = 'none';
-% keys.pop(cc).group_parameter         = 'ungrouped';
-% keys.pop(cc).conditions_to_plot      = {'Msac'};
-% keys.pop(cc).FR_subtract_baseline    = 1;
-% keys.pop(cc).ylim                    = [];
-% 
-% cc=cc+1;% 2 Cue spacial tuning
-% keys.pop(cc).normalization              = 'none';
-% keys.pop(cc).group_parameter            = 'in_Cue_spaceLR_Msac_mov';
-% keys.pop(cc).conditions_to_plot         = {'Msac'};
-% keys.pop(cc).FR_subtract_baseline       = 1;
-% keys.pop(cc).combine_tuning_properties  = {'S_ExS','in_spaceLR_main_Msac_mov','in_ExS_Msac_mov'};
-% keys.pop(cc).unselect                   = {'S_ExS','-0'};
-% keys.pop(cc).y_lim                      = [];

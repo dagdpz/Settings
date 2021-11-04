@@ -57,7 +57,21 @@ close gcf
 
 
 %% Flaffus missing!!
+%% interleaved 
+mainfolder='Y:\Projects\Pulv_eye_hand\ephys\Interleaved';
+keys.anova_table_file='Y:\Projects\Pulv_eye_hand\ephys\Interleaved\tuning_table_combined_CI.mat';
 
+% Flaffus left
+keys.vmr_path = 'Y:\MRI\Flaffus\20160509\dicom\0101\FL_20160509_left_chamber_normal_128.vmr';
+keys.z_offset_mm = 26; % mm, distance from chamber top to "brain entry", should be different from 0 if z is from top of the chamber, was 26!!!!
+keys.monkey_prefix = 'FL_';
+keys.monkey='Fla';
+keys.target_area='dPulv_l';
+keys.grid_id = 'GRID.22.2';
+
+CL_plot_electrode_localization(keys,'Ddre_han',0,0,'sagittal');
+export_fig([mainfolder filesep 'Ddre_han_fla_left_x1' ], '-pdf','-transparent')
+close gcf
 
 
 
