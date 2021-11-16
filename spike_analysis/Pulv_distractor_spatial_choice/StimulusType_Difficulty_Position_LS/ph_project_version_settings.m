@@ -20,16 +20,17 @@ keys.cal.SNR_rating                 =[1,2,3];
  keys.cal.types                      =[2];
 keys.cal.choice                         =[0]; 
 keys.cal.min_trials_per_condition       =4; %Ppopulation analysis
-keys.cal.units_from_sorting_table       =1;
+keys.cal.units_from_sorting_table       =0;
 
 % batching
 %keys.batching.combine_monkeys       =0;                        % for population analysis
 %keys.batching.targets               ={'dPulv'};
 keys.batching.monkeys               ={'Bacchus'};
 %keys.Curius.date                    ='[20210211 20210211]';
-keys.Bacchus.date                    ='[20210706 20210706]';
- keys.filelist_as_blocks     =1;
- keys.Bacchus.filelist_formatted          ={20210706,2};
+%keys.Bacchus.date                    ='[20210706 20210706]';
+keys.Bacchus.date                    ='[20211001 20211001]';
+%  keys.filelist_as_blocks     =1;
+%  keys.Bacchus.filelist_formatted          ={20210706,2};
 %  onlz one Block
 % keys.batching.monkeys               ={'Curius'};
 % keys.Curius.date                    ='[20190828 20190828]';
