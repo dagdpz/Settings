@@ -10,23 +10,25 @@ keys.position_and_plotting_arrangements         ={'StimTyp_Diff_Pos_Suc'};
 %keys.plot.single_cells                  =1;         % perform single cell plotting
 
 % computation settings
-keys.cal.stablity                   =[0.5,1];
-keys.cal.single_rating              =[1,2,3];                   % not assigning sorting table information if criterion is not met. Therefore only excludes when taking only units in the tabl
+keys.cal.stablity                   =[0.5,1,2,3];
+keys.cal.single_rating              =[0,1,2,3];                   % not assigning sorting table information if criterion is not met. Therefore only excludes when taking only units in the tabl
 keys.cal.SNR_rating                 =[1,2,3];
  keys.cal.effectors                  =[0];
  keys.cal.reach_hand                 =[0];
  keys.cal.types                      =[2];
-keys.cal.choice                         =[0,1]; 
+keys.cal.choice                         =[1]; 
 keys.cal.min_trials_per_condition       =4; %Ppopulation analysis
 keys.cal.units_from_sorting_table       =1;
 keys.cal.MA_selection                   ={'display',0,'keep_raw_data',1,'saccade_definition',4,'reach_1st_pos',1,'success',1,'n_targets', 2, 'correlation_conditions',{}};    
-keys.cal.perturbation_groups            ={1,5}; 
+%keys.cal.perturbation_groups            ={1,5}; 
 
 % batching
 keys.batching.combine_monkeys       =0;                        % for population analysis
 keys.batching.targets               ={'dPul'};
 keys.batching.monkeys               ={'Bacchus'};
-keys.Bacchus.date                   ='[20210706 202100805]';
+keys.Bacchus.date                   ='[20210903 20210905]';
+keys.cal.datasets                   = 5;
+
 % keys.Curius.date                    ='[20210311 20210318]';
 % keys.batching.monkeys               ={'Curius'};
 % keys.filelist_as_blocks     =1;
