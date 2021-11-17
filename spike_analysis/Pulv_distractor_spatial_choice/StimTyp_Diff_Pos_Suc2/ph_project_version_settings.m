@@ -4,6 +4,8 @@
 %keys.datasets               ={'Msac'};
 keys.position_and_plotting_arrangements         ={'StimTyp_Diff_Pos_Suc'};
 %keys.position_and_plotting_arrangements         ={'movement vectors','target location by origin'};
+
+keys.condition_parameters  ={'stimulustype','difficulty','success'};
 %keys.plot.vertical_positons_PSTH        =1;
 %keys.plot.average_heat_maps             =1;
 
