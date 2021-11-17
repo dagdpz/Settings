@@ -28,7 +28,7 @@ keys.cal.MA_selection                   ={'display',0,'keep_raw_data',1,'saccade
 keys.batching.combine_monkeys       =0;                        % for population analysis
 keys.batching.targets               ={'dPul'};
 keys.batching.monkeys               ={'Bacchus'};
-keys.Bacchus.date                   ='[20210903 20210905]';
+keys.Bacchus.date                   ='[20210706 20210730]';
 keys.cal.datasets                   = 5;
 
 % keys.Curius.date                    ='[20210311 20210318]';
@@ -75,7 +75,7 @@ keys.ANOVAS_PER_TYPE(2).SxH                ={'PreS','PeriS','PostS','Tacq','Thol
 keys.ANOVAS_PER_TYPE(2).main               ={'PreS','PeriS','PostS','Tacq','Thol'}';
 
 % %% population PSTH settings
-
+% 1
 cc=0;
 % 1
 cc=cc+1;
