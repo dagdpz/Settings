@@ -83,10 +83,10 @@ keys.pop(cc).tt.hands                 	= [0];
 keys.pop(cc).tt.perturbations          	= [0];
 keys.pop(cc).tt.choices                	= 1;
 keys.pop(cc).tt.selection             	= {};
-% keys.pop(cc).tt.unselect                ={'SNR_rating',3,'Single_rating',3}; 
-keys.pop(cc).tt.unselect                ={}; 
+
+keys.pop(cc).tt.unselect                ={'ch_Tacq_spaceLR_Vsac_Sti', '-' }; 
 keys.pop(cc).tt.tasktypes               = {'dist_2Diff_sac'};
-keys.pop(cc).group_parameter            = 'ungrouped'; %hand_tuning from the Tuning-table
+keys.pop(cc).group_parameter            = 'ungrouped'; % grouping units - hand_tuning from the Tuning-table
 keys.pop(cc).conditions_to_plot         = {'Vsac'}; 
 keys.pop(cc).epoch_PF                   = 'Tacq';               % epoch in which preference defines target location for "pref" plots
 keys.pop(cc).epoch_RF                   = 'Tacq';               % epoch for which gaussian response fields will be plotted (if plot_RF ~ 0)
@@ -98,7 +98,32 @@ keys.pop(cc).epoch_for_normalization    = 'Tacq';               % epoch used for
 keys.pop(cc).normalization              = 'none';        % none, bz?pertubation, effector, separate (divisive) normalization factor for trials grouped by effector; other options:
             
 
+%% colors
+    col_left      = autumn(6);
 
+keys.colors.SS_TA_SU_CS= col_left(1,:); 
+keys.colors.TT_TA_SU_CS= col_left(1,:); 
+keys.colors.TD_TA_SU_CS= col_left(1,:); 
+keys.colors.SS_D1_SU_CS=col_left(6,:);
+keys.colors.TT_D1_SU_CS=col_left(6,:);
+keys.colors.TD_D1_SU_CS=col_left(6,:);
+keys.colors.SS_D2_SU_CS= col_left(3,:);
+keys.colors.TT_D2_SU_CS=col_left(3,:);
+keys.colors.TD_D2_SU_CS=col_left(3,:);
+
+col_right     = winter(3);
+
+keys.colors.SS_TA_SU_IS= [0.5    0.2510    0.3922];
+keys.colors.TT_TA_SU_IS= [0.5    0.2510    0.3922];
+keys.colors.TD_TA_SU_IS= [0.5    0.2510    0.3922];
+keys.colors.SS_D1_SU_IS= col_right(2,:);
+keys.colors.TT_D1_SU_IS= col_right(2,:);
+keys.colors.TD_D1_SU_IS= col_right(2,:);
+keys.colors.SS_D2_SU_IS= col_right(1,:);
+keys.colors.TT_D2_SU_IS= col_right(1,:);
+keys.colors.TD_D2_SU_IS= col_right(1,:);
+           
+      
 
 
 % %keys.limit_conditions.hands=0;
@@ -263,16 +288,18 @@ keys.pop(cc).normalization              = 'none';        % none, bz?pertubation,
 % % keys.pop(cc).plot_RF                 = 0;
 % 
 % %% cell count settings
-% cc=0;
+ cc=0;
 % %% basic tuning properties
 % 
-% cc=cc+1;
-% keys.ccs(cc).tt.choices             =0;
-% keys.ccs(cc).tt.hands             	=0;
-% keys.ccs(cc).factor                 ='position_space';
-% keys.ccs(cc).conditions_to_plot     ={'Msac'};
-% keys.ccs(cc).plot_type              ='per_epoch';
-% keys.ccs(cc).epochs.Msac            ={'INI', 'Fhol','Cue','MemL','PreS','PeriS','TIhol','Tons','Thol'}';
+cc=cc+1;
+keys.ccs(cc).tt.choices             = 1;
+keys.ccs(cc).tt.hands               = 0;
+keys.ccs(cc).factor                 ='position_space'; % from the tuning table 
+keys.ccs(cc).conditions_to_plot     ={'Vsac'};
+keys.ccs(cc).plot_type              ='per_epoch';
+keys.ccs(cc).epochs.Vsac            ={'PreS','PeriS','PostS','Tacq','Thol'}';
+keys.ccs(cc).IC_to_plot             ='ch';
+
 % 
 % cc=cc+1;
 % keys.ccs(cc).tt.choices             =0;
