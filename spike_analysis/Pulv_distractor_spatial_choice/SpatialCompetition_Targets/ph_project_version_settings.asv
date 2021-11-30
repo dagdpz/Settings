@@ -107,8 +107,8 @@ keys.pop(cc).normalization              = 'none';        % none, bz?pertubation,
 
 col_left      = round(autumn(6) * 255.0);
 
-keys.colors.SS_TA_SU_CS= [0    0   255]; 
-keys.colors.TT_TA_SU_CS= [0    0   204]; 
+keys.colors.SS_TA_SU_CS= [255    102    204]; 
+keys.colors.TT_TA_SU_CS= col_left(3,:); 
 keys.colors.TD_TA_SU_CS= col_left(1,:); 
 keys.colors.SS_D1_SU_CS=col_left(6,:);
 keys.colors.TT_D1_SU_CS=col_left(6,:);

@@ -2,10 +2,10 @@
 % to check carefully
 %keys.task_types             ={'mem'};
 %keys.datasets               ={'Msac'};
-keys.position_and_plotting_arrangements         ={'SpatialCompetition_Targets'};
-keys.condition_parameters  ={'stimulustype','difficulty','success'};
-
+keys.position_and_plotting_arrangements         ={'StimTyp_Diff_Pos_Suc'};
 %keys.position_and_plotting_arrangements         ={'movement vectors','target location by origin'};
+
+keys.condition_parameters  ={'stimulustype','difficulty','success'};
 %keys.plot.vertical_positons_PSTH        =1;
 %keys.plot.average_heat_maps             =1;
 
@@ -21,17 +21,23 @@ keys.cal.SNR_rating                 =[1,2,3];
 keys.cal.choice                         =[1]; 
 keys.cal.min_trials_per_condition       =4; %Ppopulation analysis
 keys.cal.units_from_sorting_table       =1;
-keys.cal.MA_selection                   ={'display',0,'keep_raw_data',1,'saccade_definition',4,'reach_1st_pos',1,'success',1,'n_distractors',1, 'correlation_conditions',{}};    
+keys.cal.MA_selection                   ={'display',0,'keep_raw_data',1,'saccade_definition',4,'reach_1st_pos',1,'success',1,'n_targets', 2, 'correlation_conditions',{}};    
+%keys.cal.perturbation_groups            ={1,5}; 
 
 % batching
-%keys.batching.combine_monkeys       =0;                        % for population analysis
+keys.batching.combine_monkeys       =0;                        % for population analysis
 keys.batching.targets               ={'dPul'};
 keys.batching.monkeys               ={'Bacchus'};
-%keys.Curius.date                    ='[20210211 20210211]';
-keys.Bacchus.date                    ='[20210706 20210730]';
-% keys.filelist_as_blocks     =1;
-% keys.Bacchus.filelist_formatted          ={20210706,1};
+keys.Bacchus.date                   ='[20210706 20211118]';
 keys.cal.datasets                   = 5;
+
+% keys.Curius.date                    ='[20210311 20210318]';
+% keys.batching.monkeys               ={'Curius'};
+% keys.filelist_as_blocks     =1;
+% keys.Curius.filelist_formatted          ={20210318,4}; % 1, 3; 2, 4 ; 
+
+%   keys.filelist_as_blocks     =1;
+%   keys.Bacchus.filelist_formatted          ={20210806,2};
 %  onlz one Block
 % keys.batching.monkeys               ={'Curius'};
 % keys.Curius.date                    ='[20190828 20190828]';
@@ -43,12 +49,12 @@ keys.cal.datasets                   = 5;
 keys.EPOCHS_PER_TYPE{2}={...
  %   'Facq',     3,	0.05,	0.15,   'INI';...
     'Fhol',     4,	-0.25,	0,      'INI';...
-    'Tacq',     4,	0.05,      0.13,   'INI';...
+    'Tacq',     4,	0.05,      0.15,   'INI';...
   %  'Cue',      4,	0.05,	0.15,   'INI';...
     'PreS',     60,	-0.1,	 0.00,  'INI';...
     'PeriS',    60,	-0.01,	0.1,   'INI';...
     'PostS',    5,	0.00,	0.1,   'INI';...
-   % 'Thol',     5,	0.2,	0.3,    'INI';...
+    'Thol',     5,	0.2,	0.3,    'INI';...
     };
 
 keys.ANOVAS_PER_TYPE(2).epoch={   'INI' 'Fhol';...
@@ -58,8 +64,8 @@ keys.ANOVAS_PER_TYPE(2).epoch={   'INI' 'Fhol';...
     'Fhol' 'Tacq';...
     'Fhol' 'Thol'};
  keys.WINDOWS_PER_TYPE{2}={...
-    'Visual onset', 4,	-0.1,   0.14;...
-    'Saccade',      60,	-0.2,  0.2;...
+    'Visual onset', 4,	-0.3,   0.14;...
+   % 'Saccade',      60,	-0.2,  0.2;...
     'T hold',       5,	-0.1,   0.3;...
     };
 keys.ANOVAS_PER_TYPE(2).spaceLR            ={'PreS','PeriS','PostS','Tacq','Thol'}';
@@ -69,7 +75,7 @@ keys.ANOVAS_PER_TYPE(2).SxH                ={'PreS','PeriS','PostS','Tacq','Thol
 keys.ANOVAS_PER_TYPE(2).main               ={'PreS','PeriS','PostS','Tacq','Thol'}';
 
 % %% population PSTH settings
-% %keys.limit_conditions.hands=0;
+% 1
 cc=0;
 % 1
 cc=cc+1;
@@ -90,46 +96,96 @@ keys.pop(cc).FR_subtract_baseline       = 0;
 keys.pop(cc).group_excluded             = {};%{'susu','ensu','suen','-su','su-','--'};
 keys.pop(cc).epoch_for_normalization    = 'Tacq';               % epoch used for (divisive) normalization
 keys.pop(cc).normalization              = 'none';        % none, bz?pertubation, effector, separate (divisive) normalization factor for trials grouped by effector; other options:
-   
+            
+ %% cell count settings
+ cc=0;
+% %% basic tuning properties
+% 
+cc=cc+1;
+keys.ccs(cc).tt.choices             = 1;
+keys.ccs(cc).tt.hands               = 0;
+keys.ccs(cc).factor                 ='position_space'; % from the tuning table 
+keys.ccs(cc).conditions_to_plot     ={'Vsac'};
+keys.ccs(cc).plot_type              ='per_epoch';
+keys.ccs(cc).epochs.Vsac            ={'PreS','PeriS','PostS','Tacq','Thol'}';
+keys.ccs(cc).IC_to_plot             ='ch';
 
 %% colors
-   
-        col_left      = autumn(6);
-        col_right     = winter(3);
-        tar_purple    = [0.5    0.2510    0.3922];
-        col_fix       = gray(6);
-        
-        % 
-        pop.PSTH_perpos_colors =   [[col_left(1,:);col_left(3,:);[0.6350, 0.0780, 0.1840] 	];    [tar_purple; col_right(2,:);col_right(1,:)]] ;
-        pop.PSTH_summary_colors=   [[col_left(1,:);col_left(3,:);[0.6350, 0.0780, 0.1840] 	];    [tar_purple ; col_right(2,:);col_right(1,:) ]] ;
-               
-
 
 col_left      = round(autumn(6) * 255.0);
 
-keys.colors.SS_TA_SU_CS= [0    0   255]; 
-keys.colors.TT_TA_SU_CS= [0    0   204]; 
+keys.colors.SS_TA_SU_CS= col_left(1,:); 
+keys.colors.TT_TA_SU_CS= col_left(1,:); 
 keys.colors.TD_TA_SU_CS= col_left(1,:); 
-keys.colors.SS_D1_SU_CS=col_left(6,:);
-keys.colors.TT_D1_SU_CS=col_left(6,:);
-keys.colors.TD_D1_SU_CS=col_left(6,:);
+keys.colors.SS_D1_SU_CS= col_left(6,:);
+keys.colors.TT_D1_SU_CS= col_left(6,:);
+keys.colors.TD_D1_SU_CS= col_left(6,:);
 keys.colors.SS_D2_SU_CS= col_left(3,:);
-keys.colors.TT_D2_SU_CS=col_left(3,:);
-keys.colors.TD_D2_SU_CS=col_left(3,:);
+keys.colors.TT_D2_SU_CS= col_left(3,:);
+keys.colors.TD_D2_SU_CS= col_left(3,:);
 
 col_right     = round(winter(3) * 255.0);
 
 keys.colors.SS_TA_SU_IS= round([0.5    0.2510    0.3922]* 255.0);
-keys.colors.TT_TA_SU_IS= [204    0    204];
-keys.colors.TD_TA_SU_IS= [153    53    255];
+keys.colors.TT_TA_SU_IS= round([0.5    0.2510    0.3922]* 255.0);
+keys.colors.TD_TA_SU_IS= round([0.5    0.2510    0.3922]* 255.0);
 keys.colors.SS_D1_SU_IS= col_right(2,:);
 keys.colors.TT_D1_SU_IS= col_right(2,:);
 keys.colors.TD_D1_SU_IS= col_right(2,:);
 keys.colors.SS_D2_SU_IS= col_right(1,:);
 keys.colors.TT_D2_SU_IS= col_right(1,:);
 keys.colors.TD_D2_SU_IS= col_right(1,:);
+           
+      
 
-%%
+
+% %keys.limit_conditions.hands=0;
+% cc=0;
+% 
+% cc=cc+1;% 'Msac epoch tuning';
+% ce=0;
+% keys.ons(cc).comparisons_title       = 'Msac epoch tuning';
+% keys.ons(cc).group_parameter         = 'ungrouped';
+% keys.ons(cc).conditions_to_plot      = {'Msac'};
+% keys.ons(cc).choices=0; %for cell exclusion
+% keys.ons(cc).hands=0; %for cell exclusion
+% keys.ons(cc).tt.choices=0; %for cell exclusion
+% keys.ons(cc).tt.hands=0; %for cell exclusion
+% ce=ce+1;
+% keys.ons(cc).comparisons_per_effector(ce).reach_hand{1}=0;
+% keys.ons(cc).comparisons_per_effector(ce).reach_hand{2}=0;
+% keys.ons(cc).comparisons_per_effector(ce).hemifield{1}=[-1 1];
+% keys.ons(cc).comparisons_per_effector(ce).hemifield{2}=[-1 1];
+% keys.ons(cc).comparisons_per_effector(ce).choice{1}=[0];
+% keys.ons(cc).comparisons_per_effector(ce).choice{2}=[0];
+% keys.ons(cc).comparisons_per_effector(ce).order_onset={'Cue', 0, 0.3};
+% keys.ons(cc).comparisons_per_effector(ce).colors=[keys.colors.EP_EN/255; keys.colors.EP_SU/255];
+% keys.ons(cc).comparisons_per_effector(ce).baseline_epoch='Fhol';
+% keys.ons(cc).comparisons_per_effector(ce).title='Aligned to Cue';
+% ce=ce+1;
+% keys.ons(cc).comparisons_per_effector(ce).reach_hand{1}=0;
+% keys.ons(cc).comparisons_per_effector(ce).reach_hand{2}=0;
+% keys.ons(cc).comparisons_per_effector(ce).hemifield{1}=[-1 1];
+% keys.ons(cc).comparisons_per_effector(ce).hemifield{2}=[-1 1];
+% keys.ons(cc).comparisons_per_effector(ce).choice{1}=[0];
+% keys.ons(cc).comparisons_per_effector(ce).choice{2}=[0];
+% keys.ons(cc).comparisons_per_effector(ce).order_onset={'Saccade', -0.2, 0.7};
+% keys.ons(cc).comparisons_per_effector(ce).colors=[keys.colors.EP_EN/255; keys.colors.EP_SU/255];
+% keys.ons(cc).comparisons_per_effector(ce).baseline_epoch='MemL';
+% keys.ons(cc).comparisons_per_effector(ce).title='Aligned to Saccade';
+% ce=ce+1;
+% keys.ons(cc).comparisons_per_effector(ce).reach_hand{1}=0;
+% keys.ons(cc).comparisons_per_effector(ce).reach_hand{2}=0;
+% keys.ons(cc).comparisons_per_effector(ce).hemifield{1}=[-1 1];
+% keys.ons(cc).comparisons_per_effector(ce).hemifield{2}=[-1 1];
+% keys.ons(cc).comparisons_per_effector(ce).choice{1}=[0];
+% keys.ons(cc).comparisons_per_effector(ce).choice{2}=[0];
+% keys.ons(cc).comparisons_per_effector(ce).order_onset={'Target', -0.2, 0.7};
+% keys.ons(cc).comparisons_per_effector(ce).colors=[keys.colors.EP_EN/255; keys.colors.EP_SU/255];
+% keys.ons(cc).comparisons_per_effector(ce).baseline_epoch='MemL';
+% keys.ons(cc).comparisons_per_effector(ce).title='Aligned to Target';
+% 
+% 
 % cc=cc+1;% 1 ungrouped baseline subtraction
 % ce=0;
 % keys.ons(cc).comparisons_title       = 'Msac instructed space tuning';
@@ -244,17 +300,7 @@ keys.colors.TD_D2_SU_IS= col_right(1,:);
 % % keys.pop(cc).tt.hands                = 0;
 % % keys.pop(cc).plot_RF                 = 0;
 % 
-% %% cell count settings
-% cc=0;
-% %% basic tuning properties
-% 
-% cc=cc+1;
-% keys.ccs(cc).tt.choices             =0;
-% keys.ccs(cc).tt.hands             	=0;
-% keys.ccs(cc).factor                 ='position_space';
-% keys.ccs(cc).conditions_to_plot     ={'Msac'};
-% keys.ccs(cc).plot_type              ='per_epoch';
-% keys.ccs(cc).epochs.Msac            ={'INI', 'Fhol','Cue','MemL','PreS','PeriS','TIhol','Tons','Thol'}';
+
 % 
 % cc=cc+1;
 % keys.ccs(cc).tt.choices             =0;

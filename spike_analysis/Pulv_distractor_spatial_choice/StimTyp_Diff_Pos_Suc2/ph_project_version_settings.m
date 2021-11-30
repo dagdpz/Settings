@@ -28,7 +28,7 @@ keys.cal.MA_selection                   ={'display',0,'keep_raw_data',1,'saccade
 keys.batching.combine_monkeys       =0;                        % for population analysis
 keys.batching.targets               ={'dPul'};
 keys.batching.monkeys               ={'Bacchus'};
-keys.Bacchus.date                   ='[20210706 20210730]';
+keys.Bacchus.date                   ='[20210706 20211118]';
 keys.cal.datasets                   = 5;
 
 % keys.Curius.date                    ='[20210311 20210318]';
@@ -54,7 +54,7 @@ keys.EPOCHS_PER_TYPE{2}={...
     'PreS',     60,	-0.1,	 0.00,  'INI';...
     'PeriS',    60,	-0.01,	0.1,   'INI';...
     'PostS',    5,	0.00,	0.1,   'INI';...
-   % 'Thol',     5,	0.2,	0.3,    'INI';...
+    'Thol',     5,	0.2,	0.3,    'INI';...
     };
 
 keys.ANOVAS_PER_TYPE(2).epoch={   'INI' 'Fhol';...
@@ -99,23 +99,24 @@ keys.pop(cc).normalization              = 'none';        % none, bz?pertubation,
             
 
 %% colors
-    col_left      = autumn(6);
+
+col_left      = round(autumn(6) * 255.0);
 
 keys.colors.SS_TA_SU_CS= col_left(1,:); 
 keys.colors.TT_TA_SU_CS= col_left(1,:); 
 keys.colors.TD_TA_SU_CS= col_left(1,:); 
-keys.colors.SS_D1_SU_CS=col_left(6,:);
-keys.colors.TT_D1_SU_CS=col_left(6,:);
-keys.colors.TD_D1_SU_CS=col_left(6,:);
+keys.colors.SS_D1_SU_CS= col_left(6,:);
+keys.colors.TT_D1_SU_CS= col_left(6,:);
+keys.colors.TD_D1_SU_CS= col_left(6,:);
 keys.colors.SS_D2_SU_CS= col_left(3,:);
-keys.colors.TT_D2_SU_CS=col_left(3,:);
-keys.colors.TD_D2_SU_CS=col_left(3,:);
+keys.colors.TT_D2_SU_CS= col_left(3,:);
+keys.colors.TD_D2_SU_CS= col_left(3,:);
 
-col_right     = winter(3);
+col_right     = round(winter(3) * 255.0);
 
-keys.colors.SS_TA_SU_IS= [0.5    0.2510    0.3922];
-keys.colors.TT_TA_SU_IS= [0.5    0.2510    0.3922];
-keys.colors.TD_TA_SU_IS= [0.5    0.2510    0.3922];
+keys.colors.SS_TA_SU_IS= round([0.5    0.2510    0.3922]* 255.0);
+keys.colors.TT_TA_SU_IS= round([0.5    0.2510    0.3922]* 255.0);
+keys.colors.TD_TA_SU_IS= round([0.5    0.2510    0.3922]* 255.0);
 keys.colors.SS_D1_SU_IS= col_right(2,:);
 keys.colors.TT_D1_SU_IS= col_right(2,:);
 keys.colors.TD_D1_SU_IS= col_right(2,:);
