@@ -3,13 +3,13 @@
 %keys.task_types             ={'mem'};
 %keys.datasets               ={'Msac'};
 keys.position_and_plotting_arrangements         ={'SpatialCompetition_Targets'};
-keys.condition_parameters  ={'stimulustype','difficulty','success'};
+keys.condition_parameters  ={'stimulustype','difficulty','stimuli_in_2hemifields', 'success'};
 
 %keys.position_and_plotting_arrangements         ={'movement vectors','target location by origin'};
 %keys.plot.vertical_positons_PSTH        =1;
 %keys.plot.average_heat_maps             =1;
 
-%keys.plot.single_cells                  =1;         % perform single cell plotting
+keys.plot.single_cells                  =0;         % perform single cell plotting
 
 % computation settings
 keys.cal.stablity                   =[0.5,1,2,3];
@@ -25,10 +25,11 @@ keys.cal.MA_selection                   ={'display',0,'keep_raw_data',1,'saccade
 
 % batching
 %keys.batching.combine_monkeys       =0;                        % for population analysis
+keys.batching.targets                    ={'dPulv_r','dPulv_l'};  
 keys.batching.targets               ={'dPul'};
 keys.batching.monkeys               ={'Bacchus'};
 %keys.Curius.date                    ='[20210211 20210211]';
-keys.Bacchus.date                    ='[20210706 20210730]';
+keys.Bacchus.date                    ='[20210706 20211117]';
 % keys.filelist_as_blocks     =1;
 % keys.Bacchus.filelist_formatted          ={20210706,1};
 keys.cal.datasets                   = 5;
@@ -68,6 +69,15 @@ keys.ANOVAS_PER_TYPE(2).hands              ={'PreS','PeriS','PostS','Tacq','Thol
 keys.ANOVAS_PER_TYPE(2).SxH                ={'PreS','PeriS','PostS','Tacq','Thol'}';
 keys.ANOVAS_PER_TYPE(2).main               ={'PreS','PeriS','PostS','Tacq','Thol'}';
 
+%% colors
+keys.colors.SS_TA_1HF_SU_CS= [255   153   153]; 
+keys.colors.TT_TA_1HF_SU_CS= [255    51   51]; 
+keys.colors.TT_TA_2HF_SU_CS= [153    0    0]; 
+
+keys.colors.SS_TA_1HF_SU_IS= [255    51  153]; 
+keys.colors.TT_TA_1HF_SU_IS= [255    0   255]; 
+keys.colors.TT_TA_2HF_SU_IS= [178   102  255]; 
+
 % %% population PSTH settings
 % %keys.limit_conditions.hands=0;
 cc=0;
@@ -92,42 +102,9 @@ keys.pop(cc).epoch_for_normalization    = 'Tacq';               % epoch used for
 keys.pop(cc).normalization              = 'none';        % none, bz?pertubation, effector, separate (divisive) normalization factor for trials grouped by effector; other options:
    
 
-%% colors
-   
-        col_left      = autumn(6);
-        col_right     = winter(3);
-        tar_purple    = [0.5    0.2510    0.3922];
-        col_fix       = gray(6);
-        
-        % 
-        pop.PSTH_perpos_colors =   [[col_left(1,:);col_left(3,:);[0.6350, 0.0780, 0.1840] 	];    [tar_purple; col_right(2,:);col_right(1,:)]] ;
-        pop.PSTH_summary_colors=   [[col_left(1,:);col_left(3,:);[0.6350, 0.0780, 0.1840] 	];    [tar_purple ; col_right(2,:);col_right(1,:) ]] ;
-               
 
 
-col_left      = round(autumn(6) * 255.0);
 
-keys.colors.SS_TA_SU_CS= [0    0   255]; 
-keys.colors.TT_TA_SU_CS= [0    0   204]; 
-keys.colors.TD_TA_SU_CS= col_left(1,:); 
-keys.colors.SS_D1_SU_CS=col_left(6,:);
-keys.colors.TT_D1_SU_CS=col_left(6,:);
-keys.colors.TD_D1_SU_CS=col_left(6,:);
-keys.colors.SS_D2_SU_CS= col_left(3,:);
-keys.colors.TT_D2_SU_CS=col_left(3,:);
-keys.colors.TD_D2_SU_CS=col_left(3,:);
-
-col_right     = round(winter(3) * 255.0);
-
-keys.colors.SS_TA_SU_IS= round([0.5    0.2510    0.3922]* 255.0);
-keys.colors.TT_TA_SU_IS= [204    0    204];
-keys.colors.TD_TA_SU_IS= [153    53    255];
-keys.colors.SS_D1_SU_IS= col_right(2,:);
-keys.colors.TT_D1_SU_IS= col_right(2,:);
-keys.colors.TD_D1_SU_IS= col_right(2,:);
-keys.colors.SS_D2_SU_IS= col_right(1,:);
-keys.colors.TT_D2_SU_IS= col_right(1,:);
-keys.colors.TD_D2_SU_IS= col_right(1,:);
 
 %%
 % cc=cc+1;% 1 ungrouped baseline subtraction
