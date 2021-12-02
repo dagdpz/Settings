@@ -3,13 +3,13 @@
 %keys.task_types             ={'mem'};
 %keys.datasets               ={'Msac'};
 keys.position_and_plotting_arrangements         ={'StimulusType_Difficulty_Position'};
-keys.cal.MA_selection                   ={'display',0,'keep_raw_data',1,'saccade_definition',4,'reach_1st_pos',1,'success',1,'correlation_conditions',{}};
+keys.cal.MA_selection                   ={'display',0,'keep_raw_data',1,'saccade_definition',4,'reach_1st_pos',1,'correlation_conditions',{}};
 keys.condition_parameters  ={'stimulustype','difficulty','success'};
 %keys.position_and_plotting_arrangements         ={'movement vectors','target location by origin'};
 %keys.plot.vertical_positons_PSTH        =1;
 %keys.plot.average_heat_maps             =1;
 
-%keys.plot.single_cells                  =1;         % perform single cell plotting
+keys.plot.single_cells                  =0;         % perform single cell plotting
 
 % computation settings
 keys.cal.stablity                   =[0.5,1];
@@ -17,8 +17,8 @@ keys.cal.single_rating              =[1,2,3];                   % not assigning 
 keys.cal.SNR_rating                 =[1,2,3];
  keys.cal.effectors                  =[0];
  keys.cal.reach_hand                 =[0];
- keys.cal.types                      =[2];
-keys.cal.choice                         =[0]; 
+ keys.cal.types                      =[1,2];
+keys.cal.choice                         =[0,1]; 
 keys.cal.min_trials_per_condition       =4; %Ppopulation analysis
 keys.cal.units_from_sorting_table       =0;
 
@@ -29,6 +29,8 @@ keys.batching.monkeys               ={'Bacchus'};
 %keys.Curius.date                    ='[20210211 20210211]';
 %keys.Bacchus.date                    ='[20210706 20210706]';
 keys.Bacchus.date                    ='[20211001 20211001]';
+%keys.Bacchus.date                    ='[20210720 20210720]';
+%20210720
 %  keys.filelist_as_blocks     =1;
 %  keys.Bacchus.filelist_formatted          ={20210706,2};
 %  onlz one Block
