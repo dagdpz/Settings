@@ -26,7 +26,7 @@ keys.cal.min_trials_per_condition       =4; %Ppopulation analysis          % min
 %keys.cal.min_spikes_per_unit            =50;  
 
 keys.cal.units_from_sorting_table       =1;
-keys.cal.MA_selection                   ={'display',0,'keep_raw_data',1,'saccade_definition',4,'reach_1st_pos',1,'success',1,'n_targets', 2, 'correlation_conditions',{}};    
+keys.cal.MA_selection                   ={'display',0,'keep_raw_data',1,'saccade_definition',4,'reach_1st_pos',1,'n_targets', 2, 'correlation_conditions',{}};    
 %keys.cal.perturbation_groups            ={1,5}; 
 
 % batching
@@ -52,7 +52,7 @@ keys.cal.datasets                   = 5;
 %% How do I set the epochs for the PSTH
 % %% epochs
 keys.EPOCHS_PER_TYPE{2}={...
- %   'Facq',     3,	0.05,	0.15,   'INI';...
+   % 'Facq',     3,	0.05,	0.15,   'INI';...
     'Fhol',     4,	-0.25,	0,      'INI';...
     'Tacq',     4,	0.05,      0.15,   'INI';...
   %  'Cue',      4,	0.05,	0.15,   'INI';...
@@ -69,15 +69,15 @@ keys.ANOVAS_PER_TYPE(2).epoch={   'INI' 'Fhol';...
     'Fhol' 'Tacq';...
     'Fhol' 'Thol'};
  keys.WINDOWS_PER_TYPE{2}={...
-    'Visual onset', 4,	-0.3,   0.14;...
+    'Visual onset', 4,	-0.3,   0.15;...
    % 'Saccade',      60,	-0.2,  0.2;...
     'T hold',       5,	-0.1,   0.3;...
     };
-keys.ANOVAS_PER_TYPE(2).spaceLR            ={'PreS','PeriS','PostS','Tacq','Thol'}';
-keys.ANOVAS_PER_TYPE(2).positions          ={'PreS','PeriS','PostS','Tacq','Thol'}';
-keys.ANOVAS_PER_TYPE(2).hands              ={'PreS','PeriS','PostS','Tacq','Thol'}';
-keys.ANOVAS_PER_TYPE(2).SxH                ={'PreS','PeriS','PostS','Tacq','Thol'}';
-keys.ANOVAS_PER_TYPE(2).main               ={'PreS','PeriS','PostS','Tacq','Thol'}';
+keys.ANOVAS_PER_TYPE(2).spaceLR            ={'Fhol','PreS','PeriS','PostS','Tacq','Thol'}';
+keys.ANOVAS_PER_TYPE(2).positions          ={'Fhol','PreS','PeriS','PostS','Tacq','Thol'}';
+keys.ANOVAS_PER_TYPE(2).hands              ={'Fhol','PreS','PeriS','PostS','Tacq','Thol'}';
+keys.ANOVAS_PER_TYPE(2).SxH                ={'Fhol','PreS','PeriS','PostS','Tacq','Thol'}';
+keys.ANOVAS_PER_TYPE(2).main               ={'Fhol','PreS','PeriS','PostS','Tacq','Thol'}';
 
 % %% population PSTH settings
 % 1
@@ -98,12 +98,12 @@ keys.pop(cc).group_excluded             = {''};%{'susu','ensu','suen','-su','su-
 keys.pop(cc).conditions_to_plot         = {'Vsac'}; 
 keys.pop(cc).epoch_PF                   = 'Tacq';               % epoch in which preference defines target location for "pref" plots
 keys.pop(cc).epoch_RF                   = 'Tacq';               % epoch for which gaussian response fields will be plotted (if plot_RF ~ 0)
-keys.pop(cc).epoch_BL                   = 'Tacq';                % Epoch to subtract trial by trial (if FR_subtract_baseline ~ 0)
+keys.pop(cc).epoch_BL                   = 'Fhol';                % Epoch to subtract trial by trial (if FR_subtract_baseline ~ 0)
 keys.pop(cc).epoch_GB                   = 'Tacq';
 keys.pop(cc).FR_subtract_baseline       = 0;   
 
-keys.pop(cc).epoch_for_normalization    = 'Tacq';               % epoch used for (divisive) normalization
-keys.pop(cc).normalization              = 'none';        % none, bz?pertubation, effector, separate (divisive) normalization factor for trials grouped by effector; other options:
+keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
+keys.pop(cc).normalization              = 'by_effector';        % none, bz?pertubation, effector, separate (divisive) normalization factor for trials grouped by effector; other options:
             
  %% cell count settings
  cc=0;
@@ -111,8 +111,9 @@ keys.pop(cc).normalization              = 'none';        % none, bz?pertubation,
 % 
 cc=cc+1;
 keys.ccs(cc).tt.choices             = 1;
-keys.ccs(cc).tt.hands               = 0;
-keys.ccs(cc).factor                 = 'space'; % from the tuning table 
+keys.ccs(cc).tt.hands               = [0];
+keys.ccs(cc).tt.perturbations       = [0];
+keys.ccs(cc).tt.tasktypes               = {'dist_2Diff_sac'};
 keys.ccs(cc).conditions_to_plot     ={'Vsac'};
 keys.ccs(cc).plot_type              ='per_epoch';
 keys.ccs(cc).epochs.Vsac            ={'PreS','PeriS','PostS','Tacq','Thol'}';
