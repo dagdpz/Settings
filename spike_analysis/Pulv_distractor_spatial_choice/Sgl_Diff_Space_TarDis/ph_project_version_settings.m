@@ -2,14 +2,14 @@
 % to check carefully
 %keys.task_types             ={'mem'};
 %keys.datasets               ={'Msac'};
-keys.position_and_plotting_arrangements         ={'StimTyp_Diff_Pos_Suc', 'Sgl_Diff_Pos_Suc_SaccadeEpoch'};
+keys.position_and_plotting_arrangements         ={'StimTyp_Diff_Pos_Suc'}; %, 'Sgl_Diff_Pos_Suc_SaccadeEpoch'
 
 keys.condition_parameters  ={'stimulustype','difficulty','success'};
 %keys.plot.vertical_positons_PSTH        =1;
 %keys.plot.average_heat_maps             =1;
 
 %% computation settings
-keys.plot.single_cells                  =1;         % perform single cell plotting
+keys.plot.single_cells                  =0;         % perform single cell plotting
 keys.cal.process_spikes                  =1;      % you can choose not to run spikes at all           
 keys.cal.process_sites                   =0;      % you can choose not to run lfp sites at all (saving processing time)             
 keys.cal.process_by_block                =1;      % you can choose not to run by block (body signals f.e.) at all (saving processing time)                   
@@ -89,11 +89,34 @@ keys.pop(cc).tt.perturbations          	= [0];
 keys.pop(cc).tt.choices                	= 1;
 keys.pop(cc).tt.selection             	= {};
 
-keys.pop(cc).tt.unselect                ={'ch_Tacq_spaceLR_Vsac_Sti', '-' }; 
+%keys.pop(cc).tt.unselect                ={'ch_Tacq_spaceLR_Vsac_Sti', '-' }; 
 keys.pop(cc).tt.unselect                ={}; 
-keys.pop(cc).tt.tasktypes               = {'dist_2Diff_sac'};
+keys.pop(cc).tt.tasktypes               = {'Vsac'};
 %keys.pop(cc).group_parameter            = 'ungrouped'; % grouping units - hand_tuning from the Tuning-table
-keys.pop(cc).group_parameter            = 'ch_CS_Tacq_SglTar_Suc_DF_Vsac_Sti'; % ch_Tacq_spaceLR_Vsac_Stigrouping units - hand_tuning from the Tuning-table
+keys.pop(cc).group_parameter            = 'ch_Tacq_spaceLR_Vsac_Sti'; % ch_Tacq_spaceLR_Vsac_Stigrouping units - hand_tuning from the Tuning-table
+keys.pop(cc).group_excluded             = {''};%{'susu','ensu','suen','-su','su-','--'};
+keys.pop(cc).conditions_to_plot         = {'Vsac'}; 
+keys.pop(cc).epoch_PF                   = 'Tacq';               % epoch in which preference defines target location for "pref" plots
+keys.pop(cc).epoch_RF                   = 'Tacq';               % epoch for which gaussian response fields will be plotted (if plot_RF ~ 0)
+keys.pop(cc).epoch_BL                   = 'Fhol';                % Epoch to subtract trial by trial (if FR_subtract_baseline ~ 0)
+keys.pop(cc).epoch_GB                   = 'Tacq'; %
+keys.pop(cc).FR_subtract_baseline       = 1;   %1 substract & keys.pop(cc).normalization  = 'by_effector'; divisive -> percent signal change
+
+keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
+keys.pop(cc).normalization              = 'by_effector';        % none, by_pertubation, effector, separate (divisive) normalization factor for trials grouped by effector; other options:
+            
+%%
+cc=cc+1;
+keys.pop(cc).tt.hands                 	= [0];
+keys.pop(cc).tt.perturbations          	= [0];
+keys.pop(cc).tt.choices                	= 1;
+keys.pop(cc).tt.selection             	= {};
+
+%keys.pop(cc).tt.unselect                ={'ch_Tacq_spaceLR_Vsac_Sgl', '-' }; 
+keys.pop(cc).tt.unselect                ={}; 
+keys.pop(cc).tt.tasktypes               ={'Vsac'}; 
+%keys.pop(cc).group_parameter            = 'ungrouped'; % grouping units - hand_tuning from the Tuning-table
+keys.pop(cc).group_parameter            = 'ch_Tacq_spaceLR_Vsac_Sgl'; % ch_Tacq_spaceLR_Vsac_Stigrouping units - hand_tuning from the Tuning-table
 
 
 keys.pop(cc).group_excluded             = {''};%{'susu','ensu','suen','-su','su-','--'};
@@ -115,7 +138,7 @@ cc=cc+1;
 keys.ccs(cc).tt.choices             = 1;
 keys.ccs(cc).tt.hands               = [0];
 keys.ccs(cc).tt.perturbations       = [0];
-keys.ccs(cc).tt.tasktypes               = {'dist_2Diff_sac'};
+keys.ccs(cc).tt.tasktypes           = {'Vsac'}; 
 keys.ccs(cc).factor                 = 'space'; % from the tuning table 
 keys.ccs(cc).conditions_to_plot     ={'Vsac'};
 keys.ccs(cc).plot_type              ='per_epoch';

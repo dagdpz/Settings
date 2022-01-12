@@ -2,36 +2,46 @@
 % to check carefully
 %keys.task_types             ={'mem'};
 %keys.datasets               ={'Msac'};
-keys.position_and_plotting_arrangements         ={'StimType_Diff_Pos_ErVsCor'};
-%keys.position_and_plotting_arrangements         ={'movement vectors','target location by origin'};
+keys.position_and_plotting_arrangements         ={'SpS_Diff_ErVsCor', 'SpT_Diff_ErVsCor'}; %, 'Sgl_Diff_Pos_Suc_SaccadeEpoch'
+
+keys.condition_parameters  ={'stimulustype', 'success'}; %
 %keys.plot.vertical_positons_PSTH        =1;
 %keys.plot.average_heat_maps             =1;
 
-%keys.plot.single_cells                  =1;         % perform single cell plotting
+%% computation settings
+keys.plot.single_cells                  =0;         % perform single cell plotting
+keys.cal.process_spikes                  =1;      % you can choose not to run spikes at all           
+keys.cal.process_sites                   =0;      % you can choose not to run lfp sites at all (saving processing time)             
+keys.cal.process_by_block                =1;      % you can choose not to run by block (body signals f.e.) at all (saving processing time)                   
 
-% computation settings
-keys.cal.stablity                   =[0.5,1];
-keys.cal.single_rating              =[1,2,3];                   % not assigning sorting table information if criterion is not met. Therefore only excludes when taking only units in the tabl
+%% 
+keys.cal.stablity                   =[0.5,1,2,3];
+keys.cal.single_rating              =[0,1,2,3];                   % not assigning sorting table information if criterion is not met. Therefore only excludes when taking only units in the tabl
 keys.cal.SNR_rating                 =[1,2,3];
  keys.cal.effectors                  =[0];
  keys.cal.reach_hand                 =[0];
  keys.cal.types                      =[2];
-keys.cal.choice                         =[0]; 
-keys.cal.min_trials_per_condition       =4; %Ppopulation analysis
-keys.cal.units_from_sorting_table       =1;
-keys.cal.min_trials_per_condition       =4; %Ppopulation analysis
-keys.cal.units_from_sorting_table       =1;
-keys.cal.MA_selection                   ={'display',0,'keep_raw_data',1,'saccade_definition',4,'reach_1st_pos',1,'n_targets', 2, 'correlation_conditions',{}};    
+keys.cal.choice                         =[1]; 
+keys.cal.min_trials_per_condition       =4; %Ppopulation analysis          % minimum trials per conditon (look at ph_arrange_positions to see how conditions are defined)
+%keys.cal.min_spikes_per_unit            =50;  
 
+keys.cal.units_from_sorting_table       =1;
+keys.cal.MA_selection                   ={'display',0,'keep_raw_data',1,'saccade_definition',4,'reach_1st_pos',1,'n_nondistractors', 1, 'correlation_conditions',{}};    
 
 % batching
-%keys.batching.combine_monkeys       =0;                        % for population analysis
-%keys.batching.targets               ={'dPulv'};
+keys.batching.combine_monkeys       =0;                        % for population analysis
+keys.batching.targets               ={'dPul'};
 keys.batching.monkeys               ={'Bacchus'};
-%keys.Curius.date                    ='[20210211 20210211]';
-keys.Bacchus.date                    ='[20210714 20210714]';
- keys.filelist_as_blocks     =1;
- keys.Bacchus.filelist_formatted          ={20210706,1};
+keys.Bacchus.date                   ='[20210706 20210706]';
+keys.cal.datasets                   = 5;
+
+% keys.Curius.date                    ='[20210311 20210318]';
+% keys.batching.monkeys               ={'Curius'};
+% keys.filelist_as_blocks     =1;
+% keys.Curius.filelist_formatted          ={20210318,4}; % 1, 3; 2, 4 ; 
+
+%   keys.filelist_as_blocks     =1;
+%   keys.Bacchus.filelist_formatted          ={20210806,2};
 %  onlz one Block
 % keys.batching.monkeys               ={'Curius'};
 % keys.Curius.date                    ='[20190828 20190828]';
@@ -41,33 +51,240 @@ keys.Bacchus.date                    ='[20210714 20210714]';
 %% How do I set the epochs for the PSTH
 % %% epochs
 keys.EPOCHS_PER_TYPE{2}={...
- %   'Facq',     3,	0.05,	0.15,   'INI';...
+   % 'Facq',     3,	0.05,	0.15,   'INI';...
     'Fhol',     4,	-0.25,	0,      'INI';...
-    'Tacq',     4,	0.00,      0.11,   'INI';...
+    'Tacq',     4,	0.04,      0.15,   'INI';...
   %  'Cue',      4,	0.05,	0.15,   'INI';...
-    'PreS',     60,	-0.1,	 0.00,  'INI';...
-    'PeriS',    60,	-0.01,	0.1,   'INI';...
+    %'PreS',     60,	-0.1,	 0.00,  'INI';...
+    'PeriS',    60,	-0.1,	0.1,   'INI';...
     'PostS',    5,	0.00,	0.1,   'INI';...
     'Thol',     5,	0.2,	0.3,    'INI';...
     };
 
 keys.ANOVAS_PER_TYPE(2).epoch={   'INI' 'Fhol';...
-    'Fhol' 'PreS';...
     'Fhol' 'PeriS';...
     'Fhol' 'PostS';...
     'Fhol' 'Tacq';...
     'Fhol' 'Thol'};
  keys.WINDOWS_PER_TYPE{2}={...
-    'Visual onset', 4,	-0.3,   0.15;...
-    'Saccade',      60,	-0.2,  0.2;...
-    'T hold',       5,	0,   0.3;...
+    'Stimuli presentation', 4,	-0.3,   0.15;...
+   % 'Saccade',      60,	-0.2,  0.2;...
+    'Saccade',       5,	-0.12,   0.3;...
     };
-keys.ANOVAS_PER_TYPE(2).spaceLR            ={'PreS','PeriS','PostS','Tacq','Thol'}';
-keys.ANOVAS_PER_TYPE(2).positions          ={'PreS','PeriS','PostS','Tacq','Thol'}';
-keys.ANOVAS_PER_TYPE(2).hands              ={'PreS','PeriS','PostS','Tacq','Thol'}';
-keys.ANOVAS_PER_TYPE(2).SxH                ={'PreS','PeriS','PostS','Tacq','Thol'}';
-keys.ANOVAS_PER_TYPE(2).main               ={'PreS','PeriS','PostS','Tacq','Thol'}';
+keys.ANOVAS_PER_TYPE(2).spaceLR            ={'Fhol','PeriS','PostS','Tacq','Thol'}';
+keys.ANOVAS_PER_TYPE(2).positions          ={'Fhol','PeriS','PostS','Tacq','Thol'}';
+keys.ANOVAS_PER_TYPE(2).hands              ={'Fhol','PeriS','PostS','Tacq','Thol'}';
+keys.ANOVAS_PER_TYPE(2).SxH                ={'Fhol','PeriS','PostS','Tacq','Thol'}';
+keys.ANOVAS_PER_TYPE(2).main               ={'Fhol','PeriS','PostS','Tacq','Thol'}';
+
 % %% population PSTH settings
+%keys.condition_parameters  ={'stimulustype', 'success'}; %
+keys.condition_parameters  ={'stimulustype','difficulty', 'success'}; %
+
+cc=0;
+% 1
+% cc=cc+1;
+% keys.pop(cc).tt.hands                 	= [0];
+% keys.pop(cc).tt.perturbations          	= [0];
+% keys.pop(cc).tt.choices                	= 1;
+% keys.pop(cc).tt.selection             	= {};
+
+% keys.pop(cc).tt.unselect                ={'ch_Tacq_spaceLR_Vsac_Sti', '-' }; 
+% %keys.pop(cc).tt.unselect                ={}; 
+% keys.pop(cc).tt.tasktypes               = {'Vsac'};
+% %keys.pop(cc).group_parameter            = 'ungrouped'; % grouping units - hand_tuning from the Tuning-table
+% keys.pop(cc).group_parameter            = 'ch_Tacq_spaceLR_Vsac_Sti'; % ch_Tacq_spaceLR_Vsac_Stigrouping units - hand_tuning from the Tuning-table
+% keys.pop(cc).group_excluded             = {''};%{'susu','ensu','suen','-su','su-','--'};
+% keys.pop(cc).conditions_to_plot         = {'Vsac'}; 
+% keys.pop(cc).epoch_PF                   = 'Tacq';               % epoch in which preference defines target location for "pref" plots
+% keys.pop(cc).epoch_RF                   = 'Tacq';               % epoch for which gaussian response fields will be plotted (if plot_RF ~ 0)
+% keys.pop(cc).epoch_BL                   = 'Fhol';                % Epoch to subtract trial by trial (if FR_subtract_baseline ~ 0)
+% keys.pop(cc).epoch_GB                   = 'Tacq'; %
+% keys.pop(cc).FR_subtract_baseline       = 1;   %1 substract & keys.pop(cc).normalization  = 'by_effector'; divisive -> percent signal change
+% 
+% keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
+% keys.pop(cc).normalization              = 'by_effector';        % none, by_pertubation, effector, separate (divisive) normalization factor for trials grouped by effector; other options:
+%  
+% 
+% % 1
+% cc=cc+1;
+% keys.pop(cc).tt.hands                 	= [0];
+% keys.pop(cc).tt.perturbations          	= [0];
+% keys.pop(cc).tt.choices                	= 1;
+% keys.pop(cc).tt.selection             	= {};
+% 
+% keys.pop(cc).tt.unselect                ={'ch_PostS_spaceLR_Vsac_Sti', '-' }; 
+% %keys.pop(cc).tt.unselect                ={}; 
+% keys.pop(cc).tt.tasktypes               = {'Vsac'};
+% %keys.pop(cc).group_parameter            = 'ungrouped'; % grouping units - hand_tuning from the Tuning-table
+% keys.pop(cc).group_parameter            = 'ch_PostS_spaceLR_Vsac_Sti'; % ch_Tacq_spaceLR_Vsac_Stigrouping units - hand_tuning from the Tuning-table
+% keys.pop(cc).group_excluded             = {''};%{'susu','ensu','suen','-su','su-','--'};
+% keys.pop(cc).conditions_to_plot         = {'Vsac'}; 
+% keys.pop(cc).epoch_PF                   = 'Tacq';               % epoch in which preference defines target location for "pref" plots
+% keys.pop(cc).epoch_RF                   = 'Tacq';               % epoch for which gaussian response fields will be plotted (if plot_RF ~ 0)
+% keys.pop(cc).epoch_BL                   = 'Fhol';                % Epoch to subtract trial by trial (if FR_subtract_baseline ~ 0)
+% keys.pop(cc).epoch_GB                   = 'Tacq'; %
+% keys.pop(cc).FR_subtract_baseline       = 1;   %1 substract & keys.pop(cc).normalization  = 'by_effector'; divisive -> percent signal change
+% 
+% keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
+% keys.pop(cc).normalization              = 'by_effector';        % none, by_pertubation, effector, separate (divisive) normalization factor for trials grouped by effector; other options:
+%   
+% %%
+% cc=cc+1;
+% keys.pop(cc).tt.hands                 	= [0];
+% keys.pop(cc).tt.perturbations          	= [0];
+% keys.pop(cc).tt.choices                	= 1;
+% keys.pop(cc).tt.selection             	= {};
+% 
+% %keys.pop(cc).tt.unselect                ={'ch_Tacq_spaceLR_Vsac_Sgl', '-' }; 
+% keys.pop(cc).tt.unselect                ={}; 
+% keys.pop(cc).tt.tasktypes               ={'Vsac'}; 
+% %keys.pop(cc).group_parameter            = 'ungrouped'; % grouping units - hand_tuning from the Tuning-table
+% keys.pop(cc).group_parameter            = 'ch_PostS_spaceLR_Vsac_Sti'; % ch_Tacq_spaceLR_Vsac_Stigrouping units - hand_tuning from the Tuning-table
+% 
+% 
+% keys.pop(cc).group_excluded             = {''};%{'susu','ensu','suen','-su','su-','--'};
+% keys.pop(cc).conditions_to_plot         = {'Vsac'}; 
+% keys.pop(cc).epoch_PF                   = 'Tacq';               % epoch in which preference defines target location for "pref" plots
+% keys.pop(cc).epoch_RF                   = 'Tacq';               % epoch for which gaussian response fields will be plotted (if plot_RF ~ 0)
+% keys.pop(cc).epoch_BL                   = 'Fhol';                % Epoch to subtract trial by trial (if FR_subtract_baseline ~ 0)
+% keys.pop(cc).epoch_GB                   = 'Tacq'; %
+% keys.pop(cc).FR_subtract_baseline       = 1;   %1 substract & keys.pop(cc).normalization  = 'by_effector'; divisive -> percent signal change
+% 
+% keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
+% keys.pop(cc).normalization              = 'by_effector';        % none, by_pertubation, effector, separate (divisive) normalization factor for trials grouped by effector; other options:
+%  
+% 
+% %%
+cc=cc+1;
+keys.pop(cc).tt.hands                 	= [0];
+keys.pop(cc).tt.perturbations          	= [0];
+keys.pop(cc).tt.choices                	= 1;
+keys.pop(cc).tt.selection             	= {};
+
+%keys.pop(cc).tt.unselect                ={'ch_CS_Tacq_Difficulty_Easy_Vsac_Sti', '-' }; 
+keys.pop(cc).tt.unselect                ={}; 
+keys.pop(cc).tt.tasktypes               ={'Vsac'}; 
+%keys.pop(cc).group_parameter            = 'ungrouped'; % grouping units - hand_tuning from the Tuning-table
+keys.pop(cc).group_parameter            = 'ch_Tacq_Tar_Dis_Vsac_Sti'; % ch_Tacq_spaceLR_Vsac_Stigrouping units - hand_tuning from the Tuning-table
+
+keys.pop(cc).group_excluded             = {''};%{'susu','ensu','suen','-su','su-','--'};
+keys.pop(cc).conditions_to_plot         = {'Vsac'}; 
+keys.pop(cc).epoch_PF                   = 'Tacq';               % epoch in which preference defines target location for "pref" plots
+keys.pop(cc).epoch_RF                   = 'Tacq';               % epoch for which gaussian response fields will be plotted (if plot_RF ~ 0)
+keys.pop(cc).epoch_BL                   = 'Fhol';                % Epoch to subtract trial by trial (if FR_subtract_baseline ~ 0)
+keys.pop(cc).epoch_GB                   = 'Tacq'; %
+keys.pop(cc).FR_subtract_baseline       = 1;   %1 substract & keys.pop(cc).normalization  = 'by_effector'; divisive -> percent signal change
+
+keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
+keys.pop(cc).normalization              = 'by_effector';        % none, by_pertubation, effector, separate (divisive) normalization factor for trials grouped by effector; other options:
+
+% %%
+% cc=cc+1;
+% keys.pop(cc).tt.hands                 	= [0];
+% keys.pop(cc).tt.perturbations          	= [0];
+% keys.pop(cc).tt.choices                	= 1;
+% keys.pop(cc).tt.selection             	= {};
+% 
+% keys.pop(cc).tt.unselect                ={}; 
+% %keys.pop(cc).tt.unselect                ={}; 
+% keys.pop(cc).tt.tasktypes               ={'Vsac'}; 
+% %keys.pop(cc).group_parameter            = 'ungrouped'; % grouping units - hand_tuning from the Tuning-table
+% keys.pop(cc).group_parameter            = 'ch_CS_PostS_Difficulty_Easy_Vsac_Sti'; % ch_Tacq_spaceLR_Vsac_Stigrouping units - hand_tuning from the Tuning-table
+% 
+% keys.pop(cc).group_excluded             = {''};%{'susu','ensu','suen','-su','su-','--'};
+% keys.pop(cc).conditions_to_plot         = {'Vsac'}; 
+% keys.pop(cc).epoch_PF                   = 'PostS';               % epoch in which preference defines target location for "pref" plots
+% keys.pop(cc).epoch_RF                   = 'Tacq';               % epoch for which gaussian response fields will be plotted (if plot_RF ~ 0)
+% keys.pop(cc).epoch_BL                   = 'Fhol';                % Epoch to subtract trial by trial (if FR_subtract_baseline ~ 0)
+% keys.pop(cc).epoch_GB                   = 'Tacq'; %
+% keys.pop(cc).FR_subtract_baseline       = 1;   %1 substract & keys.pop(cc).normalization  = 'by_effector'; divisive -> percent signal change
+% 
+% keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
+% keys.pop(cc).normalization              = 'by_effector';        % none, by_pertubation, effector, separate (divisive) normalization factor for trials grouped by effector; other options:
+% 
+% %%
+% cc=cc+1;
+% keys.pop(cc).tt.hands                 	= [0];
+% keys.pop(cc).tt.perturbations          	= [0];
+% keys.pop(cc).tt.choices                	= 1;
+% keys.pop(cc).tt.selection             	= {};
+% 
+% %keys.pop(cc).tt.unselect                ={'ch_IS_Tacq_Difficulty_Easy_Vsac_Sti', '-'}; 
+% keys.pop(cc).tt.unselect                ={}; 
+% keys.pop(cc).tt.tasktypes               ={'Vsac'}; 
+% %keys.pop(cc).group_parameter            = 'ungrouped'; % grouping units - hand_tuning from the Tuning-table
+% keys.pop(cc).group_parameter            = 'ch_IS_Tacq_Difficulty_Easy_Vsac_Sti'; % ch_Tacq_spaceLR_Vsac_Stigrouping units - hand_tuning from the Tuning-table
+% 
+% keys.pop(cc).group_excluded             = {''};%{'susu','ensu','suen','-su','su-','--'};
+% keys.pop(cc).conditions_to_plot         = {'Vsac'}; 
+% keys.pop(cc).epoch_PF                   = 'Tacq';               % epoch in which preference defines target location for "pref" plots
+% keys.pop(cc).epoch_RF                   = 'Tacq';               % epoch for which gaussian response fields will be plotted (if plot_RF ~ 0)
+% keys.pop(cc).epoch_BL                   = 'Fhol';                % Epoch to subtract trial by trial (if FR_subtract_baseline ~ 0)
+% keys.pop(cc).epoch_GB                   = 'Tacq'; %
+% keys.pop(cc).FR_subtract_baseline       = 1;   %1 substract & keys.pop(cc).normalization  = 'by_effector'; divisive -> percent signal change
+% 
+% keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
+% keys.pop(cc).normalization              = 'by_effector';        % none, by_pertubation, effector, separate (divisive) normalization factor for trials grouped by effector; other options:
+
+ %% cell count settings
+ cc=0;
+% %% basic tuning properties
+% 
+cc=cc+1;
+keys.ccs(cc).tt.choices             = 1;
+keys.ccs(cc).tt.hands               = [0];
+keys.ccs(cc).tt.perturbations       = [0];
+keys.ccs(cc).tt.tasktypes           = {'Vsac'}; 
+keys.ccs(cc).factor                 = 'space'; % from the tuning table 
+keys.ccs(cc).conditions_to_plot     ={'Vsac'};
+keys.ccs(cc).plot_type              ='per_epoch';
+keys.ccs(cc).epochs.Vsac            ={'PeriS','PostS','Tacq','Thol'}';
+keys.ccs(cc).IC_to_plot             ='ch';
+
+%% colors
+
+keys.colors.IS = [0 153 153]; 
+keys.colors.CS = [255 0 255]; 
+keys.colors.SS_IS = [0 153 153]; 
+keys.colors.SS_CS = [255 0 255]; 
+keys.colors.SS_NP = [128 128 128]; 
+keys.colors.SS_PF = [128 128 128];
+keys.colors.SS_VS = [168 168 168];
+
+keys.colors.SS_SU_IS = [0 153 153]; 
+keys.colors.SS_SU_CS = [255 0 255]; 
+keys.colors.SS_SU_NP = [128 128 128]; 
+keys.colors.SS_SU_PF = [128 128 128];
+keys.colors.SS_SU_VS = [168 168 168];
+
+col_left      = round(autumn(6) * 255.0);
+
+keys.colors.SS_TA_SU_CS= col_left(1,:); 
+keys.colors.TT_TA_SU_CS= col_left(1,:); 
+keys.colors.TD_TA_SU_CS= col_left(1,:); 
+keys.colors.SS_D1_SU_CS= col_left(6,:);
+keys.colors.TT_D1_SU_CS= col_left(6,:);
+keys.colors.TD_D1_SU_CS= col_left(6,:);
+keys.colors.SS_D2_SU_CS= col_left(3,:);
+keys.colors.TT_D2_SU_CS= col_left(3,:);
+keys.colors.TD_D2_SU_CS= col_left(3,:);
+
+col_right     = round(winter(3) * 255.0);
+
+keys.colors.SS_TA_SU_IS= round([0.5    0.2510    0.3922]* 255.0);
+keys.colors.TT_TA_SU_IS= round([0.5    0.2510    0.3922]* 255.0);
+keys.colors.TD_TA_SU_IS= round([0.5    0.2510    0.3922]* 255.0);
+keys.colors.SS_D1_SU_IS= col_right(2,:);
+keys.colors.TT_D1_SU_IS= col_right(2,:);
+keys.colors.TD_D1_SU_IS= col_right(2,:);
+keys.colors.SS_D2_SU_IS= col_right(1,:);
+keys.colors.TT_D2_SU_IS= col_right(1,:);
+keys.colors.TD_D2_SU_IS= col_right(1,:);
+           
+      
+
+
 % %keys.limit_conditions.hands=0;
 % cc=0;
 % 
@@ -229,17 +446,7 @@ keys.ANOVAS_PER_TYPE(2).main               ={'PreS','PeriS','PostS','Tacq','Thol
 % % keys.pop(cc).tt.hands                = 0;
 % % keys.pop(cc).plot_RF                 = 0;
 % 
-% %% cell count settings
-% cc=0;
-% %% basic tuning properties
-% 
-% cc=cc+1;
-% keys.ccs(cc).tt.choices             =0;
-% keys.ccs(cc).tt.hands             	=0;
-% keys.ccs(cc).factor                 ='position_space';
-% keys.ccs(cc).conditions_to_plot     ={'Msac'};
-% keys.ccs(cc).plot_type              ='per_epoch';
-% keys.ccs(cc).epochs.Msac            ={'INI', 'Fhol','Cue','MemL','PreS','PeriS','TIhol','Tons','Thol'}';
+
 % 
 % cc=cc+1;
 % keys.ccs(cc).tt.choices             =0;
