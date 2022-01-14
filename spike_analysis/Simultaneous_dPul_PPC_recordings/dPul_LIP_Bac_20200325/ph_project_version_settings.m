@@ -155,5 +155,17 @@ keys.pop(cc).normalization              = 'by_all_trials';        % separate (di
 %                                                                 % 'by_condition','by_effector','by_type','by_all_trials','z_score','none'
 % keys.sta(cc).combine_exp_conditions              = 1; % 1 calculate PCA and plot on all condition, 0 do it separatelty for CT and PT
 %                                                                 
+%% cell count
+cc=0;
 
+cc=cc+1;
+keys.ccs(cc).tt.choices               	= [0];
+keys.ccs(cc).tt.hands                   = [1 2];
+keys.ccs(cc).tt.perturbations          	= 0;
+keys.ccs(cc).tt.tasktypes              	= {'Ddsa_han'};
+keys.ccs(cc).plot_type                 	= 'space_and_hand';
+keys.ccs(cc).factor                   	= 'epoch';
+keys.ccs(cc).conditions_to_plot        	= {'Ddsa'};
+keys.ccs(cc).epochs.Ddsa               	= {'INI', 'Fhol','Cue','Del','PreS','PeriS','PostS'}'; 
+keys.ccs(cc).IC_to_plot              	= 'in'; 
 

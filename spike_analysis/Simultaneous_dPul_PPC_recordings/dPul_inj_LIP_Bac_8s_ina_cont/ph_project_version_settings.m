@@ -1,5 +1,5 @@
 keys.project_versions={''};
-keys.project_version='dPul_inj_LIP_Bac_8s'; %Is this still used ?
+keys.project_version='dPul_inj_LIP_Bac_8s_ina_cont'; %Is this still used ?
 keys.filelist_formatted={};
 
 %% what to plot
@@ -120,7 +120,7 @@ cc=0;
 cc=cc+1;
 keys.pop(cc).tt.hands                 	= [0];
 keys.pop(cc).tt.perturbations          	= [0 1];
-keys.pop(cc).tt.choices                	= 0;
+keys.pop(cc).tt.choices                	= 1;
 keys.pop(cc).tt.selection             	= {};
 % keys.pop(cc).tt.unselect                ={'SNR_rating',3,'Single_rating',3}; 
 keys.pop(cc).tt.unselect                ={}; 
@@ -130,11 +130,12 @@ keys.pop(cc).conditions_to_plot         = {'Dsac'};
 keys.pop(cc).epoch_PF                   = 'Cue';               % epoch in which preference defines target location for "pref" plots
 keys.pop(cc).epoch_RF                   = 'Cue';               % epoch for which gaussian response fields will be plotted (if plot_RF ~ 0)
 keys.pop(cc).epoch_BL                   = 'Fhol';                % Epoch to subtract trial by trial (if FR_subtract_baseline ~ 0)
-keys.pop(cc).FR_subtract_baseline       = 0;   
+keys.pop(cc).FR_subtract_baseline       = 1;   
 keys.pop(cc).group_excluded             = {};%{'susu','ensu','suen','-su','su-','--'};
 keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
-keys.pop(cc).normalization              = 'by_perturbation';        % separate (divisive) normalization factor for trials grouped by effector; other options:
-                                                                % 'by_condition','by_effector','by_type','by_all_trials','z_score','none'
+keys.pop(cc).normalization              = 'none';        % separate (divisive) normalization factor for trials grouped by effector; other options:
+ 
+% 'by_condition','by_effector','by_type','by_all_trials','z_score','none'
 
 % %% state_space settings
 % cc=0;

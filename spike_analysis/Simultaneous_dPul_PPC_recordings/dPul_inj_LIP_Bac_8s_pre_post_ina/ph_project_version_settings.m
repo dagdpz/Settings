@@ -1,10 +1,10 @@
 keys.project_versions={''};
-keys.project_version='dPul_inj_LIP_Bac_8s_pre_post'; %Is this still used ?
+keys.project_version='dPul_inj_LIP_Bac_8s_pre_post_ina'; %Is this still used ?
 keys.filelist_formatted={};
 
 %% what to plot
 keys.plot.single_cells =0;
-keys.plot.waveforms=0;
+keys.plot.waveforms=1;
 keys.plot.population_PSTH_legends=1;  
 %% to check carefully
 % keys.position_and_plotting_arrangements             ={'hands'};

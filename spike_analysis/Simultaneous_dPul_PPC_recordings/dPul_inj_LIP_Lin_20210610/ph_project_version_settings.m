@@ -3,8 +3,8 @@ keys.project_version='dPul_control_LIP_Lin_20210610'; %Is this still used ?
 keys.filelist_formatted={};
 
 %% what to plot
-keys.plot.single_cells =0;
-keys.plot.waveforms=0;
+keys.plot.single_cells =1;
+keys.plot.waveforms=1;
 keys.plot.population_PSTH_legends=1;  
 %% to check carefully
 % keys.position_and_plotting_arrangements             ={'hands'};
@@ -110,8 +110,8 @@ keys.tt.epoch_criterion             ='none'; % only relevant for cell counts
 keys.tt.space_criterion             ='none';
 keys.tt.hands_criterion             ='none';
 keys.tt.SXH_criterion               ='none';
-keys.tt.trial_criterion_in          = 'per_hemifield_and_perturbation';
-keys.tt.trial_criterion_ch          = 'per_hemifield_and_perturbation';
+keys.tt.trial_criterion_in          = 'per_hemifield';
+keys.tt.trial_criterion_ch          = 'per_hemifield';
 
 %% population PSTH settings
 cc=0;
@@ -131,7 +131,7 @@ keys.pop(cc).FR_subtract_baseline       = 0;
 keys.pop(cc).unselect                   = {};
 keys.pop(cc).group_excluded             = {};%{'susu','ensu','suen','-su','su-','--'};
 keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
-keys.pop(cc).normalization              = 'by_all_trials';        % separate (divisive) normalization factor for trials grouped by effector; other options:
+keys.pop(cc).normalization              = 'none';        % separate (divisive) normalization factor for trials grouped by effector; other options:
                                                                 % 'by_condition','by_effector','by_type','by_all_trials','z_score','none'
 
 % %% state_space settings

@@ -115,25 +115,25 @@ keys.tt.trial_criterion_ch          = 'per_congruent_hand_hemifield';
 %% population PSTH settings
 cc=0;
 % 1
-cc=cc+1;
-keys.pop(cc).tt.hands                 	= [1 2];
-keys.pop(cc).tt.perturbations          	= 0;
-keys.pop(cc).tt.choices                	= 0;
-keys.pop(cc).tt.selection             	= {};
-keys.pop(cc).tt.tasktypes               = {'Ddsa_han'};
-keys.pop(cc).group_parameter            = 'ungrouped'; %hand_tuning
-keys.pop(cc).conditions_to_plot         = {'Ddsa'}; 
-keys.pop(cc).epoch_PF                   = 'Cue';               % epoch in which preference defines target location for "pref" plots
-keys.pop(cc).epoch_RF                   = 'Cue';               % epoch for which gaussian response fields will be plotted (if plot_RF ~ 0)
-keys.pop(cc).epoch_BL                   = 'Fhol';                % Epoch to subtract trial by trial (if FR_subtract_baseline ~ 0)
-keys.pop(cc).FR_subtract_baseline       = 0;   
-keys.pop(cc).unselect                   = {};
-keys.pop(cc).group_excluded             = {};%{'susu','ensu','suen','-su','su-','--'};
-keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
-keys.pop(cc).normalization              = 'by_all_trials';        % separate (divisive) normalization factor for trials grouped by effector; other options:
-                                                                % 'by_condition','by_effector','by_type','by_all_trials','z_score','none'
-
-% %% state_space settings
+% cc=cc+1;
+% keys.pop(cc).tt.hands                 	= [1 2];
+% keys.pop(cc).tt.perturbations          	= 0;
+% keys.pop(cc).tt.choices                	= 0;
+% keys.pop(cc).tt.selection             	= {};
+% keys.pop(cc).tt.tasktypes               = {'Ddsa_han'};
+% keys.pop(cc).group_parameter            = 'ungrouped'; %hand_tuning
+% keys.pop(cc).conditions_to_plot         = {'Ddsa'}; 
+% keys.pop(cc).epoch_PF                   = 'Cue';               % epoch in which preference defines target location for "pref" plots
+% keys.pop(cc).epoch_RF                   = 'Cue';               % epoch for which gaussian response fields will be plotted (if plot_RF ~ 0)
+% keys.pop(cc).epoch_BL                   = 'Fhol';                % Epoch to subtract trial by trial (if FR_subtract_baseline ~ 0)
+% keys.pop(cc).FR_subtract_baseline       = 0;   
+% keys.pop(cc).unselect                   = {};
+% keys.pop(cc).group_excluded             = {};%{'susu','ensu','suen','-su','su-','--'};
+% keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
+% keys.pop(cc).normalization              = 'by_all_trials';        % separate (divisive) normalization factor for trials grouped by effector; other options:
+%                                                                 % 'by_condition','by_effector','by_type','by_all_trials','z_score','none'
+% 
+% % %% state_space settings
 % cc=0;
 % % 1
 % cc=cc+1;
@@ -155,5 +155,20 @@ keys.pop(cc).normalization              = 'by_all_trials';        % separate (di
 %                                                                 % 'by_condition','by_effector','by_type','by_all_trials','z_score','none'
 % keys.sta(cc).combine_exp_conditions              = 1; % 1 calculate PCA and plot on all condition, 0 do it separatelty for CT and PT
 %                                                                 
+
+%% cell count
+
+cc=0;
+
+cc=cc+1;
+keys.ccs(cc).tt.choices               	= [0];
+keys.ccs(cc).tt.hands                   = [1 2];
+keys.ccs(cc).tt.perturbations          	= 0;
+keys.ccs(cc).tt.tasktypes              	= {'Ddsa_han'};
+keys.ccs(cc).plot_type                 	= 'space';
+keys.ccs(cc).factor                   	= 'epoch';
+keys.ccs(cc).conditions_to_plot        	= {'Ddsa'};
+keys.ccs(cc).epochs.Ddsa               	= {'INI', 'Fhol','Cue','Del','PreS','PeriS','PostS'}'; 
+keys.ccs(cc).IC_to_plot              	= 'in'; 
 
 
