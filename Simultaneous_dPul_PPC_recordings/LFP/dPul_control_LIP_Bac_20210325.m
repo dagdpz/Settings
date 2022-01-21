@@ -1,28 +1,70 @@
 %% Initialization
 
 % initialize configuration structure
-ecg_bna_cfg = [];
-ecg_bna_cfg.LFP_version='ver1';
-ecg_bna_cfg.process_LFP=1;
+lfp_tfa_cfg = [];
    
 %% Settings for data folders
+
+% absolute path to the folder where the results of analysis should be stored
+lfp_tfa_cfg.results_folder = 'Y:\Projects\Simultaneous_dPul_PPC_recordings\LFP';
+
 % versioning, a unique version for the settings file and analysis results
 % the results produced using this settings file would be saved under 
-% the folder [lfp_tfa_cfg.results_folder, '\', date, '\ver_' lfp_tfa_cfg.version]
-% eg: 'C:\Data\MIP_timefreq_analysis\LFP_timefrequency_analysis\Data\LFP_TFA_Results\20190506\ver_SN_0.2'
-ecg_bna_cfg.version = version; %'Magnus_Reach_InakdPul_ECG';
+% the folder [lfp_tfa_cfg.results_folder, '\' lfp_tfa_cfg.version]
+% eg: 'Y:\Personal\Sarath\Results\LFP_TFA_Results\Linus_inactivation_8sessions'
+lfp_tfa_cfg.version = 'dPul_control_LIP_Bac_20210325';
+
+% whether to calculate the LFP time frequency spectrograms and noise trial
+% detection
+% if the time frequency spectrograms for the given sessions were already
+% calculated, it can be reused by setting 'lfp_tfa_cfg.proc_lfp_folder' 
+% as the folder where the results are stored. In this case, set this
+% variable to false. If this variable is set to false, but the LFP
+% timefrequency spectrograms are not available in the specified folder, the
+% time frequency spectrograms will be calculated and stored in 
+% lfp_tfa_cfg.results_folder.  If the time frequency spectrograms 
+% should be computed, set this variable to true. 
+lfp_tfa_cfg.process_LFP = true;
+
+% folder where the results of LFP time frequency spectrograms are stored
+lfp_tfa_cfg.proc_lfp_folder = [];
+if ~lfp_tfa_cfg.process_LFP
+    lfp_tfa_cfg.proc_lfp_folder = ...
+        'Y:\Projects\Simultaneous_dPul_PPC_recordings\LFP\dPul_control_LIP_Bac_20210325\Processed LFP';
+end
+
+% whether to calculate the site-wise averages
+% if the site-wise averages for the given sessions were already
+% calculated, it can be reused by setting 'lfp_tfa_cfg.analyse_lfp_folder' 
+% as the folder where the results are stored. In this case, set this
+% variable to false. If this variable is set to false, but the LFP
+% site-wise averages are not available in the specified folder, the
+% site-wise averages will be calculated and stored in 
+% lfp_tfa_cfg.results_folder. If the site-wise averages 
+% should be computed, set this variable to true. 
+% Caution: Set this variable to false only if all settings other than 
+% lfp_tfa_cfg.session_info, remains the same
+lfp_tfa_cfg.compute_site_average = true;
+
+%wheter to plot site_wise averages
+lfp_tfa_cfg.plot_site_average = false;
+
+
+% folder where the results of analysed LFP site averages are stored
+lfp_tfa_cfg.analyse_lfp_folder = [];
+if ~lfp_tfa_cfg.compute_site_average
+    lfp_tfa_cfg.analyse_lfp_folder = ...
+        'Y:\Projects\Simultaneous_dPul_PPC_recordings\LFP\dPul_control_LIP_Bac_20210325\LFP Analysis';
+end
 
 % sorted neurons excel file, from which information about sessions and
 % individual sites can be obtained
-ecg_bna_cfg.info_filepath = 'Y:\Projects\Pulv_distractor_spatial_choice\ephys\ECG_taskRest\Bac_sorted_neurons.xls';
+lfp_tfa_cfg.info_filepath = 'Y:\Projects\Simultaneous_dPul_PPC_recordings\ephys\dPul_control_LIP_Bac_20210325\Bac_sorted_neurons.xls';
 
 % dataset to be used for analysis, see entry 'Set' in the sorted neurons excel file
 % only those sessions belonging to 'Set' = lfp_tfa_cfg.use_datasets will be
 % used for analysis
-ecg_bna_cfg.use_datasets = [31];
-
-% absolute path to the folder where the results of analysis should be stored
-ecg_bna_cfg.results_folder = ['Y:\Projects\' project];
+lfp_tfa_cfg.use_datasets = [11];
 
 % info about sessions to be analysed
 % should be a 1 x N struct, N = number of sessions to analyse
@@ -37,25 +79,30 @@ ecg_bna_cfg.results_folder = ['Y:\Projects\' project];
 %       specified, all post-injection blocks will be combined; if
 %       'allbutfirst', all blocks from the second post-injection block will
 %       be combined)
-%   'Input_ECG_combined', 'Y:\Data\Magnus_phys_combined_monkeypsych_TDT\20191213', ...
 
-ephys_version='ECG_taskRest';
-ephys_folder=['Y:\Projects\' project '\ephys\' ephys_version filesep]; 
-mainfolder=['Y:\Projects\' project '\ECG\' version filesep];
-ecgfiles=dir([mainfolder '*_ecg*']);
-ecgnames={ecgfiles.name};
+       
+       lfp_tfa_cfg.session_info(1) = ...
+    struct('Monkey',        'Bac', ...
+           'Date',          '20210325', ...
+           'Input',         'Y:\Projects\Simultaneous_dPul_PPC_recordings\ephys\dPul_control_LIP_Bac_20210325\sites_Bacchus_20210325.mat', ...
+           'Preinj_blocks',  10, ...
+           'Postinj_blocks', 12);
+       
+      
+       
+       
+       
+% To add a new session to analyse, increment the counter by 1 and add a new
+% value into the lfp_tfa_cfg.session_info struct
+% Example: 
+% lfp_tfa_cfg.session_info(3) = ...
+%     struct('Monkey',        'Magnus', ...
+%            'Date',          '20190208', ...
+%            'Input',         'Y:\Projects\PPC_pulv_body_signals\ephys\MIP_inactivation_20190208\sites_Magnus_20190208.mat', ...
+%            'Preinj_blocks',  0, ...
+%            'Postinj_blocks', 'allbutfirst');
 
-for s=1:numel(ecgnames)
-    underscore_pointers=strfind(ecgnames{s},'_');
-    monkey=ecgnames{s}(1:underscore_pointers(1)-1);
-    date=ecgnames{s}(underscore_pointers(1)+1:underscore_pointers(2)-1);
-    ecg_bna_cfg.session_info(s) = ...
-        struct('Monkey',        monkey, ...
-        'Date',           date, ...
-        'Input_ECG',         [mainfolder ecgnames{s}], ...
-        'Input_ECG_preproc', {{[ephys_folder 'by_block_' monkey '_' date '.mat'], ...
-                               [ephys_folder 'by_block_' monkey '_' date '.mat']}});  %% not sure why we need two here........
-end
+%% Setting for analysis and averaging
 
 % what kind of analyses should be done on LFP
 % should be a cell array of strings which indicate which kind of analyses
@@ -65,9 +112,10 @@ end
 %       'evoked'    - LFP evoked response average for given conditions and time windows
 %       'pow'       - LFP power spectrum average for given conditions and epochs
 %       'sync'      - LFP-LFP phase synchronization measure for given conditions and
-%           time windows
-%ecg_bna_cfg.analyses = {'Rpeak_evoked_ECG', 'Rpeak_evoked_onset', 'Event_trig_R2Rt'}; % , 'Rpeak_evoked_LFP', 'Rpeak_evoked_TFS'
-ecg_bna_cfg.analyses = {'Rpeak_evoked_LFP', 'Rpeak_evoked_TFS'}; % , 
+%                   time windows
+%       'sync'      - LFP-LFP phase synchronization spectrum for given 
+%                   conditions and epochs
+lfp_tfa_cfg.analyses = {'tfs'}; %
 
 % targets to be included in the analysis
 % should be a cell array of strings which indicate the target names
@@ -76,7 +124,16 @@ ecg_bna_cfg.analyses = {'Rpeak_evoked_LFP', 'Rpeak_evoked_TFS'}; % ,
 % Those targets which are not in the analysed sessions will be ignored
 % Example:
 % 1. lfp_tfa_cfg.compare.targets = {'MIPa_R', 'MIPa_L', 'dPul_R', 'dPul_L'}; 
-ecg_bna_cfg.compare.targets = {'dPul_R', 'dPul_L'}; 
+lfp_tfa_cfg.compare.targets = {'LIP_L','LIP_R'}; 
+
+% target pairs to be included for LFP-LFP sychronization
+% should be a 1xN cell array of 1x2 cell array of strings which indicate
+% the target pairs between which the LFP-LFP phase synchronization should
+% be calculated - valid only if LFP-LFP phase sync should be calculated
+if any(strcmp(lfp_tfa_cfg.analyses, 'sync') | strcmp(lfp_tfa_cfg.analyses, 'syncsp'))
+    lfp_tfa_cfg.compare.target_pairs = {{'LIP_R', 'LIP_R'}, {'dPul_R', 'LIP_R'}, ...
+        {'dPul_R', 'dPul_R'}}; 
+end
 
 % reference hemisphere for hand-space labelling
 % can be 'R' (for right hemisphere) or 'L' (for left hemisphere)
@@ -85,27 +142,71 @@ ecg_bna_cfg.compare.targets = {'dPul_R', 'dPul_L'};
 % lesional labeling
 % set ref_hemisphere to recorded hemishere for ipsi lateral and contra
 % lateral labeling
-ecg_bna_cfg.ref_hemisphere = 'R';   %%% NEEDS TO BE FIXED
-
-% maximum no:of sites to analyse from each session
-% If maxsites < total number of sites in a session, only maxsite number of
-% sites will be analysed
-% Examples:
-% 1. lfp_tfa_cfg.maxsites = 2; only first two sites will be analysed from 
-% each session
-% 1. lfp_tfa_cfg.maxsites = inf; all the sites will be analysed from 
-% each session
-ecg_bna_cfg.maxsites = inf; % inf = analyse all sites
+lfp_tfa_cfg.ref_hemisphere = 'R'; 
 
 % random seed for random number generator for reproducibility
-% set to a non negative integer below 2^32
-ecg_bna_cfg.random_seed = rng;
+lfp_tfa_cfg.random_seed = rng;
 
-% whether to plot ECG data for individual trials
-% Set to 1 for plotting individual trials, zero otherwise
-ecg_bna_cfg.plottrials = 0;
+% define the time windows to analyse for LFP TFR and evoked LFP response
+% Must be a Nx4 cell array, N = number of windows to analyse
+% Each row corresponds to one state and contain following elements
+% 1. Identifier of state around which the window is referenced, 
+% see lfp_tfa_global_states, Example:  lfp_tfa_states.CUE_ON
+% 2. Name of the reference state (window) - string (used for labeling 
+% purposes in plots) eg: 'Cue'
+% 3. Start time offset - offset in seconds from reference state onset for 
+% the start of time window
+% start time = Reference state onset time + Start time offset
+% 4. End time offset - offset in seconds from ref. state onset for end of
+% time window
+% end time = Ref. state onset time + end time offset
+% 
+% Example row: 
+%   lfp_tfa_states.CUE_ON,     'Cue',    -1.0 ,    0.5
+lfp_tfa_cfg.analyse_states = {'single', lfp_tfa_states.CUE_ON,    'Cue',      -0.5,   0.9;...
+    %                              'single', lfp_tfa_states.REA_INI,    'Reach',    -0.3,   0.5};
+    'single', lfp_tfa_states.SAC_INI,    'Saccades',    -0.3,   0.5};
 
-%% Settings for averaging TFR and evoked LFP based on conditions
+% define the epochs to analyse for LFP power spectrum
+% Must be a Nx4 cell array, N = number of epochs to analyse
+% Each row corresponds to one epoch and contain following elements
+% 1. Identifier of state to which the epoch is referred, see lfp_tfa_global_states, Example:  lfp_tfa_states.CUE_ON
+% 2. Name of the epoch - string (used for labeling purposes in plots) eg: 'FHol'
+% 3. Start time offset - offset in seconds from reference state onset for 
+% the epoch start
+% Epoch start time = Reference state onset time + Start time offset
+% 4. End time offset - offset in seconds from ref. state onset for epoch
+% end
+% Epoch end time = Ref. state onset time + end time offset
+% Example row: 
+%   lfp_tfa_states.CUE_ON,     'FHol',    -0.3 ,    0
+lfp_tfa_cfg.analyse_epochs = {lfp_tfa_states.CUE_ON,     'FHol',    -0.3 ,    0  ;...
+                              lfp_tfa_states.CUE_ON,     'Cue' ,    0.05 ,    0.2 ; ...
+                              lfp_tfa_states.DEL_PER,    'EDel',    0.3 ,     0.6 ; ...
+                              lfp_tfa_states.TAR_ACQ,    'Del',     -0.3 ,    0  ; ...
+                               lfp_tfa_states.SAC_INI,   'PreS',     -0.2,    -0.05;...
+                               lfp_tfa_states.SAC_END,   'PeriS',     -0.1,    0.15;...
+ %                               lfp_tfa_states.REA_INI,    'PreR',    -0.3 ,    -0.05 ; ...
+%                               lfp_tfa_states.REA_END,    'PeriR',   -0.2 ,    0.2 ; ...
+                               lfp_tfa_states.SUCCESS,    'THol',    -0.3 ,    0    };
+                          
+% color scheme to be used for plotting the power spectra and ppc spectra
+% curve for each epoch. This could either be a colormap or a Kx3 array,
+% where K is the number of epochs to be analysed i.e.
+% K=length(lfp_tfa_cfg.analyse_epochs). The three columns represent R, G,
+% and B values normalized to 1
+lfp_tfa_cfg.epoch_colors = flip(othercolor('Cat_12', length(lfp_tfa_cfg.analyse_epochs)));
+                          
+% the error measure to be plotted for evoked LFP response
+% Can be 'stddev', 'stderr' or 'bootci'
+% 'stddev' - plots one standard deviation around the mean
+% 'stderr' - plots one standard error around the mean
+% 'bootci' - plots 95% confidence interval around the mean by
+% bootstrapping, see bootci function
+lfp_tfa_cfg.error_measure = 'bootci'; 
+
+
+%% Settings for trial conditions
 
 % trial types to be included in the analysis
 % should be a vector of integers specifying the types
@@ -116,8 +217,7 @@ ecg_bna_cfg.plottrials = 0;
 % and type = 2 separately
 % 2. lfp_tfa_cfg.compare.types = nan; Ignore trial type (trials with any
 % type value are combined)
-% [task rest]
-ecg_bna_cfg.compare.types = [2, 1];
+lfp_tfa_cfg.compare.types = [4];
 
 % effectors to be included in the analysis
 % should be a vector of integers specifying the effectors
@@ -128,17 +228,7 @@ ecg_bna_cfg.compare.types = [2, 1];
 % and effector = 6 separately
 % 2. lfp_tfa_cfg.compare.types = nan; Ignore effector (trials with any
 % effector value are combined)
-ecg_bna_cfg.compare.effectors = [0];
-
-% which trials are to be included in the analysis based on success
-% Examples:
-% 1. lfp_tfa_cfg.compare.success = 0; % analyse only successful trials
-% 2. lfp_tfa_cfg.compare.success = 1; % analyse only unsuccessful trials
-% 3. lfp_tfa_cfg.compare.success = [0, 1]; % analyse successful and 
-% unsuccessful trials separately
-% 3. lfp_tfa_cfg.compare.success = nan; % ignore success (both successful
-% and unsuccessful trials are combined)
-ecg_bna_cfg.compare.success = 1;
+lfp_tfa_cfg.compare.effectors = [0];
 
 % which type of choice trials are to be included in the analysis
 % Examples:
@@ -148,10 +238,10 @@ ecg_bna_cfg.compare.success = 1;
 % instructed trials separately
 % 3. lfp_tfa_cfg.compare.choice_trials = nan; % ignore choice (both choice
 % and instructed trials are combined)
-ecg_bna_cfg.compare.choice_trials = nan; 
+lfp_tfa_cfg.compare.choice_trials = [0,1]; 
 
 % reach hands to be included for analysis
-% should be 'any' or a cell array that contain only values 'R', 'L'
+% should be nan or a cell array that contain only values 'R', 'L'
 % Examples:
 % 1. lfp_tfa_cfg.compare.reach_hands = {'L'}; include only those trials in
 % which reach hand is left
@@ -159,12 +249,12 @@ ecg_bna_cfg.compare.choice_trials = nan;
 % which reach hand is right
 % 3. lfp_tfa_cfg.compare.reach_hands = {'L', 'R'}; analyse the trials in
 % which reach hand is left and right separately
-% 4. lfp_tfa_cfg.compare.reach_hands = 'any'; ignore hand label (trial with
+% 4. lfp_tfa_cfg.compare.reach_hands = {'any'}; ignore hand label (trial with
 % any hand label is combined)
-ecg_bna_cfg.compare.reach_hands = {'any'};
+lfp_tfa_cfg.compare.reach_hands = {'any'};
 
 % reach space to be included for analysis
-% should be 'any' or a cell array that contain only values 'R', 'L'
+% should be a cell array that contain only values 'R', 'L', or 'any'
 % Examples:
 % 1. lfp_tfa_cfg.compare.reach_spaces = {'L'}; include only those trials in
 % which acquired target is on left
@@ -172,9 +262,9 @@ ecg_bna_cfg.compare.reach_hands = {'any'};
 % which acquired target is on right
 % 3. lfp_tfa_cfg.compare.reach_hands = {'L', 'R'}; analyse the trials in
 % which acquired target is on left and on right separately
-% 4. lfp_tfa_cfg.compare.reach_hands = 'any'; ignore space label (trial with
+% 4. lfp_tfa_cfg.compare.reach_hands = {'any'}; ignore space label (trial with
 % any acquired target position is combined)
-ecg_bna_cfg.compare.reach_spaces = {'any'}; 
+lfp_tfa_cfg.compare.reach_spaces = {'L', 'R'}; 
 
 % hand space combinations to be excluded from analysis
 % should be a cell array with each element containing the hand and space
@@ -187,13 +277,10 @@ ecg_bna_cfg.compare.reach_spaces = {'any'};
 % exclude left hand left space and right hand right space trials
 % 3. lfp_tfa_cfg.compare.exclude_handspace = {'RL', 'RR'};
 % exclude right hand left space and right hand right space trials
-ecg_bna_cfg.compare.exclude_handspace = {};
+lfp_tfa_cfg.compare.exclude_handspace = {};
 
 % perturbations to be included in the analysis
-%  1) priotrity for manual definition in the; 2) based on ECG ses structure
-% setting file and finally it will take the pertu.variable from Luka's
-% preprocessing files
-% should be inf, 0, 1 or [0, 1]
+% should be nan, 0, 1 or [0, 1]
 % Examples:
 % lfp_tfa_cfg.compare.perturbations = 0; consider only those trials with
 % perturbation value = lfp_tfa_cfg.compare.perturbation_groups(0)
@@ -204,7 +291,7 @@ ecg_bna_cfg.compare.exclude_handspace = {};
 % lfp_tfa_cfg.compare.perturbation_groups(1) separately
 % lfp_tfa_cfg.compare.perturbations = nan; combine the trials with
 % any perturbation value 
-ecg_bna_cfg.compare.perturbations = [0]; 
+lfp_tfa_cfg.compare.perturbations = [0 1]; 
 
 % differences in conditions to be analysed
 % add new entries for further difference calculations
@@ -223,27 +310,36 @@ ecg_bna_cfg.compare.perturbations = [0];
 %    'choice', {0, 1}}};
 % Compute difference between difference between post and pre-injection trials of choice trials and that of instructed trials     
 
-ecg_bna_cfg.diff_condition = {};
-ecg_bna_cfg.diff_condition(1) = {{'type_eff', {[2 1], [0 0]}}};
+% lfp_tfa_cfg.diff_condition(1) = {{'choice', {0, 1}}};
+% lfp_tfa_cfg.diff_condition(2) = {{'reach_hands', {'L', 'R'}}};
+ %lfp_tfa_cfg.diff_condition(2) = {{'reach_spaces', {'L', 'R'}}};
+ lfp_tfa_cfg.diff_condition(1) = {{'perturbation', {0, 1}}};
+% lfp_tfa_cfg.diff_condition(2) = {{'choice', {0, 1}}};
+% lfp_tfa_cfg.diff_condition(3) = {{'type_eff', {[4 4], [4 4]}}};
+% lfp_tfa_cfg.diff_condition(3) = {{'perturbation', {0, 1}, ...
+%     'choice', {0, 1}}};reach_hands
 
-% colors to be used for plotting the comparison plots
-ecg_bna_cfg.diff_color = {};
-ecg_bna_cfg.diff_color{1} = [0, 0.5, 0.5; 0, 1, 1];
+% minimum number of trials per condition to be satisfied to consider a site
+% for averaging, if for a site, for any condition, the  number of valid 
+% (non-noisy) trials is less than mintrials_percondition, the site is not considered for averaging
+% Set lfp_tfa_cfg.mintrials_percondition = 1 to consider a site if atleast
+% one valid trial is obtained (keep minimum value of 1)
+% Example:
+% consider those sites with atleast 5 trials for each condition
+% lfp_tfa_cfg.mintrials_percondition = 5; 
+% By condition, we mean a combination of choice/instr, pre/post-injection, type and effector, hand-space
+ lfp_tfa_cfg.mintrials_percondition = 5;
 
-% legends to be used for plotting the comparison plots
-ecg_bna_cfg.diff_legend = {};
-ecg_bna_cfg.diff_legend{1} = {'Task', 'Rest'};
-
-%% Time information
+%% Settings for defining trial start and end
 
 % Specify events which mark trial start and end
-ecg_bna_cfg.trialinfo = struct();
+lfp_tfa_cfg.trialinfo = struct();
 
 % ID of the reference state which indicates start of a trial
 % Example:
 % lfp_tfa_cfg.trialinfo.start_state = lfp_tfa_states.FIX_ACQ; reference for 
 % trial start is the onset of fixation acquisition
-ecg_bna_cfg.trialinfo.start_state = lfp_tfa_states.INI_TRI; %% what dies this do again?
+lfp_tfa_cfg.trialinfo.start_state = lfp_tfa_states.FIX_ACQ;
 
 % offset to be considered from the onset of
 % trial start reference state for calculating the trial start time
@@ -253,13 +349,13 @@ ecg_bna_cfg.trialinfo.start_state = lfp_tfa_states.INI_TRI; %% what dies this do
 % trial start time = onset time of lfp_tfa_cfg.trialinfo.start_state - 0.5;
 % 1. lfp_tfa_cfg.trialinfo.ref_tstart = 0.5;
 % trial start time = onset time of lfp_tfa_cfg.trialinfo.start_state + 0.5;
-ecg_bna_cfg.trialinfo.ref_tstart = -0;
+lfp_tfa_cfg.trialinfo.ref_tstart = -0;
 
-% ID of the reference state which indicates end of a trial
+% ID of the reference state which indicates start of a trial
 % Example:
 % lfp_tfa_cfg.trialinfo.end_state = lfp_tfa_states.TAR_HOL; reference for 
 % trial start is the onset of target hold
-ecg_bna_cfg.trialinfo.end_state = lfp_tfa_states.TRI_END;
+lfp_tfa_cfg.trialinfo.end_state = lfp_tfa_states.SUCCESS;
 
 % offset to be considered from the onset of
 % trial end reference state for calculating the trial end time
@@ -269,10 +365,10 @@ ecg_bna_cfg.trialinfo.end_state = lfp_tfa_states.TRI_END;
 % trial start time = onset time of lfp_tfa_cfg.trialinfo.end_state + 0.5;
 % 1. lfp_tfa_cfg.trialinfo.ref_tend = -0.5;
 % trial start time = onset time of lfp_tfa_cfg.trialinfo.end_state - 0.5;
-ecg_bna_cfg.trialinfo.ref_tend = 0;
+lfp_tfa_cfg.trialinfo.ref_tend = 0;
 
 
-%% Settings for ft_freqanalysis in FieldTrip
+%% Settings for power spectrogram calculations
 % Configuration for calculating LFP time frequency spectrogram using
 % ft_freqanalysis function of the fieldtrip toolbox
 
@@ -286,19 +382,19 @@ ecg_bna_cfg.trialinfo.ref_tend = 0;
 %                        length, implements multitaper frequency transformation.
 % see http://www.fieldtriptoolbox.org/reference/ft_freqanalysis/ for more
 % details
-ecg_bna_cfg.tfr.method          = 'wavelet';  
+lfp_tfa_cfg.tfr.method          = 'wavelet';  
 
 % frequencies of interest (in Hz)
 % Example: 
 % 1. lfp_tfa_cfg.tfr.foi = logspace(log10(2), log10(120), 60); 60 logspaced
 % frequencies from 2Hz to 120 Hz
-ecg_bna_cfg.tfr.foi             = logspace(log10(2), log10(120), 60);
+lfp_tfa_cfg.tfr.foi             = logspace(log10(2), log10(120), 60);
 
 % number of lfp samples to step for the sliding time window
 % Example:
 % lfp_tfa_cfg.tfr.timestep  = 25; 
 % the sliding time window steps by an amount equal to 25 lfp samples. 
-ecg_bna_cfg.tfr.timestep        = 25; 
+lfp_tfa_cfg.tfr.timestep        = 25; 
 
 % depending on the method chosen, other configurations vary
 
@@ -310,7 +406,10 @@ ecg_bna_cfg.tfr.timestep        = 25;
 % for width = 6, frequency F = 30 Hz, wavelet duration = 6/30/pi = 0.0637 s
 % Example: 
 % 1. lfp_tfa_cfg.tfr.width = 6; % wavelet of width 6 cycles 
-ecg_bna_cfg.tfr.width           = 6; 
+lfp_tfa_cfg.tfr.width = [];
+if strcmp(lfp_tfa_cfg.tfr.method, 'wavelet')
+    lfp_tfa_cfg.tfr.width       = 6; 
+end
 
 % For method = 'mtmfft' or 'mtmconvol', Ignored for method = 'wavelet'
 
@@ -319,7 +418,10 @@ ecg_bna_cfg.tfr.width           = 6;
 % 'hanning' - conventional single taper
 % 'dpss' - multiple tapers based on discrete prolate spheroidal sequences 
 % (DPSS), also known as the Slepian sequence
-ecg_bna_cfg.tfr.taper           = [];
+lfp_tfa_cfg.tfr.taper           = [];
+if strcmp(lfp_tfa_cfg.tfr.method, 'mtmconvol')
+    lfp_tfa_cfg.tfr.width       = 'hanning'; 
+end
 
 % the width of frequency smoothing in Hz (fw)
 % Note that 4 Hz smoothing means plus-minus 4 Hz, i.e. a 8 Hz smoothing box.
@@ -327,46 +429,59 @@ ecg_bna_cfg.tfr.taper           = [];
 % Example: 
 % 1. lfp_tfa_cfg.tfr.tapsmofrq  = 0.4 *cfg.foi; 
 %the smoothing will increase with frequency.
-ecg_bna_cfg.tfr.tapsmofrq       = [];
+lfp_tfa_cfg.tfr.tapsmofrq       = [];
+if strcmp(lfp_tfa_cfg.tfr.method, 'mtmconvol')
+    lfp_tfa_cfg.tfr.tapsmofrq  = 0.4 *cfg.foi; % the smoothing will increase with frequency.
+end
 
 % length of the sliding time-window in seconds (= tw)
 % should be vector of length 1 x numfoi
 % Following relation must hold: 
-% K = 2twfw-1, where K is required to be larger than 0
+% K = 2*tw*fw-1, where K is required to be larger than 0
 % K is the number of tapers applied
 % Example:
 % lfp_tfa_cfg.tfr.t_ftimwin  = 5./cfg.foi; % 5 cycles per window
 % window length decreases with frequency
-ecg_bna_cfg.tfr.t_ftimwin       = [];
+lfp_tfa_cfg.tfr.t_ftimwin       = [];
+if strcmp(lfp_tfa_cfg.tfr.method, 'mtmconvol')
+    lfp_tfa_cfg.tfr.tapsmofrq  = 5./cfg.foi; % 5 cycles per window. 
+end
 
-%% Settings to detect noisy trials
+%% Settings for LFP-LFP phase synchronization measure
+% measure of LFP-LFP phase synchronization
+% can be only 'ppc' currently
+% 'ppc' calculates pairwise phase consistency
+% entry will be used as cfg.method for performing ft_connectivityanalysis
+lfp_tfa_cfg.sync.measure = 'ppc';
+
+%% Settings for detection of noisy trials
 % configuration for lfp noise rejection
-ecg_bna_cfg.noise = [];
+lfp_tfa_cfg.noise = [];
 % whether or not to apply noise rejection 
 % Set to 0 to accept all trials
 % Set to 1 to run the noise trial detection methods
-ecg_bna_cfg.noise.detect = 1;
+lfp_tfa_cfg.noise.detect = 1;
 % combination of methods to be used - future use
 % currently all methods are used together 
-ecg_bna_cfg.noise.methods = {'amp', 'std', 'diff', 'pow'};
+lfp_tfa_cfg.noise.methods = {'amp', 'std', 'diff', 'pow'};
 % threshold for lfp raw amplitude (number of std deviations from mean)
-ecg_bna_cfg.noise.amp_thr = 6;
+lfp_tfa_cfg.noise.amp_thr = 6;
 % number of consecutive samples beyond threshold to be considered for marking 
 % a noisy trial
-ecg_bna_cfg.noise.amp_N = 10;
+lfp_tfa_cfg.noise.amp_N = 10;
 % no of standard deviations of trial LFP w.r.t LFP std of all trials
-ecg_bna_cfg.noise.std_thr = 4;
+lfp_tfa_cfg.noise.std_thr = 4;
 % threshold for lfp derivative (number of std deviations from mean)
-ecg_bna_cfg.noise.diff_thr = 6;
+lfp_tfa_cfg.noise.diff_thr = 6;
 % number of consecutive samples beyond threshold to be considered for marking 
 % a noisy trial
-ecg_bna_cfg.noise.diff_N = 10;
+lfp_tfa_cfg.noise.diff_N = 10;
 % threshold for lfp power in number of standard deviations from mean
-ecg_bna_cfg.noise.pow_thr = 4;
+lfp_tfa_cfg.noise.pow_thr = 4;
 % whether single trials should be plotted
-ecg_bna_cfg.noise.plottrials = 0;
+lfp_tfa_cfg.noise.plottrials = 0;
 
-%% Settings to compute baseline power
+%% Settings used for baseline power normalization
 
 % ID of the reference state around which baseline should be considered, see
 % lfp_tfa_global_define_states
@@ -375,7 +490,7 @@ ecg_bna_cfg.noise.plottrials = 0;
 % onset as the reference state for baseline period
 % 2. lfp_tfa_cfg.baseline_ref_state = ''; consider the whole trial period
 % for baseline
-ecg_bna_cfg.baseline_ref_state = ''; 
+lfp_tfa_cfg.baseline_ref_state = ''; 
 
 % period of interest relative to onset of baseline_ref_state for baseline power calculation, 
 % Examples: 
@@ -386,27 +501,27 @@ ecg_bna_cfg.baseline_ref_state = '';
 % 2. lfp_tfa_cfg.baseline_ref_period = 'trial'; to consider the complete trial period
 % for baseline power calculation
 
-if isempty(ecg_bna_cfg.baseline_ref_state)
-	ecg_bna_cfg.baseline_ref_period = 'trial';
+if isempty(lfp_tfa_cfg.baseline_ref_state)
+	lfp_tfa_cfg.baseline_ref_period = 'trial';
 else
-	ecg_bna_cfg.baseline_ref_period = []; % SET LIMITS OF baseline_ref_period here
+	lfp_tfa_cfg.baseline_ref_period = []; % SET LIMITS OF baseline_ref_period here
 end
 
-% which perturbation to be considered for baseline power calculation
+% which perturbation blocks to be considered for baseline power calculation
 % set to 0 for considering only pre-injection blocks
 % in case trials from a single perturbation block is analysed, the same
 % block will be used for baseline calculation
 % Examples: 
-% 1. lfp_tfa_cfg.baseline_perturbation = 0; only blocks of
+% 1. lfp_tfa_cfg.baseline_perturbation = 0; only perturbation block 0
 % (pre-injection) is used for baseline power calculation
-% 2. lfp_tfa_cfg.baseline_perturbation = inf; combines all perturbation
-% blocks, but is not recommended
-% 3. lfp_tfa_cfg.baseline_perturbation = 1; only post-injection blocks are
-% used for baseline calculation
-if length(ecg_bna_cfg.compare.perturbations) == 1
-    ecg_bna_cfg.baseline_perturbation = ecg_bna_cfg.compare.perturbations;
+% 2. lfp_tfa_cfg.baseline_perturbation = [0, 2]; combines perturbation blocks
+% 0 (pre-injection) and 2 (post-injection), but is not recommended
+% 3. lfp_tfa_cfg.baseline_perturbation = [2, 3]; combines perturbation blocks
+% 2 and 3
+if length(lfp_tfa_cfg.compare.perturbations) == 1
+    lfp_tfa_cfg.baseline_perturbation = lfp_tfa_cfg.compare.perturbations;
 else
-    ecg_bna_cfg.baseline_perturbation = 0; % set the perturbation block(s) to be used for computing baseline
+    lfp_tfa_cfg.baseline_perturbation = 0; % set the perturbation block(s) to be used for computing baseline
 end
 
 % whether to consider choice (1) or instructed trials (0) in baseline power
@@ -416,148 +531,13 @@ end
 % Examples:
 % 1. lfp_tfa_cfg.baseline_use_choice_trial = 0; % consider only instructed trials
 % 2. lfp_tfa_cfg.baseline_use_choice_trial = 1; % consider only choice trials
-% 3. lfp_tfa_cfg.baseline_use_choice_trial = inf; % consider both choice and instructed trials
-% 3. lfp_tfa_cfg.baseline_use_choice_trial = [0, 1]; % consider both
-% instructed and choice trials (not implemented - for future use)
-if length(ecg_bna_cfg.compare.choice_trials) == 1
-    ecg_bna_cfg.baseline_use_choice_trial = ecg_bna_cfg.compare.choice_trials;
+% 3. lfp_tfa_cfg.baseline_use_choice_trial = [0, 1]; % consider both instructed and choice trials
+if length(lfp_tfa_cfg.compare.choice_trials) == 1
+    lfp_tfa_cfg.baseline_use_choice_trial = lfp_tfa_cfg.compare.choice_trials;
 else
     % set choice(1) and/or instructed(0) to be used for computing baseline
-    ecg_bna_cfg.baseline_use_choice_trial = 0; 
+    lfp_tfa_cfg.baseline_use_choice_trial = 0; 
 end
-
-% which task type to be used in baseline power calculation 
-% in case, only one task type is being analysed, the trials from
-% the analysed task type is used for baseline
-% Examples:
-% 1. lfp_tfa_cfg.baseline_use_type = 4; % consider only trials of type=4
-% 2. lfp_tfa_cfg.baseline_use_type = [4, 1]; % consider trials of
-% both type=4 and type=1(not implemented - for future use)
-% 3. lfp_tfa_cfg.baseline_use_type = inf; % consider trials of
-% any type 
-if length(ecg_bna_cfg.compare.types) == 1
-    ecg_bna_cfg.baseline_use_type = ecg_bna_cfg.compare.types;
-else
-    % set task type(s) to be used for computing baseline
-    ecg_bna_cfg.baseline_use_type = 1; 
-end
-
-% which effector to be used in baseline power calculation 
-% in case, only one efffector is being analysed, the trials from
-% the analysed effector is used for baseline
-% Examples:
-% 1. lfp_tfa_cfg.baseline_use_effector = 0; % consider only trials with
-% effector = 0
-% 2. lfp_tfa_cfg.baseline_use_effector = inf; % consider trials with any
-% effector value
-% 3. lfp_tfa_cfg.baseline_use_effector = [0, 6]; % consider only trials with
-% effector = 0 and effector = 6 (not implemented - for future use)
-if length(ecg_bna_cfg.compare.effectors) == 1
-    ecg_bna_cfg.baseline_use_effector = ecg_bna_cfg.compare.effectors;
-else
-    % set effector(s) to be used for computing baseline
-    ecg_bna_cfg.baseline_use_effector = 0; 
-end
-
-% define the time windows to analyse for LFP TFR and evoked LFP response
-% Must be a Nx4 cell array, N = number of windows to analyse
-% Each row corresponds to one state and contain following elements
-% 1. Identifier of state around which the window is referenced, 
-% see lfp_tfa_global_states, Example:  lfp_tfa_states.CUE_ON
-% 2. Name of the reference state (window) - string (used for labeling 
-% purposes in plots) eg: 'Cue'
-% 3. Start time offset - offset in seconds from reference state onset for 
-% the start of time window
-% start time = Reference state onset time + Start time offset
-% 4. End time offset - offset in seconds from ref. state onset for end of
-% time window
-% end time = Ref. state onset time + end time offset
-% 
-% Example row: 
-%   lfp_tfa_states.CUE_ON,     'Cue',    -1.0 ,    0.5
-%   lfp_tfa_cfg.analyse_states = {'combined', [lfp_tfa_states.INI_TRI, ...
-%         lfp_tfa_states.TRI_END], 0.8, 100, 'random'};
-% lfp_tfa_cfg.analyse_states = {lfp_tfa_states.CUE_ON,    'Cue',      -0.5,   0.9;...
-%                              lfp_tfa_states.REA_INI,    'Reach',    -0.3,   0.5};
-ecg_bna_cfg.analyse_states = {'ecg', 'ECG peak', -0.4, 0.4};
-
-% whether to perform a permutation test for evoked LFP and evoked ECG with
-% randomly shuffled triggers
-ecg_bna_cfg.random_permute_triggers = false;
-
-% number of shuffles required
-ecg_bna_cfg.n_shuffles = [];
-if ecg_bna_cfg.random_permute_triggers
-    ecg_bna_cfg.n_shuffles = 100;
-end
-
-%define the time windows to analyse event triggered R2Rt
-% Must be a Nx4 cell array, N = number of windows to analyse
-% Each row corresponds to one epoch and contain following elements
-% 1. Identifier of state to which the epoch is referred, see lfp_tfa_global_states, Example:  lfp_tfa_states.CUE_ON
-% 2. Name of the window - string (used for labeling purposes in plots) eg: 'FHol'
-% 3. Start time offset - offset in seconds from reference state onset for 
-% the window start
-% Window start time = Reference state onset time + Start time offset
-% 4. End time offset - offset in seconds from ref. state onset for window
-% end
-% Window end time = Ref. state onset time + end time offset
-% Example row: 
-%   lfp_tfa_states.REA_INI,   'Reach ini',    -0.5,   0.5                          
-ecg_bna_cfg.event_triggers = {lfp_tfa_states.TAR_ACQ,   'Cue on',    -0.5,   0.5;...
-                              lfp_tfa_states.SAC_INI,   'Sac ini',      -0.5,   0.5; ...
-                              lfp_tfa_states.REWARD,    'Reward',      -0.5,   0.5};
-                          
-% options for normalizing evoked ECG R2R interval 
-% Whether or not to normalize the R2R interval for plotting
-% Set to true for normalizing, otherwise set to false
-% If set to true, the R2R interval for each trial is normalized by the mean
-% R2R interval for that trial period, see lfp_tfa_cfg.trialinfo for the
-% definition of trial period
-ecg_bna_cfg.normalize_R2Rt = true;
-                          
-ecg_bna_cfg.analyse_Rpeak_states = {lfp_tfa_states.TAR_ACQ,   'Cue on', [-0.25 0.25], 'afterRpeak'; ...
-                                    lfp_tfa_states.SAC_INI,   'Sac ini', [-0.25 0.25], 'afterRpeak'; ...
-                                    lfp_tfa_states.REWARD,    'Reward', [-0.25 0.25], 'afterRpeak'};
-                                
-%                                 
-% lfp_tfa_states.INI_TRI       = 1; % initialize trial
-% lfp_tfa_states.FIX_ACQ       = 2; % fixation acquisition
-% lfp_tfa_states.FIX_HOL       = 3; % fixation hold
-% lfp_tfa_states.TAR_ACQ       = 4; % target acquisition
-% lfp_tfa_states.TAR_HOL       = 5; % target hold
-% lfp_tfa_states.CUE_ON        = 6; % cue on
-% lfp_tfa_states.MEM_PER       = 7; % memory period
-% lfp_tfa_states.DEL_PER       = 8; % delay period
-% lfp_tfa_states.TAR_ACQ_INV   = 9; % target acquisition invisible
-% lfp_tfa_states.TAR_HOL_INV   = 10; % target hold invisible
-% lfp_tfa_states.MAT_ACQ       = 11; % target acquisition in sample to match
-% lfp_tfa_states.MAT_HOL       = 12; % target acquisition in sample to match
-% lfp_tfa_states.MAT_ACQ_MSK   = 13; % target acquisition in sample to match
-% lfp_tfa_states.MAT_HOL_MSK   = 14; % target acquisition in sample to match
-% lfp_tfa_states.SEN_RET       = 15; % return to sensors for poffenberger
-% lfp_tfa_states.ABORT         = 19;
-% lfp_tfa_states.SUCCESS       = 20;
-% lfp_tfa_states.REWARD        = 21;
-% lfp_tfa_states.ITI           = 50;
-% lfp_tfa_states.SAC_INI       = 60; % saccade start
-% lfp_tfa_states.SAC_END       = 61;
-% lfp_tfa_states.REA_INI       = 62; %reach start
-% lfp_tfa_states.REA_END       = 63;
-% lfp_tfa_states.TRI_END       = 90;
-% lfp_tfa_states.ITI_END       = 98;
-% lfp_tfa_states.CLOSE         = 99;
-
-% minimum number of trials per condition to be satisfied to consider a site
-% for averaging, if for a site, for any condition, the  number of valid 
-% (non-noisy) trials is less than mintrials_percondition, the site is not considered for averaging
-% Set lfp_tfa_cfg.mintrials_percondition = 1 to consider a site if atleast
-% one valid trial is obtained (keep minimum value of 1)
-% Example:
-% consider those sites with atleast 5 trials for each condition
-% lfp_tfa_cfg.mintrials_percondition = 5; 
-% By condition, we mean a combination of choice/instr, pre/post-injection, type and effector, hand-space
- ecg_bna_cfg.mintrials_percondition = 0;
 
 % method to be used for baseline normalization
 % can be 'zscore', 'relchange', 'subtraction', 'division'
@@ -571,7 +551,7 @@ ecg_bna_cfg.analyse_Rpeak_states = {lfp_tfa_states.TAR_ACQ,   'Cue on', [-0.25 0
 % P_norm(t,f) = (P(t, f)) / (mu_P(f))
 % Example:
 % lfp_tfa_cfg.baseline_method = 'relchange';
-ecg_bna_cfg.baseline_method = 'relchange';
+lfp_tfa_cfg.baseline_method = 'zscore';
 
 % flag to indicate if LFP TFR average should be computed - for future use
 % Set to 0 if LFP TFR average should not be computed, else set to 1
@@ -586,7 +566,7 @@ ecg_bna_cfg.baseline_method = 'relchange';
 % lfp_tfa_cfg.compute_pow = 1;
 
     
-%% Settings for averaging across sessions or sites
+%% Settings for grand averaging
 
 % how to average data across multiple sessions/sites
 % 'sessions' - average the session averages (a session average is the
@@ -595,4 +575,42 @@ ecg_bna_cfg.baseline_method = 'relchange';
 % Example: lfp_tfa_cfg.compute_avg_across = 'sites'
 % Example: lfp_tfa_cfg.compute_avg_across = {'sessions', 'sites'};  compute
 % both averages across session averages and across site averages
-ecg_bna_cfg.compute_avg_across = {'sessions', 'sites'}; 
+lfp_tfa_cfg.compute_avg_across = {'sessions','sites'}; 
+
+%% Settings for statistical test for significance of difference between TFR average across sites
+
+%Multiple comparison correction method to be used: FDR or Bonferroni
+lfp_tfa_cfg.correction_method = 'Bonferroni';
+
+% Desired false discovery rate for multiple comparison
+% correction for statistical significance tests
+% See
+% https://de.mathworks.com/matlabcentral/fileexchange/27418-fdr_bh?focused=5807896&tab=function
+% for details
+lfp_tfa_cfg.fd_rate = 0.05;
+
+% FDR procedure to be used
+% can be 'pdep' or 'dep'
+% 'pdep' - executes the original Bejnamini & Hochberg
+%             FDR procedure is used, which is guaranteed to be accurate if
+%             the individual tests are independent or positively dependent
+% 'dep' - the FDR procedure
+%             described in Benjamini & Yekutieli (2001) that is guaranteed
+%             to be accurate for any test dependency structure
+lfp_tfa_cfg.fdr_method = 'pdep';
+
+% Set to true (1) for plotting only the significant difference
+% between site averages, false (0) otherwise
+lfp_tfa_cfg.plot_significant = 1;
+
+%% settings for saving figures
+
+% formats to save the resulting figures
+% should be a cell array with one or more figure formats
+% formats  can be '-pdf', '-eps', '-svg', '-png', '-tif', '-jpg' and '-bmp'
+% (default 'png')
+% Examples:
+%   lfp_tfa_cfg.save_fig_format = {'png'}; % save figure as png only
+%   lfp_tfa_cfg.save_fig_format = {'png', 'pdf'}; % save figure as png and
+%   pdf
+lfp_tfa_cfg.save_fig_format = {'png', 'pdf'};
