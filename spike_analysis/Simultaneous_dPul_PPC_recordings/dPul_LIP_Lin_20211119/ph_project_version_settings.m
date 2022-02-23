@@ -1,5 +1,5 @@
 keys.project_versions={''};
-keys.project_version='dPul_inj_LIP_Lin_20210616'; %Is this still used ?
+keys.project_version='dPul_LIP_Lin_20211119'; %Is this still used ?
 keys.filelist_formatted={};
 
 %% what to plot
@@ -7,11 +7,11 @@ keys.plot.single_cells =1;
 keys.plot.waveforms=1;
 keys.plot.population_PSTH_legends=1;  
 %% to check carefully
-% keys.position_and_plotting_arrangements             ={'hands'};
-keys.position_and_plotting_arrangements             ={'hands_inactivation'};
+keys.position_and_plotting_arrangements             ={'hands'};
+% keys.position_and_plotting_arrangements             ={'hands_inactivation'};
 
 %% computation settings
-keys.cal.datasets                   =[70];
+keys.cal.datasets                   =[80];
 keys.cal.effectors                  =[0];
 keys.cal.reach_hand                 =[0];
 keys.cal.types                      =[4];
@@ -22,9 +22,9 @@ keys.batching.combine_monkeys           =1;
 keys.batching.monkeys                   ={'Linus'};
 % keys.Tesla.date                      ='[20160217 20180101]';
 %keys.Linus.date                       ='[20161103 20180101]';
-keys.Linus.date                       ='[20210616 20210616]';
-keys.batching.targets                  = {'LIP_L','LIP_R'};
-keys.contra_ipsi_relative_to           ='perturbation_site';
+keys.Linus.date                       ='[20211119 20211119]';
+keys.batching.targets                  = {'dPul_L','LIP_L'};
+keys.contra_ipsi_relative_to           ='target';
 keys.plot.polars_on_extra_figure        =0;
 
 %% criterions to exclude trials and units
@@ -34,25 +34,24 @@ keys.cal.single_rating                  =[1,2,3];                   % not assign
 keys.cal.SNR_rating                     =[1,2,3];                 % not assigning sorting table information if criterion is not met. Therefore only excludes when taking only units in the tabl
 keys.cal.min_trials_per_condition       =5;                         % minimum trials per conditon (look at ph_arrange_positions to see how conditions are defined)
 keys.cal.min_spikes_per_unit            =10;                        % excluding units that have in total less spikes (workaround for sortcode assignment bug) - to be removed
-keys.cal.perturbation_groups            ={0,3};       % which perturbation values from excel table will be assigned to control and perturbation for comparisons and population analysis
+% keys.cal.perturbation_groups            ={0};       % which perturbation values from excel table will be assigned to control and perturbation for comparisons and population analysis
 
 %% epochs
-
-  keys.EPOCHS_PER_TYPE{4}={...
-     'INI',      2,	-0.4,	-0.1,   'INI';...
+keys.EPOCHS_PER_TYPE{4}={...
+    'INI',      2,	-0.4,	-0.1,   'INI';...
     'Facq',     3,	-0.4,	-0.1,   'INI';...
-     'Fhol',     6,	-0.425,	-0.125,      'INI';...
-    'Cue',      6,	0.05,   0.35,   'INI';...
-%     'EDel',     8, 	0.3,    0.6,   'INI';...
-    'Del',      4, 	-0.5,   -0.2,      'INI';...
-     'PreS',     60,	-0.3, 	0,  'INI';...
-    'PeriS',	60,	-0.15, 	0.15,   'INI';...
-     'PostS',	61,	0.05,   0.35,    'INI';...
+    'Fhol',     6,	-0.3,	0,      'INI';...
+    'Cue',      6,	0.05,   0.15,   'INI';...
+    'EDel',     8, 	0.3,    0.6,   'INI';...
+    'Del',      4, 	-0.3,   0,      'INI';...
+     'PreS',     60,	-0.17, 	-0.01,  'INI';...
+    'PeriS',	60,	-0.01, 	0.15,   'INI';...
+    'PostS',	61,	0.05,   0.2,    'INI';...
 %     'PreR',     62,	-0.3, 	-0.05,  'INI';...
 %     'PeriR',	62,	-0.05, 	0.15,   'INI';...
 %     'PostR',	63,	0.05,   0.2,    'INI';...
-%      'Thol',     20,	-0.1,   0,      'INI';...     
-    };
+     'Thol',     20,	-0.1,   0,      'INI';...
+     };
 
 keys.WINDOWS_PER_TYPE{4}={...
     'Delay Period', 6,	-0.33,  0.8;... %1.35
@@ -66,7 +65,7 @@ keys.WINDOWS_PER_TYPE{4}={...
     'INI' 'Del';...
     'INI' 'PreS';...
     'INI' 'PeriS';...
-    'INI' 'PostS';...
+    'Fhol' 'PostS';...
     %     'INI' 'PreR';...
     %     'INI' 'PeriR';...
     'INI' 'Thol'};
@@ -93,9 +92,9 @@ keys.cal.min_trials_per_condition       =5;
 % The tricky part here is to define the conditions in which we ask for a specific number of trials. 
 % Each condition is defined by tasktype(contains type,effector,and
 % position_arrangement),position (depends on arrangement),hand used and choice/instruced trial (MISSING HERE: PERTURBATION)
-keys.tt.tasktypes                   ={'Dsa_han'}; % typically only one tasktype defines
-keys.tt.type_effectors                   ={'Dsa'}; % typically only one tasktype defines
-keys.tt.hands                       =[];
+keys.tt.tasktypes                   ={'Ddsa_han'}; % typically only one tasktype defines
+keys.tt.type_effectors                   ={'Ddsa'}; % typically only one tasktype defines
+keys.tt.hands                       =[1 2];
 keys.tt.choices                     =[0]; %IMPORTANT: and also not really perfect, for choice trials trial criterion is applied by hemifield, not by position.
 % Each unique combination of the above parameters has to contain at least keys.cal.min_trials_per_condition trials, if not the cell is excluded in ph_reduce_tuning_table
 keys.tt.selection                   ={};                         % easy to use if there is a parameter in the tuning table for which you want your cells to have the same value
@@ -110,20 +109,20 @@ keys.tt.epoch_criterion             ='none'; % only relevant for cell counts
 keys.tt.space_criterion             ='none';
 keys.tt.hands_criterion             ='none';
 keys.tt.SXH_criterion               ='none';
-keys.tt.trial_criterion_in          = 'per_hemifield_and_perturbation';
-keys.tt.trial_criterion_ch          = 'per_hemifield_and_perturbation';
+keys.tt.trial_criterion_in          = 'per_hemifield';
+keys.tt.trial_criterion_ch          = 'per_congruent_hand_hemifield';
 
 %% population PSTH settings
 cc=0;
 % 1
 cc=cc+1;
-keys.pop(cc).tt.hands                 	= [0];
-keys.pop(cc).tt.perturbations          	= [0 1];
-keys.pop(cc).tt.choices                	= 0;
+keys.pop(cc).tt.hands                 	= [1 2];
+keys.pop(cc).tt.perturbations          	= 0;
+keys.pop(cc).tt.choices                	= 1;
 keys.pop(cc).tt.selection             	= {};
-keys.pop(cc).tt.tasktypes               = {'Dsa_han'};
+keys.pop(cc).tt.tasktypes               = {'Ddsa_han'};
 keys.pop(cc).group_parameter            = 'ungrouped'; %hand_tuning
-keys.pop(cc).conditions_to_plot         = {'Dsac'}; 
+keys.pop(cc).conditions_to_plot         = {'Ddsa'}; 
 keys.pop(cc).epoch_PF                   = 'Cue';               % epoch in which preference defines target location for "pref" plots
 keys.pop(cc).epoch_RF                   = 'Cue';               % epoch for which gaussian response fields will be plotted (if plot_RF ~ 0)
 keys.pop(cc).epoch_BL                   = 'Fhol';                % Epoch to subtract trial by trial (if FR_subtract_baseline ~ 0)

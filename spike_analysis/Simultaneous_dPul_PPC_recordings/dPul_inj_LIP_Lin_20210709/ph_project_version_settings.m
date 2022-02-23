@@ -3,8 +3,8 @@ keys.project_version='dPul_control_LIP_Lin_20210709'; %Is this still used ?
 keys.filelist_formatted={};
 
 %% what to plot
-keys.plot.single_cells =0;
-keys.plot.waveforms=0;
+keys.plot.single_cells =1;
+keys.plot.waveforms=1;
 keys.plot.population_PSTH_legends=1;  
 %% to check carefully
 % keys.position_and_plotting_arrangements             ={'hands'};

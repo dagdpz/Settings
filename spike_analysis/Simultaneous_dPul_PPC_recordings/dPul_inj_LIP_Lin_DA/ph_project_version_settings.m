@@ -1,10 +1,10 @@
 keys.project_versions={''};
-keys.project_version='LIP_dPul_inj_working_post_sfn_SF';
+keys.project_version='LIP_dPul_inj_Lin_DA';
 keys.filelist_formatted={};
 
 %% what to plot
-keys.plot.single_cells =1;
-keys.plot.waveforms=1;
+keys.plot.single_cells =0;
+keys.plot.waveforms=0;
 keys.plot.population_PSTH_legends=1;
 %% to check carefully
 %keys.position_and_plotting_arrangements             ={'hands'};
