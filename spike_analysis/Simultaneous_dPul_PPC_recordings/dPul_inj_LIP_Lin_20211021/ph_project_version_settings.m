@@ -3,8 +3,8 @@ keys.project_version='dPul_inj_LIP_Lin_20211021'; %Is this still used ?
 keys.filelist_formatted={};
 
 %% what to plot
-keys.plot.single_cells =0;
-keys.plot.waveforms=0;
+keys.plot.single_cells =1;
+keys.plot.waveforms=1;
 keys.plot.population_PSTH_legends=1;  
 %% to check carefully
 % keys.position_and_plotting_arrangements             ={'hands'};
@@ -110,8 +110,8 @@ keys.tt.epoch_criterion             ='none'; % only relevant for cell counts
 keys.tt.space_criterion             ='none';
 keys.tt.hands_criterion             ='none';
 keys.tt.SXH_criterion               ='none';
-keys.tt.trial_criterion_in          = 'per_hemifield_and_perturbation';
-keys.tt.trial_criterion_ch          = 'per_hemifield_and_perturbation';
+keys.tt.trial_criterion_in          = 'per_hemifield';
+keys.tt.trial_criterion_ch          = 'per_hemifield';
 
 %% population PSTH settings
 cc=0;
@@ -121,7 +121,7 @@ keys.pop(cc).tt.hands                 	= [0];
 keys.pop(cc).tt.perturbations          	= [0 1];
 keys.pop(cc).tt.choices                	= 0;
 keys.pop(cc).tt.selection             	= {};
-keys.pop(cc).tt.tasktypes               = {'Dsa_han'};
+keys.pop(cc).tt.tasktypes               = {'Dsac_han'};
 keys.pop(cc).group_parameter            = 'ungrouped'; %hand_tuning
 keys.pop(cc).conditions_to_plot         = {'Dsac'}; 
 keys.pop(cc).epoch_PF                   = 'Cue';               % epoch in which preference defines target location for "pref" plots

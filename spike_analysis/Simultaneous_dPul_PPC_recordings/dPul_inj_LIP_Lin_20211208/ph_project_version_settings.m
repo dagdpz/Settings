@@ -93,8 +93,8 @@ keys.cal.min_trials_per_condition       =5;
 % The tricky part here is to define the conditions in which we ask for a specific number of trials. 
 % Each condition is defined by tasktype(contains type,effector,and
 % position_arrangement),position (depends on arrangement),hand used and choice/instruced trial (MISSING HERE: PERTURBATION)
-keys.tt.tasktypes                   ={'Dsa_han'}; % typically only one tasktype defines
-keys.tt.type_effectors                   ={'Dsa'}; % typically only one tasktype defines
+keys.tt.tasktypes                   ={'Dsac_han'}; % typically only one tasktype defines
+keys.tt.type_effectors                   ={'Dsac'}; % typically only one tasktype defines
 keys.tt.hands                       =[];
 keys.tt.choices                     =[0]; %IMPORTANT: and also not really perfect, for choice trials trial criterion is applied by hemifield, not by position.
 % Each unique combination of the above parameters has to contain at least keys.cal.min_trials_per_condition trials, if not the cell is excluded in ph_reduce_tuning_table
@@ -110,8 +110,8 @@ keys.tt.epoch_criterion             ='none'; % only relevant for cell counts
 keys.tt.space_criterion             ='none';
 keys.tt.hands_criterion             ='none';
 keys.tt.SXH_criterion               ='none';
-keys.tt.trial_criterion_in          = 'per_hemifield_and_perturbation';
-keys.tt.trial_criterion_ch          = 'per_hemifield_and_perturbation';
+keys.tt.trial_criterion_in          = 'per_hemifield';
+keys.tt.trial_criterion_ch          = 'per_hemifield';
 
 %% population PSTH settings
 cc=0;
@@ -121,7 +121,7 @@ keys.pop(cc).tt.hands                 	= [0];
 keys.pop(cc).tt.perturbations          	= [0 1];
 keys.pop(cc).tt.choices                	= 0;
 keys.pop(cc).tt.selection             	= {};
-keys.pop(cc).tt.tasktypes               = {'Dsa_han'};
+keys.pop(cc).tt.tasktypes               = {'Dsac_han'};
 keys.pop(cc).group_parameter            = 'ungrouped'; %hand_tuning
 keys.pop(cc).conditions_to_plot         = {'Dsac'}; 
 keys.pop(cc).epoch_PF                   = 'Cue';               % epoch in which preference defines target location for "pref" plots
@@ -131,7 +131,7 @@ keys.pop(cc).FR_subtract_baseline       = 0;
 keys.pop(cc).unselect                   = {};
 keys.pop(cc).group_excluded             = {};%{'susu','ensu','suen','-su','su-','--'};
 keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
-keys.pop(cc).normalization              = 'by_all_trials';        % separate (divisive) normalization factor for trials grouped by effector; other options:
+keys.pop(cc).normalization              = 'by_perturbation';        % separate (divisive) normalization factor for trials grouped by effector; other options:
                                                                 % 'by_condition','by_effector','by_type','by_all_trials','z_score','none'
 
 % %% state_space settings

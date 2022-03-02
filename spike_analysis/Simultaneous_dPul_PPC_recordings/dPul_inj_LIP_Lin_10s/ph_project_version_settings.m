@@ -41,7 +41,7 @@ keys.cal.perturbation_groups            ={0,[2 3]};       % which perturbation v
   keys.EPOCHS_PER_TYPE{4}={...
      'INI',      2,	-0.4,	-0.1,   'INI';...
     'Facq',     3,	-0.4,	-0.1,   'INI';...
-     'Fhol',     6,	-0.425,	-0.125,      'INI';...
+     'Fhol',     6,	-0.4,	-0.1,      'INI';...
     'Cue',      6,	0.05,   0.35,   'INI';...
 %     'EDel',     8, 	0.3,    0.6,   'INI';...
     'Del',      4, 	-0.5,   -0.2,      'INI';...
@@ -55,7 +55,7 @@ keys.cal.perturbation_groups            ={0,[2 3]};       % which perturbation v
     };
 
 keys.WINDOWS_PER_TYPE{4}={...
-    'Delay Period', 6,	-0.33,  0.8;... %1.35
+    'Delay Period', 6,	-0.4,  0.8;... %1.35
 %     'Reach',        62,	-0.35,  0.7;... %-0.35
      'Saccade',        60,	-0.8,  0.3;... %-0.35
     };  
@@ -110,8 +110,8 @@ keys.tt.epoch_criterion             ='none'; % only relevant for cell counts
 keys.tt.space_criterion             ='none';
 keys.tt.hands_criterion             ='none';
 keys.tt.SXH_criterion               ='none';
-keys.tt.trial_criterion_in          = 'per_hemifield_and_perturbation';
-keys.tt.trial_criterion_ch          = 'per_hemifield_and_perturbation';
+keys.tt.trial_criterion_in          = 'per_hemifield';
+keys.tt.trial_criterion_ch          = 'per_hemifield';
 
 %% population PSTH settings
 cc=0;
@@ -121,7 +121,7 @@ keys.pop(cc).tt.hands                 	= [0];
 keys.pop(cc).tt.perturbations          	= [0 1];
 keys.pop(cc).tt.choices                	= 0;
 keys.pop(cc).tt.selection             	= {};
-keys.pop(cc).tt.tasktypes               = {'Dsa_han'};
+keys.pop(cc).tt.tasktypes               = {'Dsac_han'};
 keys.pop(cc).group_parameter            = 'ungrouped'; %hand_tuning
 keys.pop(cc).conditions_to_plot         = {'Dsac'}; 
 keys.pop(cc).epoch_PF                   = 'Cue';               % epoch in which preference defines target location for "pref" plots
