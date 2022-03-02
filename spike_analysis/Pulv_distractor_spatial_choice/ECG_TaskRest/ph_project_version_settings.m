@@ -11,7 +11,7 @@ keys.condition_parameters  ={'stimulustype','difficulty','success'};
 %% computation settings
 keys.plot.single_cells                  =0;         % perform single cell plotting
 keys.cal.process_spikes                  =1;      % you can choose not to run spikes at all           
-keys.cal.process_sites                   =0;      % you can choose not to run lfp sites at all (saving processing time)             
+keys.cal.process_sites                   =1;      % you can choose not to run lfp sites at all (saving processing time)             
 keys.cal.process_by_block                =1;      % you can choose not to run by block (body signals f.e.) at all (saving processing time)                   
 
 %% 
@@ -26,7 +26,7 @@ keys.cal.min_trials_per_condition       =4; %Ppopulation analysis          % min
 %keys.cal.min_spikes_per_unit            =50;  
 
 keys.cal.units_from_sorting_table       =1;
-keys.cal.MA_selection                   ={'display',0,'keep_raw_data',0,'saccade_definition',4, 'correlation_conditions',{}};    
+keys.cal.MA_selection                   ={'display',0,'keep_raw_data',1,'saccade_definition',4, 'correlation_conditions',{}};    
 
 % batching
 keys.batching.combine_monkeys       =0;                        % for population analysis

@@ -3,7 +3,10 @@
 % initialize configuration structure
 ecg_bna_cfg = [];
 ecg_bna_cfg.LFP_version='ver1';
-ecg_bna_cfg.process_LFP=1;
+ecg_bna_cfg.process_LFP=0;
+ecg_bna_cfg.process_ECG=0;
+ecg_bna_cfg.plot_significant=1;
+ecg_bna_cfg.save_fig_format={'pdf'};
    
 %% Settings for data folders
 % versioning, a unique version for the settings file and analysis results
@@ -24,6 +27,7 @@ ecg_bna_cfg.use_datasets = [31];
 % absolute path to the folder where the results of analysis should be stored
 ecg_bna_cfg.results_folder = ['Y:\Projects\' project];
 
+ecg_bna_cfg.monkey='Bacchus';
 % info about sessions to be analysed
 % should be a 1 x N struct, N = number of sessions to analyse
 % the struct should contain the following fields:
@@ -44,6 +48,7 @@ ephys_folder=['Y:\Projects\' project '\ephys\' ephys_version filesep];
 mainfolder=['Y:\Projects\' project '\ECG\' version filesep];
 ecgfiles=dir([mainfolder '*_ecg*']);
 ecgnames={ecgfiles.name};
+ecgnames={'Bacchus_20210720_ecg.mat','Bacchus_20210826_ecg.mat','Bacchus_20211001_ecg.mat','Bacchus_20211028_ecg.mat'};
 
 for s=1:numel(ecgnames)
     underscore_pointers=strfind(ecgnames{s},'_');
@@ -54,7 +59,11 @@ for s=1:numel(ecgnames)
         'Date',           date, ...
         'Input_ECG',         [mainfolder ecgnames{s}], ...
         'Input_ECG_preproc', {{[ephys_folder 'by_block_' monkey '_' date '.mat'], ...
-                               [ephys_folder 'by_block_' monkey '_' date '.mat']}});  %% not sure why we need two here........
+                               [ephys_folder 'by_block_' monkey '_' date '.mat']}},...
+        'Input_LFP', {{[ephys_folder 'sites_' monkey '_' date '.mat'], ...
+                               [ephys_folder 'sites_' monkey '_' date '.mat']}},...
+        'Preinj_blocks',  0, ...
+        'Postinj_blocks', []);  %% not sure why we need two here........
 end
 
 % what kind of analyses should be done on LFP
@@ -76,7 +85,7 @@ ecg_bna_cfg.analyses = {'Rpeak_evoked_LFP', 'Rpeak_evoked_TFS'}; % ,
 % Those targets which are not in the analysed sessions will be ignored
 % Example:
 % 1. lfp_tfa_cfg.compare.targets = {'MIPa_R', 'MIPa_L', 'dPul_R', 'dPul_L'}; 
-ecg_bna_cfg.compare.targets = {'dPul_R', 'dPul_L'}; 
+ecg_bna_cfg.compare.targets = {'dPul_R', 'dPul_L','VPL_R', 'VPL_L'}; 
 
 % reference hemisphere for hand-space labelling
 % can be 'R' (for right hemisphere) or 'L' (for left hemisphere)
@@ -148,7 +157,7 @@ ecg_bna_cfg.compare.success = 1;
 % instructed trials separately
 % 3. lfp_tfa_cfg.compare.choice_trials = nan; % ignore choice (both choice
 % and instructed trials are combined)
-ecg_bna_cfg.compare.choice_trials = nan; 
+ecg_bna_cfg.compare.choice_trials = [0, 1]; 
 
 % reach hands to be included for analysis
 % should be 'any' or a cell array that contain only values 'R', 'L'
@@ -174,7 +183,7 @@ ecg_bna_cfg.compare.reach_hands = {'any'};
 % which acquired target is on left and on right separately
 % 4. lfp_tfa_cfg.compare.reach_hands = 'any'; ignore space label (trial with
 % any acquired target position is combined)
-ecg_bna_cfg.compare.reach_spaces = {'any'}; 
+ecg_bna_cfg.compare.reach_spaces = {'L', 'N','R'}; 
 
 % hand space combinations to be excluded from analysis
 % should be a cell array with each element containing the hand and space
@@ -425,6 +434,7 @@ else
     % set choice(1) and/or instructed(0) to be used for computing baseline
     ecg_bna_cfg.baseline_use_choice_trial = 0; 
 end
+    ecg_bna_cfg.baseline_use_choice_trial = ecg_bna_cfg.compare.choice_trials;
 
 % which task type to be used in baseline power calculation 
 % in case, only one task type is being analysed, the trials from
@@ -441,6 +451,7 @@ else
     % set task type(s) to be used for computing baseline
     ecg_bna_cfg.baseline_use_type = 1; 
 end
+    ecg_bna_cfg.baseline_use_type = ecg_bna_cfg.compare.types;
 
 % which effector to be used in baseline power calculation 
 % in case, only one efffector is being analysed, the trials from
