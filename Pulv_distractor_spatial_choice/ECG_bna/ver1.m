@@ -3,8 +3,8 @@
 % initialize configuration structure
 ecg_bna_cfg = [];
 ecg_bna_cfg.LFP_version='ver1';
-ecg_bna_cfg.process_LFP=0;
-ecg_bna_cfg.process_ECG=0;
+ecg_bna_cfg.process_LFP=1;
+ecg_bna_cfg.process_ECG=1;
 ecg_bna_cfg.plot_significant=1;
 ecg_bna_cfg.save_fig_format={'pdf'};
    
@@ -45,25 +45,50 @@ ecg_bna_cfg.monkey='Bacchus';
 
 ephys_version='ECG_taskRest';
 ephys_folder=['Y:\Projects\' project '\ephys\' ephys_version filesep]; 
-mainfolder=['Y:\Projects\' project '\ECG\' version filesep];
-ecgfiles=dir([mainfolder '*_ecg*']);
-ecgnames={ecgfiles.name};
-ecgnames={'Bacchus_20210720_ecg.mat','Bacchus_20210826_ecg.mat','Bacchus_20211001_ecg.mat','Bacchus_20211028_ecg.mat'};
+ecg_preprocess_folder='Y:\Data\BodySignals\ECG\';
+monkeys={'Bacchus'};
+sessions{1}=[20210720,20210826,20211001,20211028,20211207,20211214];
+session_info{1}={'Bacchus','20210720',[4 5 6 7 8]};
 
-for s=1:numel(ecgnames)
-    underscore_pointers=strfind(ecgnames{s},'_');
-    monkey=ecgnames{s}(1:underscore_pointers(1)-1);
-    date=ecgnames{s}(underscore_pointers(1)+1:underscore_pointers(2)-1);
-    ecg_bna_cfg.session_info(s) = ...
-        struct('Monkey',        monkey, ...
-        'Date',           date, ...
-        'Input_ECG',         [mainfolder ecgnames{s}], ...
-        'Input_ECG_preproc', {{[ephys_folder 'by_block_' monkey '_' date '.mat'], ...
-                               [ephys_folder 'by_block_' monkey '_' date '.mat']}},...
-        'Input_LFP', {{[ephys_folder 'sites_' monkey '_' date '.mat'], ...
-                               [ephys_folder 'sites_' monkey '_' date '.mat']}},...
-        'Preinj_blocks',  0, ...
-        'Postinj_blocks', []);  %% not sure why we need two here........
+% mainfolder=['Y:\Projects\' project '\ECG\' version filesep];
+% ecgfiles=dir([mainfolder '*_ecg*']);
+
+
+
+
+%ecgnames={ecgfiles.name};
+%ecgnames={'Bacchus_20210720_ecg.mat','Bacchus_20210826_ecg.mat','Bacchus_20211001_ecg.mat','Bacchus_20211028_ecg.mat'};
+% for s=1:numel(ecgnames)
+%     underscore_pointers=strfind(ecgnames{s},'_');
+%     monkey=ecgnames{s}(1:underscore_pointers(1)-1);
+%     date=ecgnames{s}(underscore_pointers(1)+1:underscore_pointers(2)-1);
+%     ecg_bna_cfg.session_info(s) = ...
+%         struct('Monkey',        monkey, ...
+%         'Date',           date, ...
+%         'Input_ECG',         [mainfolder ecgnames{s}], ...
+%         'Input_ECG_preproc', {{[ephys_folder 'by_block_' monkey '_' date '.mat'], ...
+%                                [ephys_folder 'by_block_' monkey '_' date '.mat']}},...
+%         'Input_LFP', {{[ephys_folder 'sites_' monkey '_' date '.mat'], ...
+%                                [ephys_folder 'sites_' monkey '_' date '.mat']}},...
+%         'Preinj_blocks',  0, ...
+%         'Postinj_blocks', []);  %% not sure why we need two here........
+% end
+cumulative_sessions=0;
+for m=1:numel(monkeys)
+    monkey=monkeys{m};
+    for s=1:numel(sessions{m})
+        cumulative_sessions=cumulative_sessions+1;
+        date=num2str(sessions{m}(s));
+        ecg_bna_cfg.session_info(cumulative_sessions) = ...
+            struct('Monkey',        monkey, ...
+            'Date',           date, ...
+            'Input_ECG',         [ecg_preprocess_folder filesep monkey filesep date filesep date '_ecg.mat'], ...
+            'Input_ECG_preproc', {{[ephys_folder 'by_block_' monkey '_' date '.mat']}},...
+            'Input_spikes', [ephys_folder 'population_' monkey '_' date '.mat'],...
+            'Input_LFP', {{[ephys_folder 'sites_' monkey '_' date '.mat']}},...
+            'Preinj_blocks',  0, ...
+            'Postinj_blocks', 1);  %% not sure why we need two here........
+    end
 end
 
 % what kind of analyses should be done on LFP
@@ -76,7 +101,7 @@ end
 %       'sync'      - LFP-LFP phase synchronization measure for given conditions and
 %           time windows
 %ecg_bna_cfg.analyses = {'Rpeak_evoked_ECG', 'Rpeak_evoked_onset', 'Event_trig_R2Rt'}; % , 'Rpeak_evoked_LFP', 'Rpeak_evoked_TFS'
-ecg_bna_cfg.analyses = {'Rpeak_evoked_LFP', 'Rpeak_evoked_TFS'}; % , 
+ecg_bna_cfg.analyses = {'Rpeak_evoked_LFP', 'Rpeak_evoked_TFS', 'Rpeak_evoked_spike_histogram'}; % , 
 
 % targets to be included in the analysis
 % should be a cell array of strings which indicate the target names
@@ -183,7 +208,7 @@ ecg_bna_cfg.compare.reach_hands = {'any'};
 % which acquired target is on left and on right separately
 % 4. lfp_tfa_cfg.compare.reach_hands = 'any'; ignore space label (trial with
 % any acquired target position is combined)
-ecg_bna_cfg.compare.reach_spaces = {'L', 'N','R'}; 
+ecg_bna_cfg.compare.reach_spaces = {'any'}; 
 
 % hand space combinations to be excluded from analysis
 % should be a cell array with each element containing the hand and space
@@ -494,7 +519,7 @@ ecg_bna_cfg.analyse_states = {'ecg', 'ECG peak', -0.4, 0.4};
 
 % whether to perform a permutation test for evoked LFP and evoked ECG with
 % randomly shuffled triggers
-ecg_bna_cfg.random_permute_triggers = false;
+ecg_bna_cfg.random_permute_triggers = true;
 
 % number of shuffles required
 ecg_bna_cfg.n_shuffles = [];
