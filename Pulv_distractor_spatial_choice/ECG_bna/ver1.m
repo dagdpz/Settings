@@ -48,7 +48,7 @@ ephys_folder=['Y:\Projects\' project '\ephys\' ephys_version filesep];
 ecg_preprocess_folder='Y:\Data\BodySignals\ECG\';
 monkeys={'Bacchus'};
 sessions{1}=[20210720,20210826,20211001,20211028,20211207,20211214];
-session_info{1}={'Bacchus','20210720',[4 5 6 7 8]};
+%session_info{1}={'Bacchus','20210720',[4 5 6 7 8]};
 
 % mainfolder=['Y:\Projects\' project '\ECG\' version filesep];
 % ecgfiles=dir([mainfolder '*_ecg*']);
