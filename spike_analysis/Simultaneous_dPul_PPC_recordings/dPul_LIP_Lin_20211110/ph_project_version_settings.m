@@ -92,9 +92,9 @@ keys.cal.min_trials_per_condition       =5;
 % The tricky part here is to define the conditions in which we ask for a specific number of trials. 
 % Each condition is defined by tasktype(contains type,effector,and
 % position_arrangement),position (depends on arrangement),hand used and choice/instruced trial (MISSING HERE: PERTURBATION)
-keys.tt.tasktypes                   ={'Ddsa_han'}; % typically only one tasktype defines
-keys.tt.type_effectors                   ={'Ddsa'}; % typically only one tasktype defines
-keys.tt.hands                       =[1 2];
+keys.tt.tasktypes                   ={'Dsac_han'}; % typically only one tasktype defines
+keys.tt.type_effectors                   ={'Dsac'}; % typically only one tasktype defines
+keys.tt.hands                       =[0];
 keys.tt.choices                     =[0]; %IMPORTANT: and also not really perfect, for choice trials trial criterion is applied by hemifield, not by position.
 % Each unique combination of the above parameters has to contain at least keys.cal.min_trials_per_condition trials, if not the cell is excluded in ph_reduce_tuning_table
 keys.tt.selection                   ={};                         % easy to use if there is a parameter in the tuning table for which you want your cells to have the same value
@@ -110,19 +110,19 @@ keys.tt.space_criterion             ='none';
 keys.tt.hands_criterion             ='none';
 keys.tt.SXH_criterion               ='none';
 keys.tt.trial_criterion_in          = 'per_hemifield';
-keys.tt.trial_criterion_ch          = 'per_congruent_hand_hemifield';
+keys.tt.trial_criterion_ch          = 'per_hemifield';
 
 %% population PSTH settings
 cc=0;
 % 1
 cc=cc+1;
-keys.pop(cc).tt.hands                 	= [1 2];
+keys.pop(cc).tt.hands                 	= [0];
 keys.pop(cc).tt.perturbations          	= 0;
-keys.pop(cc).tt.choices                	= 1;
+keys.pop(cc).tt.choices                	= 0;
 keys.pop(cc).tt.selection             	= {};
 keys.pop(cc).tt.tasktypes               = {'Ddsa_han'};
 keys.pop(cc).group_parameter            = 'ungrouped'; %hand_tuning
-keys.pop(cc).conditions_to_plot         = {'Ddsa'}; 
+keys.pop(cc).conditions_to_plot         = {'Dsac'}; 
 keys.pop(cc).epoch_PF                   = 'Cue';               % epoch in which preference defines target location for "pref" plots
 keys.pop(cc).epoch_RF                   = 'Cue';               % epoch for which gaussian response fields will be plotted (if plot_RF ~ 0)
 keys.pop(cc).epoch_BL                   = 'Fhol';                % Epoch to subtract trial by trial (if FR_subtract_baseline ~ 0)

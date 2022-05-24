@@ -7,7 +7,7 @@ keys.plot.single_cells =0;
 keys.plot.waveforms=0;
 keys.plot.population_PSTH_legends=1;  
 %% to check carefully
-keys.position_and_plotting_arrangements             ={'hands_in_ch'};
+keys.position_and_plotting_arrangements             ={'hands'};
 % keys.position_and_plotting_arrangements             ={'hands_inactivation'};
 
 %% computation settings
@@ -40,36 +40,37 @@ keys.cal.min_spikes_per_unit            =10;                        % excluding 
 
 %% epochs
 keys.EPOCHS_PER_TYPE{4}={...
-     'INI',      2,	-0.4,	-0.1,   'INI';...
-    'Facq',     3,	-0.4,	-0.1,   'INI';...
-     'Fhol',     6,	-0.425,	-0.125,      'INI';...
-    'Cue',      6,	0.05,   0.35,   'INI';...
+          %      'INI',      2,	-0.4,	-0.1,   'INI';...
+%     'Facq',     3,	-0.4,	-0.1,   'INI';...
+     'Fhol',     6,	-0.4,	-0.1,      'Fhol';...
+    'Cue',      6,	0.05,   0.15,   'Fhol';...
 %     'EDel',     8, 	0.3,    0.6,   'INI';...
-    'Del',      4, 	-0.5,   -0.2,      'INI';...
-     'PreS',     60,	-0.3, 	0,  'INI';...
-    'PeriS',	60,	-0.15, 	0.15,   'INI';...
-     'PostS',	61,	0.05,   0.35,    'INI';...
+    'Del',      4, 	-0.3,   0,      'Fhol';...
+     'PreS',     60,	-0.2, 	0,  'Fhol';...
+%     'PeriS',	60,	-0.15, 	0.15,   'INI';...
+     'PostS',	61,	0.,   0.2,    'Fhol';...
 %     'PreR',     62,	-0.3, 	-0.05,  'INI';...
 %     'PeriR',	62,	-0.05, 	0.15,   'INI';...
 %     'PostR',	63,	0.05,   0.2,    'INI';...
-%      'Thol',     20,	-0.1,   0,      'INI';...     
+%      'Thol',     20,	-0.1,   0,      'INI';... 
     };
 keys.WINDOWS_PER_TYPE{4}={...
-    'Delay Period', 6,	-0.33,  0.8;... %1.35
+    'Delay Period', 6,	-0.4,  0.8;... %1.35
 %     'Reach',        62,	-0.35,  0.7;... %-0.35
-     'Saccade',        60,	-0.8,  0.2;... %-0.35
+     'Saccade',        60,	-0.8,  0.3;... %-0.35
     };  
     
     keys.ANOVAS_PER_TYPE(4).epoch={'INI' 'Facq';...
-    'INI' 'Fhol';...
-    'INI' 'Cue';...
-    'INI' 'Del';...
-    'INI' 'PreS';...
-    'INI' 'PeriS';...
-    'INI' 'PostS';...
+    'Fhol' 'Fhol';...
+    'Fhol' 'Cue';...
+    'Fhol' 'Del';...
+    'Fhol' 'PreS';...
+%     'INI' 'PeriS';...
+    'Fhol' 'PostS';...
     %     'INI' 'PreR';...
     %     'INI' 'PeriR';...
-    'INI' 'Thol'};
+%     'INI' 'Thol'
+    'Fhol' 'Thol'};
 
 
 % keys.ANOVAS_PER_TYPE(4).spaceLR            ={'INI','Facq','Fhol','Cue','Del','PreR','PeriR','PostR','Thol'}';
@@ -111,11 +112,11 @@ keys.tt.space_criterion             ='none';
 keys.tt.hands_criterion             ='none';
 keys.tt.SXH_criterion               ='none';
 keys.tt.trial_criterion_in          = 'per_hemifield';
-keys.tt.trial_criterion_ch          = 'per_congruent_hand_hemifield';
+keys.tt.trial_criterion_ch          = 'per_hemifield';
 
 %% population PSTH settings
-% cc=0;
-% % 1
+%  cc=0;
+% % % 1
 % cc=cc+1;
 % keys.pop(cc).tt.hands                 	= [1 2];
 % keys.pop(cc).tt.perturbations          	= 0;
@@ -131,9 +132,81 @@ keys.tt.trial_criterion_ch          = 'per_congruent_hand_hemifield';
 % keys.pop(cc).unselect                   = {};
 % keys.pop(cc).group_excluded             = {};%{'susu','ensu','suen','-su','su-','--'};
 % keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
-% keys.pop(cc).normalization              = 'by_all_trials';        % separate (divisive) normalization factor for trials grouped by effector; other options:
+% keys.pop(cc).normalization              = 'none';        % separate (divisive) normalization factor for trials grouped by effector; other options:
 %                                                                 % 'by_condition','by_effector','by_type','by_all_trials','z_score','none'
+% 
+% cc=cc+1;
+% keys.pop(cc).tt.hands                 	= [0];
+% keys.pop(cc).tt.perturbations          	= 0;
+% keys.pop(cc).tt.choices                	= [0 1];
+% % keys.pop(cc).tt.selection             	= {};
+% keys.pop(cc).tt.selection             	= {'visual_en_Ddsa_han','1'};
+% keys.pop(cc).tt.tasktypes               = {'Ddsa_han'};
+% keys.pop(cc).group_parameter            = 'ungrouped'; %hand_tuning
+% keys.pop(cc).conditions_to_plot         = {'Ddsa'}; 
+% keys.pop(cc).epoch_PF                   = 'Cue';               % epoch in which preference defines target location for "pref" plots
+% keys.pop(cc).epoch_RF                   = 'Cue';               % epoch for which gaussian response fields will be plotted (if plot_RF ~ 0)
+% keys.pop(cc).epoch_BL                   = 'Fhol';                % Epoch to subtract trial by trial (if FR_subtract_baseline ~ 0)
+% keys.pop(cc).FR_subtract_baseline       = 0;   
+% keys.pop(cc).unselect                   = {};
+% keys.pop(cc).group_excluded             = {};%{'susu','ensu','suen','-su','su-','--'};
+% keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
+% keys.pop(cc).normalization              = 'none';        % separate (divisive) normalization factor for trials grouped by effector; other options:
+% % %   
+% cc=cc+1;
+% keys.pop(cc).tt.hands                 	= [0];
+% keys.pop(cc).tt.perturbations          	= 0;
+% keys.pop(cc).tt.choices                	= [0 1];
+% % keys.pop(cc).tt.selection             	= {};
+% keys.pop(cc).tt.selection             	= {'motor_en_Ddsa_han','1'};
+% keys.pop(cc).tt.tasktypes               = {'Ddsa_han'};
+% keys.pop(cc).group_parameter            = 'ungrouped'; %hand_tuning
+% keys.pop(cc).conditions_to_plot         = {'Ddsa'}; 
+% keys.pop(cc).epoch_PF                   = 'Cue';               % epoch in which preference defines target location for "pref" plots
+% keys.pop(cc).epoch_RF                   = 'Cue';               % epoch for which gaussian response fields will be plotted (if plot_RF ~ 0)
+% keys.pop(cc).epoch_BL                   = 'Fhol';                % Epoch to subtract trial by trial (if FR_subtract_baseline ~ 0)
+% keys.pop(cc).FR_subtract_baseline       = 0;   
+% keys.pop(cc).unselect                   = {};
+% keys.pop(cc).group_excluded             = {};%{'susu','ensu','suen','-su','su-','--'};
+% keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
+% keys.pop(cc).normalization              = 'none';
 
+% 
+% cc=cc+1;
+% keys.pop(cc).tt.hands                 	= [0];
+% keys.pop(cc).tt.perturbations          	= 0;
+% keys.pop(cc).tt.choices                	= [0 1];
+% % keys.pop(cc).tt.selection             	= {};
+% keys.pop(cc).tt.selection             	= {'in_Cue_spaceLR_Ddsa_han','CS'};
+% keys.pop(cc).tt.tasktypes               = {'Ddsa_han'};
+% keys.pop(cc).group_parameter            = 'ungrouped'; %hand_tuning
+% keys.pop(cc).conditions_to_plot         = {'Ddsa'}; 
+% keys.pop(cc).epoch_PF                   = 'Cue';               % epoch in which preference defines target location for "pref" plots
+% keys.pop(cc).epoch_RF                   = 'Cue';               % epoch for which gaussian response fields will be plotted (if plot_RF ~ 0)
+% keys.pop(cc).epoch_BL                   = 'Fhol';                % Epoch to subtract trial by trial (if FR_subtract_baseline ~ 0)
+% keys.pop(cc).FR_subtract_baseline       = 1;   
+% keys.pop(cc).unselect                   = {};
+% keys.pop(cc).group_excluded             = {};%{'susu','ensu','suen','-su','su-','--'};
+% keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
+% keys.pop(cc).normalization              = 'by_all_trials';
+ 
+% cc=cc+1;
+% keys.pop(cc).tt.hands                 	= [0];
+% keys.pop(cc).tt.perturbations          	= 0;
+% keys.pop(cc).tt.choices                	= [0 1];
+% % keys.pop(cc).tt.selection             	= {};
+% keys.pop(cc).tt.selection             	= {'ch_Cue_spaceLR_Ddsa_han','CS'};
+% keys.pop(cc).tt.tasktypes               = {'Ddsa_han'};
+% keys.pop(cc).group_parameter            = 'ungrouped'; %hand_tuning
+% keys.pop(cc).conditions_to_plot         = {'Ddsa'}; 
+% keys.pop(cc).epoch_PF                   = 'Cue';               % epoch in which preference defines target location for "pref" plots
+% keys.pop(cc).epoch_RF                   = 'Cue';               % epoch for which gaussian response fields will be plotted (if plot_RF ~ 0)
+% keys.pop(cc).epoch_BL                   = 'Fhol';                % Epoch to subtract trial by trial (if FR_subtract_baseline ~ 0)
+% keys.pop(cc).FR_subtract_baseline       = 1;   
+% keys.pop(cc).unselect                   = {};
+% keys.pop(cc).group_excluded             = {};%{'susu','ensu','suen','-su','su-','--'};
+% keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
+% keys.pop(cc).normalization              = 'by_all_trials';
 %% state_space settings
 % cc=0;
 % % 1
@@ -162,15 +235,15 @@ keys.tt.trial_criterion_ch          = 'per_congruent_hand_hemifield';
 cc=0;
 
 cc=cc+1;
-keys.ccs(cc).tt.choices               	= [0];
+keys.ccs(cc).tt.choices               	= [1];
 keys.ccs(cc).tt.hands                   = [1 2];
 keys.ccs(cc).tt.perturbations          	= 0;
 keys.ccs(cc).tt.tasktypes              	= {'Ddsa_han'};
 keys.ccs(cc).plot_type                 	= 'space_and_hand';
 keys.ccs(cc).factor                   	= 'epoch';
 keys.ccs(cc).conditions_to_plot        	= {'Ddsa'};
-keys.ccs(cc).epochs.Ddsa               	= {'INI', 'Fhol','Cue','Del','PreS','PeriS','PostS'}'; 
-keys.ccs(cc).IC_to_plot              	= 'in'; 
+keys.ccs(cc).epochs.Ddsa               	= {'Fhol','Cue','Del','PreS','PostS'}'; 
+keys.ccs(cc).IC_to_plot              	= 'ch'; 
 %% scatter keys
 % cc=0;
 % % reaches inactivation stuff

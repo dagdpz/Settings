@@ -39,23 +39,23 @@ keys.cal.perturbation_groups            ={0,[2 3]};       % which perturbation v
 %% epochs
 
   keys.EPOCHS_PER_TYPE{4}={...
-     'INI',      2,	-0.4,	-0.1,   'INI';...
+   'INI',      2,	-0.4,	-0.1,   'INI';...
     'Facq',     3,	-0.4,	-0.1,   'INI';...
-     'Fhol',     6,	-0.425,	-0.125,      'INI';...
-    'Cue',      6,	0.05,   0.35,   'INI';...
+     'Fhol',     6,	-0.4,	-0.1,      'INI';...
+    'Cue',      6,	0.05,   0.15,   'INI';...
 %     'EDel',     8, 	0.3,    0.6,   'INI';...
     'Del',      4, 	-0.5,   -0.2,      'INI';...
-     'PreS',     60,	-0.3, 	0,  'INI';...
+     'PreS',     60,	-0.2, 	-0.05,  'INI';...
     'PeriS',	60,	-0.15, 	0.15,   'INI';...
-     'PostS',	61,	0.05,   0.35,    'INI';...
+     'PostS',	61,	0.05,   0.2,    'INI';...
 %     'PreR',     62,	-0.3, 	-0.05,  'INI';...
 %     'PeriR',	62,	-0.05, 	0.15,   'INI';...
 %     'PostR',	63,	0.05,   0.2,    'INI';...
-%      'Thol',     20,	-0.1,   0,      'INI';...     
+%      'Thol',     20,	-0.1,   0,      'INI';...  
     };
 
 keys.WINDOWS_PER_TYPE{4}={...
-    'Delay Period', 6,	-0.33,  0.8;... %1.35
+    'Cue', 6,	-0.33,  0.8;... %1.35
 %     'Reach',        62,	-0.35,  0.7;... %-0.35
      'Saccade',        60,	-0.8,  0.3;... %-0.35
     };  
@@ -96,7 +96,7 @@ keys.cal.min_trials_per_condition       =5;
 keys.tt.tasktypes                   ={'Dsac_han'}; % typically only one tasktype defines
 keys.tt.type_effectors                   ={'Dsac'}; % typically only one tasktype defines
 keys.tt.hands                       =[];
-keys.tt.choices                     =[0]; %IMPORTANT: and also not really perfect, for choice trials trial criterion is applied by hemifield, not by position.
+keys.tt.choices                     =[0 1]; %IMPORTANT: and also not really perfect, for choice trials trial criterion is applied by hemifield, not by position.
 % Each unique combination of the above parameters has to contain at least keys.cal.min_trials_per_condition trials, if not the cell is excluded in ph_reduce_tuning_table
 keys.tt.selection                   ={};                         % easy to use if there is a parameter in the tuning table for which you want your cells to have the same value
 %                                       'in_NH_TIhol_position_Msac_opt','true'};  % each row in the cell arryáy will be used to exclude cells that don't have the specifie characteristic
@@ -119,7 +119,7 @@ cc=0;
 cc=cc+1;
 keys.pop(cc).tt.hands                 	= [0];
 keys.pop(cc).tt.perturbations          	= [0 1];
-keys.pop(cc).tt.choices                	= 0;
+keys.pop(cc).tt.choices                	= [0 1];
 keys.pop(cc).tt.selection             	= {};
 keys.pop(cc).tt.tasktypes               = {'Dsac_han'};
 keys.pop(cc).group_parameter            = 'ungrouped'; %hand_tuning
@@ -127,14 +127,14 @@ keys.pop(cc).conditions_to_plot         = {'Dsac'};
 keys.pop(cc).epoch_PF                   = 'Cue';               % epoch in which preference defines target location for "pref" plots
 keys.pop(cc).epoch_RF                   = 'Cue';               % epoch for which gaussian response fields will be plotted (if plot_RF ~ 0)
 keys.pop(cc).epoch_BL                   = 'Fhol';                % Epoch to subtract trial by trial (if FR_subtract_baseline ~ 0)
-keys.pop(cc).FR_subtract_baseline       = 0;   
+keys.pop(cc).FR_subtract_baseline       = 1;   
 keys.pop(cc).unselect                   = {};
 keys.pop(cc).group_excluded             = {};%{'susu','ensu','suen','-su','su-','--'};
 keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
 keys.pop(cc).normalization              = 'by_perturbation';        % separate (divisive) normalization factor for trials grouped by effector; other options:
                                                                 % 'by_condition','by_effector','by_type','by_all_trials','z_score','none'
 
-% %% state_space settings
+ %% state_space settings
 % cc=0;
 % % 1
 % cc=cc+1;
@@ -156,5 +156,19 @@ keys.pop(cc).normalization              = 'by_perturbation';        % separate (
 %                                                                 % 'by_condition','by_effector','by_type','by_all_trials','z_score','none'
 % keys.sta(cc).combine_exp_conditions              = 1; % 1 calculate PCA and plot on all condition, 0 do it separatelty for CT and PT
 %                                                                 
-
-
+%% scatter keys
+% cc=0;
+% % reaches inactivation stuff
+% 
+% % example for plotting FR control versus perturbation
+% %Fhol
+% cc=cc+1;
+% keys.sct(cc).X='in_CS_Cue_CT_FR_Dsac_han';
+% keys.sct(cc).Y='in_CS_Cue_PT_FR_Dsac_han';
+% keys.sct(cc).X_sig='in_CS_Cue_PT_Dsac_han'; % O > ^ o (filled) 
+% keys.sct(cc).Y_sig='in_CS_Cue_PT_Dsac_han';
+% keys.sct(cc).tt.tasktypes={'Dsac_han'};
+% keys.sct(cc).tt.IC_for_criterion='in';
+% keys.sct(cc).tt.hands=[0];
+% keys.sct(cc).tt.choices=[0];
+% keys.sct(cc).tt.perturbations               = [0 1];
