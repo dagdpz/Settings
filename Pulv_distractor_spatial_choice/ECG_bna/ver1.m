@@ -3,8 +3,8 @@
 % initialize configuration structure
 ecg_bna_cfg = [];
 ecg_bna_cfg.LFP_version='ver1';
-ecg_bna_cfg.process_LFP=1;
-ecg_bna_cfg.process_ECG=1;
+ecg_bna_cfg.process_LFP=0;
+ecg_bna_cfg.process_ECG=0;
 ecg_bna_cfg.plot_significant=1;
 ecg_bna_cfg.save_fig_format={'pdf'};
    
@@ -47,7 +47,26 @@ ephys_version='ECG_taskRest';
 ephys_folder=['Y:\Projects\' project '\ephys\' ephys_version filesep]; 
 ecg_preprocess_folder='Y:\Data\BodySignals\ECG\';
 monkeys={'Bacchus'};
-sessions{1}=[20210720,20210826,20211001,20211028,20211207,20211214];
+
+% pop_folder =  dir([ephys_folder '*population*']); 
+% Sessions = []; 
+% for i = 1: length(pop_folder)
+% Parts = strsplit(pop_folder(i).name ,'_'); 
+% date = strsplit(Parts{3}, '.') ; 
+% Sessions = [Sessions , date(1)];
+% end
+%sessions{1}=[20211007];
+
+sessions{1}=sort([   20220309,  20220310  ,  20220315 ,   20220318  ,  20220322,  20210715  , 20210720  ,   20210723 ,   20210729  ,  20210730 ,...
+    20210803 ,   20210805  ,  20210806 ,  20210903 ,  20210827  , 20210905  ,  20210906 ,...
+    20210930  ,  20211001  ,  20211005 ,   20211007 ,   20211013   , 20211014   20211019   , 20211027 ,...
+    20211028 ,   20211102 ,   20211103, ...
+    20211001, 20210826,20211028,20211207  ,  20211208 ,  20211214, ...
+    20211222  ,  20220105  ,  20220106  , 20220203  ,  20220211  ,  20220221 ,   20220222  ,  20220224  ,  20220225,    20211116  ,  20211117 ]);
+
+
+% no ECG: 20210716  20210722  , 20210829  ,20211025,20211108
+
 %session_info{1}={'Bacchus','20210720',[4 5 6 7 8]};
 
 % mainfolder=['Y:\Projects\' project '\ECG\' version filesep];
@@ -72,7 +91,7 @@ sessions{1}=[20210720,20210826,20211001,20211028,20211207,20211214];
 %                                [ephys_folder 'sites_' monkey '_' date '.mat']}},...
 %         'Preinj_blocks',  0, ...
 %         'Postinj_blocks', []);  %% not sure why we need two here........
-% end
+% % end
 cumulative_sessions=0;
 for m=1:numel(monkeys)
     monkey=monkeys{m};
