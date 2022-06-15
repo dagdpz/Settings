@@ -9,7 +9,7 @@ keys.condition_parameters  ={'stimulustype','difficulty','success'};
 %keys.plot.average_heat_maps             =1;
 
 %% computation settings
-keys.plot.single_cells                  =0;         % perform single cell plotting
+keys.plot.single_cells                  =1;         % perform single cell plotting
 keys.cal.process_spikes                  =1;      % you can choose not to run spikes at all           
 keys.cal.process_sites                   =1;      % you can choose not to run lfp sites at all (saving processing time)             
 keys.cal.process_by_block                =1;      % you can choose not to run by block (body signals f.e.) at all (saving processing time)                   
@@ -32,7 +32,9 @@ keys.cal.MA_selection                   ={'display',0,'keep_raw_data',1,'saccade
 keys.batching.combine_monkeys       =0;                        % for population analysis
 keys.batching.targets               ={'dPul','VPL'};
 keys.batching.monkeys               ={'Bacchus'};
-keys.Bacchus.date                   ='[20210706 20220333]';
+%keys.Bacchus.date                   ='[20220101 20220333]';
+%keys.Bacchus.date                   ='[20210706 20220333]';
+keys.Bacchus.date                   ='[20211208 20211208]';
 %keys.Bacchus.date                   ='[20211214 20211214]';
 keys.cal.datasets                   = [5,6,7];
 

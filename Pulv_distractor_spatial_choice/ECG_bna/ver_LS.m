@@ -2,9 +2,9 @@
 
 % initialize configuration structure
 ecg_bna_cfg = [];
-ecg_bna_cfg.LFP_version='ver1';
+ecg_bna_cfg.LFP_version='ver_LS';
 ecg_bna_cfg.process_LFP=0;
-ecg_bna_cfg.process_ECG=0;
+ecg_bna_cfg.process_ECG=1;
 ecg_bna_cfg.plot_significant=1;
 ecg_bna_cfg.save_fig_format={'pdf'};
    
@@ -24,12 +24,10 @@ ecg_bna_cfg.info_filepath = 'Y:\Projects\Pulv_distractor_spatial_choice\ephys\EC
 % used for analysis
 ecg_bna_cfg.use_datasets = [31];
 
+% absolute path to the folder where the results of analysis should be stored
+ecg_bna_cfg.results_folder = ['Y:\Projects\' project];
 
 ecg_bna_cfg.monkey='Bacchus';
-
-% absolute path to the folder where the results of analysis should be stored
-ecg_bna_cfg.results_folder = ['Y:\Projects\' project '\Results\', ecg_bna_cfg.monkey];
-
 % info about sessions to be analysed
 % should be a 1 x N struct, N = number of sessions to analyse
 % the struct should contain the following fields:
@@ -49,20 +47,7 @@ ephys_version='ECG_taskRest';
 ephys_folder=['Y:\Projects\' project '\ephys\' ephys_version filesep]; 
 ecg_preprocess_folder='Y:\Data\BodySignals\ECG\';
 monkeys={'Bacchus'};
-<<<<<<< Updated upstream
-sessions{1}=[20210720,20210826,20211001,20211028,20211207,20211214];
-=======
-
-% pop_folder =  dir([ephys_folder '*population*']); 
-% Sessions = []; 
-% for i = 1: length(pop_folder)
-% Parts = strsplit(pop_folder(i).name ,'_'); 
-% date = strsplit(Parts{3}, '.') ; 
-% Sessions = [Sessions , date(1)];
-% end
-%sessions{1}=[20211007];
-
-sessions{1}=sort([  20220309  ,  20220310  20211007 ,  20220315   , 20220318   , 20220322 , 20211013   , 20211014   20211019   , 20211027 ,...
+sessions{1}=sort([ 20211028,20211207,20211214, 20220309  ,  20220310  20211007 ,  20220315   , 20220318   , 20220322 , 20211013   , 20211014   20211019   , 20211027 ,...
     20211028 ,   20211102 ,   20211103, ...
     20211001, 20210826,20211028,20211207  ,  20211208 ,  20211214, ...
     20211222  ,  20220105  ,  20220106  , 20220203  ,  20220211  ,  20220221 ,   20220222  ,  20220224  ,  20220225,    20211116  ,  20211117 ,...
@@ -70,13 +55,6 @@ sessions{1}=sort([  20220309  ,  20220310  20211007 ,  20220315   , 20220318   ,
      20210803 ,   20210805  ,  20210806 ,  20210903 ,  20210827  ,  20210930  ,  20211001  ,  20211005 ,  20210905  ,  20210906 
     ]);
 
-
-
-%  
-
-% no ECG: 20210716  20210722  , 20210829  ,20211025,20211108
-
->>>>>>> Stashed changes
 %session_info{1}={'Bacchus','20210720',[4 5 6 7 8]};
 
 % mainfolder=['Y:\Projects\' project '\ECG\' version filesep];
@@ -130,8 +108,7 @@ end
 %       'sync'      - LFP-LFP phase synchronization measure for given conditions and
 %           time windows
 %ecg_bna_cfg.analyses = {'Rpeak_evoked_ECG', 'Rpeak_evoked_onset', 'Event_trig_R2Rt'}; % , 'Rpeak_evoked_LFP', 'Rpeak_evoked_TFS'
-ecg_bna_cfg.analyses = {'Rpeak_evoked_LFP', 'Rpeak_evoked_TFS', 'Rpeak_evoked_spike_histogram'}; % , 
-ecg_bna_cfg.analyses = {'Rpeak_evoked_spike_histogram'}; % , 
+ecg_bna_cfg.analyses = {'Rpeak_evoked_LFP', 'Rpeak_evoked_ECG', 'Rpeak_evoked_TFS', 'Rpeak_evoked_spike_histogram'}; % , 
 
 % targets to be included in the analysis
 % should be a cell array of strings which indicate the target names
@@ -545,7 +522,7 @@ end
 %         lfp_tfa_states.TRI_END], 0.8, 100, 'random'};
 % lfp_tfa_cfg.analyse_states = {lfp_tfa_states.CUE_ON,    'Cue',      -0.5,   0.9;...
 %                              lfp_tfa_states.REA_INI,    'Reach',    -0.3,   0.5};
-ecg_bna_cfg.analyse_states = {'ecg', 'ECG peak', -0.4, 0.4};
+ecg_bna_cfg.analyse_states = {'ecg', 'ECG peak', -0.5, 0.5};
 
 % whether to perform a permutation test for evoked LFP and evoked ECG with
 % randomly shuffled triggers

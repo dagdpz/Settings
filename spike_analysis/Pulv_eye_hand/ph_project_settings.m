@@ -22,6 +22,7 @@ keys.cal.units_from_sorting_table       =1;
 keys.cal.effectors      =[3,4,6];
 keys.cal.reach_hand     =[1,2];
 keys.cal.types          =[4];
+keys.cal.choice          =[0,1];
 keys.plot.events                        =1:100; %% remove some sht
 
 keys.plot.trials_max_for_ylim           =20;
@@ -117,16 +118,16 @@ keys.ANOVAS_PER_TYPE(4).main               ={'INI','Facq','Fhol','Cue','Cue2','E
 %% cell count settings
 % keys.cc.factors                     ={'epoch','space','hand'};
 % keys.cc.conditions_to_plot          ={'Dcfr','Ddre','Ddsa'};
-keys.tt.epoch_criterion             ='none';
-keys.tt.position_criterion          ='none';
-keys.tt.space_criterion             ='none';
+% keys.tt.epoch_criterion             ='none';
+% keys.tt.position_criterion          ='none';
+% keys.tt.space_criterion             ='none';
 keys.tt.type_effectors              ={'Dcfr','Ddre','Ddsa'};
 
 keys.cal.min_trials_per_condition       =10;
 keys.tt.trial_criterion_in          ='per_hemifield';
 keys.tt.trial_criterion_ch          ='per_congruent_hand_hemifield';
-keys.tt.choices             =0;
-keys.tt.hands               =[1 2];
+keys.tt.choice              =0;
+keys.tt.reach_hand          =[1 2];
 keys.tt.perturbation        =[0];
 
 %% hand space tuning settings
@@ -396,8 +397,8 @@ keys.ons(cc).conditions_to_plot      = {'Ddsa';'Ddre';'Dcfr'};
 keys.ons(cc).link_y_lim=1; 
 CM=[2 2 -1 1; 1 1 -1 1; 1 2 -1 -1; 1 2 1 1];
 TI={'Space CH','Space IH','Hands IS','Hands CS'};
-TC=[keys.colors.CH_IS_IN; keys.colors.IH_IS_IN; keys.colors.IH_IS_IN; keys.colors.IH_CS_IN;
-    keys.colors.CH_CS_IN; keys.colors.IH_CS_IN; keys.colors.CH_IS_IN; keys.colors.CH_CS_IN]/255;
+TC=[keys.colors.in_CH_IS; keys.colors.in_IH_IS; keys.colors.in_IH_IS; keys.colors.in_IH_CS;
+    keys.colors.in_CH_CS; keys.colors.in_IH_CS; keys.colors.in_CH_IS; keys.colors.in_CH_CS]/255;
 for ce=1:4
 keys.ons(cc).comparisons_per_effector(ce).reach_hand{1}=CM(ce,1);
 keys.ons(cc).comparisons_per_effector(ce).reach_hand{2}=CM(ce,2);
@@ -424,8 +425,8 @@ keys.ons(cc).conditions_to_plot      = {'Ddsa';'Ddre';'Dcfr'};
 keys.ons(cc).link_y_lim=1; 
 CM=[2 2 -1 1; 1 1 -1 1; 1 2 -1 -1; 1 2 1 1];
 TI={'Space CH','Space IH','Hands IS','Hands CS'};
-TC=[keys.colors.CH_IS_IN; keys.colors.IH_IS_IN; keys.colors.IH_IS_IN; keys.colors.IH_CS_IN;
-    keys.colors.CH_CS_IN; keys.colors.IH_CS_IN; keys.colors.CH_IS_IN; keys.colors.CH_CS_IN]/255;
+TC=[keys.colors.in_CH_IS; keys.colors.in_IH_IS; keys.colors.in_IH_IS; keys.colors.in_IH_CS;
+    keys.colors.in_CH_CS; keys.colors.in_IH_CS; keys.colors.in_CH_IS; keys.colors.in_CH_CS]/255;
 for ce=1:4
 keys.ons(cc).comparisons_per_effector(ce).reach_hand{1}=CM(ce,1);
 keys.ons(cc).comparisons_per_effector(ce).reach_hand{2}=CM(ce,2);
@@ -453,8 +454,8 @@ keys.ons(cc).conditions_to_plot      = {'Ddsa';'Ddre';'Dcfr'};
 keys.ons(cc).link_y_lim=1; 
 CM=[2 2 -1 1; 1 1 -1 1; 1 2 -1 -1; 1 2 1 1];
 TI={'Space CH','Space IH','Hands IS','Hands CS'};
-TC=[keys.colors.CH_IS_IN; keys.colors.IH_IS_IN; keys.colors.IH_IS_IN; keys.colors.IH_CS_IN;
-    keys.colors.CH_CS_IN; keys.colors.IH_CS_IN; keys.colors.CH_IS_IN; keys.colors.CH_CS_IN]/255;
+TC=[keys.colors.in_CH_IS; keys.colors.in_IH_IS; keys.colors.in_IH_IS; keys.colors.in_IH_CS;
+    keys.colors.in_CH_CS; keys.colors.in_IH_CS; keys.colors.in_CH_IS; keys.colors.in_CH_CS]/255;
 for ce=1:4
 keys.ons(cc).comparisons_per_effector(ce).reach_hand{1}=CM(ce,1);
 keys.ons(cc).comparisons_per_effector(ce).reach_hand{2}=CM(ce,2);
@@ -485,9 +486,9 @@ keys.ons(cc).link_y_lim=1;
 % TI={'Space CH','Space IH','Hands IS','Hands CS'};
 CM={2, 1, [-1 1],[-1 1]};
 TI={'Hands'};
-% TC=[keys.colors.CH_IS_IN; keys.colors.IH_IS_IN; keys.colors.IH_IS_IN; keys.colors.IH_CS_IN;
-%     keys.colors.CH_CS_IN; keys.colors.IH_CS_IN; keys.colors.CH_IS_IN; keys.colors.CH_CS_IN]/255;
-TC=[keys.colors.CH_IN; keys.colors.IH_IN]/255;
+% TC=[keys.colors.in_CH_IS; keys.colors.in_IH_IS; keys.colors.in_IH_IS; keys.colors.in_IH_CS;
+%     keys.colors.in_CH_CS; keys.colors.in_IH_CS; keys.colors.in_CH_IS; keys.colors.in_CH_CS]/255;
+TC=[keys.colors.in_CH; keys.colors.in_IH]/255;
 ce=1;
 keys.ons(cc).comparisons_per_effector(ce).reach_hand{1}=CM{ce,1};
 keys.ons(cc).comparisons_per_effector(ce).reach_hand{2}=CM{ce,2};
@@ -512,9 +513,9 @@ keys.ons(cc).link_y_lim=1;
 % TI={'Space CH','Space IH','Hands IS','Hands CS'};
 CM={2, 1, [-1 1],[-1 1]};
 TI={'Hands'};
-% TC=[keys.colors.CH_IS_IN; keys.colors.IH_IS_IN; keys.colors.IH_IS_IN; keys.colors.IH_CS_IN;
-%     keys.colors.CH_CS_IN; keys.colors.IH_CS_IN; keys.colors.CH_IS_IN; keys.colors.CH_CS_IN]/255;
-TC=[keys.colors.CH_IN; keys.colors.IH_IN]/255;
+% TC=[keys.colors.in_CH_IS; keys.colors.in_IH_IS; keys.colors.in_IH_IS; keys.colors.in_IH_CS;
+%     keys.colors.in_CH_CS; keys.colors.in_IH_CS; keys.colors.in_CH_IS; keys.colors.in_CH_CS]/255;
+TC=[keys.colors.in_CH; keys.colors.in_IH]/255;
 ce=1;
 keys.ons(cc).comparisons_per_effector(ce).reach_hand{1}=CM{ce,1};
 keys.ons(cc).comparisons_per_effector(ce).reach_hand{2}=CM{ce,2};
@@ -537,9 +538,9 @@ keys.ons(cc).conditions_to_plot      = {'Ddsa';'Ddre';'Dcfr'};
 keys.ons(cc).link_y_lim=1; 
 CM={2, 1, [-1 1],[-1 1]};
 TI={'Hands'};
-% TC=[keys.colors.CH_IS_IN; keys.colors.IH_IS_IN; keys.colors.IH_IS_IN; keys.colors.IH_CS_IN;
-%     keys.colors.CH_CS_IN; keys.colors.IH_CS_IN; keys.colors.CH_IS_IN; keys.colors.CH_CS_IN]/255;
-TC=[keys.colors.CH_IN; keys.colors.IH_IN]/255;
+% TC=[keys.colors.in_CH_IS; keys.colors.in_IH_IS; keys.colors.in_IH_IS; keys.colors.in_IH_CS;
+%     keys.colors.in_CH_CS; keys.colors.in_IH_CS; keys.colors.in_CH_IS; keys.colors.in_CH_CS]/255;
+TC=[keys.colors.in_CH; keys.colors.in_IH]/255;
 ce=1;
 keys.ons(cc).comparisons_per_effector(ce).reach_hand{1}=CM{ce,1};
 keys.ons(cc).comparisons_per_effector(ce).reach_hand{2}=CM{ce,2};
@@ -564,8 +565,8 @@ keys.ons(cc).group_parameter         = 'ungrouped';
 keys.ons(cc).conditions_to_plot      = {'Ddsa';'Ddre';'Dcfr'};
 CM=[2 2 1 1; 1 1 1 1; 2 2 -1 -1; 1 1 -1 -1];
 TI={'EnSu CHCS','EnSu IHCS','EnSu CHIS','EnSu IHIS'};
-TC=[keys.colors.CH_CS_IN; keys.colors.IH_CS_IN; keys.colors.CH_IS_IN; keys.colors.IH_IS_IN;
-    keys.colors.CH_CS_CH; keys.colors.IH_CS_CH; keys.colors.CH_IS_CH; keys.colors.IH_IS_CH]/255;
+TC=[keys.colors.in_CH_CS; keys.colors.in_IH_CS; keys.colors.in_CH_IS; keys.colors.in_IH_IS;
+    keys.colors.ch_CH_CS; keys.colors.ch_IH_CS; keys.colors.ch_CH_IS; keys.colors.ch_IH_IS]/255;
 for ce=1:4
 keys.ons(cc).comparisons_per_effector(ce).reach_hand{1}=CM(ce,1);
 keys.ons(cc).comparisons_per_effector(ce).reach_hand{2}=CM(ce,2);
@@ -588,8 +589,8 @@ keys.ons(cc).group_parameter         = 'ungrouped';
 keys.ons(cc).conditions_to_plot      = {'Ddsa';'Ddre';'Dcfr'};
 CM=[2 2 1 1; 1 1 1 1; 2 2 -1 -1; 1 1 -1 -1];
 TI={'EnSu CHCS','EnSu IHCS','EnSu CHIS','EnSu IHIS'};
-TC=[keys.colors.CH_CS_IN; keys.colors.IH_CS_IN; keys.colors.CH_IS_IN; keys.colors.IH_IS_IN;
-    keys.colors.CH_CS_CH; keys.colors.IH_CS_CH; keys.colors.CH_IS_CH; keys.colors.IH_IS_CH]/255;
+TC=[keys.colors.in_CH_CS; keys.colors.in_IH_CS; keys.colors.in_CH_IS; keys.colors.in_IH_IS;
+    keys.colors.ch_CH_CS; keys.colors.ch_IH_CS; keys.colors.ch_CH_IS; keys.colors.ch_IH_IS]/255;
 for ce=1:4
 keys.ons(cc).comparisons_per_effector(ce).reach_hand{1}=CM(ce,1);
 keys.ons(cc).comparisons_per_effector(ce).reach_hand{2}=CM(ce,2);
@@ -612,8 +613,8 @@ keys.ons(cc).group_parameter         = 'ungrouped';
 keys.ons(cc).conditions_to_plot      = {'Ddsa';'Ddre';'Dcfr'};
 CM=[2 2 1 1; 1 1 1 1; 2 2 -1 -1; 1 1 -1 -1];
 TI={'EnSu CHCS','EnSu IHCS','EnSu CHIS','EnSu IHIS'};
-TC=[keys.colors.CH_CS_IN; keys.colors.IH_CS_IN; keys.colors.CH_IS_IN; keys.colors.IH_IS_IN;
-    keys.colors.CH_CS_CH; keys.colors.IH_CS_CH; keys.colors.CH_IS_CH; keys.colors.IH_IS_CH]/255;
+TC=[keys.colors.in_CH_CS; keys.colors.in_IH_CS; keys.colors.in_CH_IS; keys.colors.in_IH_IS;
+    keys.colors.ch_CH_CS; keys.colors.ch_IH_CS; keys.colors.ch_CH_IS; keys.colors.ch_IH_IS]/255;
 for ce=1:4
 keys.ons(cc).comparisons_per_effector(ce).reach_hand{1}=CM(ce,1);
 keys.ons(cc).comparisons_per_effector(ce).reach_hand{2}=CM(ce,2);
@@ -880,8 +881,8 @@ cc=0;
 %% sanity check Cue preference!
 
 cc=cc+1;
-keys.pop(cc).tt.choices                 = 0;
-keys.pop(cc).tt.hands                   = [1 2];
+keys.pop(cc).tt.choice                  = 0;
+keys.pop(cc).tt.reach_hand              = [1 2];
 keys.pop(cc).normalization              = 'by_effector';
 keys.pop(cc).group_parameter            = 'ungrouped';
 keys.pop(cc).conditions_to_plot         = {'Ddre';'Ddsa';'Dcfr'}; 
@@ -895,8 +896,8 @@ keys.pop(cc).plot_per_position          = 1;
 
 % Divided by Fhol (PER effector!)
 cc=cc+1;
-keys.pop(cc).tt.choices                 = 0;
-keys.pop(cc).tt.hands                   = [1 2];
+keys.pop(cc).tt.choice                  = 0;
+keys.pop(cc).tt.reach_hand              = [1 2];
 keys.pop(cc).normalization              = 'by_effector';
 keys.pop(cc).group_parameter            = 'ungrouped';
 keys.pop(cc).conditions_to_plot         = {'Ddre';'Ddsa';'Dcfr'}; 
@@ -909,8 +910,8 @@ keys.pop(cc).FR_subtract_baseline       = 1;
 keys.pop(cc).plot_per_position          = 1;
 
 cc=cc+1;
-keys.pop(cc).tt.choices                 = 0;
-keys.pop(cc).tt.hands                   = [1 2];
+keys.pop(cc).tt.choice                  = 0;
+keys.pop(cc).tt.reach_hand              = [1 2];
 keys.pop(cc).normalization              = 'by_effector';
 keys.pop(cc).group_parameter            = 'ungrouped';
 keys.pop(cc).conditions_to_plot         = {'Ddre';'Ddsa';'Dcfr'}; 
@@ -924,8 +925,8 @@ keys.pop(cc).plot_per_position          = 1;
 
 %% Divided by Fhol (PER HAND!)
 cc=cc+1;
-keys.pop(cc).tt.choices                 = 0;
-keys.pop(cc).tt.hands                   = [1 2];
+keys.pop(cc).tt.choice                  = 0;
+keys.pop(cc).tt.reach_hand              = [1 2];
 keys.pop(cc).normalization              = 'by_hand';
 keys.pop(cc).group_parameter            = 'ungrouped';
 keys.pop(cc).conditions_to_plot         = {'Ddre';'Ddsa';'Dcfr'}; 
@@ -938,8 +939,8 @@ keys.pop(cc).FR_subtract_baseline       = 1;
 keys.pop(cc).plot_per_position          = 1;
 
 cc=cc+1;
-keys.pop(cc).tt.choices                 = 0;
-keys.pop(cc).tt.hands                   = [1 2];
+keys.pop(cc).tt.choice                  = 0;
+keys.pop(cc).tt.reach_hand              = [1 2];
 keys.pop(cc).normalization              = 'by_hand';
 keys.pop(cc).group_parameter            = 'ungrouped';
 keys.pop(cc).conditions_to_plot         = {'Ddre';'Ddsa';'Dcfr'}; 
@@ -954,8 +955,8 @@ keys.pop(cc).plot_per_position          = 1;
 %% these 4 are HAND tuned units!
 
 cc=cc+1;
-keys.pop(cc).tt.choices                 = 0;
-keys.pop(cc).tt.hands                   = [1 2];
+keys.pop(cc).tt.choice                  = 0;
+keys.pop(cc).tt.reach_hand              = [1 2];
 keys.pop(cc).normalization              = 'by_effector';
 keys.pop(cc).group_parameter            = 'in_PreS_hands_perspace_Ddsa_han';
 keys.pop(cc).conditions_to_plot         = {'Ddre';'Ddsa';'Dcfr'}; 
@@ -969,8 +970,8 @@ keys.pop(cc).group_excluded             = {'incongruent'};
 keys.pop(cc).plot_per_position          = 1;
 
 cc=cc+1;
-keys.pop(cc).tt.choices                 = 0;
-keys.pop(cc).tt.hands                   = [1 2];
+keys.pop(cc).tt.choice                  = 0;
+keys.pop(cc).tt.reach_hand              = [1 2];
 keys.pop(cc).normalization              = 'by_effector';
 keys.pop(cc).group_parameter            = 'in_PreR_hands_perspace_Ddre_han';
 keys.pop(cc).conditions_to_plot         = {'Ddre';'Ddsa';'Dcfr'}; 
@@ -984,8 +985,8 @@ keys.pop(cc).group_excluded             = {'incongruent'};
 keys.pop(cc).plot_per_position          = 1;
 
 cc=cc+1;
-keys.pop(cc).tt.choices                 = 0;
-keys.pop(cc).tt.hands                   = [1 2];
+keys.pop(cc).tt.choice                  = 0;
+keys.pop(cc).tt.reach_hand              = [1 2];
 keys.pop(cc).normalization              = 'by_hand';
 keys.pop(cc).group_parameter            = 'in_PreS_hands_perspace_Ddsa_han';
 keys.pop(cc).conditions_to_plot         = {'Ddre';'Ddsa';'Dcfr'}; 
@@ -999,8 +1000,8 @@ keys.pop(cc).group_excluded             = {'incongruent'};
 keys.pop(cc).plot_per_position          = 1;
 
 cc=cc+1;
-keys.pop(cc).tt.choices                 = 0;
-keys.pop(cc).tt.hands                   = [1 2];
+keys.pop(cc).tt.choice                  = 0;
+keys.pop(cc).tt.reach_hand              = [1 2];
 keys.pop(cc).normalization              = 'by_hand';
 keys.pop(cc).group_parameter            = 'in_PreR_hands_perspace_Ddre_han';
 keys.pop(cc).conditions_to_plot         = {'Ddre';'Ddsa';'Dcfr'}; 
@@ -1016,8 +1017,8 @@ keys.pop(cc).plot_per_position          = 1;
 %% reach tuned subpopulation
 
 cc=cc+1;
-keys.pop(cc).tt.choices                 = 0;
-keys.pop(cc).tt.hands                   = [1 2];
+keys.pop(cc).tt.choice                  = 0;
+keys.pop(cc).tt.reach_hand              = [1 2];
 keys.pop(cc).tt.selection               = {'in_PeriR_space_perhand_Ddre_han','CS'};
 keys.pop(cc).normalization              = 'by_effector';
 keys.pop(cc).group_parameter            = 'in_Cue_space_perhand_Ddre_han';
@@ -1032,8 +1033,8 @@ keys.pop(cc).group_excluded             = {'incongruent'};
 keys.pop(cc).plot_per_position          = 0;
 
 cc=cc+1;
-keys.pop(cc).tt.choices                 = 0;
-keys.pop(cc).tt.hands                   = [1 2];
+keys.pop(cc).tt.choice                  = 0;
+keys.pop(cc).tt.reach_hand              = [1 2];
 keys.pop(cc).tt.selection               = {'in_PeriR_space_perhand_Ddre_han','IS'};
 keys.pop(cc).normalization              = 'by_effector';
 keys.pop(cc).group_parameter            = 'in_Cue_space_perhand_Ddre_han';
@@ -1051,8 +1052,8 @@ keys.pop(cc).plot_per_position          = 0;
 %% Saccade tuned subpopulation
 
 cc=cc+1;
-keys.pop(cc).tt.choices                 = 0;
-keys.pop(cc).tt.hands                   = [1 2];
+keys.pop(cc).tt.choice                  = 0;
+keys.pop(cc).tt.reach_hand              = [1 2];
 keys.pop(cc).tt.selection               = {'in_PeriS_space_perhand_Ddsa_han','CS'};
 keys.pop(cc).normalization              = 'by_effector';
 keys.pop(cc).group_parameter            = 'in_Cue_space_perhand_Ddsa_han';
@@ -1067,8 +1068,8 @@ keys.pop(cc).group_excluded             = {'incongruent'};
 keys.pop(cc).plot_per_position          = 0;
 
 cc=cc+1;
-keys.pop(cc).tt.choices                 = 0;
-keys.pop(cc).tt.hands                   = [1 2];
+keys.pop(cc).tt.choice                  = 0;
+keys.pop(cc).tt.reach_hand              = [1 2];
 keys.pop(cc).tt.selection               = {'in_PeriS_space_perhand_Ddsa_han','IS'};
 keys.pop(cc).normalization              = 'by_effector';
 keys.pop(cc).group_parameter            = 'in_Cue_space_perhand_Ddsa_han';
@@ -1161,8 +1162,8 @@ keys.prf(cc).WINDOWS_PER_TYPE{4}={...
 % %% sanity check Cue preference!
 % 
 % cc=cc+1;
-% keys.pop(cc).tt.choices                 = 0;
-% keys.pop(cc).tt.hands                   = [1 2];
+% keys.pop(cc).tt.choice                  = 0;
+% keys.pop(cc).tt.reach_hand              = [1 2];
 % keys.pop(cc).normalization              = 'by_effector';
 % keys.pop(cc).group_parameter            = 'ungrouped';
 % keys.pop(cc).conditions_to_plot         = {'Ddre';'Ddsa';'Dcfr'}; 
@@ -1175,8 +1176,8 @@ keys.prf(cc).WINDOWS_PER_TYPE{4}={...
 
 %% Divided by Fhol (PER effector!)
 % cc=cc+1;
-% keys.pop(cc).tt.choices                 = 0;
-% keys.pop(cc).tt.hands                   = [1 2];
+% keys.pop(cc).tt.choice                  = 0;
+% keys.pop(cc).tt.reach_hand              = [1 2];
 % keys.pop(cc).normalization              = 'by_effector';
 % keys.pop(cc).group_parameter            = 'ungrouped';
 % keys.pop(cc).conditions_to_plot         = {'Ddre';'Ddsa';'Dcfr'}; 
@@ -1188,8 +1189,8 @@ keys.prf(cc).WINDOWS_PER_TYPE{4}={...
 % keys.pop(cc).plot_per_position          = 1;
 
 % cc=cc+1;
-% keys.pop(cc).tt.choices                 = 0;
-% keys.pop(cc).tt.hands                   = [1 2];
+% keys.pop(cc).tt.choice                  = 0;
+% keys.pop(cc).tt.reach_hand              = [1 2];
 % keys.pop(cc).normalization              = 'by_effector';
 % keys.pop(cc).group_parameter            = 'ungrouped';
 % keys.pop(cc).conditions_to_plot         = {'Ddre';'Ddsa';'Dcfr'}; 
@@ -1202,8 +1203,8 @@ keys.prf(cc).WINDOWS_PER_TYPE{4}={...
 
 % %% Divided by Fhol (PER HAND!)
 % cc=cc+1;
-% keys.pop(cc).tt.choices                 = 0;
-% keys.pop(cc).tt.hands                   = [1 2];
+% keys.pop(cc).tt.choice                  = 0;
+% keys.pop(cc).tt.reach_hand              = [1 2];
 % keys.pop(cc).normalization              = 'by_hand';
 % keys.pop(cc).group_parameter            = 'ungrouped';
 % keys.pop(cc).conditions_to_plot         = {'Ddre';'Ddsa';'Dcfr'}; 
@@ -1215,8 +1216,8 @@ keys.prf(cc).WINDOWS_PER_TYPE{4}={...
 % keys.pop(cc).plot_per_position          = 1;
 % 
 % cc=cc+1;
-% keys.pop(cc).tt.choices                 = 0;
-% keys.pop(cc).tt.hands                   = [1 2];
+% keys.pop(cc).tt.choice                  = 0;
+% keys.pop(cc).tt.reach_hand              = [1 2];
 % keys.pop(cc).normalization              = 'by_hand';
 % keys.pop(cc).group_parameter            = 'ungrouped';
 % keys.pop(cc).conditions_to_plot         = {'Ddre';'Ddsa';'Dcfr'}; 
@@ -1230,8 +1231,8 @@ keys.prf(cc).WINDOWS_PER_TYPE{4}={...
 % %% these 4 are HAND tuned units!
 % 
 % cc=cc+1;
-% keys.pop(cc).tt.choices                 = 0;
-% keys.pop(cc).tt.hands                   = [1 2];
+% keys.pop(cc).tt.choice                  = 0;
+% keys.pop(cc).tt.reach_hand              = [1 2];
 % keys.pop(cc).normalization              = 'by_effector';
 % keys.pop(cc).group_parameter            = 'in_PreS_hands_perspace_Ddsa_han';
 % keys.pop(cc).conditions_to_plot         = {'Ddre';'Ddsa';'Dcfr'}; 
@@ -1244,8 +1245,8 @@ keys.prf(cc).WINDOWS_PER_TYPE{4}={...
 % keys.pop(cc).plot_per_position          = 1;
 % 
 % cc=cc+1;
-% keys.pop(cc).tt.choices                 = 0;
-% keys.pop(cc).tt.hands                   = [1 2];
+% keys.pop(cc).tt.choice                  = 0;
+% keys.pop(cc).tt.reach_hand              = [1 2];
 % keys.pop(cc).normalization              = 'by_effector';
 % keys.pop(cc).group_parameter            = 'in_PreR_hands_perspace_Ddre_han';
 % keys.pop(cc).conditions_to_plot         = {'Ddre';'Ddsa';'Dcfr'}; 
@@ -1258,8 +1259,8 @@ keys.prf(cc).WINDOWS_PER_TYPE{4}={...
 % keys.pop(cc).plot_per_position          = 1;
 % 
 % cc=cc+1;
-% keys.pop(cc).tt.choices                 = 0;
-% keys.pop(cc).tt.hands                   = [1 2];
+% keys.pop(cc).tt.choice                  = 0;
+% keys.pop(cc).tt.reach_hand              = [1 2];
 % keys.pop(cc).normalization              = 'by_hand';
 % keys.pop(cc).group_parameter            = 'in_PreS_hands_perspace_Ddsa_han';
 % keys.pop(cc).conditions_to_plot         = {'Ddre';'Ddsa';'Dcfr'}; 
@@ -1272,8 +1273,8 @@ keys.prf(cc).WINDOWS_PER_TYPE{4}={...
 % keys.pop(cc).plot_per_position          = 1;
 % 
 % cc=cc+1;
-% keys.pop(cc).tt.choices                 = 0;
-% keys.pop(cc).tt.hands                   = [1 2];
+% keys.pop(cc).tt.choice                  = 0;
+% keys.pop(cc).tt.reach_hand              = [1 2];
 % keys.pop(cc).normalization              = 'by_hand';
 % keys.pop(cc).group_parameter            = 'in_PreR_hands_perspace_Ddre_han';
 % keys.pop(cc).conditions_to_plot         = {'Ddre';'Ddsa';'Dcfr'}; 
@@ -1288,8 +1289,8 @@ keys.prf(cc).WINDOWS_PER_TYPE{4}={...
 % %% reach tuned subpopulation
 % 
 % cc=cc+1;
-% keys.pop(cc).tt.choices                 = 0;
-% keys.pop(cc).tt.hands                   = [1 2];
+% keys.pop(cc).tt.choice                  = 0;
+% keys.pop(cc).tt.reach_hand              = [1 2];
 % keys.pop(cc).tt.selection               = {'in_PeriR_space_perhand_Ddre_han','CS'};
 % keys.pop(cc).normalization              = 'by_effector';
 % keys.pop(cc).group_parameter            = 'in_Cue_space_perhand_Ddre_han';
@@ -1303,8 +1304,8 @@ keys.prf(cc).WINDOWS_PER_TYPE{4}={...
 % keys.pop(cc).plot_per_position          = 0;
 % 
 % cc=cc+1;
-% keys.pop(cc).tt.choices                 = 0;
-% keys.pop(cc).tt.hands                   = [1 2];
+% keys.pop(cc).tt.choice                  = 0;
+% keys.pop(cc).tt.reach_hand              = [1 2];
 % keys.pop(cc).tt.selection               = {'in_PeriR_space_perhand_Ddre_han','IS'};
 % keys.pop(cc).normalization              = 'by_effector';
 % keys.pop(cc).group_parameter            = 'in_Cue_space_perhand_Ddre_han';
@@ -1321,8 +1322,8 @@ keys.prf(cc).WINDOWS_PER_TYPE{4}={...
 % %% Saccade tuned subpopulation
 % 
 % cc=cc+1;
-% keys.pop(cc).tt.choices                 = 0;
-% keys.pop(cc).tt.hands                   = [1 2];
+% keys.pop(cc).tt.choice                  = 0;
+% keys.pop(cc).tt.reach_hand              = [1 2];
 % keys.pop(cc).tt.selection               = {'in_PeriS_space_perhand_Ddsa_han','CS'};
 % keys.pop(cc).normalization              = 'by_effector';
 % keys.pop(cc).group_parameter            = 'in_Cue_space_perhand_Ddsa_han';
@@ -1336,8 +1337,8 @@ keys.prf(cc).WINDOWS_PER_TYPE{4}={...
 % keys.pop(cc).plot_per_position          = 0;
 % 
 % cc=cc+1;
-% keys.pop(cc).tt.choices                 = 0;
-% keys.pop(cc).tt.hands                   = [1 2];
+% keys.pop(cc).tt.choice                  = 0;
+% keys.pop(cc).tt.reach_hand              = [1 2];
 % keys.pop(cc).tt.selection               = {'in_PeriS_space_perhand_Ddsa_han','IS'};
 % keys.pop(cc).normalization              = 'by_effector';
 % keys.pop(cc).group_parameter            = 'in_Cue_space_perhand_Ddsa_han';
