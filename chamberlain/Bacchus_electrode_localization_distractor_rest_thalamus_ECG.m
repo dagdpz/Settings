@@ -29,7 +29,7 @@ switch experiment_id
         penetration_date{n} = '2022_3'; xyz(n,:) = [-4 8 -45.3]; target{n} = 'MD_r'; notes{n} = ''; n = n+1;
         penetration_date{n} = '2022_4'; xyz(n,:) = [-4 8 -46.3]; target{n} = 'MD_r'; notes{n} = ''; n = n+1;
    
-    case 'Bacchus_electrode_localization_distractor_rest_dPul_right_ECG'
+    case 'Bacchus_electrode_localization_distractor_rest_dPul_left_ECG'
         grid_id = 'GRID.22.3';
         % NOTE: z in from top of the grid!!!
          penetration_date{n} = '2022_1'; xyz(n,:) = [-4 7 -39.6];   target{n} = 'dPul_l'; notes{n} = ''; n = n+1;
@@ -60,12 +60,15 @@ switch experiment_id
         penetration_date{n} = '2022_3'; xyz(n,:) = [-2 9 -43.8]; target{n} = 'dPul_l'; notes{n} = ''; n = n+1;
         penetration_date{n} = '2022_4'; xyz(n,:) = [-2 9 -44.8]; target{n} = 'dPul_l'; notes{n} = ''; n = n+1;
         penetration_date{n} = '2022_5'; xyz(n,:) = [-2 9 -45.8]; target{n} = 'dPul_l'; notes{n} = ''; n = n+1;
-        
+   
+    case 'Bacchus_electrode_localization_distractor_rest_dPul_right_ECG'
+        grid_id = 'GRID.22.3';
+        % NOTE: z in from top of the grid!!!
         % position changes slightly but
         penetration_date{n} = '2022_1'; xyz(n,:) = [-4 7 -36.6];   target{n} = 'dPul_r'; notes{n} = ''; n = n+1;
-        penetration_date{n} = '2022_1'; xyz(n,:) = [-4 7 -37.6];   target{n} = 'dPul_r'; notes{n} = ''; n = n+1;
-        penetration_date{n} = '2022_1'; xyz(n,:) = [-4 7 -38.6];   target{n} = 'dPul_r'; notes{n} = ''; n = n+1;
-        penetration_date{n} = '2022_1'; xyz(n,:) = [-4 7 -39.6];   target{n} = 'dPul_r'; notes{n} = ''; n = n+1;
+        penetration_date{n} = '2022_2'; xyz(n,:) = [-4 7 -37.6];   target{n} = 'dPul_r'; notes{n} = ''; n = n+1;
+        penetration_date{n} = '2022_3'; xyz(n,:) = [-4 7 -38.6];   target{n} = 'dPul_r'; notes{n} = ''; n = n+1;
+        penetration_date{n} = '2022_4'; xyz(n,:) = [-4 7 -39.6];   target{n} = 'dPul_r'; notes{n} = ''; n = n+1;
 
  		
 end
