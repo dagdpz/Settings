@@ -193,7 +193,7 @@ lfp_tfa_cfg.random_seed = rng;
 % 
 % Example row: 
 %   lfp_tfa_states.CUE_ON,     'Cue',    -1.0 ,    0.5
-lfp_tfa_cfg.analyse_states = {'single', lfp_tfa_states.CUE_ON,      'Cue',      -0.1,     1.8 ;...
+lfp_tfa_cfg.analyse_states = {'single', lfp_tfa_states.CUE_ON,      'Cue',      -0.1,     1.3 %;...
 %                              'single', lfp_tfa_states.TAR_ACQ_INV,  'MemL',     -0.1,    1  ; ...
 %                              'single', lfp_tfa_states.SAC_INI,      'Saccade',  -0.1,     0.3;...
                              };                    
@@ -348,9 +348,9 @@ lfp_tfa_cfg.compare.perturbations = [0];
 %    'choice', {0, 1}}};
 % Compute difference between difference between post and pre-injection trials of choice trials and that of instructed trials     
 
-lfp_tfa_cfg.diff_condition(1)={{'reach_spaces',{'C','I'}}}; 
-lfp_tfa_cfg.diff_condition(2) = {{'choice', {0, 1}}};
-lfp_tfa_cfg.diff_condition(3) = {{'choice', {0, 1}, 'reach_spaces',{'C','I'}}};
+lfp_tfa_cfg.diff_condition(2)= {{'choice', {0, 1}}};
+lfp_tfa_cfg.diff_condition(1) = {{'reach_spaces',{'C','I'}}}; 
+% lfp_tfa_cfg.diff_condition(1) = {{'choice', {0, 1}, 'reach_spaces',{'C'}}};
 % 
 % lfp_tfa_cfg.diff_condition={};
 
