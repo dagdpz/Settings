@@ -3,8 +3,8 @@ keys.project_version='dPul_LIP_Bac_9_sessions'; %Is this still used ?
 keys.filelist_formatted={};
 
 %% what to plot
-keys.plot.single_cells =0;
-keys.plot.waveforms=0;
+keys.plot.single_cells =1;
+keys.plot.waveforms=1;
 keys.plot.population_PSTH_legends=1;  
 %% to check carefully
 keys.position_and_plotting_arrangements             ={'hands'};
@@ -115,13 +115,13 @@ keys.tt.trial_criterion_in          = 'per_hemifield';
 keys.tt.trial_criterion_ch          = 'per_hemifield';
 
 %% population PSTH settings
-%  cc=0;
+% cc=0;
 % % % 1
 % cc=cc+1;
-% keys.pop(cc).tt.hands                 	= [1 2];
+% keys.pop(cc).tt.hands                 	= [0];
 % keys.pop(cc).tt.perturbations          	= 0;
 % keys.pop(cc).tt.choices                	= [0 1];
-% keys.pop(cc).tt.selection             	= {};
+% keys.pop(cc).tt.selection             	= {'PostS_en_Ddsa_han','1'};
 % keys.pop(cc).tt.tasktypes               = {'Ddsa_han'};
 % keys.pop(cc).group_parameter            = 'ungrouped'; %hand_tuning
 % keys.pop(cc).conditions_to_plot         = {'Ddsa'}; 
@@ -134,13 +134,11 @@ keys.tt.trial_criterion_ch          = 'per_hemifield';
 % keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
 % keys.pop(cc).normalization              = 'none';        % separate (divisive) normalization factor for trials grouped by effector; other options:
 %                                                                 % 'by_condition','by_effector','by_type','by_all_trials','z_score','none'
-% 
 % cc=cc+1;
-% keys.pop(cc).tt.hands                 	= [0];
+% keys.pop(cc).tt.hands                 	= [1];
 % keys.pop(cc).tt.perturbations          	= 0;
 % keys.pop(cc).tt.choices                	= [0 1];
-% % keys.pop(cc).tt.selection             	= {};
-% keys.pop(cc).tt.selection             	= {'visual_en_Ddsa_han','1'};
+% keys.pop(cc).tt.selection             	= {'PostS_su_Ddsa_han','1'};
 % keys.pop(cc).tt.tasktypes               = {'Ddsa_han'};
 % keys.pop(cc).group_parameter            = 'ungrouped'; %hand_tuning
 % keys.pop(cc).conditions_to_plot         = {'Ddsa'}; 
@@ -152,6 +150,7 @@ keys.tt.trial_criterion_ch          = 'per_hemifield';
 % keys.pop(cc).group_excluded             = {};%{'susu','ensu','suen','-su','su-','--'};
 % keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
 % keys.pop(cc).normalization              = 'none';        % separate (divisive) normalization factor for trials grouped by effector; other options:
+%                                                                 'by_condition','by_effector','by_type','by_all_trials','z_score','none'
 % % %   
 % cc=cc+1;
 % keys.pop(cc).tt.hands                 	= [0];
@@ -170,14 +169,14 @@ keys.tt.trial_criterion_ch          = 'per_hemifield';
 % keys.pop(cc).group_excluded             = {};%{'susu','ensu','suen','-su','su-','--'};
 % keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
 % keys.pop(cc).normalization              = 'none';
-
+% 
 % 
 % cc=cc+1;
 % keys.pop(cc).tt.hands                 	= [0];
 % keys.pop(cc).tt.perturbations          	= 0;
 % keys.pop(cc).tt.choices                	= [0 1];
 % % keys.pop(cc).tt.selection             	= {};
-% keys.pop(cc).tt.selection             	= {'in_Cue_spaceLR_Ddsa_han','CS'};
+% keys.pop(cc).tt.selection             	= {'visual_en_Ddsa_han','1'};
 % keys.pop(cc).tt.tasktypes               = {'Ddsa_han'};
 % keys.pop(cc).group_parameter            = 'ungrouped'; %hand_tuning
 % keys.pop(cc).conditions_to_plot         = {'Ddsa'}; 
@@ -189,13 +188,13 @@ keys.tt.trial_criterion_ch          = 'per_hemifield';
 % keys.pop(cc).group_excluded             = {};%{'susu','ensu','suen','-su','su-','--'};
 % keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
 % keys.pop(cc).normalization              = 'by_all_trials';
- 
+%  
 % cc=cc+1;
 % keys.pop(cc).tt.hands                 	= [0];
 % keys.pop(cc).tt.perturbations          	= 0;
 % keys.pop(cc).tt.choices                	= [0 1];
 % % keys.pop(cc).tt.selection             	= {};
-% keys.pop(cc).tt.selection             	= {'ch_Cue_spaceLR_Ddsa_han','CS'};
+% keys.pop(cc).tt.selection             	= {'motor_en_Ddsa_han','1'};
 % keys.pop(cc).tt.tasktypes               = {'Ddsa_han'};
 % keys.pop(cc).group_parameter            = 'ungrouped'; %hand_tuning
 % keys.pop(cc).conditions_to_plot         = {'Ddsa'}; 
@@ -232,18 +231,18 @@ keys.tt.trial_criterion_ch          = 'per_hemifield';
 
 %% cell count
 
-cc=0;
-
-cc=cc+1;
-keys.ccs(cc).tt.choices               	= [1];
-keys.ccs(cc).tt.hands                   = [1 2];
-keys.ccs(cc).tt.perturbations          	= 0;
-keys.ccs(cc).tt.tasktypes              	= {'Ddsa_han'};
-keys.ccs(cc).plot_type                 	= 'space_and_hand';
-keys.ccs(cc).factor                   	= 'epoch';
-keys.ccs(cc).conditions_to_plot        	= {'Ddsa'};
-keys.ccs(cc).epochs.Ddsa               	= {'Fhol','Cue','Del','PreS','PostS'}'; 
-keys.ccs(cc).IC_to_plot              	= 'ch'; 
+% cc=0;
+% 
+% cc=cc+1;
+% keys.ccs(cc).tt.choices               	= [1];
+% keys.ccs(cc).tt.hands                   = [1 2];
+% keys.ccs(cc).tt.perturbations          	= 0;
+% keys.ccs(cc).tt.tasktypes              	= {'Ddsa_han'};
+% keys.ccs(cc).plot_type                 	= 'space_and_hand';
+% keys.ccs(cc).factor                   	= 'epoch';
+% keys.ccs(cc).conditions_to_plot        	= {'Ddsa'};
+% keys.ccs(cc).epochs.Ddsa               	= {'Fhol','Cue','Del','PreS','PostS'}'; 
+% keys.ccs(cc).IC_to_plot              	= 'ch'; 
 %% scatter keys
 % cc=0;
 % % reaches inactivation stuff
@@ -364,3 +363,115 @@ keys.ccs(cc).IC_to_plot              	= 'ch';
 % keys.sct(cc).X_sig='in_IH_CS_PeriS_epoch_Ddsa_han'; % O > ^ o (filled) 
 % keys.sct(cc).Y_sig='ch_IH_CS_PeriS_epoch_Ddsa_han';
 % keys.sct(cc).tt.tasktypes={'Ddsa_han'};
+
+%% cell count
+
+cc=0;
+
+cc=cc+1;
+keys.ccs(cc).tt.choices               	= [1];
+keys.ccs(cc).tt.hands                   = [1];
+keys.ccs(cc).tt.perturbations          	= 0;
+keys.ccs(cc).tt.tasktypes              	= {'Ddsa_han'};
+keys.ccs(cc).plot_type                 	= 'space_and_hand';
+keys.ccs(cc).factor                   	= 'epoch';
+keys.ccs(cc).conditions_to_plot        	= {'Ddsa'};
+keys.ccs(cc).epochs.Ddsa               	= {'Fhol','Cue','Del','PreS','PostS'}'; 
+keys.ccs(cc).IC_to_plot              	= 'ch'; 
+keys.ccs(cc).tt.selection             	= {'PostS_en_Ddsa_han','1'};
+
+% cc=cc+1;
+% keys.ccs(cc).tt.choices               	= [0];
+% keys.ccs(cc).tt.hands                   = [1];
+% keys.ccs(cc).tt.perturbations          	= 0;
+% keys.ccs(cc).tt.tasktypes              	= {'Ddsa_han'};
+% keys.ccs(cc).plot_type                 	= 'space_and_hand';
+% keys.ccs(cc).factor                   	= 'epoch';
+% keys.ccs(cc).conditions_to_plot        	= {'Ddsa'};
+% keys.ccs(cc).epochs.Ddsa               	= {'Fhol','Cue','Del','PreS','PostS'}'; 
+% keys.ccs(cc).IC_to_plot              	= 'in'; 
+% keys.ccs(cc).tt.selection             	= {'PostS_en_Ddsa_han','1'};
+% 
+% cc=cc+1;
+% keys.ccs(cc).tt.choices               	= [1];
+% keys.ccs(cc).tt.hands                   = [1];
+% keys.ccs(cc).tt.perturbations          	= 0;
+% keys.ccs(cc).tt.tasktypes              	= {'Ddsa_han'};
+% keys.ccs(cc).plot_type                 	= 'space_and_hand';
+% keys.ccs(cc).factor                   	= 'epoch';
+% keys.ccs(cc).conditions_to_plot        	= {'Ddsa'};
+% keys.ccs(cc).epochs.Ddsa               	= {'Fhol','Cue','Del','PreS','PostS'}'; 
+% keys.ccs(cc).IC_to_plot              	= 'ch'; 
+% keys.ccs(cc).tt.selection             	= {'PostS_su_Ddsa_han','1'};
+% 
+% cc=cc+1;
+% keys.ccs(cc).tt.choices               	= [1];
+% keys.ccs(cc).tt.hands                   = [1];
+% keys.ccs(cc).tt.perturbations          	= 0;
+% keys.ccs(cc).tt.tasktypes              	= {'Ddsa_han'};
+% keys.ccs(cc).plot_type                 	= 'space_and_hand';
+% keys.ccs(cc).factor                   	= 'epoch';
+% keys.ccs(cc).conditions_to_plot        	= {'Ddsa'};
+% keys.ccs(cc).epochs.Ddsa               	= {'Fhol','Cue','Del','PreS','PostS'}'; 
+% keys.ccs(cc).IC_to_plot              	= 'ch'; 
+% keys.ccs(cc).tt.selection             	= {'PostS_su_Ddsa_han','1'};
+% 
+% cc=cc+1;
+% keys.ccs(cc).tt.choices               	= [1];
+% keys.ccs(cc).tt.hands                   = [1];
+% keys.ccs(cc).tt.perturbations          	= 0;
+% keys.ccs(cc).tt.tasktypes              	= {'Ddsa_han'};
+% keys.ccs(cc).plot_type                 	= 'space_and_hand';
+% keys.ccs(cc).factor                   	= 'epoch';
+% keys.ccs(cc).conditions_to_plot        	= {'Ddsa'};
+% keys.ccs(cc).epochs.Ddsa               	= {'Fhol','Cue','Del','PreS','PostS'}'; 
+% keys.ccs(cc).IC_to_plot              	= 'ch'; 
+% keys.ccs(cc).tt.selection             	= {};
+% 
+% cc=cc+1;
+% keys.ccs(cc).tt.choices               	= [0];
+% keys.ccs(cc).tt.hands                   = [1];
+% keys.ccs(cc).tt.perturbations          	= 0;
+% keys.ccs(cc).tt.tasktypes              	= {'Ddsa_han'};
+% keys.ccs(cc).plot_type                 	= 'space_and_hand';
+% keys.ccs(cc).factor                   	= 'epoch';
+% keys.ccs(cc).conditions_to_plot        	= {'Ddsa'};
+% keys.ccs(cc).epochs.Ddsa               	= {'Fhol','Cue','Del','PreS','PostS'}'; 
+% keys.ccs(cc).IC_to_plot              	= 'in'; 
+% keys.ccs(cc).tt.selection             	= {'motor_en_Ddsa_han','1'};
+% 
+% cc=cc+1;
+% keys.ccs(cc).tt.choices               	= [1];
+% keys.ccs(cc).tt.hands                   = [1];
+% keys.ccs(cc).tt.perturbations          	= 0;
+% keys.ccs(cc).tt.tasktypes              	= {'Ddsa_han'};
+% keys.ccs(cc).plot_type                 	= 'space_and_hand';
+% keys.ccs(cc).factor                   	= 'epoch';
+% keys.ccs(cc).conditions_to_plot        	= {'Ddsa'};
+% keys.ccs(cc).epochs.Ddsa               	= {'Fhol','Cue','Del','PreS','PostS'}'; 
+% keys.ccs(cc).IC_to_plot              	= 'ch'; 
+% keys.ccs(cc).tt.selection             	= {'motor_en_Ddsa_han','1'};
+% 
+% cc=cc+1;
+% keys.ccs(cc).tt.choices               	= [0];
+% keys.ccs(cc).tt.hands                   = [1];
+% keys.ccs(cc).tt.perturbations          	= 0;
+% keys.ccs(cc).tt.tasktypes              	= {'Ddsa_han'};
+% keys.ccs(cc).plot_type                 	= 'space_and_hand';
+% keys.ccs(cc).factor                   	= 'epoch';
+% keys.ccs(cc).conditions_to_plot        	= {'Ddsa'};
+% keys.ccs(cc).epochs.Ddsa              	= {'Fhol','Cue','Del','PreS','PostS'}'; 
+% keys.ccs(cc).IC_to_plot              	= 'in'; 
+% keys.ccs(cc).tt.selection             	= {'visual_en_Ddsa_han','1'};
+% 
+% cc=cc+1;
+% keys.ccs(cc).tt.choices               	= [1];
+% keys.ccs(cc).tt.hands                   = [1];
+% keys.ccs(cc).tt.perturbations          	= 0;
+% keys.ccs(cc).tt.tasktypes              	= {'Ddsa_han'};
+% keys.ccs(cc).plot_type                 	= 'space_and_hand';
+% keys.ccs(cc).factor                   	= 'epoch';
+% keys.ccs(cc).conditions_to_plot        	= {'Ddsa'};
+% keys.ccs(cc).epochs.Ddsa               	= {'Fhol','Cue','Del','PreS','PostS'}'; 
+% keys.ccs(cc).IC_to_plot              	= 'ch'; 
+% keys.ccs(cc).tt.selection             	= {'visual_en_Ddsa_han','1'};
