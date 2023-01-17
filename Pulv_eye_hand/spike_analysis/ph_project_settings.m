@@ -5,7 +5,6 @@ keys.cal.process_by_block                =0;      % you can choose not to run by
 
 %% to check carefully
 keys.position_and_plotting_arrangements         ={'hands'};
-% keys.cal.divide_baseline_for_ANOVA      =1;
 keys.batching.combine_monkeys           =1;
 keys.plot.single_cells                  =1;         % perform single cell plotting
 
@@ -31,39 +30,6 @@ keys.plot.excentricity_max_for_ylim     =24;
 keys.Flaffus.marker    ='o';
 keys.Linus.marker      ='o';
 
-% 
-% %% Delay type
-% keys.EPOCHS_PER_TYPE{4}={...
-%     'INI',      2,	-0.4,	-0.1,   'INI';...
-%     'Facq',     3,	-0.4,	-0.1,   'INI';...
-%     'Fhol',     6,	-0.3,	0,      'INI';...
-%     'Cue',      6,	0.06,   0.12,   'INI';...
-%     'Cue2',     6,	0.12,   0.30,   'INI';...
-%     'EDel',     4, 	-1,   -0.7,   'INI';...
-%     'Del',      4, 	-0.3,   0,      'INI';...
-%     'PreS',     60,	-0.22, 	-0.02,  'INI';...
-%     'PeriS',	60,	-0.02, 	0.08,   'INI';...
-%     'PostS',	61,	0.05,   0.2,    'INI';...
-%     'PreR',     62,	-0.4, 	-0.1,  'INI';...
-%     'PeriR',	62,	-0.05, 	0.25,   'INI';...
-%     'PostR',	63,	0.1,   0.4,    'INI';...
-%     'PreM',     66,	-0.4, 	-0.1,  'INI';...
-%     'PeriM',	66,	-0.05, 	0.25,   'INI';...
-%     'PostM',	67,	0.1,   0.4,    'INI';...
-%     'PreM2',    68,	-0.4, 	-0.1,  'INI';...
-%     'PeriM2',	68,	-0.05, 	0.25,   'INI';...
-%     'PostM2',	69,	0.1,   0.4,    'INI';...
-%     'Thol',     20,	-0.3,   0,      'INI';...
-%     };
-% keys.WINDOWS_PER_TYPE{4}={...
-%     'Fixation',     3,	-0.5,   0;...
-%     'Delay Period', 6,	-0.5,  1.7;...
-%     'Saccade',      60,	-0.70,  0.45;...
-%     'Reach',        62,	-0.90,  0.65;...
-%     'Movement',     66,	-0.90,  0.45;...
-%     'Movement2',    68,	-0.90,  0.45;...
-%     };
-
 %% Delay type
 keys.EPOCHS_PER_TYPE{4}={...
     'INI',      2,	-0.4,	-0.1,   'INI';...
@@ -71,20 +37,20 @@ keys.EPOCHS_PER_TYPE{4}={...
     'Fhol',     6,	-0.3,	0,      'INI';...
     'Cue',      6,	0.06,   0.12,   'INI';...
     'Cue2',     6,	0.12,   0.30,   'INI';...
-    'EDel',     4, 	-1,   -0.7,   'INI';...
+    'EDel',     4, 	-1,     -0.7,   'INI';...
     'Del',      4, 	-0.3,   0,      'INI';...
     'PreS',     60,	-0.22, 	-0.02,  'INI';...
     'PeriS',	60,	-0.02, 	0.08,   'INI';...
     'PostS',	61,	0.05,   0.2,    'INI';...
-    'PreR',     62,	-0.4, 	-0.1,  'INI';...
+    'PreR',     62,	-0.4, 	-0.1,   'INI';...
     'PeriR',	62,	-0.05, 	0.25,   'INI';...
-    'PostR',	63,	0.1,   0.4,    'INI';...
-    'PreM',     66,	-0.4, 	-0.1,  'INI';...
+    'PostR',	63,	0.1,    0.4,    'INI';...
+    'PreM',     66,	-0.4, 	-0.1,   'INI';...
     'PeriM',	66,	-0.05, 	0.25,   'INI';...
-    'PostM',	67,	0.1,   0.4,    'INI';...
-    'PreM2',    68,	-0.4, 	-0.1,  'INI';...
+    'PostM',	67,	0.1,    0.4,    'INI';...
+    'PreM2',    68,	-0.4, 	-0.1,   'INI';...
     'PeriM2',	68,	-0.05, 	0.25,   'INI';...
-    'PostM2',	69,	0.1,   0.4,    'INI';...
+    'PostM2',	69,	0.1,    0.4,    'INI';...
     'Thol',     20,	-0.3,   0,      'INI';...
     };
 keys.WINDOWS_PER_TYPE{4}={...
@@ -109,7 +75,7 @@ keys.ANOVAS_PER_TYPE(4).epoch={'INI' 'Facq';...
     'Fhol' 'PostR';...
     'Fhol' 'Thol';...
     };
-keys.ANOVAS_PER_TYPE(4).spaceLR            ={'INI','Facq','Fhol','Cue','Cue2','EDel','Del','PreS','PeriS','PostS','PreR','PeriR','PostR','Thol'}';
+keys.ANOVAS_PER_TYPE(4).hemifield          ={'INI','Facq','Fhol','Cue','Cue2','EDel','Del','PreS','PeriS','PostS','PreR','PeriR','PostR','Thol'}';
 keys.ANOVAS_PER_TYPE(4).positions          ={'INI','Facq','Fhol','Cue','Cue2','EDel','Del','PreS','PeriS','PostS','PreR','PeriR','PostR','Thol'}';
 keys.ANOVAS_PER_TYPE(4).hands              ={'INI','Facq','Fhol','Cue','Cue2','EDel','Del','PreS','PeriS','PostS','PreR','PeriR','PostR','Thol'}';
 keys.ANOVAS_PER_TYPE(4).SxH                ={'INI','Facq','Fhol','Cue','Cue2','EDel','Del','PreS','PeriS','PostS','PreR','PeriR','PostR','Thol'}';
@@ -647,138 +613,138 @@ cs=0;
 % cs=cs+1;
 % keys.sct(cs).conditions_to_plot      = {'Ddsa';'Ddre';'Dcfr'};
 % keys.sct(cs).tt.tasktypes={'Ddsa_han','Ddre_han','Dcfr_han'};
-% keys.sct(cs).X='in_CH_Cue_spaceLR_DF_Ddsa_han';
-% keys.sct(cs).Y='in_CH_Cue_spaceLR_DF_Ddre_han';
-% keys.sct(cs).X_sig='in_CH_Cue_spaceLR_Ddsa_han';
-% keys.sct(cs).Y_sig='in_CH_Cue_spaceLR_Ddre_han';
+% keys.sct(cs).X='in_CH_Cue_hemifield_DF_Ddsa_han';
+% keys.sct(cs).Y='in_CH_Cue_hemifield_DF_Ddre_han';
+% keys.sct(cs).X_sig='in_CH_Cue_hemifield_Ddsa_han';
+% keys.sct(cs).Y_sig='in_CH_Cue_hemifield_Ddre_han';
 % keys.sct(cs).color_option='monkeys_by_marker';
 % 
 % cs=cs+1;
 % keys.sct(cs).conditions_to_plot      = {'Ddsa';'Ddre';'Dcfr'};
 % keys.sct(cs).tt.tasktypes={'Ddsa_han','Ddre_han','Dcfr_han'};
-% keys.sct(cs).X='in_CH_Cue2_spaceLR_DF_Ddsa_han';
-% keys.sct(cs).Y='in_CH_Cue2_spaceLR_DF_Ddre_han';
-% keys.sct(cs).X_sig='in_CH_Cue2_spaceLR_Ddsa_han';
-% keys.sct(cs).Y_sig='in_CH_Cue2_spaceLR_Ddre_han';
+% keys.sct(cs).X='in_CH_Cue2_hemifield_DF_Ddsa_han';
+% keys.sct(cs).Y='in_CH_Cue2_hemifield_DF_Ddre_han';
+% keys.sct(cs).X_sig='in_CH_Cue2_hemifield_Ddsa_han';
+% keys.sct(cs).Y_sig='in_CH_Cue2_hemifield_Ddre_han';
 % keys.sct(cs).color_option='monkeys_by_marker';
 % 
 % cs=cs+1;
 % keys.sct(cs).conditions_to_plot      = {'Ddsa';'Ddre';'Dcfr'};
 % keys.sct(cs).tt.tasktypes={'Ddsa_han','Ddre_han','Dcfr_han'};
-% keys.sct(cs).X='in_CH_EDel_spaceLR_DF_Ddsa_han';
-% keys.sct(cs).Y='in_CH_EDel_spaceLR_DF_Ddre_han';
-% keys.sct(cs).X_sig='in_CH_EDel_spaceLR_Ddsa_han';
-% keys.sct(cs).Y_sig='in_CH_EDel_spaceLR_Ddre_han';
+% keys.sct(cs).X='in_CH_EDel_hemifield_DF_Ddsa_han';
+% keys.sct(cs).Y='in_CH_EDel_hemifield_DF_Ddre_han';
+% keys.sct(cs).X_sig='in_CH_EDel_hemifield_Ddsa_han';
+% keys.sct(cs).Y_sig='in_CH_EDel_hemifield_Ddre_han';
 % keys.sct(cs).color_option='monkeys_by_marker';
 % 
 % cs=cs+1;
 % keys.sct(cs).conditions_to_plot      = {'Ddsa';'Ddre';'Dcfr'};
 % keys.sct(cs).tt.tasktypes={'Ddsa_han','Ddre_han','Dcfr_han'};
-% keys.sct(cs).X='in_CH_Del_spaceLR_DF_Ddsa_han';
-% keys.sct(cs).Y='in_CH_Del_spaceLR_DF_Ddre_han';
-% keys.sct(cs).X_sig='in_CH_Del_spaceLR_Ddsa_han';
-% keys.sct(cs).Y_sig='in_CH_Del_spaceLR_Ddre_han';
+% keys.sct(cs).X='in_CH_Del_hemifield_DF_Ddsa_han';
+% keys.sct(cs).Y='in_CH_Del_hemifield_DF_Ddre_han';
+% keys.sct(cs).X_sig='in_CH_Del_hemifield_Ddsa_han';
+% keys.sct(cs).Y_sig='in_CH_Del_hemifield_Ddre_han';
 % keys.sct(cs).color_option='monkeys_by_marker';
 % 
 % cs=cs+1;
 % keys.sct(cs).conditions_to_plot      = {'Ddsa';'Ddre';'Dcfr'};
 % keys.sct(cs).tt.tasktypes={'Ddsa_han','Ddre_han','Dcfr_han'};
-% keys.sct(cs).X='in_CH_PreS_spaceLR_DF_Ddsa_han';
-% keys.sct(cs).Y='in_CH_PreR_spaceLR_DF_Ddre_han';
-% keys.sct(cs).X_sig='in_CH_PreS_spaceLR_Ddsa_han';
-% keys.sct(cs).Y_sig='in_CH_PreR_spaceLR_Ddre_han';
+% keys.sct(cs).X='in_CH_PreS_hemifield_DF_Ddsa_han';
+% keys.sct(cs).Y='in_CH_PreR_hemifield_DF_Ddre_han';
+% keys.sct(cs).X_sig='in_CH_PreS_hemifield_Ddsa_han';
+% keys.sct(cs).Y_sig='in_CH_PreR_hemifield_Ddre_han';
 % keys.sct(cs).color_option='monkeys_by_marker';
 % 
 % %% IH
 % cs=cs+1;
 % keys.sct(cs).conditions_to_plot      = {'Ddsa';'Ddre';'Dcfr'};
 % keys.sct(cs).tt.tasktypes={'Ddsa_han','Ddre_han','Dcfr_han'};
-% keys.sct(cs).X='in_IH_Cue_spaceLR_DF_Ddsa_han';
-% keys.sct(cs).Y='in_IH_Cue_spaceLR_DF_Ddre_han';
-% keys.sct(cs).X_sig='in_IH_Cue_spaceLR_Ddsa_han';
-% keys.sct(cs).Y_sig='in_IH_Cue_spaceLR_Ddre_han';
+% keys.sct(cs).X='in_IH_Cue_hemifield_DF_Ddsa_han';
+% keys.sct(cs).Y='in_IH_Cue_hemifield_DF_Ddre_han';
+% keys.sct(cs).X_sig='in_IH_Cue_hemifield_Ddsa_han';
+% keys.sct(cs).Y_sig='in_IH_Cue_hemifield_Ddre_han';
 % keys.sct(cs).color_option='monkeys_by_marker';
 % 
 % cs=cs+1;
 % keys.sct(cs).conditions_to_plot      = {'Ddsa';'Ddre';'Dcfr'};
 % keys.sct(cs).tt.tasktypes={'Ddsa_han','Ddre_han','Dcfr_han'};
-% keys.sct(cs).X='in_IH_Cue2_spaceLR_DF_Ddsa_han';
-% keys.sct(cs).Y='in_IH_Cue2_spaceLR_DF_Ddre_han';
-% keys.sct(cs).X_sig='in_IH_Cue2_spaceLR_Ddsa_han';
-% keys.sct(cs).Y_sig='in_IH_Cue2_spaceLR_Ddre_han';
+% keys.sct(cs).X='in_IH_Cue2_hemifield_DF_Ddsa_han';
+% keys.sct(cs).Y='in_IH_Cue2_hemifield_DF_Ddre_han';
+% keys.sct(cs).X_sig='in_IH_Cue2_hemifield_Ddsa_han';
+% keys.sct(cs).Y_sig='in_IH_Cue2_hemifield_Ddre_han';
 % keys.sct(cs).color_option='monkeys_by_marker';
 % 
 % cs=cs+1;
 % keys.sct(cs).conditions_to_plot      = {'Ddsa';'Ddre';'Dcfr'};
 % keys.sct(cs).tt.tasktypes={'Ddsa_han','Ddre_han','Dcfr_han'};
-% keys.sct(cs).X='in_IH_EDel_spaceLR_DF_Ddsa_han';
-% keys.sct(cs).Y='in_IH_EDel_spaceLR_DF_Ddre_han';
-% keys.sct(cs).X_sig='in_IH_EDel_spaceLR_Ddsa_han';
-% keys.sct(cs).Y_sig='in_IH_EDel_spaceLR_Ddre_han';
+% keys.sct(cs).X='in_IH_EDel_hemifield_DF_Ddsa_han';
+% keys.sct(cs).Y='in_IH_EDel_hemifield_DF_Ddre_han';
+% keys.sct(cs).X_sig='in_IH_EDel_hemifield_Ddsa_han';
+% keys.sct(cs).Y_sig='in_IH_EDel_hemifield_Ddre_han';
 % keys.sct(cs).color_option='monkeys_by_marker';
 % 
 % cs=cs+1;
 % keys.sct(cs).conditions_to_plot      = {'Ddsa';'Ddre';'Dcfr'};
 % keys.sct(cs).tt.tasktypes={'Ddsa_han','Ddre_han','Dcfr_han'};
-% keys.sct(cs).X='in_IH_Del_spaceLR_DF_Ddsa_han';
-% keys.sct(cs).Y='in_IH_Del_spaceLR_DF_Ddre_han';
-% keys.sct(cs).X_sig='in_IH_Del_spaceLR_Ddsa_han';
-% keys.sct(cs).Y_sig='in_IH_Del_spaceLR_Ddre_han';
+% keys.sct(cs).X='in_IH_Del_hemifield_DF_Ddsa_han';
+% keys.sct(cs).Y='in_IH_Del_hemifield_DF_Ddre_han';
+% keys.sct(cs).X_sig='in_IH_Del_hemifield_Ddsa_han';
+% keys.sct(cs).Y_sig='in_IH_Del_hemifield_Ddre_han';
 % keys.sct(cs).color_option='monkeys_by_marker';
 % 
 % cs=cs+1;
 % keys.sct(cs).conditions_to_plot      = {'Ddsa';'Ddre';'Dcfr'};
 % keys.sct(cs).tt.tasktypes={'Ddsa_han','Ddre_han','Dcfr_han'};
-% keys.sct(cs).X='in_IH_PreS_spaceLR_DF_Ddsa_han';
-% keys.sct(cs).Y='in_IH_PreR_spaceLR_DF_Ddre_han';
-% keys.sct(cs).X_sig='in_IH_PreS_spaceLR_Ddsa_han';
-% keys.sct(cs).Y_sig='in_IH_PreR_spaceLR_Ddre_han';
+% keys.sct(cs).X='in_IH_PreS_hemifield_DF_Ddsa_han';
+% keys.sct(cs).Y='in_IH_PreR_hemifield_DF_Ddre_han';
+% keys.sct(cs).X_sig='in_IH_PreS_hemifield_Ddsa_han';
+% keys.sct(cs).Y_sig='in_IH_PreR_hemifield_Ddre_han';
 % keys.sct(cs).color_option='monkeys_by_marker';
 
 % %% Both hands together
 % cs=cs+1;
 % keys.sct(cs).conditions_to_plot      = {'Ddsa';'Ddre';'Dcfr'};
 % keys.sct(cs).tt.tasktypes={'Ddsa_han','Ddre_han','Dcfr_han'};
-% keys.sct(cs).X='in_Cue_spaceLR_DF_Ddsa_han';
-% keys.sct(cs).Y='in_Cue_spaceLR_DF_Ddre_han';
-% keys.sct(cs).X_sig='in_Cue_spaceLR_Ddsa_han';
-% keys.sct(cs).Y_sig='in_Cue_spaceLR_Ddre_han';
+% keys.sct(cs).X='in_Cue_hemifield_DF_Ddsa_han';
+% keys.sct(cs).Y='in_Cue_hemifield_DF_Ddre_han';
+% keys.sct(cs).X_sig='in_Cue_hemifield_Ddsa_han';
+% keys.sct(cs).Y_sig='in_Cue_hemifield_Ddre_han';
 % keys.sct(cs).color_option='monkeys_by_marker';
 % 
 % cs=cs+1;
 % keys.sct(cs).conditions_to_plot      = {'Ddsa';'Ddre';'Dcfr'};
 % keys.sct(cs).tt.tasktypes={'Ddsa_han','Ddre_han','Dcfr_han'};
-% keys.sct(cs).X='in_Cue2_spaceLR_DF_Ddsa_han';
-% keys.sct(cs).Y='in_Cue2_spaceLR_DF_Ddre_han';
-% keys.sct(cs).X_sig='in_Cue2_spaceLR_Ddsa_han';
-% keys.sct(cs).Y_sig='in_Cue2_spaceLR_Ddre_han';
+% keys.sct(cs).X='in_Cue2_hemifield_DF_Ddsa_han';
+% keys.sct(cs).Y='in_Cue2_hemifield_DF_Ddre_han';
+% keys.sct(cs).X_sig='in_Cue2_hemifield_Ddsa_han';
+% keys.sct(cs).Y_sig='in_Cue2_hemifield_Ddre_han';
 % keys.sct(cs).color_option='monkeys_by_marker';
 % 
 % cs=cs+1;
 % keys.sct(cs).conditions_to_plot      = {'Ddsa';'Ddre';'Dcfr'};
 % keys.sct(cs).tt.tasktypes={'Ddsa_han','Ddre_han','Dcfr_han'};
-% keys.sct(cs).X='in_EDel_spaceLR_DF_Ddsa_han';
-% keys.sct(cs).Y='in_EDel_spaceLR_DF_Ddre_han';
-% keys.sct(cs).X_sig='in_EDel_spaceLR_Ddsa_han';
-% keys.sct(cs).Y_sig='in_EDel_spaceLR_Ddre_han';
+% keys.sct(cs).X='in_EDel_hemifield_DF_Ddsa_han';
+% keys.sct(cs).Y='in_EDel_hemifield_DF_Ddre_han';
+% keys.sct(cs).X_sig='in_EDel_hemifield_Ddsa_han';
+% keys.sct(cs).Y_sig='in_EDel_hemifield_Ddre_han';
 % keys.sct(cs).color_option='monkeys_by_marker';
 % 
 % cs=cs+1;
 % keys.sct(cs).conditions_to_plot      = {'Ddsa';'Ddre';'Dcfr'};
 % keys.sct(cs).tt.tasktypes={'Ddsa_han','Ddre_han','Dcfr_han'};
-% keys.sct(cs).X='in_Del_spaceLR_DF_Ddsa_han';
-% keys.sct(cs).Y='in_Del_spaceLR_DF_Ddre_han';
-% keys.sct(cs).X_sig='in_Del_spaceLR_Ddsa_han';
-% keys.sct(cs).Y_sig='in_Del_spaceLR_Ddre_han';
+% keys.sct(cs).X='in_Del_hemifield_DF_Ddsa_han';
+% keys.sct(cs).Y='in_Del_hemifield_DF_Ddre_han';
+% keys.sct(cs).X_sig='in_Del_hemifield_Ddsa_han';
+% keys.sct(cs).Y_sig='in_Del_hemifield_Ddre_han';
 % keys.sct(cs).color_option='monkeys_by_marker';
 % 
 % cs=cs+1;
 % keys.sct(cs).conditions_to_plot      = {'Ddsa';'Ddre';'Dcfr'};
 % keys.sct(cs).tt.tasktypes={'Ddsa_han','Ddre_han','Dcfr_han'};
-% keys.sct(cs).X='in_PreS_spaceLR_DF_Ddsa_han';
-% keys.sct(cs).Y='in_PreR_spaceLR_DF_Ddre_han';
-% keys.sct(cs).X_sig='in_PreS_spaceLR_Ddsa_han';
-% keys.sct(cs).Y_sig='in_PreR_spaceLR_Ddre_han';
+% keys.sct(cs).X='in_PreS_hemifield_DF_Ddsa_han';
+% keys.sct(cs).Y='in_PreR_hemifield_DF_Ddre_han';
+% keys.sct(cs).X_sig='in_PreS_hemifield_Ddsa_han';
+% keys.sct(cs).Y_sig='in_PreR_hemifield_Ddre_han';
 % keys.sct(cs).color_option='monkeys_by_marker';
 
 %% Contra space hand difference
