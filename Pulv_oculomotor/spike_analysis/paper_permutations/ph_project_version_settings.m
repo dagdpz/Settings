@@ -163,59 +163,6 @@ keys.ons(cc).comparisons_per_effector(ce).colors=[keys.colors.in_AH_IS/255; keys
 keys.ons(cc).comparisons_per_effector(ce).baseline_epoch='Mem';
 keys.ons(cc).comparisons_per_effector(ce).title='Aligned to Target';
 
-% 
-% cc=cc+1;% 'Vsac epoch tuning';
-% ce=0;
-% keys.ons(cc).unique_title       = 'Vsac epoch tuning';
-% keys.ons(cc).group_parameter         = 'ungrouped';
-% keys.ons(cc).conditions_to_plot      = {'Vsac'};
-% keys.ons(cc).tt.choice =0; %for cell exclusion
-% keys.ons(cc).tt.hands=0; %for cell exclusion
-% ce=ce+1;
-% keys.ons(cc).comparisons_per_effector(ce).hemifield{1}=[-1 1];
-% keys.ons(cc).comparisons_per_effector(ce).hemifield{2}=[-1 1];
-% keys.ons(cc).comparisons_per_effector(ce).choice{1}=[0];
-% keys.ons(cc).comparisons_per_effector(ce).choice{2}=[0];
-% keys.ons(cc).comparisons_per_effector(ce).order_onset={'Visual onset', 0, 0.3};
-% keys.ons(cc).comparisons_per_effector(ce).colors=[keys.colors.EP_EN/255; keys.colors.EP_SU/255];
-% keys.ons(cc).comparisons_per_effector(ce).baseline_epoch='Fhol';
-% keys.ons(cc).comparisons_per_effector(ce).title='Aligned to Cue';
-% ce=ce+1;
-% keys.ons(cc).comparisons_per_effector(ce).hemifield{1}=[-1 1];
-% keys.ons(cc).comparisons_per_effector(ce).hemifield{2}=[-1 1];
-% keys.ons(cc).comparisons_per_effector(ce).choice{1}=[0];
-% keys.ons(cc).comparisons_per_effector(ce).choice{2}=[0];
-% keys.ons(cc).comparisons_per_effector(ce).order_onset={'Saccade', -0.2, 0.7};
-% keys.ons(cc).comparisons_per_effector(ce).colors=[keys.colors.EP_EN/255; keys.colors.EP_SU/255];
-% keys.ons(cc).comparisons_per_effector(ce).baseline_epoch='Fhol';
-% keys.ons(cc).comparisons_per_effector(ce).title='Aligned to Saccade';
-% 
-% 
-% cc=cc+1;% 'Vsac space tuning';
-% ce=0;
-% keys.ons(cc).unique_title       = 'Vsac instructed space tuning';
-% keys.ons(cc).group_parameter         = 'ungrouped';
-% keys.ons(cc).conditions_to_plot      = {'Vsac'};
-% keys.ons(cc).tt.choice =0; %for cell exclusion
-% ce=ce+1;
-% keys.ons(cc).comparisons_per_effector(ce).hemifield{1}=[-1];
-% keys.ons(cc).comparisons_per_effector(ce).hemifield{2}=[1];
-% keys.ons(cc).comparisons_per_effector(ce).choice{1}=0;
-% keys.ons(cc).comparisons_per_effector(ce).choice{2}=0;
-% keys.ons(cc).comparisons_per_effector(ce).order_onset={'Visual onset', 0, 0.3};
-% keys.ons(cc).comparisons_per_effector(ce).colors=[keys.colors.in_AH_IS/255; keys.colors.in_AH_CS/255];
-% keys.ons(cc).comparisons_per_effector(ce).baseline_epoch='Fhol';
-% keys.ons(cc).comparisons_per_effector(ce).title='Aligned to Cue';
-% ce=ce+1;
-% keys.ons(cc).comparisons_per_effector(ce).hemifield{1}=[-1];
-% keys.ons(cc).comparisons_per_effector(ce).hemifield{2}=[1];
-% keys.ons(cc).comparisons_per_effector(ce).choice{1}=0;
-% keys.ons(cc).comparisons_per_effector(ce).choice{2}=0;
-% keys.ons(cc).comparisons_per_effector(ce).order_onset={'Saccade', -0.2, 0.7};
-% keys.ons(cc).comparisons_per_effector(ce).colors=[keys.colors.in_AH_IS/255; keys.colors.in_AH_CS/255];
-% keys.ons(cc).comparisons_per_effector(ce).baseline_epoch='Fhol';
-% keys.ons(cc).comparisons_per_effector(ce).title='Aligned to Saccade'; 
-
 
 %% population PSTH settings
 cc=0;
@@ -781,16 +728,16 @@ cs=0;
 % % keys.sct(cs).color_option='monkeys_by_marker';
 % % keys.sct(cs).tt.choice =[0,1];
 
-%% Visually guided CUE
-% Cue
-cs=cs+1;
-keys.sct(cs).tt.tasktypes={'Vsac_opt'}; % {'Msac_opt','Vsac_opt'};
-keys.sct(cs).X='in_CueG_hemifield_DF_Vsac_opt';
-keys.sct(cs).Y='ch_CueG_hemifield_DF_Vsac_opt';
-keys.sct(cs).X_sig='in_CueG_hemifield_Vsac_opt';
-keys.sct(cs).Y_sig='ch_CueG_hemifield_Vsac_opt';
-keys.sct(cs).color_option='monkeys_by_marker';
-keys.sct(cs).tt.choice =[0,1];
+% %% Visually guided CUE
+% % Cue
+% cs=cs+1;
+% keys.sct(cs).tt.tasktypes={'Vsac_opt'}; % {'Msac_opt','Vsac_opt'};
+% keys.sct(cs).X='in_CueG_hemifield_DF_Vsac_opt';
+% keys.sct(cs).Y='ch_CueG_hemifield_DF_Vsac_opt';
+% keys.sct(cs).X_sig='in_CueG_hemifield_Vsac_opt';
+% keys.sct(cs).Y_sig='ch_CueG_hemifield_Vsac_opt';
+% keys.sct(cs).color_option='monkeys_by_marker';
+% keys.sct(cs).tt.choice =[0,1];
 
 % %% comparison choice and instructed tuning - Index
 % % Cue
@@ -1173,6 +1120,7 @@ keys.sct(cs).tt.choice =[0,1];
 % keys.sct(cs).Y_sig='in_TIhol_epoch_Msac_opt';
 % keys.sct(cs).color_option='ENSU_all_separated';
 % keys.sct(cs).tt.choice =0;
+
 % cs=cs+1;
 % keys.sct(cs).tt.tasktypes={'Msac_opt'};
 % keys.sct(cs).X='in_PreS_epoch_DF_Msac_opt';
@@ -1182,28 +1130,28 @@ keys.sct(cs).tt.choice =[0,1];
 % keys.sct(cs).color_option='ENSU_all_separated';
 % keys.sct(cs).tt.choice =0;
 % 
-% cs=cs+1;
-% keys.sct(cs).tt.tasktypes={'Msac_opt'};
-% keys.sct(cs).X='in_PeriS_epoch_DF_Msac_opt';
-% keys.sct(cs).Y='in_PreS_epoch_DF_Msac_opt';
-% keys.sct(cs).X_sig='in_PeriS_epoch_Msac_opt';
-% keys.sct(cs).Y_sig='in_PreS_epoch_Msac_opt';
-% keys.sct(cs).color_option='ENSU_all_separated';
-% keys.sct(cs).tt.choice =0;
+cs=cs+1;
+keys.sct(cs).tt.tasktypes={'Msac_opt'};
+keys.sct(cs).X='in_PreS_epoch_DF_Msac_opt';
+keys.sct(cs).Y='in_PeriS_epoch_DF_Msac_opt';
+keys.sct(cs).X_sig='in_PreS_epoch_Msac_opt';
+keys.sct(cs).Y_sig='in_PeriS_epoch_Msac_opt';
+keys.sct(cs).color_option='ENSU_all_separated';
+keys.sct(cs).tt.choice =0;
 
 %% UNTIL HERE
 
-% %% Supplementary cue stuff -- TEMPORARY
-% 
-% cs=cs+1;
-% keys.sct(cs).tt.tasktypes={'Msac_opt'};
-% keys.sct(cs).X='in_AH_Cue_prefH_FR_Msac_opt';
-% keys.sct(cs).Y='ch_AH_Cue_prefH_FR_Msac_opt';
-% keys.sct(cs).X_sig='in_AH_Cue_prefH_Msac_opt';
-% keys.sct(cs).Y_sig='ch_AH_Cue_prefH_Msac_opt';
-% keys.sct(cs).color_option='monkeys_by_marker';
-% keys.sct(cs).tt.replace_tuning                  = {'in_AH_Cue_prefH_Msac_opt','ch','-';'ch_AH_Cue_prefH_Msac_opt','in','-'};
-% keys.sct(cs).tt.choice =[0,1];
+%% Supplementary cue stuff -- TEMPORARY
+
+cs=cs+1;
+keys.sct(cs).tt.tasktypes={'Msac_opt'};
+keys.sct(cs).X='in_AH_Cue_prefH_FR_Msac_opt';
+keys.sct(cs).Y='ch_AH_Cue_prefH_FR_Msac_opt';
+keys.sct(cs).X_sig='in_AH_Cue_prefH_Msac_opt';
+keys.sct(cs).Y_sig='ch_AH_Cue_prefH_Msac_opt';
+keys.sct(cs).color_option='monkeys_by_marker';
+keys.sct(cs).tt.replace_tuning                  = {'in_AH_Cue_prefH_Msac_opt','ch','-';'ch_AH_Cue_prefH_Msac_opt','in','-'};
+keys.sct(cs).tt.choice =[0,1];
 
 % %% RF centers and sizes - NOT used AFAIK
 % 
@@ -1332,51 +1280,6 @@ keys.sct(cs).tt.choice =[0,1];
 % % 
 % 
 % %% uNCOMMENT
-
-% % visually guided versus memory guided FR CONTRA CUE
-% cs=cs+1;  
-% keys.sct(cs).tt.tasktypes={'Msac_opt','Vsac_opt'};
-% keys.sct(cs).X='in_AH_CS_CueG_epoch_FR_Vsac_opt';
-% keys.sct(cs).Y='PreCueMean_CS_Msac_opt';
-% keys.sct(cs).X_sig='in_AH_CS_CueG_epoch_Vsac_opt';
-% keys.sct(cs).Y_sig='in_AH_CS_CueG_epoch_Vsac_opt';
-% keys.sct(cs).color_option='ENSU_as_color';
-% keys.sct(cs).categories={'visual_Msac_opt';'visuomotor_Msac_opt';'motor_Msac_opt'};
-% 
-% % visually guided versus memory guided FR IPSI CUE
-% cs=cs+1;  
-% keys.sct(cs).tt.tasktypes={'Msac_opt','Vsac_opt'};
-% keys.sct(cs).X='in_AH_IS_CueG_epoch_FR_Vsac_opt';
-% keys.sct(cs).Y='PreCueMean_IS_Msac_opt';
-% keys.sct(cs).X_sig='in_AH_IS_CueG_epoch_Vsac_opt';
-% keys.sct(cs).Y_sig='in_AH_IS_CueG_epoch_Vsac_opt';
-% keys.sct(cs).color_option='ENSU_as_color';
-% keys.sct(cs).categories={'visual_Msac_opt';'visuomotor_Msac_opt';'motor_Msac_opt'};
-
-
-% %% now same for Visually guided - not used
-% % Cue
-% cs=cs+1;
-% keys.sct(cs).tt.tasktypes={'Vsac_opt'};
-% keys.sct(cs).X='in_CueG_hemifield_DF_Vsac_opt';
-% keys.sct(cs).Y='ch_CueG_hemifield_DF_Vsac_opt';
-% keys.sct(cs).X_sig='in_CueG_hemifield_Vsac_opt';
-% keys.sct(cs).Y_sig='ch_CueG_hemifield_Vsac_opt';
-% keys.sct(cs).color_option='monkeys_by_marker';
-% keys.sct(cs).tt.choice =[0,1];
-% 
-% % Cue
-% cs=cs+1;
-% keys.sct(cs).tt.tasktypes={'Vsac_opt'};
-% keys.sct(cs).X='in_CueG_hemifield_IX_Vsac_opt';
-% keys.sct(cs).Y='ch_CueG_hemifield_IX_Vsac_opt';
-% keys.sct(cs).X_sig='in_CueG_hemifield_Vsac_opt';
-% keys.sct(cs).Y_sig='ch_CueG_hemifield_Vsac_opt';
-% keys.sct(cs).color_option='monkeys_by_marker';
-% keys.sct(cs).tt.choice =[0,1];
-% 
-% 
-% 
 
 
 %% classification
@@ -1633,3 +1536,59 @@ keys.tun(cc).tt.tasktypes = {'Msac','Vsac'}; %% why is this needed ??
 % keys.tun(cc).separate_multicomparison= 1;
 % keys.tun(cc).multicomp_epochs(3).epoch={'Cue','MemL','PreS','Peri2','TIhol'}';
 % keys.tun(cc).tt.tasktypes = {}; %% effectively removes trial criterion
+
+
+%%% OTHER NOT USED
+
+% 
+% cc=cc+1;% 'Vsac epoch tuning';
+% ce=0;
+% keys.ons(cc).unique_title       = 'Vsac epoch tuning';
+% keys.ons(cc).group_parameter         = 'ungrouped';
+% keys.ons(cc).conditions_to_plot      = {'Vsac'};
+% keys.ons(cc).tt.choice =0; %for cell exclusion
+% keys.ons(cc).tt.hands=0; %for cell exclusion
+% ce=ce+1;
+% keys.ons(cc).comparisons_per_effector(ce).hemifield{1}=[-1 1];
+% keys.ons(cc).comparisons_per_effector(ce).hemifield{2}=[-1 1];
+% keys.ons(cc).comparisons_per_effector(ce).choice{1}=[0];
+% keys.ons(cc).comparisons_per_effector(ce).choice{2}=[0];
+% keys.ons(cc).comparisons_per_effector(ce).order_onset={'Visual onset', 0, 0.3};
+% keys.ons(cc).comparisons_per_effector(ce).colors=[keys.colors.EP_EN/255; keys.colors.EP_SU/255];
+% keys.ons(cc).comparisons_per_effector(ce).baseline_epoch='Fhol';
+% keys.ons(cc).comparisons_per_effector(ce).title='Aligned to Cue';
+% ce=ce+1;
+% keys.ons(cc).comparisons_per_effector(ce).hemifield{1}=[-1 1];
+% keys.ons(cc).comparisons_per_effector(ce).hemifield{2}=[-1 1];
+% keys.ons(cc).comparisons_per_effector(ce).choice{1}=[0];
+% keys.ons(cc).comparisons_per_effector(ce).choice{2}=[0];
+% keys.ons(cc).comparisons_per_effector(ce).order_onset={'Saccade', -0.2, 0.7};
+% keys.ons(cc).comparisons_per_effector(ce).colors=[keys.colors.EP_EN/255; keys.colors.EP_SU/255];
+% keys.ons(cc).comparisons_per_effector(ce).baseline_epoch='Fhol';
+% keys.ons(cc).comparisons_per_effector(ce).title='Aligned to Saccade';
+% 
+% 
+% cc=cc+1;% 'Vsac space tuning';
+% ce=0;
+% keys.ons(cc).unique_title       = 'Vsac instructed space tuning';
+% keys.ons(cc).group_parameter         = 'ungrouped';
+% keys.ons(cc).conditions_to_plot      = {'Vsac'};
+% keys.ons(cc).tt.choice =0; %for cell exclusion
+% ce=ce+1;
+% keys.ons(cc).comparisons_per_effector(ce).hemifield{1}=[-1];
+% keys.ons(cc).comparisons_per_effector(ce).hemifield{2}=[1];
+% keys.ons(cc).comparisons_per_effector(ce).choice{1}=0;
+% keys.ons(cc).comparisons_per_effector(ce).choice{2}=0;
+% keys.ons(cc).comparisons_per_effector(ce).order_onset={'Visual onset', 0, 0.3};
+% keys.ons(cc).comparisons_per_effector(ce).colors=[keys.colors.in_AH_IS/255; keys.colors.in_AH_CS/255];
+% keys.ons(cc).comparisons_per_effector(ce).baseline_epoch='Fhol';
+% keys.ons(cc).comparisons_per_effector(ce).title='Aligned to Cue';
+% ce=ce+1;
+% keys.ons(cc).comparisons_per_effector(ce).hemifield{1}=[-1];
+% keys.ons(cc).comparisons_per_effector(ce).hemifield{2}=[1];
+% keys.ons(cc).comparisons_per_effector(ce).choice{1}=0;
+% keys.ons(cc).comparisons_per_effector(ce).choice{2}=0;
+% keys.ons(cc).comparisons_per_effector(ce).order_onset={'Saccade', -0.2, 0.7};
+% keys.ons(cc).comparisons_per_effector(ce).colors=[keys.colors.in_AH_IS/255; keys.colors.in_AH_CS/255];
+% keys.ons(cc).comparisons_per_effector(ce).baseline_epoch='Fhol';
+% keys.ons(cc).comparisons_per_effector(ce).title='Aligned to Saccade'; 
