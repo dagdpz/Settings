@@ -24,8 +24,8 @@ keys.cal.choice                         =[0,1];
 
 %% these 3 here are the included conditions (all combinations of keys.condition_parameters  ={'stimulustype','difficulty','success'};
 keys.condition_parameters  ={'stimulustype','difficulty','success'};
-keys.cal.stimulustype                         =[0,1]; 
-keys.cal.difficulty                         =[0,1]; 
+keys.cal.stimulustype                         =[0,1,2,3]; 
+keys.cal.difficulty                         =[0,1,2,3]; 
 keys.cal.success                         =[0,1]; 
 keys.cal.min_trials_per_condition       =4; %Ppopulation analysis          % minimum trials per conditon (look at ph_arrange_positions to see how conditions are defined)
 %keys.cal.min_spikes_per_unit            =50;  
