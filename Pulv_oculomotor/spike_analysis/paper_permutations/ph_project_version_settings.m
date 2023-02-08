@@ -515,191 +515,6 @@ keys.pop(cc).conditions_to_plot      = {'Msac'};
 keys.pop(cc).cal.choice              = 0;
 keys.pop(cc).tt.choice               = 0;
 
-%% Not used
-% % %% gaze cells (?)
-% % cc=cc+1;% gaze cells???
-% % keys.pop(cc).group_parameter         = 'in_Thol_hemifield_Msac_opt';
-% % keys.pop(cc).conditions_to_plot      = {'Msac'};
-% % keys.pop(cc).cal.choice              = 0;
-% % keys.pop(cc).tt.choice               = 0;
-% % keys.pop(cc).normalization           = 'by_effector';
-% % keys.pop(cc).epoch_DN                = 'Fhol';
-% % keys.pop(cc).epoch_PF                = 'Thol';
-%
-% %% Visuo(pre2-)motor categories
-% cc=cc+1;% visual response only
-% keys.pop(cc).group_parameter         = 'visual_pre2_Msac_opt';
-% keys.pop(cc).group_excluded          = {'0'};
-% keys.pop(cc).conditions_to_plot      = {'Msac'};
-% keys.pop(cc).cal.choice              = 0;
-% keys.pop(cc).tt.choice               = 0;
-% keys.pop(cc).normalization           = 'by_effector';
-% keys.pop(cc).epoch_PF                = 'Cue';
-% keys.pop(cc).epoch_DN                = 'Fhol'; 
-% keys.pop(cc).unpref_def              = 'minimum';
-% keys.pop(cc).y_lim                   = [0 2];
-% keys.pop(cc).separate_multicomparison= 1;
-% keys.pop(cc).multicomp_epochs(3).epoch={'Cue','MemL','Pre2','Peri','TIhol'}';
-% 
-% cc=cc+1;% motor output only
-% keys.pop(cc).group_parameter         = 'motor_pre2_Msac_opt';
-% keys.pop(cc).group_excluded          = {'0'};
-% keys.pop(cc).conditions_to_plot      = {'Msac'};
-% keys.pop(cc).cal.choice              = 0;
-% keys.pop(cc).tt.choice               = 0;
-% keys.pop(cc).normalization           = 'by_effector';
-% keys.pop(cc).epoch_PF                = 'Pre';
-% keys.pop(cc).epoch_DN                = 'Fhol'; 
-% keys.pop(cc).unpref_def              = 'minimum';
-% keys.pop(cc).y_lim                   = [0 2];
-% keys.pop(cc).separate_multicomparison= 1;
-% keys.pop(cc).multicomp_epochs(3).epoch={'Cue','MemL','Pre2','Peri','TIhol'}';
-% 
-% cc=cc+1;% visuomotor - pref in TIHol
-% keys.pop(cc).group_parameter         = 'visuomotor_pre2_Msac_opt';
-% keys.pop(cc).group_excluded          = {'0'};
-% keys.pop(cc).conditions_to_plot      = {'Msac'};
-% keys.pop(cc).cal.choice              = 0;
-% keys.pop(cc).tt.choice               = 0;
-% keys.pop(cc).normalization           = 'by_effector';
-% keys.pop(cc).epoch_PF                = 'Pre';
-% keys.pop(cc).epoch_DN                = 'Fhol'; 
-% keys.pop(cc).unpref_def              = 'minimum';
-% keys.pop(cc).y_lim                   = [0 2];
-% keys.pop(cc).separate_multicomparison= 1;
-% keys.pop(cc).multicomp_epochs(3).epoch={'Cue','MemL','Pre2','Peri','TIhol'}';
-% 
-% %% Categories Visuo(pre2-)motor  : preferred position (enhanced/suppressed separately)
-% cc=cc+1;% Visual units - Cue enhancement/suppression
-% keys.pop(cc).tt.selection            = {'visual_pre2_Msac_opt','1'};
-% keys.pop(cc).group_parameter         = 'in_Cue_epoch_Msac_opt';
-% keys.pop(cc).conditions_to_plot      = {'Msac'};
-% keys.pop(cc).cal.choice              = 0;
-% keys.pop(cc).tt.choice               = 0;
-% keys.pop(cc).normalization           = 'by_effector';
-% keys.pop(cc).epoch_PF                = 'Cue';
-% keys.pop(cc).epoch_DN                = 'Fhol'; 
-% keys.pop(cc).unpref_def              = 'minimum';
-% keys.pop(cc).y_lim                   = [0 4];
-% keys.pop(cc).separate_multicomparison= 1;
-% keys.pop(cc).multicomp_epochs(3).epoch={'Cue','MemL','Pre2','Peri','TIhol'}';
-% 
-% cc=cc+1;% Visuomotor units - Cue enhancement/suppression
-% keys.pop(cc).tt.selection            = {'visuomotor_pre2_Msac_opt','1'};
-% keys.pop(cc).group_parameter         = 'in_Cue_epoch_Msac_opt';
-% keys.pop(cc).conditions_to_plot      = {'Msac'};
-% keys.pop(cc).cal.choice              = 0;
-% keys.pop(cc).tt.choice               = 0;
-% keys.pop(cc).normalization           = 'by_effector';
-% keys.pop(cc).epoch_PF                = 'Cue';
-% keys.pop(cc).epoch_DN                = 'Fhol'; 
-% keys.pop(cc).unpref_def              = 'minimum';
-% keys.pop(cc).y_lim                   = [0 4];
-% keys.pop(cc).separate_multicomparison= 1;
-% keys.pop(cc).multicomp_epochs(3).epoch={'Cue','MemL','Pre2','Peri','TIhol'}';
-% 
-% cc=cc+1;% Visuomotor units - Presaccadic enhancement/suppression
-% keys.pop(cc).tt.selection            = {'visuomotor_pre2_Msac_opt','1'};
-% keys.pop(cc).group_parameter         = 'in_Pre2_epoch_Msac_opt';
-% keys.pop(cc).conditions_to_plot      = {'Msac'};
-% keys.pop(cc).cal.choice              = 0;
-% keys.pop(cc).tt.choice               = 0;
-% keys.pop(cc).normalization           = 'by_effector';
-% keys.pop(cc).epoch_PF                = 'Pre';
-% keys.pop(cc).epoch_DN                = 'Fhol'; 
-% keys.pop(cc).unpref_def              = 'minimum';
-% keys.pop(cc).y_lim                   = [0 4];
-% keys.pop(cc).separate_multicomparison= 1;
-% keys.pop(cc).multicomp_epochs(3).epoch={'Cue','MemL','Pre2','Peri','TIhol'}';
-% 
-% cc=cc+1;% Motor units - Presaccadic enhancement/suppression
-% keys.pop(cc).tt.selection            = {'motor_pre2_Msac_opt','1'};
-% keys.pop(cc).group_parameter         = 'in_Pre2_epoch_Msac_opt';
-% keys.pop(cc).conditions_to_plot      = {'Msac'};
-% keys.pop(cc).cal.choice              = 0;
-% keys.pop(cc).tt.choice               = 0;
-% keys.pop(cc).normalization           = 'by_effector';
-% keys.pop(cc).epoch_PF                = 'Pre';
-% keys.pop(cc).epoch_DN                = 'Fhol'; 
-% keys.pop(cc).unpref_def              = 'minimum';
-% keys.pop(cc).y_lim                   = [0 4];
-% keys.pop(cc).separate_multicomparison= 1;
-% keys.pop(cc).multicomp_epochs(3).epoch={'Cue','MemL','Pre2','Peri','TIhol'}';
-
-
-%  
-% cc=cc+1;% enhancement/suppression, POS-NEG
-% keys.pop(cc).epoch_PF                = 'Thol';
-% keys.pop(cc).epoch_RF                = 'Thol';
-% keys.pop(cc).epoch_BL                = 'Fhol';
-% keys.pop(cc).epoch_GB                = 'none';
-% keys.pop(cc).epoch_DN                = 'Thol'; % for percent change, use this isntead!
-% keys.pop(cc).normalization           = 'percent_change';
-% keys.pop(cc).group_parameter         = 'in_AH_Thol_position_Msac_opt';
-% keys.pop(cc).conditions_to_plot      = {'Vsac'};
-% keys.pop(cc).position_and_plotting_arrangements      = {'options'};
-% keys.pop(cc).FR_subtract_baseline    = 0;
-% keys.pop(cc).ylim                    = [];
-% keys.pop(cc).plot_per_position       = 1;
-% keys.pop(cc).cal.choice              = 0;
-% keys.pop(cc).tt.choice               = 0;
-% keys.pop(cc).plot_RF                 = 0;
-% keys.pop(cc).plot_posneg             = 1;
-% 
-% cc=cc+1;% enhancement/suppression, POS-NEG
-% keys.pop(cc).epoch_PF                = 'Thol';
-% keys.pop(cc).epoch_RF                = 'Thol';
-% keys.pop(cc).epoch_BL                = 'Fhol';
-% keys.pop(cc).epoch_GB                = 'none';
-% keys.pop(cc).epoch_DN                = 'Thol'; % for percent change, use this isntead!
-% keys.pop(cc).normalization           = 'percent_change';
-% keys.pop(cc).group_parameter         = 'in_AH_Thol_position_Msac_opt';
-% keys.pop(cc).group_parameter         = 'ungrouped';
-% keys.pop(cc).conditions_to_plot      = {'Msac'};
-% keys.pop(cc).position_and_plotting_arrangements      = {'options'};
-% keys.pop(cc).FR_subtract_baseline    = 0;
-% keys.pop(cc).ylim                    = [];
-% keys.pop(cc).plot_per_position       = 1;
-% keys.pop(cc).cal.choice              = 0;
-% keys.pop(cc).tt.choice               = 0;
-% keys.pop(cc).plot_RF                 = 0;
-% keys.pop(cc).plot_posneg             = 1;
-% 
-% 
-% 
-% %% Vsac vs Msac, choice & instructed
-% 
-% cc=cc+1;% instructed, divisive normalization in Fhol
-% keys.pop(cc).group_parameter         = 'ungrouped';
-% keys.pop(cc).group_excluded          = {};
-% keys.pop(cc).conditions_to_plot      = {'Vsac'};
-% keys.pop(cc).cal.choice               = 0;
-% keys.pop(cc).tt.choice               = 0;
-% keys.pop(cc).normalization           = 'by_effector';
-% keys.pop(cc).epoch_DN                = 'Fhol'; 
-% keys.pop(cc).epoch_PF                = 'Cue';
-% 
-% cc=cc+1;% instructed & choice, divisive normalization in Fhol
-% keys.pop(cc).group_parameter         = 'ungrouped';
-% keys.pop(cc).group_excluded          = {};
-% keys.pop(cc).conditions_to_plot      = {'Msac'};
-% keys.pop(cc).cal.choice              = [0, 1];
-% keys.pop(cc).tt.choice               = [0, 1];
-% keys.pop(cc).normalization           = 'by_effector';
-% keys.pop(cc).epoch_DN                = 'Fhol';
-% keys.pop(cc).epoch_PF                = 'Cue';
-% 
-% cc=cc+1;% instructed & choice, divisive normalization in Fhol
-% keys.pop(cc).group_parameter         = 'ungrouped';
-% keys.pop(cc).group_excluded          = {};
-% keys.pop(cc).conditions_to_plot      = {'Vsac'};
-% keys.pop(cc).cal.choice              = [0, 1];
-% keys.pop(cc).tt.choice               = [0, 1];
-% keys.pop(cc).normalization           = 'by_effector';
-% keys.pop(cc).epoch_DN                = 'Fhol';
-% keys.pop(cc).epoch_PF                = 'Cue';
-
-
 %% Scatter keys
 cs=0;  
 
@@ -1130,40 +945,43 @@ cs=0;
 % keys.sct(cs).color_option='ENSU_all_separated';
 % keys.sct(cs).tt.choice =0;
 % 
+% cs=cs+1;
+% keys.sct(cs).tt.tasktypes={'Msac_opt'};
+% keys.sct(cs).X='in_PreS_epoch_DF_Msac_opt';
+% keys.sct(cs).Y='in_PeriS_epoch_DF_Msac_opt';
+% keys.sct(cs).X_sig='in_PreS_epoch_Msac_opt';
+% keys.sct(cs).Y_sig='in_PeriS_epoch_Msac_opt';
+% keys.sct(cs).color_option='ENSU_all_separated';
+% keys.sct(cs).tt.choice =0;
+
+
+%% RF centers and sizes - NEEDED break point in here to calculate CH>IN
+%vs IN>CH RF sizes
+
 cs=cs+1;
 keys.sct(cs).tt.tasktypes={'Msac_opt'};
-keys.sct(cs).X='in_PreS_epoch_DF_Msac_opt';
-keys.sct(cs).Y='in_PeriS_epoch_DF_Msac_opt';
-keys.sct(cs).X_sig='in_PreS_epoch_Msac_opt';
-keys.sct(cs).Y_sig='in_PeriS_epoch_Msac_opt';
-keys.sct(cs).color_option='ENSU_all_separated';
-keys.sct(cs).tt.choice =0;
-
-%% UNTIL HERE
-
-%% Supplementary cue stuff -- TEMPORARY
-
-cs=cs+1;
-keys.sct(cs).tt.tasktypes={'Msac_opt'};
-keys.sct(cs).X='in_AH_Cue_prefH_FR_Msac_opt';
-keys.sct(cs).Y='ch_AH_Cue_prefH_FR_Msac_opt';
+keys.sct(cs).X='in_Cue_center_x_Msac_opt';
+keys.sct(cs).Y='in_Cue_size_x_Msac_opt';
 keys.sct(cs).X_sig='in_AH_Cue_prefH_Msac_opt';
 keys.sct(cs).Y_sig='ch_AH_Cue_prefH_Msac_opt';
 keys.sct(cs).color_option='monkeys_by_marker';
-keys.sct(cs).tt.replace_tuning                  = {'in_AH_Cue_prefH_Msac_opt','ch','-';'ch_AH_Cue_prefH_Msac_opt','in','-'};
 keys.sct(cs).tt.choice =[0,1];
+keys.sct(cs).tt.replace_tuning                  = {'in_AH_Cue_prefH_Msac_opt','ch','-';'ch_AH_Cue_prefH_Msac_opt','in','-'};
 
-% %% RF centers and sizes - NOT used AFAIK
+%% UNTIL HERE
+
+% %% Supplementary cue stuff -- TEMPORARY
 % 
 % cs=cs+1;
 % keys.sct(cs).tt.tasktypes={'Msac_opt'};
-% keys.sct(cs).X='in_Cue_center_x_Msac_opt';
-% keys.sct(cs).Y='in_Cue_size_x_Msac_opt';
+% keys.sct(cs).X='in_AH_Cue_prefH_FR_Msac_opt';
+% keys.sct(cs).Y='ch_AH_Cue_prefH_FR_Msac_opt';
 % keys.sct(cs).X_sig='in_AH_Cue_prefH_Msac_opt';
 % keys.sct(cs).Y_sig='ch_AH_Cue_prefH_Msac_opt';
 % keys.sct(cs).color_option='monkeys_by_marker';
-% keys.sct(cs).tt.choice =[0,1];
 % keys.sct(cs).tt.replace_tuning                  = {'in_AH_Cue_prefH_Msac_opt','ch','-';'ch_AH_Cue_prefH_Msac_opt','in','-'};
+% keys.sct(cs).tt.choice =[0,1];
+
 
 %keys.sct(cs).tt.selection={'in_AH_Cue_prefH_Msac_opt','in'};
 
