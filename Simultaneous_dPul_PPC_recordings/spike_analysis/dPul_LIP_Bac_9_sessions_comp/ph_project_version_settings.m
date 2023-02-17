@@ -1,5 +1,5 @@
 keys.project_versions={''};
-keys.project_version='dPul_LIP_Bac_20200325'; %Is this still used ?
+keys.project_version='dPul_LIP_Bac_9_sessions_comp'; %Is this still used ?
 keys.filelist_formatted={};
 
 %% what to plot
@@ -7,8 +7,8 @@ keys.plot.single_cells =0;
 keys.plot.waveforms=0;
 keys.plot.population_PSTH_legends=1;  
 %% to check carefully
-keys.position_and_plotting_arrangements             ={'hands'};
-% keys.position_and_plotting_arrangements             ={'hands_inactivation'};
+% keys.position_and_plotting_arrangements             ={'hands_in_ch'};
+ keys.position_and_plotting_arrangements             ={'hands_inactivation'};
 
 %% computation settings
 keys.cal.datasets                   =[3];
@@ -22,10 +22,12 @@ keys.batching.combine_monkeys           =1;
 keys.batching.monkeys                   ={'Bacchus'};
 % keys.Tesla.date                      ='[20160217 20180101]';
 %keys.Linus.date                       ='[20161103 20180101]';
-keys.Bacchus.date                        ='[20200325 20200325]';
+keys.Bacchus.date                        ='[20200325 20200626]';
+% keys.batching.targets                  = {'dPul_R','LIP_R'};
 keys.batching.targets                  = {'dPul_R','LIP_R'};
 
 keys.plot.polars_on_extra_figure        =0;
+keys.contra_ipsi_relative_to='target';
 
 %% criterions to exclude trials and units
 
@@ -34,29 +36,28 @@ keys.cal.single_rating                  =[1,2,3];                   % not assign
 keys.cal.SNR_rating                     =[1,2,3];                 % not assigning sorting table information if criterion is not met. Therefore only excludes when taking only units in the tabl
 keys.cal.min_trials_per_condition       =5;                         % minimum trials per conditon (look at ph_arrange_positions to see how conditions are defined)
 keys.cal.min_spikes_per_unit            =10;                        % excluding units that have in total less spikes (workaround for sortcode assignment bug) - to be removed
-% keys.cal.perturbation_groups            ={0};       % which perturbation values from excel table will be assigned to control and perturbation for comparisons and population analysis
+ keys.cal.perturbation_groups            ={0,3};       % which perturbation values from excel table will be assigned to control and perturbation for comparisons and population analysis
 
 %% epochs
 keys.EPOCHS_PER_TYPE{4}={...
-    'INI',      2,	-0.4,	-0.1,   'INI';...
+     'INI',      2,	-0.4,	-0.1,   'INI';...
     'Facq',     3,	-0.4,	-0.1,   'INI';...
-    'Fhol',     6,	-0.3,	0,      'INI';...
-    'Cue',      6,	0.05,   0.15,   'INI';...
-    'EDel',     8, 	0.3,    0.6,   'INI';...
-    'Del',      4, 	-0.3,   0,      'INI';...
-     'PreS',     60,	-0.17, 	-0.01,  'INI';...
-    'PeriS',	60,	-0.01, 	0.15,   'INI';...
-    'PostS',	61,	0.05,   0.2,    'INI';...
+     'Fhol',     6,	-0.425,	-0.125,      'INI';...
+    'Cue',      6,	0.05,   0.35,   'INI';...
+%     'EDel',     8, 	0.3,    0.6,   'INI';...
+    'Del',      4, 	-0.5,   -0.2,      'INI';...
+     'PreS',     60,	-0.3, 	0,  'INI';...
+    'PeriS',	60,	-0.15, 	0.15,   'INI';...
+     'PostS',	61,	0.05,   0.35,    'INI';...
 %     'PreR',     62,	-0.3, 	-0.05,  'INI';...
 %     'PeriR',	62,	-0.05, 	0.15,   'INI';...
 %     'PostR',	63,	0.05,   0.2,    'INI';...
-     'Thol',     20,	-0.1,   0,      'INI';...
-     };
-
+%      'Thol',     20,	-0.1,   0,      'INI';...     
+    };
 keys.WINDOWS_PER_TYPE{4}={...
     'Delay Period', 6,	-0.33,  0.8;... %1.35
 %     'Reach',        62,	-0.35,  0.7;... %-0.35
-     'Saccade',        60,	-0.8,  0.3 ;... %-0.35
+     'Saccade',        60,	-0.8,  0.2;... %-0.35
     };  
     
     keys.ANOVAS_PER_TYPE(4).epoch={'INI' 'Facq';...
@@ -65,7 +66,7 @@ keys.WINDOWS_PER_TYPE{4}={...
     'INI' 'Del';...
     'INI' 'PreS';...
     'INI' 'PeriS';...
-    'Fhol' 'PostS';...
+    'INI' 'PostS';...
     %     'INI' 'PreR';...
     %     'INI' 'PeriR';...
     'INI' 'Thol'};
@@ -95,7 +96,7 @@ keys.cal.min_trials_per_condition       =5;
 keys.tt.tasktypes                   ={'Ddsa_han'}; % typically only one tasktype defines
 keys.tt.type_effectors                   ={'Ddsa'}; % typically only one tasktype defines
 keys.tt.hands                       =[1 2];
-keys.tt.choices                     =[0]; %IMPORTANT: and also not really perfect, for choice trials trial criterion is applied by hemifield, not by position.
+keys.tt.choices                     =[0 1]; %IMPORTANT: and also not really perfect, for choice trials trial criterion is applied by hemifield, not by position.
 % Each unique combination of the above parameters has to contain at least keys.cal.min_trials_per_condition trials, if not the cell is excluded in ph_reduce_tuning_table
 keys.tt.selection                   ={};                         % easy to use if there is a parameter in the tuning table for which you want your cells to have the same value
 %                                       'in_NH_TIhol_position_Msac_opt','true'};  % each row in the cell arryáy will be used to exclude cells that don't have the specifie characteristic
@@ -118,7 +119,7 @@ cc=0;
 cc=cc+1;
 keys.pop(cc).tt.hands                 	= [1 2];
 keys.pop(cc).tt.perturbations          	= 0;
-keys.pop(cc).tt.choices                	= 0;
+keys.pop(cc).tt.choices                	= [0];
 keys.pop(cc).tt.selection             	= {};
 keys.pop(cc).tt.tasktypes               = {'Ddsa_han'};
 keys.pop(cc).group_parameter            = 'ungrouped'; %hand_tuning
@@ -133,7 +134,7 @@ keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for
 keys.pop(cc).normalization              = 'by_all_trials';        % separate (divisive) normalization factor for trials grouped by effector; other options:
                                                                 % 'by_condition','by_effector','by_type','by_all_trials','z_score','none'
 
-% %% state_space settings
+%% state_space settings
 % cc=0;
 % % 1
 % cc=cc+1;
@@ -154,18 +155,139 @@ keys.pop(cc).normalization              = 'by_all_trials';        % separate (di
 % keys.sta(cc).normalization              = 'none';% separate (divisive) normalization factor for trials grouped by effector; other options:
 %                                                                 % 'by_condition','by_effector','by_type','by_all_trials','z_score','none'
 % keys.sta(cc).combine_exp_conditions              = 1; % 1 calculate PCA and plot on all condition, 0 do it separatelty for CT and PT
-%                                                                 
+%                              
+
 %% cell count
-cc=0;
 
-cc=cc+1;
-keys.ccs(cc).tt.choices               	= [0];
-keys.ccs(cc).tt.hands                   = [1 2];
-keys.ccs(cc).tt.perturbations          	= 0;
-keys.ccs(cc).tt.tasktypes              	= {'Ddsa_han'};
-keys.ccs(cc).plot_type                 	= 'space_and_hand';
-keys.ccs(cc).factor                   	= 'epoch';
-keys.ccs(cc).conditions_to_plot        	= {'Ddsa'};
-keys.ccs(cc).epochs.Ddsa               	= {'INI', 'Fhol','Cue','Del','PreS','PeriS','PostS'}'; 
-keys.ccs(cc).IC_to_plot              	= 'in'; 
-
+% cc=0;
+% 
+% cc=cc+1;
+% keys.ccs(cc).tt.choices               	= [1];
+% keys.ccs(cc).tt.hands                   = [1 2];
+% keys.ccs(cc).tt.perturbations          	= 0;
+% keys.ccs(cc).tt.tasktypes              	= {'Ddsa_han'};
+% keys.ccs(cc).plot_type                 	= 'space_and_hand';
+% keys.ccs(cc).factor                   	= 'epoch';
+% keys.ccs(cc).conditions_to_plot        	= {'Ddsa'};
+% keys.ccs(cc).epochs.Ddsa               	= {'INI', 'Fhol','Cue','Del','PreS','PeriS','PostS'}'; 
+% keys.ccs(cc).IC_to_plot              	= 'ch'; 
+%% scatter keys
+% cc=0;
+% % reaches inactivation stuff
+% 
+% % example for plotting FR control versus perturbation
+% %Cue
+% cc=cc+1;
+% keys.sct(cc).X='in_IH_IS_Cue_epoch_FR_Ddsa_han';
+% keys.sct(cc).Y='ch_IH_IS_Cue_epoch_FR_Ddsa_han';
+% keys.sct(cc).X_sig='in_IH_IS_Cue_epoch_Ddsa_han'; % O > ^ o (filled) 
+% keys.sct(cc).Y_sig='ch_IH_IS_Cue_epoch_Ddsa_han';
+% keys.sct(cc).tt.tasktypes={'Ddsa_han'};
+% 
+% cc=cc+1;
+% keys.sct(cc).X='in_CH_IS_Cue_epoch_FR_Ddsa_han';
+% keys.sct(cc).Y='ch_CH_IS_Cue_epoch_FR_Ddsa_han';
+% keys.sct(cc).X_sig='in_CH_IS_Cue_epoch_Ddsa_han'; % O > ^ o (filled) 
+% keys.sct(cc).Y_sig='ch_CH_IS_Cue_epoch_Ddsa_han';
+% keys.sct(cc).tt.tasktypes={'Ddsa_han'};
+% 
+% cc=cc+1;
+% keys.sct(cc).X='in_CH_CS_Cue_epoch_FR_Ddsa_han';
+% keys.sct(cc).Y='ch_CH_CS_Cue_epoch_FR_Ddsa_han';
+% keys.sct(cc).X_sig='in_CH_CS_Cue_epoch_Ddsa_han'; % O > ^ o (filled) 
+% keys.sct(cc).Y_sig='ch_CH_CS_Cue_epoch_Ddsa_han';
+% keys.sct(cc).tt.tasktypes={'Ddsa_han'};
+% 
+% cc=cc+1;
+% keys.sct(cc).X='in_IH_CS_Cue_epoch_FR_Ddsa_han';
+% keys.sct(cc).Y='ch_IH_CS_Cue_epoch_FR_Ddsa_han';
+% keys.sct(cc).X_sig='in_IH_CS_Cue_epoch_Ddsa_han'; % O > ^ o (filled) 
+% keys.sct(cc).Y_sig='ch_IH_CS_Cue_epoch_Ddsa_han';
+% keys.sct(cc).tt.tasktypes={'Ddsa_han'};
+% 
+% %Delay
+% cc=cc+1;
+% keys.sct(cc).X='in_IH_IS_Del_epoch_FR_Ddsa_han';
+% keys.sct(cc).Y='ch_IH_IS_Del_epoch_FR_Ddsa_han';
+% keys.sct(cc).X_sig='in_IH_IS_Del_epoch_Ddsa_han'; % O > ^ o (filled) 
+% keys.sct(cc).Y_sig='ch_IH_IS_Del_epoch_Ddsa_han';
+% keys.sct(cc).tt.tasktypes={'Ddsa_han'};
+% 
+% cc=cc+1;
+% keys.sct(cc).X='in_CH_IS_Del_epoch_FR_Ddsa_han';
+% keys.sct(cc).Y='ch_CH_IS_Del_epoch_FR_Ddsa_han';
+% keys.sct(cc).X_sig='in_CH_IS_Del_epoch_Ddsa_han'; % O > ^ o (filled) 
+% keys.sct(cc).Y_sig='ch_CH_IS_Del_epoch_Ddsa_han';
+% keys.sct(cc).tt.tasktypes={'Ddsa_han'};
+% 
+% cc=cc+1;
+% keys.sct(cc).X='in_CH_CS_Del_epoch_FR_Ddsa_han';
+% keys.sct(cc).Y='ch_CH_CS_Del_epoch_FR_Ddsa_han';
+% keys.sct(cc).X_sig='in_CH_CS_Del_epoch_Ddsa_han'; % O > ^ o (filled) 
+% keys.sct(cc).Y_sig='ch_CH_CS_Del_epoch_Ddsa_han';
+% keys.sct(cc).tt.tasktypes={'Ddsa_han'};
+% 
+% cc=cc+1;
+% keys.sct(cc).X='in_IH_CS_Del_epoch_FR_Ddsa_han';
+% keys.sct(cc).Y='ch_IH_CS_Del_epoch_FR_Ddsa_han';
+% keys.sct(cc).X_sig='in_IH_CS_Del_epoch_Ddsa_han'; % O > ^ o (filled) 
+% keys.sct(cc).Y_sig='ch_IH_CS_Del_epoch_Ddsa_han';
+% keys.sct(cc).tt.tasktypes={'Ddsa_han'};
+% 
+% %PreS
+% cc=cc+1;
+% keys.sct(cc).X='in_IH_IS_PreS_epoch_FR_Ddsa_han';
+% keys.sct(cc).Y='ch_IH_IS_PreS_epoch_FR_Ddsa_han';
+% keys.sct(cc).X_sig='in_IH_IS_PreS_epoch_Ddsa_han'; % O > ^ o (filled) 
+% keys.sct(cc).Y_sig='ch_IH_IS_PreS_epoch_Ddsa_han';
+% keys.sct(cc).tt.tasktypes={'Ddsa_han'};
+% 
+% cc=cc+1;
+% keys.sct(cc).X='in_CH_IS_PreS_epoch_FR_Ddsa_han';
+% keys.sct(cc).Y='ch_CH_IS_PreS_epoch_FR_Ddsa_han';
+% keys.sct(cc).X_sig='in_CH_IS_PreS_epoch_Ddsa_han'; % O > ^ o (filled) 
+% keys.sct(cc).Y_sig='ch_CH_IS_PreS_epoch_Ddsa_han';
+% keys.sct(cc).tt.tasktypes={'Ddsa_han'};
+% 
+% cc=cc+1;
+% keys.sct(cc).X='in_CH_CS_PreS_epoch_FR_Ddsa_han';
+% keys.sct(cc).Y='ch_CH_CS_PreS_epoch_FR_Ddsa_han';
+% keys.sct(cc).X_sig='in_CH_CS_PreS_epoch_Ddsa_han'; % O > ^ o (filled) 
+% keys.sct(cc).Y_sig='ch_CH_CS_PreS_epoch_Ddsa_han';
+% keys.sct(cc).tt.tasktypes={'Ddsa_han'};
+% 
+% cc=cc+1;
+% keys.sct(cc).X='in_IH_CS_PreS_epoch_FR_Ddsa_han';
+% keys.sct(cc).Y='ch_IH_CS_PreS_epoch_FR_Ddsa_han';
+% keys.sct(cc).X_sig='in_IH_CS_PreS_epoch_Ddsa_han'; % O > ^ o (filled) 
+% keys.sct(cc).Y_sig='ch_IH_CS_PreS_epoch_Ddsa_han';
+% keys.sct(cc).tt.tasktypes={'Ddsa_han'};
+% 
+% %PeriS
+% cc=cc+1;
+% keys.sct(cc).X='in_IH_IS_PeriS_epoch_FR_Ddsa_han';
+% keys.sct(cc).Y='ch_IH_IS_PeriS_epoch_FR_Ddsa_han';
+% keys.sct(cc).X_sig='in_IH_IS_PeriS_epoch_Ddsa_han'; % O > ^ o (filled) 
+% keys.sct(cc).Y_sig='ch_IH_IS_PeriS_epoch_Ddsa_han';
+% keys.sct(cc).tt.tasktypes={'Ddsa_han'};
+% 
+% cc=cc+1;
+% keys.sct(cc).X='in_CH_IS_PeriS_epoch_FR_Ddsa_han';
+% keys.sct(cc).Y='ch_CH_IS_PeriS_epoch_FR_Ddsa_han';
+% keys.sct(cc).X_sig='in_CH_IS_PeriS_epoch_Ddsa_han'; % O > ^ o (filled) 
+% keys.sct(cc).Y_sig='ch_CH_IS_PeriS_epoch_Ddsa_han';
+% keys.sct(cc).tt.tasktypes={'Ddsa_han'};
+% 
+% cc=cc+1;
+% keys.sct(cc).X='in_CH_CS_PeriS_epoch_FR_Ddsa_han';
+% keys.sct(cc).Y='ch_CH_CS_PeriS_epoch_FR_Ddsa_han';
+% keys.sct(cc).X_sig='in_CH_CS_PeriS_epoch_Ddsa_han'; % O > ^ o (filled) 
+% keys.sct(cc).Y_sig='ch_CH_CS_PeriS_epoch_Ddsa_han';
+% keys.sct(cc).tt.tasktypes={'Ddsa_han'};
+% 
+% cc=cc+1;
+% keys.sct(cc).X='in_IH_CS_PeriS_epoch_FR_Ddsa_han';
+% keys.sct(cc).Y='ch_IH_CS_PeriS_epoch_FR_Ddsa_han';
+% keys.sct(cc).X_sig='in_IH_CS_PeriS_epoch_Ddsa_han'; % O > ^ o (filled) 
+% keys.sct(cc).Y_sig='ch_IH_CS_PeriS_epoch_Ddsa_han';
+% keys.sct(cc).tt.tasktypes={'Ddsa_han'};

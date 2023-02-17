@@ -29,15 +29,15 @@ keys.cal.MA_selection                   ={'display',0,'keep_raw_data',1,'saccade
 
 
 
-% 
-% %% cell count settings
-% keys.cc.hands               =[1 2];
-% keys.cc.choices             =[0];
-% keys.cc.perturbations       = [0 1];
-% keys.cc.factors                         ={'epoch','space','hand'};
-% keys.cc.conditions_to_plot              ={'Dcfr','Ddre','Ddsa'};
-% keys.cc.instructed_choice           ={'in'}; %to loop through them
-% keys.cc.plot_types          ={'per_epoch','space_x_hand','space_and_epoch'};
+
+%% cell count settings
+keys.cc.hands               =[1 2];
+keys.cc.choices             =[0];
+keys.cc.perturbations       = [0 1];
+keys.cc.factors                         ={'epoch','space','hand'};
+keys.cc.conditions_to_plot              ={'Dcfr','Ddre','Ddsa'};
+keys.cc.instructed_choice           ={'in'}; %to loop through them
+keys.cc.plot_types          ={'per_epoch','space_x_hand','space_and_epoch'};
 
 
 %% epochs

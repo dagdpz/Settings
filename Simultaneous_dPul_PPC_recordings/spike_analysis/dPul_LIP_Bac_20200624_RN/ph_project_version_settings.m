@@ -1,10 +1,10 @@
 keys.project_versions={''};
-keys.project_version='dPul_LIP_Bac_20200409'; %Is this still used ?
+keys.project_version='dPul_LIP_Bac_20200626'; %Is this still used ?
 keys.filelist_formatted={};
 
 %% what to plot
 keys.plot.single_cells =1;
-keys.plot.waveforms=0;
+keys.plot.waveforms=1;
 keys.plot.population_PSTH_legends=1;  
 %% to check carefully
 keys.position_and_plotting_arrangements             ={'hands'};
@@ -22,9 +22,9 @@ keys.batching.combine_monkeys           =1;
 keys.batching.monkeys                   ={'Bacchus'};
 % keys.Tesla.date                      ='[20160217 20180101]';
 %keys.Linus.date                       ='[20161103 20180101]';
-keys.Bacchus.date                        ='[20200409 20200409]';
-keys.batching.targets                  = {'dPul_R','LIP_R'};
-
+keys.Bacchus.date                       ='[20200624 20200624]';
+keys.batching.targets                  = {'dPul','LIP_R'};
+keys.contra_ipsi_relative_to           ='target';
 keys.plot.polars_on_extra_figure        =0;
 
 %% criterions to exclude trials and units
@@ -37,39 +37,38 @@ keys.cal.min_spikes_per_unit            =10;                        % excluding 
 % keys.cal.perturbation_groups            ={0};       % which perturbation values from excel table will be assigned to control and perturbation for comparisons and population analysis
 
 %% epochs
-  keys.EPOCHS_PER_TYPE{4}={...
-   %      'INI',      2,	-0.4,	-0.1,   'INI';...
-%     'Facq',     3,	-0.4,	-0.1,   'INI';...
-     'Fhol',     6,	-0.4,	-0.1,      'Fhol';...
-    'Cue',      6,	0.05,   0.15,   'Fhol';...
-%     'EDel',     8, 	0.3,    0.6,   'INI';...
-    'Del',      4, 	-0.3,   0,      'Fhol';...
-     'PreS',     60,	-0.2, 	0,  'Fhol';...
-%     'PeriS',	60,	-0.15, 	0.15,   'INI';...
-     'PostS',	61,	0.,   0.2,    'Fhol';...
+keys.EPOCHS_PER_TYPE{4}={...
+    'INI',      2,	-0.4,	-0.1,   'INI';...
+    'Facq',     3,	-0.4,	-0.1,   'INI';...
+    'Fhol',     6,	-0.3,	0,      'INI';...
+    'Cue',      6,	0.05,   0.15,   'INI';...
+    'EDel',     8, 	0.3,    0.6,   'INI';...
+    'Del',      4, 	-0.3,   0,      'INI';...
+     'PreS',     60,	-0.17, 	-0.01,  'INI';...
+    'PeriS',	60,	-0.01, 	0.15,   'INI';...
+    'PostS',	61,	0.05,   0.2,    'INI';...
 %     'PreR',     62,	-0.3, 	-0.05,  'INI';...
 %     'PeriR',	62,	-0.05, 	0.15,   'INI';...
 %     'PostR',	63,	0.05,   0.2,    'INI';...
-%      'Thol',     20,	-0.1,   0,      'INI';...    
-  
-    };
+     'Thol',     20,	-0.1,   0,      'INI';...
+     };
+
 keys.WINDOWS_PER_TYPE{4}={...
-    'Cue', 6,	-0.4,  0.8;... %1.35
+    'Delay Period', 6,	-0.33,  0.8;... %1.35
 %     'Reach',        62,	-0.35,  0.7;... %-0.35
      'Saccade',        60,	-0.8,  0.3;... %-0.35
     };  
     
-     keys.ANOVAS_PER_TYPE(4).epoch={'INI' 'Facq';...
-    'Fhol' 'Fhol';...
-    'Fhol' 'Cue';...
-    'Fhol' 'Del';...
-    'Fhol' 'PreS';...
-%     'INI' 'PeriS';...
+    keys.ANOVAS_PER_TYPE(4).epoch={'INI' 'Facq';...
+    'INI' 'Fhol';...
+    'INI' 'Cue';...
+    'INI' 'Del';...
+    'INI' 'PreS';...
+    'INI' 'PeriS';...
     'Fhol' 'PostS';...
     %     'INI' 'PreR';...
     %     'INI' 'PeriR';...
-%     'INI' 'Thol'
-    'Fhol' 'Thol'};
+    'INI' 'Thol'};
 
 
 % keys.ANOVAS_PER_TYPE(4).spaceLR            ={'INI','Facq','Fhol','Cue','Del','PreR','PeriR','PostR','Thol'}';
@@ -116,25 +115,25 @@ keys.tt.trial_criterion_ch          = 'per_congruent_hand_hemifield';
 %% population PSTH settings
 cc=0;
 % 1
-% cc=cc+1;
-% keys.pop(cc).tt.hands                 	= [1 2];
-% keys.pop(cc).tt.perturbations          	= 0;
-% keys.pop(cc).tt.choices                	= 0;
-% keys.pop(cc).tt.selection             	= {};
-% keys.pop(cc).tt.tasktypes               = {'Ddsa_han'};
-% keys.pop(cc).group_parameter            = 'ungrouped'; %hand_tuning
-% keys.pop(cc).conditions_to_plot         = {'Ddsa'}; 
-% keys.pop(cc).epoch_PF                   = 'Cue';               % epoch in which preference defines target location for "pref" plots
-% keys.pop(cc).epoch_RF                   = 'Cue';               % epoch for which gaussian response fields will be plotted (if plot_RF ~ 0)
-% keys.pop(cc).epoch_BL                   = 'Fhol';                % Epoch to subtract trial by trial (if FR_subtract_baseline ~ 0)
-% keys.pop(cc).FR_subtract_baseline       = 0;   
-% keys.pop(cc).unselect                   = {};
-% keys.pop(cc).group_excluded             = {};%{'susu','ensu','suen','-su','su-','--'};
-% keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
-% keys.pop(cc).normalization              = 'by_all_trials';        % separate (divisive) normalization factor for trials grouped by effector; other options:
-%                                                                 % 'by_condition','by_effector','by_type','by_all_trials','z_score','none'
-% 
-% % %% state_space settings
+cc=cc+1;
+keys.pop(cc).tt.hands                 	= [1 2];
+keys.pop(cc).tt.perturbations          	= 0;
+keys.pop(cc).tt.choices                	= 0;
+keys.pop(cc).tt.selection             	= {};
+keys.pop(cc).tt.tasktypes               = {'Ddsa_han'};
+keys.pop(cc).group_parameter            = 'ungrouped'; %hand_tuning
+keys.pop(cc).conditions_to_plot         = {'Ddsa'}; 
+keys.pop(cc).epoch_PF                   = 'Cue';               % epoch in which preference defines target location for "pref" plots
+keys.pop(cc).epoch_RF                   = 'Cue';               % epoch for which gaussian response fields will be plotted (if plot_RF ~ 0)
+keys.pop(cc).epoch_BL                   = 'Fhol';                % Epoch to subtract trial by trial (if FR_subtract_baseline ~ 0)
+keys.pop(cc).FR_subtract_baseline       = 0;   
+keys.pop(cc).unselect                   = {};
+keys.pop(cc).group_excluded             = {};%{'susu','ensu','suen','-su','su-','--'};
+keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
+keys.pop(cc).normalization              = 'by_all_trials';        % separate (divisive) normalization factor for trials grouped by effector; other options:
+                                                                % 'by_condition','by_effector','by_type','by_all_trials','z_score','none'
+
+% %% state_space settings
 % cc=0;
 % % 1
 % cc=cc+1;
@@ -156,20 +155,5 @@ cc=0;
 %                                                                 % 'by_condition','by_effector','by_type','by_all_trials','z_score','none'
 % keys.sta(cc).combine_exp_conditions              = 1; % 1 calculate PCA and plot on all condition, 0 do it separatelty for CT and PT
 %                                                                 
-
-%% cell count
-
-cc=0;
-
-cc=cc+1;
-keys.ccs(cc).tt.choices               	= [0];
-keys.ccs(cc).tt.hands                   = [1 2];
-keys.ccs(cc).tt.perturbations          	= 0;
-keys.ccs(cc).tt.tasktypes              	= {'Ddsa_han'};
-keys.ccs(cc).plot_type                 	= 'space';
-keys.ccs(cc).factor                   	= 'epoch';
-keys.ccs(cc).conditions_to_plot        	= {'Ddsa'};
-keys.ccs(cc).epochs.Ddsa               	= {'INI', 'Fhol','Cue','Del','PreS','PeriS','PostS'}'; 
-keys.ccs(cc).IC_to_plot              	= 'in'; 
 
 

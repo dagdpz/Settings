@@ -44,7 +44,7 @@ end
 % should be computed, set this variable to true. 
 % Caution: Set this variable to false only if all settings other than 
 % lfp_tfa_cfg.session_info, remains the same
-lfp_tfa_cfg.compute_site_average = false;
+lfp_tfa_cfg.compute_site_average = true;
 
 %wheter to plot site_wise averages
 lfp_tfa_cfg.plot_site_average = false;
@@ -258,7 +258,7 @@ lfp_tfa_cfg.compare.effectors = [3];
 % instructed trials separately
 % 3. lfp_tfa_cfg.compare.choice_trials = nan; % ignore choice (both choice
 % and instructed trials are combined)
-lfp_tfa_cfg.compare.choice_trials = [0]; 
+lfp_tfa_cfg.compare.choice_trials = [0  1]; 
 
 % reach hands to be included for analysis
 % should be nan or a cell array that contain only values 'R', 'L'
@@ -271,7 +271,7 @@ lfp_tfa_cfg.compare.choice_trials = [0];
 % which reach hand is left and right separately
 % 4. lfp_tfa_cfg.compare.reach_hands = {'any'}; ignore hand label (trial with
 % any hand label is combined)
-lfp_tfa_cfg.compare.reach_hands = {'L', 'R'};
+lfp_tfa_cfg.compare.reach_hands = {'any'};
 
 % reach space to be included for analysis
 % should be a cell array that contain only values 'R', 'L', or 'any'
@@ -330,14 +330,14 @@ lfp_tfa_cfg.compare.perturbations = [0 1];
 %    'choice', {0, 1}}};
 % Compute difference between difference between post and pre-injection trials of choice trials and that of instructed trials     
 
-% lfp_tfa_cfg.diff_condition(1) = {{'choice', {0, 1}}};
+ lfp_tfa_cfg.diff_condition(1) = {{'choice', {0, 1}}};
 % lfp_tfa_cfg.diff_condition(2) = {{'reach_hands', {'L', 'R'}}};
- %lfp_tfa_cfg.diff_condition(2) = {{'reach_spaces', {'L', 'R'}}};
- lfp_tfa_cfg.diff_condition(1) = {{'perturbation', {0, 1}}};
+%  lfp_tfa_cfg.diff_condition(2) = {{'reach_spaces', {'L', 'R'}}};
+ lfp_tfa_cfg.diff_condition(3) = {{'perturbation', {0, 1}}};
 % lfp_tfa_cfg.diff_condition(2) = {{'choice', {0, 1}}};
 % lfp_tfa_cfg.diff_condition(3) = {{'type_eff', {[4 4], [4 4]}}};
-% lfp_tfa_cfg.diff_condition(3) = {{'perturbation', {0, 1}, ...
-%     'choice', {0, 1}}};reach_hands
+ lfp_tfa_cfg.diff_condition(4) = {{'perturbation', {0, 1}, ...
+     'choice', {0, 1}}};
 
 % minimum number of trials per condition to be satisfied to consider a site
 % for averaging, if for a site, for any condition, the  number of valid 
@@ -348,7 +348,7 @@ lfp_tfa_cfg.compare.perturbations = [0 1];
 % consider those sites with atleast 5 trials for each condition
 % lfp_tfa_cfg.mintrials_percondition = 5; 
 % By condition, we mean a combination of choice/instr, pre/post-injection, type and effector, hand-space
- lfp_tfa_cfg.mintrials_percondition = 5;
+ lfp_tfa_cfg.mintrials_percondition = 1;
 
 %% Settings for defining trial start and end
 
@@ -571,7 +571,7 @@ end
 % P_norm(t,f) = (P(t, f)) / (mu_P(f))
 % Example:
 % lfp_tfa_cfg.baseline_method = 'relchange';
-lfp_tfa_cfg.baseline_method = 'zscore';
+lfp_tfa_cfg.baseline_method = 'relchange';
 
 % flag to indicate if LFP TFR average should be computed - for future use
 % Set to 0 if LFP TFR average should not be computed, else set to 1
@@ -600,7 +600,7 @@ lfp_tfa_cfg.compute_avg_across = {'sessions','sites'};
 %% Settings for statistical test for significance of difference between TFR average across sites
 
 %Multiple comparison correction method to be used: FDR or Bonferroni
-lfp_tfa_cfg.correction_method = 'FDR';
+lfp_tfa_cfg.correction_method = 'Bonferroni';
 
 % Desired false discovery rate for multiple comparison
 % correction for statistical significance tests
@@ -621,7 +621,7 @@ lfp_tfa_cfg.fdr_method = 'pdep';
 
 % Set to true (1) for plotting only the significant difference
 % between site averages, false (0) otherwise
-lfp_tfa_cfg.plot_significant = 1;
+lfp_tfa_cfg.plot_significant = 0;
 
 %% settings for saving figures
 
