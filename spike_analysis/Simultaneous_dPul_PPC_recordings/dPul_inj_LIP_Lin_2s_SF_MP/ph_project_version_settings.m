@@ -23,7 +23,7 @@ keys.batching.monkeys                   ={'Linus'};
 % keys.Tesla.date                      ='[20160217 20180101]';
 %keys.Linus.date                       ='[20161103 20180101]';
 keys.Linus.date                       ='[20211201 20211208]';
-keys.batching.targets                  = {'LIP_L','LIP_R'};
+keys.batching.targets                  = {'LIP_R'};
 keys.contra_ipsi_relative_to           ='perturbation_site';
 keys.plot.polars_on_extra_figure        =0;
 
@@ -116,30 +116,30 @@ keys.tt.trial_criterion_in          = 'per_hemifield';
 keys.tt.trial_criterion_ch          = 'per_hemifield';
 
 %% population PSTH settings
-%  cc=0;
-% % % 1
-% % 
-% cc=cc+1;
-% keys.pop(cc).tt.hands                 	= [0];
-% keys.pop(cc).tt.perturbations          	= [0 1];
-% keys.pop(cc).tt.choices                	= [0 1];
-% % keys.pop(cc).tt.selection             	= {'in_AH_IS_Del_epoch_Dsac_han','en'};
-% %   keys.pop(cc).tt.selection             	= {'ch_PeriS_spaceLR_Dsac_han','IS'};
-% %   keys.pop(cc).tt.selection             	= {};
-%      keys.pop(cc).tt.selection             	= {'motor_en_Dsac_han','1'};
-% %     keys.pop(cc).tt.unselect                = {'ch_PreS_spaceLR_Dsac_han','-'};
-% %    keys.pop(cc).tt.selection             	= {'ch_IS_PeriS_PTbl_Dsac_han','SU'};
-% keys.pop(cc).tt.tasktypes               = {'Dsac_han'};
-% keys.pop(cc).group_parameter            = 'ungrouped'; %hand_tuning
-% keys.pop(cc).conditions_to_plot         = {'Dsac'}; 
-% keys.pop(cc).epoch_PF                   = 'Cue';               % epoch in which preference defines target location for "pref" plots
-% keys.pop(cc).epoch_RF                   = 'Cue';               % epoch for which gaussian response fields will be plotted (if plot_RF ~ 0)
-% keys.pop(cc).epoch_BL                   = 'Fhol';                % Epoch to subtract trial by trial (if FR_subtract_baseline ~ 0)
-% keys.pop(cc).FR_subtract_baseline       = 0;   
-% keys.pop(cc).unselect                   = {};
-% keys.pop(cc).group_excluded             = {};%{'susu','ensu','suen','-su','su-','--'};
-% keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
-% keys.pop(cc).normalization              = 'none';    
+ cc=0;
+% % 1
+% 
+cc=cc+1;
+keys.pop(cc).tt.hands                 	= [0];
+keys.pop(cc).tt.perturbations          	= [0 1];
+keys.pop(cc).tt.choices                	= [0 1];
+% keys.pop(cc).tt.selection             	= {'in_AH_IS_Del_epoch_Dsac_han','en'};
+%   keys.pop(cc).tt.selection             	= {'ch_PeriS_spaceLR_Dsac_han','IS'};
+%   keys.pop(cc).tt.selection             	= {};
+     keys.pop(cc).tt.selection             	= {'in_Cue_Dsac_han','CS'};
+%     keys.pop(cc).tt.unselect                = {'ch_PreS_spaceLR_Dsac_han','-'};
+%    keys.pop(cc).tt.selection             	= {'ch_IS_PeriS_PTbl_Dsac_han','SU'};
+keys.pop(cc).tt.tasktypes               = {'Dsac_han'};
+keys.pop(cc).group_parameter            = 'ungrouped'; %hand_tuning
+keys.pop(cc).conditions_to_plot         = {'Dsac'}; 
+keys.pop(cc).epoch_PF                   = 'Cue';               % epoch in which preference defines target location for "pref" plots
+keys.pop(cc).epoch_RF                   = 'Cue';               % epoch for which gaussian response fields will be plotted (if plot_RF ~ 0)
+keys.pop(cc).epoch_BL                   = 'Fhol';                % Epoch to subtract trial by trial (if FR_subtract_baseline ~ 0)
+keys.pop(cc).FR_subtract_baseline       = 0;   
+keys.pop(cc).unselect                   = {};
+keys.pop(cc).group_excluded             = {};%{'susu','ensu','suen','-su','su-','--'};
+keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
+keys.pop(cc).normalization              = 'none';    
 % 
 % cc=cc+1;
 % keys.pop(cc).tt.hands                 	= [0];
