@@ -6,7 +6,6 @@ keys.filelist_formatted={};
 % keys.tt.perturbations       = [0 1];
 keys.tt.trial_criterion_in ='per_congruent_hand_hemifield';
 keys.tt.trial_criterion_ch ='per_congruent_hand_hemifield';
-%% to check carefully
 keys.position_and_plotting_arrangements             ={'hands_inactivation'};
 
 %% computation settings
@@ -26,19 +25,6 @@ keys.Linus.date                         ='[20161103 20180101]';
 %  keys.Bacchus.sorted_neurons_sheetname     ='final_sorting';
 %  keys.Bacchus.sorted_neurons_filename      ='Bac_sorted_neurons';
 keys.cal.MA_selection                   ={'display',0,'keep_raw_data',1,'saccade_definition',4,'reach_1st_pos',1,'correlation_conditions',{}};                        % if you want to run MA with specific settings
-
-
-
-% 
-% %% cell count settings
-% keys.cc.hands               =[1 2];
-% keys.cc.choices             =[0];
-% keys.cc.perturbations       = [0 1];
-% keys.cc.factors                         ={'epoch','space','hand'};
-% keys.cc.conditions_to_plot              ={'Dcfr','Ddre','Ddsa'};
-% keys.cc.instructed_choice           ={'in'}; %to loop through them
-% keys.cc.plot_types          ={'per_epoch','space_x_hand','space_and_epoch'};
-
 
 %% epochs
 keys.EPOCHS_PER_TYPE{4}={...
