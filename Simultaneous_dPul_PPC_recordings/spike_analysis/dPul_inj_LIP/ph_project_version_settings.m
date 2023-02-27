@@ -1,5 +1,6 @@
 
 keys.condition_parameters={'choice','reach_hand','perturbation'};
+%keys.condition_parameters={'choice','perturbation'};
 
 %% computation settings
 keys.cal.datasets                   =[70]; %% [10]; for bacchus somehow
@@ -65,4 +66,9 @@ keys.tt.trial_criterion_ch          = 'per_hemifield';
 % The tricky part here is to define the conditions in which we ask for a specific number of trials. 
 % Each condition is defined by tasktype(contains type,effector,and
 % position_arrangement),position (depends on arrangement),hand used and choice/instruced trial (MISSING HERE: PERTURBATION)
+
+cc=0;
+cc=cc+1;
+keys.ndt(cc).decoding_parameters={'hemifield','choice','perturbation'};
+keys.ndt(cc).conditions_to_plot={'Dsac'};
 
