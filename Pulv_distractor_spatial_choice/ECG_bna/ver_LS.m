@@ -15,9 +15,10 @@ ecg_bna_cfg.save_fig_format={'pdf'};
 % eg: 'C:\Data\MIP_timefreq_analysis\LFP_timefrequency_analysis\Data\LFP_TFA_Results\20190506\ver_SN_0.2'
 ecg_bna_cfg.version = version; %'Magnus_Reach_InakdPul_ECG';
 
-% sorted neurons excel file, from which information about sessions and
-% individual sites can be obtained
-ecg_bna_cfg.info_filepath = 'Y:\Projects\Pulv_distractor_spatial_choice\ephys\ECG_taskRest\Bac_sorted_neurons.xls';
+%% this should not be used at this level any more
+% % sorted neurons excel file, from which information about sessions and
+% % individual sites can be obtained
+% ecg_bna_cfg.info_filepath = 'Y:\Projects\Pulv_distractor_spatial_choice\ephys\ECG_taskRest\Bac_sorted_neurons.xls';
 
 % dataset to be used for analysis, see entry 'Set' in the sorted neurons excel file
 % only those sessions belonging to 'Set' = lfp_tfa_cfg.use_datasets will be
