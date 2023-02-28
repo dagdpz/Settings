@@ -122,7 +122,6 @@ keys.ccs(cc).factor                   	= 'epoch';
 keys.ccs(cc).conditions_to_plot        	= {'Dsac'};
 keys.ccs(cc).epochs.Dsac               	= {'Fhol','Cue','Del','PreS','PostS'}'; 
 keys.ccs(cc).IC_to_plot              	= 'ch'; 
- keys.ccs(cc).tt.selection             	= {'motor_en_Dsac_han','1'};
 
 cc=cc+1;
 keys.ccs(cc).tt.choice               	= [0];
@@ -134,7 +133,6 @@ keys.ccs(cc).factor                   	= 'epoch';
 keys.ccs(cc).conditions_to_plot        	= {'Dsac'};
 keys.ccs(cc).epochs.Dsac               	= {'Fhol','Cue','Del','PreS','PostS'}'; 
 keys.ccs(cc).IC_to_plot              	= 'in'; 
- keys.ccs(cc).tt.selection             	= {'motor_en_Dsac_han','1'};
 
 
 cc=cc+1;
@@ -147,7 +145,6 @@ keys.ccs(cc).factor                   	= 'space';
 keys.ccs(cc).conditions_to_plot        	= {'Dsac'};
 keys.ccs(cc).epochs.Dsac               	= {'Fhol','Cue','Del','PreS','PostS'}'; 
 keys.ccs(cc).IC_to_plot              	= 'ch'; 
- keys.ccs(cc).tt.selection             	= {'motor_en_Dsac_han','1'};
 
 cc=cc+1;
 keys.ccs(cc).tt.choice               	= [0];
@@ -159,7 +156,6 @@ keys.ccs(cc).factor                   	= 'space';
 keys.ccs(cc).conditions_to_plot        	= {'Dsac'};
 keys.ccs(cc).epochs.Dsac               	= {'Fhol','Cue','Del','PreS','PostS'}'; 
 keys.ccs(cc).IC_to_plot              	= 'in'; 
- keys.ccs(cc).tt.selection             	= {'motor_en_Dsac_han','1'};
 
 cc=cc+1;
 keys.ccs(cc).tt.choice               	= [0];
