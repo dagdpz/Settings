@@ -38,8 +38,9 @@ keys.cal.MA_selection                   ={'display',0,'keep_raw_data',1,'saccade
 keys.batching.combine_monkeys       =0;                        % for population analysis
 keys.batching.targets               ={'dPul','VPL', 'mdT'};
 keys.batching.monkeys               ={'Bacchus'};
-keys.Bacchus.date                   ='[20211028 20211028]';
-keys.cal.datasets                   = [5,6,7];
+keys.batching.monkeys               ={'Magnus'};
+keys.Magnus.date                   ='[20220921 20221115]';
+keys.cal.datasets                   = [4];
 
 % keys.Curius.date                    ='[20210311 20210318]';
 % keys.batching.monkeys               ={'Curius'};
