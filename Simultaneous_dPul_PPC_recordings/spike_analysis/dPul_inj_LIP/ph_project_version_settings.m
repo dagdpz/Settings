@@ -71,4 +71,7 @@ cc=0;
 cc=cc+1;
 keys.ndt(cc).decoding_parameters={'hemifield','choice','perturbation'};
 keys.ndt(cc).conditions_to_plot={'Dsac'};
+keys.ndt(cc).PSTH_binwidth=0.001;
+keys.ndt(cc).gaussian_kernel=0.001;
+keys.ndt(cc).kernel_type='box';
 
