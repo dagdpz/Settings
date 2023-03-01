@@ -18,7 +18,7 @@ ecg_bna_cfg.version = version; %'Magnus_Reach_InakdPul_ECG';
 %% this should not be used at this level any more
 % % sorted neurons excel file, from which information about sessions and
 % % individual sites can be obtained
-% ecg_bna_cfg.info_filepath = 'Y:\Projects\Pulv_distractor_spatial_choice\ephys\ECG_taskRest\Bac_sorted_neurons.xls';
+ecg_bna_cfg.info_filepath = 'Y:\Projects\Pulv_bodysignal\ephys\ECG_TaskRest\Mag_sorted_neurons.xls';
 
 % dataset to be used for analysis, see entry 'Set' in the sorted neurons excel file
 % only those sessions belonging to 'Set' = lfp_tfa_cfg.use_datasets will be
@@ -29,6 +29,7 @@ ecg_bna_cfg.use_datasets = [31];
 ecg_bna_cfg.results_folder = ['Y:\Projects\' project];
 
 ecg_bna_cfg.monkey='Bacchus';
+ecg_bna_cfg.monkey='Magnus';
 % info about sessions to be analysed
 % should be a 1 x N struct, N = number of sessions to analyse
 % the struct should contain the following fields:
@@ -44,15 +45,17 @@ ecg_bna_cfg.monkey='Bacchus';
 %       be combined)
 %   'Input_ECG_combined', 'Y:\Data\Magnus_phys_combined_monkeypsych_TDT\20191213', ...
 
-ephys_version='ECG_taskRest';
+ephys_version='ECG_TaskRest';
 ephys_folder=['Y:\Projects\' project '\ephys\' ephys_version filesep];
 ecg_preprocess_folder='Y:\Data\BodySignals\ECG\';
 monkeys={'Bacchus'};
-sessions{1}=sort([ 20211014 ,  20211019, 20220309,  20220310  ,  20220315 ,   20220318  ,  20220322 , ...
-    20210715  , 20210720  ,   20210723 ,   20210729  , 20210730 ,20210803 , 20210805  ,  20210806 , 20210826, 20210827  , ...
-    20210903 , 20210905  ,  20210906 ,   20210930  ,  20211001  ,  20211005,   20211208 ,   20211102 ,   20211103, ...
-    20211222  ,  20220105  ,  20220106  , 20220203  ,  20220211  ,  20220221 ,   20220222  ,  20220224  ,  20220225,    20211116  ,  20211117 ,...
-    20211013,   20211027 20211028  ,  20211207 , 20211214   ,]);
+monkeys={'Magnus'};
+% sessions{1}=sort([ 20211014 ,  20211019, 20220309,  20220310  ,  20220315 ,   20220318  ,  20220322 , ...
+%     20210715  , 20210720  ,   20210723 ,   20210729  , 20210730 ,20210803 , 20210805  ,  20210806 , 20210826, 20210827  , ...
+%     20210903 , 20210905  ,  20210906 ,   20210930  ,  20211001  ,  20211005,   20211208 ,   20211102 ,   20211103, ...
+%     20211222  ,  20220105  ,  20220106  , 20220203  ,  20220211  ,  20220221 ,   20220222  ,  20220224  ,  20220225,    20211116  ,  20211117 ,...
+%     20211013,   20211027 20211028  ,  20211207 , 20211214   ,]);
+sessions{1}=sort([ 20221115, 20221206, 20221222, 20230104]); %20220921, 20221229, 
 
 cumulative_sessions=0;
 for m=1:numel(monkeys)

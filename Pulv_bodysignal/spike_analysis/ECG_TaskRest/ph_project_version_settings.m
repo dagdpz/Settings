@@ -37,9 +37,9 @@ keys.cal.MA_selection                   ={'display',0,'keep_raw_data',1,'saccade
 % batching
 keys.batching.combine_monkeys       =0;                        % for population analysis
 keys.batching.targets               ={'dPul','VPL', 'mdT'};
-keys.batching.monkeys               ={'Bacchus'};
+% keys.batching.monkeys               ={'Bacchus'};
 keys.batching.monkeys               ={'Magnus'};
-keys.Magnus.date                   ='[20220921 20221115]';
+keys.Magnus.date                   ='[20221115]'; % 20220921  20221206 20221222 20230104
 keys.cal.datasets                   = [4];
 
 % keys.Curius.date                    ='[20210311 20210318]';
