@@ -23,7 +23,7 @@ ecg_bna_cfg.info_filepath = 'Y:\Projects\Pulv_bodysignal\ephys\ECG_TaskRest\Mag_
 % dataset to be used for analysis, see entry 'Set' in the sorted neurons excel file
 % only those sessions belonging to 'Set' = lfp_tfa_cfg.use_datasets will be
 % used for analysis
-ecg_bna_cfg.use_datasets = [31];
+ecg_bna_cfg.use_datasets = [4];
 
 % absolute path to the folder where the results of analysis should be stored
 ecg_bna_cfg.results_folder = ['Y:\Projects\' project];
@@ -55,7 +55,7 @@ monkeys={'Magnus'};
 %     20210903 , 20210905  ,  20210906 ,   20210930  ,  20211001  ,  20211005,   20211208 ,   20211102 ,   20211103, ...
 %     20211222  ,  20220105  ,  20220106  , 20220203  ,  20220211  ,  20220221 ,   20220222  ,  20220224  ,  20220225,    20211116  ,  20211117 ,...
 %     20211013,   20211027 20211028  ,  20211207 , 20211214   ,]);
-sessions{1}=sort([ 20221115, 20221206, 20221222, 20230104]); %20220921, 20221229, 
+sessions{1}=sort([20221115 20221118 20221206]); % 20220921 , 20221229, ,  20221206, 20221222, 20230104
 
 cumulative_sessions=0;
 for m=1:numel(monkeys)
