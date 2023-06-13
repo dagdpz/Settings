@@ -13,6 +13,11 @@ keys.cal.process_spikes                  =1;      % you can choose not to run sp
 keys.cal.process_sites                   =1;      % you can choose not to run lfp sites at all (saving processing time)             
 keys.cal.process_by_block                =1;      % you can choose not to run by block (body signals f.e.) at all (saving processing time)                   
 
+% default for population analysis
+keys.tt.stimulustype=[0,1,2,3]; 
+keys.tt.difficulty=[0,1,2,3]; 
+keys.tt.success=[0,1]; 
+
 %% 
 keys.cal.stablity                   =[0.5,1,2,3];
 keys.cal.single_rating              =[0,1,2,3];                   % not assigning sorting table information if criterion is not met. Therefore only excludes when taking only units in the tabl
@@ -24,9 +29,10 @@ keys.cal.choice                         =[0,1];
 
 %% these 3 here are the included conditions (all combinations of keys.condition_parameters  ={'stimulustype','difficulty','success'};
 keys.condition_parameters  ={'stimulustype','difficulty','success'};
-keys.cal.stimulustype                         =[0,1,2,3]; 
-keys.cal.difficulty                         =[0,1,2,3]; 
-keys.cal.success                         =[0,1]; 
+%% ? remove the 0 here !!!!!!!!!!!!????????????????
+keys.cal.stimulustype                   =[0,1,2,3]; 
+keys.cal.difficulty                     =[0,1,2,3]; 
+keys.cal.success                        =[0,1]; 
 keys.cal.min_trials_per_condition       =4; %Ppopulation analysis          % minimum trials per conditon (look at ph_arrange_positions to see how conditions are defined)
 %keys.cal.min_spikes_per_unit            =50;  
 
@@ -39,7 +45,7 @@ keys.batching.combine_monkeys       =0;                        % for population 
 keys.batching.targets               ={'dPul','VPL', 'mdT'};
 % keys.batching.monkeys               ={'Bacchus'};
 keys.batching.monkeys               ={'Magnus'};
-keys.Magnus.date                   ='[20221115]'; % 20220921  20221206 20221222 20230104
+keys.Magnus.date                   ='[20221115 20221115]'; % 20220921  20221206 20221222 20230104
 keys.cal.datasets                   = [4];
 
 % keys.Curius.date                    ='[20210311 20210318]';
@@ -89,9 +95,32 @@ keys.ANOVAS_PER_TYPE(2).main               ={'Fhol','PreS','PeriS','PostS','Tacq
 % 1
 cc=0;
 % 1
+% cc=cc+1;
+% keys.pop(cc).tt.hands                 	= [0];
+% keys.pop(cc).tt.perturbations          	= [0];
+% keys.pop(cc).tt.choices                	= 1;
+% keys.pop(cc).tt.selection             	= {};
+% 
+% keys.pop(cc).tt.unselect                ={'ch_Tacq_spaceLR_Vsac_Sti', '-' }; 
+% keys.pop(cc).tt.unselect                ={}; 
+% keys.pop(cc).tt.tasktypes               = {'dist_2Diff_sac'};
+% %keys.pop(cc).group_parameter            = 'ungrouped'; % grouping units - hand_tuning from the Tuning-table
+% keys.pop(cc).group_parameter            = 'ch_CS_Tacq_SglTar_Suc_DF_Vsac_Sti'; % ch_Tacq_spaceLR_Vsac_Stigrouping units - hand_tuning from the Tuning-table
+% 
+% 
+% keys.pop(cc).group_excluded             = {''};%{'susu','ensu','suen','-su','su-','--'};
+% keys.pop(cc).conditions_to_plot         = {'Vsac'}; 
+% keys.pop(cc).epoch_PF                   = 'Tacq';               % epoch in which preference defines target location for "pref" plots
+% keys.pop(cc).epoch_RF                   = 'Tacq';               % epoch for which gaussian response fields will be plotted (if plot_RF ~ 0)
+% keys.pop(cc).epoch_BL                   = 'Fhol';                % Epoch to subtract trial by trial (if FR_subtract_baseline ~ 0)
+% keys.pop(cc).epoch_GB                   = 'Tacq'; %
+% keys.pop(cc).FR_subtract_baseline       = 1;   %1 substract & keys.pop(cc).normalization  = 'by_effector'; divisive -> percent signal change
+% 
+% keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
+% keys.pop(cc).normalization              = 'by_effector';        % none, by_pertubation, effector, separate (divisive) normalization factor for trials grouped by effector; other options:
+%             
+
 cc=cc+1;
-keys.pop(cc).tt.hands                 	= [0];
-keys.pop(cc).tt.perturbations          	= [0];
 keys.pop(cc).tt.choices                	= 1;
 keys.pop(cc).tt.selection             	= {};
 
@@ -112,7 +141,8 @@ keys.pop(cc).FR_subtract_baseline       = 1;   %1 substract & keys.pop(cc).norma
 
 keys.pop(cc).epoch_for_normalization    = 'Fhol';               % epoch used for (divisive) normalization
 keys.pop(cc).normalization              = 'by_effector';        % none, by_pertubation, effector, separate (divisive) normalization factor for trials grouped by effector; other options:
-            
+         
+
  %% cell count settings
  cc=0;
 % %% basic tuning properties
@@ -121,7 +151,7 @@ cc=cc+1;
 keys.ccs(cc).tt.choices             = 1;
 keys.ccs(cc).tt.hands               = [0];
 keys.ccs(cc).tt.perturbations       = [0];
-keys.ccs(cc).tt.tasktypes               = {'dist_2Diff_sac'};
+keys.ccs(cc).tt.tasktypes           = {'dist_2Diff_sac'};
 keys.ccs(cc).factor                 = 'space'; % from the tuning table 
 keys.ccs(cc).conditions_to_plot     ={'Vsac'};
 keys.ccs(cc).plot_type              ='per_epoch';

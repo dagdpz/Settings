@@ -801,6 +801,20 @@ cs=0;
  
 % %% VMI
 % 
+
+cs=cs+1;
+keys.sct(cs).tt.tasktypes={'Msac_opt'};
+keys.sct(cs).X='in_Cue_epoch_DF_Msac_opt';
+keys.sct(cs).Y='in_TIhol_epoch_DF_Msac_opt';
+keys.sct(cs).X_sig='in_Cue_epoch_Msac_opt';
+keys.sct(cs).Y_sig='in_TIhol_epoch_Msac_opt';
+keys.sct(cs).VMI='VMI_postEN_Msac_opt';
+keys.sct(cs).hist_column='VMI_postEN_Msac_opt';
+keys.sct(cs).categories={'visual_Msac_opt';'visuomotor_Msac_opt';'motor_Msac_opt'};
+keys.sct(cs).color_option='VMI_as_color';
+keys.sct(cs).logarithmic_scale=1;
+keys.sct(cs).tt.choice =0;
+
 % % VMI ipsi versus contra POST
 % cs=cs+1;
 % keys.sct(cs).tt.tasktypes={'Msac_opt'};
