@@ -5,6 +5,7 @@ ecg_bna_cfg = [];
 ecg_bna_cfg.LFP_version='ver_LS';
 ecg_bna_cfg.process_LFP=0;
 ecg_bna_cfg.process_ECG=0;
+ecg_bna_cfg.process_spikes=1;
 ecg_bna_cfg.plot_significant=1;
 ecg_bna_cfg.save_fig_format={'pdf'};
    

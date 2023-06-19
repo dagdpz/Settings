@@ -34,10 +34,11 @@ keys.cal.choice                         =[0,1];
 keys.cal.automatic_stablity             =1;             % using automatic stability assessment - Fano factor
 keys.cal.automatic_SNR                  =1;             % using automatic SNR assessment - (mean waveform amplitude)/(mean of standard deviations in each timepoint)
 
-keys.cal.stablity                       =[0,10];         % min and max value accepted
+keys.cal.stablity                       =[0,0.4];       % min and max value accepted
 keys.cal.single_rating                  =[0,3];         % min and max value accepted          
-keys.cal.SNR_rating                     =[0,500];       % min and max value accepted
-
+keys.cal.SNR_rating                     =[2.5,inf];       % min and max value accepted    
+keys.cal.FR                             =[1,inf];       % min and max value accepted    
+keys.cal.n_spikes                       =[0,inf];       % min and max value accepted
 keys.cal.min_trials_in                  =5;             % minimum number of trials instructed per condition - replace cal with tt ?
 keys.cal.min_trials_ch                  =5;             % minimum number of trials choice
 
@@ -74,8 +75,7 @@ keys.EPOCHS_PER_TYPE{1}={...
     'Fhol',     3,	0.2,	0.7,      'INI';...
     };
 keys.WINDOWS_PER_TYPE{1}={...
-    'Aquisition',   3,	-0.5,	0.4;...
-    'Fixation',     3,	0.5,   1;...
+    'Aquisition',   3,	-0.5,	10;...
     };
 keys.ANOVAS_PER_TYPE(1).epoch={'INI' 'Facq';...
     'Facq' 'Fhol'};
@@ -146,7 +146,7 @@ keys.tun(cc).unique_title='Multicomp_standard';
 keys.tun(cc).tt.tasktypes = {'Fsac','Vsac'}; %% why is this needed ??
 
 %% single unit plotting stuff
-keys.population_defaults.line_labelling                ='left/right';
+keys.population_defaults.line_labelling                ='contra/ipsi';
 
 % ANOVA labels for single unit plots
 keys.population_defaults.anova_main    ={'E','in_epoch_main','','S','in_hemifield_main','','C','ch_hemifield_main','','H','in_hands_main','','ExS','in_ExS','','ExH','in_ExH','','SxH','in_SxH',''};
@@ -179,7 +179,7 @@ cc=cc+1;
 keys.pop(cc).tt.choices                	= 0;
 keys.pop(cc).tt.selection             	= {};
 keys.pop(cc).tt.unselect                = {};
-keys.pop(cc).tt.tasktypes               = {'Vsac_opt'};
+keys.pop(cc).tt.tasktypes               = {'Fsac_opt','Vsac_opt'};
 
 %% tuning table readout options (excluding particular subsets)
 keys.pop(cc).tt.combine_tuning_properties   ={'place_name_here'}; %% additional table entry from combining columns
