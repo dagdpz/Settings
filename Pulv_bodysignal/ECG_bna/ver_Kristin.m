@@ -311,7 +311,7 @@ ecg_bna_cfg.trialinfo.ref_tend = 0;
 ecg_bna_cfg.tfr.method          = 'wavelet';  
 
 
-ecg_bna_cfg.tfr.frequency_bands=[.5 4; 4 8; 8 14; 14 30; 30 50; 70 150];
+ecg_bna_cfg.tfr.frequency_bands=[2 4; 4 8; 8 14; 14 30; 30 50; 70 150];
 ecg_bna_cfg.tfr.n_cycles=5;
 
 % frequencies of interest (in Hz)
@@ -324,7 +324,7 @@ ecg_bna_cfg.tfr.foi             = logspace(log10(2), log10(120), 60);
 % Example:
 % lfp_tfa_cfg.tfr.timestep  = 25; 
 % the sliding time window steps by an amount equal to 25 lfp samples. 
-ecg_bna_cfg.tfr.timestep        = 1; 
+ecg_bna_cfg.tfr.timestep        = 5; 
 
 % depending on the method chosen, other configurations vary
 
@@ -517,8 +517,8 @@ ecg_bna_cfg.random_permute_triggers = true;
 % number of shuffles required
 ecg_bna_cfg.n_shuffles = [];
 if ecg_bna_cfg.random_permute_triggers
-    ecg_bna_cfg.n_shuffles = 100;
-    ecg_bna_cfg.n_permutations=1000; %100;
+    %ecg_bna_cfg.n_shuffles = 100;
+    ecg_bna_cfg.n_permutations=10; %100;
 end
 
 %define the time windows to analyse event triggered R2Rt
