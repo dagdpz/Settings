@@ -603,6 +603,14 @@ ecg_bna_cfg.analyse_Rpeak_states = {lfp_tfa_states.TAR_ACQ,   'Cue on', -0.25, 0
 % lfp_tfa_cfg.baseline_method = 'relchange';
 ecg_bna_cfg.baseline_method = 'relchange';
 
+% method to be used for shuffle predictor normalization
+% can be 'zscore', 'not normalized', 'subtraction', 'division'
+% 'subtraction'- difference between real and shuffled variable
+% P_norm(t,f) = mean(real) - mean(shuffled)
+% 'division' - P_norm(t,f) = mean(real)/mean(shuffled)
+% 'zscore' - P_norm(t,f) = ( mean(real) - mean(shuffled) ) / std(shuffled)
+ecg_bna_cfg.shuffle_normalization_method = 'subtraction';
+
 % flag to indicate if LFP TFR average should be computed - for future use
 % Set to 0 if LFP TFR average should not be computed, else set to 1
 % lfp_tfa_cfg.compute_tfr = 1;
