@@ -611,6 +611,11 @@ ecg_bna_cfg.baseline_method = 'relchange';
 % 'zscore' - P_norm(t,f) = ( mean(real) - mean(shuffled) ) / std(shuffled)
 ecg_bna_cfg.shuffle_normalization_method = 'subtraction';
 
+% method to be used for measuring the Statistical Significance of the real
+% data based on the results of shuffled data.
+ecg_bna_cfg.significance_method = '95Conf_intrvl';
+
+
 % flag to indicate if LFP TFR average should be computed - for future use
 % Set to 0 if LFP TFR average should not be computed, else set to 1
 % lfp_tfa_cfg.compute_tfr = 1;
