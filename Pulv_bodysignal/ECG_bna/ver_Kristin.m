@@ -518,7 +518,7 @@ ecg_bna_cfg.random_permute_triggers = true;
 ecg_bna_cfg.n_shuffles = [];
 if ecg_bna_cfg.random_permute_triggers
     %ecg_bna_cfg.n_shuffles = 100;
-    ecg_bna_cfg.n_permutations=10; %100;
+    ecg_bna_cfg.n_permutations=1000; %100;
 end
 
 %define the time windows to analyse event triggered R2Rt
