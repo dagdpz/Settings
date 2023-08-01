@@ -51,7 +51,7 @@ ephys_folder=['Y:\Projects\' project '\ephys\' ecg_bna_cfg.spikes_version filese
 ecg_preprocess_folder='Y:\Data\BodySignals\ECG\';
 monkeys={'Bacchus'};
 
-sessions{1}=sort([ 20211207]);
+sessions{1}=sort([20211207]); % next 20211001, 20211207, 20211208
 % sessions{1}=sort([ 20211014 ,  20211019, 20220309,  20220310  ,  20220315 ,   20220318  ,  20220322 , ...
 %     20210715  , 20210720  ,   20210723 ,   20210729  , 20210730 ,20210803 , 20210805  ,  20210806 , 20210826, 20210827  , ...
 %     20210903 , 20210905  ,  20210906 ,   20210930  ,  20211001  ,  20211005,   20211208 ,   20211102 ,   20211103, ...
@@ -98,7 +98,7 @@ ecg_bna_cfg.analyses = {'Rpeak_evoked_LFP', 'Rpeak_evoked_ECG', 'Rpeak_evoked_TF
 % Those targets which are not in the analysed sessions will be ignored
 % Example:
 % 1. lfp_tfa_cfg.compare.targets = {'MIPa_R', 'MIPa_L', 'dPul_R', 'dPul_L'}; 
-ecg_bna_cfg.compare.targets = {'dPul_R', 'dPul_L','VPL_R', 'VPL_L'}; 
+ecg_bna_cfg.compare.targets = {'dPul_R', 'dPul_L','VPL_R', 'VPL_L'}; %{'VPL_R'};
 
 % reference hemisphere for hand-space labelling
 % can be 'R' (for right hemisphere) or 'L' (for left hemisphere)
@@ -324,7 +324,7 @@ ecg_bna_cfg.tfr.foi             = logspace(log10(2), log10(120), 60);
 % Example:
 % lfp_tfa_cfg.tfr.timestep  = 25; 
 % the sliding time window steps by an amount equal to 25 lfp samples. 
-ecg_bna_cfg.tfr.timestep        = 5; 
+ecg_bna_cfg.tfr.timestep        = 25;
 
 % depending on the method chosen, other configurations vary
 
@@ -518,7 +518,7 @@ ecg_bna_cfg.random_permute_triggers = true;
 ecg_bna_cfg.n_shuffles = [];
 if ecg_bna_cfg.random_permute_triggers
     %ecg_bna_cfg.n_shuffles = 100;
-    ecg_bna_cfg.n_permutations=1000; %100;
+    ecg_bna_cfg.n_permutations=10; %300;
 end
 
 %define the time windows to analyse event triggered R2Rt
@@ -638,4 +638,4 @@ ecg_bna_cfg.significance_method = '95Conf_intrvl';
 % Example: lfp_tfa_cfg.compute_avg_across = 'sites'
 % Example: lfp_tfa_cfg.compute_avg_across = {'sessions', 'sites'};  compute
 % both averages across session averages and across site averages
-ecg_bna_cfg.compute_avg_across = {'sessions', 'sites'}; 
+ecg_bna_cfg.compute_avg_across = {'sites'}; 
