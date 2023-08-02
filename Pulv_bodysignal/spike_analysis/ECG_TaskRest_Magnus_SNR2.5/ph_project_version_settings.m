@@ -3,7 +3,7 @@
 % these 3 are only relevant for ph_initiation, population analysis will
 % always take all population files in the respective folder
 keys.batching.monkeys               ={'Magnus'};
-keys.Magnus.date                    ='[20220921 20230126]';
+keys.Magnus.date                    ='[20221115 20230126]';
 keys.cal.datasets                   = [4]; %% should probably be renamed to batching instead of cal
 
 keys.batching.combine_monkeys       =0;                        % for population analysis
@@ -138,11 +138,36 @@ keys.AN.factors_per_handhemifield={'epoch','prefH', 'prefP', 'SpatialComp_2HFTar
 
 % different versions of excel tables (?)
 cc=0;  
+
+%% this is for rerunning anovas
+% cc=cc+1;
+% keys.tun(cc).redo_statistics=1;
+% keys.tun(cc).conditions_to_plot = {'Fsac';'Vsac'};
+% keys.tun(cc).unique_title='Multicomp_standard';
+% keys.tun(cc).tt.tasktypes = {'Fsac','Vsac'}; %% Fsac is Rest, vsac is task
+
 cc=cc+1;
-keys.tun(cc).redo_statistics=1;
+keys.tun(cc).redo_statistics=0;
 keys.tun(cc).conditions_to_plot = {'Fsac';'Vsac'};
-keys.tun(cc).unique_title='Multicomp_standard';
+keys.tun(cc).unique_title='Multicomp_standard_5trials';
+keys.tun(cc).tt.tasktypes = {'Fsac','Vsac'}; %% Fsac is Rest, vsac is task
+
+keys.tun(cc).cal.min_trials_in                  =5;             % minimum number of trials instructed per condition - replace cal with tt ?
+keys.tun(cc).cal.min_trials_ch                  =5;             % minimum number of trials choice
+keys.tun(cc).tt.SNR_rating                     =[2.5,inf];     % min and max value accepted    
+keys.tun(cc).tt.stability_rating                =[0,Inf];     % min and max value accepted    
+
+% more conservative
+cc=cc+1;
+keys.tun(cc).redo_statistics=0;
+keys.tun(cc).conditions_to_plot = {'Fsac';'Vsac'};
+keys.tun(cc).unique_title='Multicomp_standard_22trials_SNR5';
 keys.tun(cc).tt.tasktypes = {'Fsac','Vsac'}; %% why is this needed ??
+
+keys.tun(cc).cal.min_trials_in                  =22;             % minimum number of trials instructed per condition - replace cal with tt ?
+keys.tun(cc).cal.min_trials_ch                  =22;             % minimum number of trials choice
+keys.tun(cc).tt.SNR_rating                      =[5,inf];     % min and max value accepted    
+keys.tun(cc).tt.stability_rating                =[0,Inf];     % min and max value accepted    
 
 %% single unit plotting stuff
 keys.population_defaults.line_labelling                ='contra/ipsi';
