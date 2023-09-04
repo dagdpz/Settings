@@ -52,7 +52,7 @@ ephys_folder=['Y:\Projects\' project '\ephys\' ecg_bna_cfg.spikes_version filese
 ecg_preprocess_folder='Y:\Data\BodySignals\CAP';
 monkeys={'Bacchus'};
 
-sessions{1}=sort([20211207]); % next 20211001, 20211207, 20211208
+sessions{1}=sort([20220322]); % next 20211001, 20211207, 20211208
 % sessions{1}=sort([ 20211014 ,  20211019, 20220309,  20220310  ,  20220315 ,   20220318  ,  20220322 , ...
 %     20210715  , 20210720  ,   20210723 ,   20210729  , 20210730 ,20210803 , 20210805  ,  20210806 , 20210826, 20210827  , ...
 %     20210903 , 20210905  ,  20210906 ,   20210930  ,  20211001  ,  20211005,   20211208 ,   20211102 ,   20211103, ...
@@ -516,7 +516,7 @@ end
 %         lfp_tfa_states.TRI_END], 0.8, 100, 'random'};
 % lfp_tfa_cfg.analyse_states = {lfp_tfa_states.CUE_ON,    'Cue',      -0.5,   0.9;...
 %                              lfp_tfa_states.REA_INI,    'Reach',    -0.3,   0.5};
-ecg_bna_cfg.analyse_states = {'cap', 'CAP peak', -0.5, 0.5};
+ecg_bna_cfg.analyse_states = {'cap', 'CAP peak', -1.5, 1.5};
 
                 ecg_bna_cfg.contra_ipsi_relative_to='target';
 % whether to perform a permutation test for evoked LFP and evoked ECG with
@@ -527,7 +527,7 @@ ecg_bna_cfg.random_permute_triggers = true;
 ecg_bna_cfg.n_shuffles = [];
 if ecg_bna_cfg.random_permute_triggers
     %ecg_bna_cfg.n_shuffles = 100;
-    ecg_bna_cfg.n_permutations=10; %300;
+    ecg_bna_cfg.n_permutations= 300;
 end
 
 %define the time windows to analyse event triggered R2Rt
