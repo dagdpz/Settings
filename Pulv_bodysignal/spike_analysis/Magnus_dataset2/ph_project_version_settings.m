@@ -3,7 +3,7 @@
 % these 3 are only relevant for ph_initiation, population analysis will
 % always take all population files in the respective folder
 keys.batching.monkeys               ={'Magnus'};
-keys.Magnus.date                    ='[20230623 20230623]'; % 20220921  20221206 20221222 20230104
+keys.Magnus.date                    ='[20230519 20230519]'; % 20220921  20221206 20221222 20230104
 %keys.Magnus.date                    ='[20230511 20230801]'; % 20220921  20221206 20221222 20230104
 keys.cal.datasets                   = [8]; %% should probably be renamed to batching instead of cal
 
