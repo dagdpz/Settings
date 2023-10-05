@@ -3,7 +3,7 @@
 % these 3 are only relevant for ph_initiation, population analysis will
 % always take all population files in the respective folder
 keys.batching.monkeys               ={'Magnus'};
-keys.Magnus.date                    ='[20221115 20230126]';
+keys.Magnus.date                    ='[20220921 20230126]';
 keys.cal.datasets                   = [4]; %% should probably be renamed to batching instead of cal
 
 keys.batching.combine_monkeys       =0;                        % for population analysis
@@ -30,6 +30,7 @@ keys.cal.choice                         =[0,1];
 %% unit selection
 keys.cal.automatic_stablity             =1;             % using automatic stability assessment - Fano factor
 keys.cal.automatic_SNR                  =1;             % using automatic SNR assessment - (mean waveform amplitude)/(mean of standard deviations in each timepoint)
+keys.cal.automatic_singleunitness       =1;
 
 keys.cal.stability                      =[2,inf];       % min and max value accepted
 keys.cal.single_rating                  =[0,3];         % min and max value accepted          

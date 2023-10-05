@@ -2,12 +2,12 @@
 %% batching and input selection
 % these 3 are only relevant for ph_initiation, population analysis will
 % always take all population files in the respective folder
-keys.batching.monkeys               ={'Magnus'};
-keys.Magnus.date                    ='[20230511 20230801]'; 
-keys.cal.datasets                   = [8]; %% should probably be renamed to batching instead of cal
+keys.batching.monkeys               ={'Bacchus'};
+keys.Bacchus.date                   = '[20210720 20220720]'; %'[20210715 20220322]';
+keys.cal.datasets                   = [4,5,6];
 
 keys.batching.combine_monkeys       =0;                        % for population analysis
-keys.batching.targets               ={'dPul','MD','PPC','PCC'}; % ,'VPL' % no vpl here, yet (?)
+keys.batching.targets               ={'dPul','VPL', 'mdT'};
 
 %% computation settings
 keys.cal.process_spikes                  =1;      % you can choose not to run spikes at all

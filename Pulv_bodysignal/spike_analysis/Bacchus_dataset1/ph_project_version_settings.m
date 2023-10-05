@@ -30,6 +30,7 @@ keys.cal.choice                         =[0,1];
 %% unit selection
 keys.cal.automatic_stablity             =1;             % using automatic stability assessment - Fano factor
 keys.cal.automatic_SNR                  =1;             % using automatic SNR assessment - (mean waveform amplitude)/(mean of standard deviations in each timepoint)
+keys.cal.automatic_singleunitness       =1;
 
 keys.cal.stability                      =[2,inf];       % min and max value accepted
 keys.cal.single_rating                  =[0,3];         % min and max value accepted          
