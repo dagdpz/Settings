@@ -3,6 +3,10 @@
 % initialize configuration structure
 ecg_bna_cfg = [];
 ecg_bna_cfg.outNameCap = 0; %it's out for CAP data
+ecg_bna_cfg.significance_window=[-0.25 0.25];
+ecg_bna_cfg.PSTH_binwidth=0.01;
+ecg_bna_cfg.kernel_type='gaussian';
+ecg_bna_cfg.gaussian_kernel=0.02;
 ecg_bna_cfg.LFP_version='Magnus_dataset2';
 ecg_bna_cfg.spikes_version='Magnus_dataset2';
 ecg_bna_cfg.process_LFP=1;
