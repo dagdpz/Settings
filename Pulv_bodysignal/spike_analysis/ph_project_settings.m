@@ -18,18 +18,13 @@ keys.cal.remove_trials_without_spikes   =0;             % compute outliar FR ign
 keys.cal.automatic_stablity             =1;             % using automatic stability assessment - Fano factor
 keys.cal.automatic_SNR                  =1;             % using automatic SNR assessment - (mean waveform amplitude)/(mean of standard deviations in each timepoint)
 keys.cal.automatic_singleunitness       =1;             % 
-
-
-
-keys.cal.stablity                       =[0.1,70];       % min and max value accepted
-keys.cal.single_rating                  =[0,Inf];         % min and max value accepted          
-keys.cal.SNR_rating                     =[4,26];       % min and max value accepted    
 keys.cal.FR                             =[2,inf];       % min and max value accepted   
 
 %% are only those ones used? -->
-keys.tt.avg_stability                   =[2,inf];       % min and max value accepted
-keys.tt.avg_single_rating               =[0,3];         % min and max value accepted          
-keys.tt.avg_SNR                         =[2.5,inf];     % min and max value accepted    
+keys.tt.avg_stability                   =[0.1,70];       % min and max value accepted
+keys.tt.avg_single_rating               =[0,Inf];         % min and max value accepted          
+keys.tt.avg_SNR                         =[4,26];     % min and max value accepted   
+keys.tt.choice                          =0; 
 
 keys.cal.n_spikes                       =[0,inf];       % min and max value accepted
 keys.cal.min_trials_in                  =5;             % minimum number of trials instructed per condition - replace cal with tt ?
@@ -41,7 +36,6 @@ keys.tt.trial_criterion_in              ='total';%'per_position'; %'trials_total
 keys.tt.trial_criterion_ch              ='per_hemifield';
 
 % default for population analysis
-keys.tt.choice=0;
 
 %% tuning table readout options (excluding particular subsets)
 keys.tt.combine_tuning_properties   ={'place_name_here'}; %% additional table entry from combining columns
