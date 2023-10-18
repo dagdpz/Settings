@@ -2,14 +2,15 @@
 
 % initialize configuration structure
 ecg_bna_cfg = [];
-ecg_bna_cfg.LFP_version='ver_Magnus_allSessions';
-ecg_bna_cfg.spikes_version='ECG_TaskRest_Magnus_allSessions';
+ecg_bna_cfg.LFP_version='ECG_TaskRest_Magnus_merged';
+ecg_bna_cfg.spikes_version='ECG_TaskRest_Magnus_merged';
 ecg_bna_cfg.process_LFP=0;
 ecg_bna_cfg.process_ECG=0;
 ecg_bna_cfg.process_spikes=1;
 ecg_bna_cfg.process_Rpeaks_inhalation_exhalation = 0;
 ecg_bna_cfg.plot_significant=1;
 ecg_bna_cfg.save_fig_format={'pdf'};
+ecg_bna_cfg.outNameCap=0;
 
 %% Settings for data folders
 % versioning, a unique version for the settings file and analysis results
@@ -21,7 +22,7 @@ ecg_bna_cfg.version = version; %'Magnus_Reach_InakdPul_ECG';
 %% this should not be used at this level any more
 % % sorted neurons excel file, from which information about sessions and
 % % individual sites can be obtained
-ecg_bna_cfg.info_filepath = 'Y:\Projects\Pulv_bodysignal\ephys\ECG_TaskRest_Magnus_allSessions\Mag_sorted_neurons.xls';
+%ecg_bna_cfg.info_filepath = 'Y:\Projects\Pulv_bodysignal\ephys\ECG_TaskRest_Magnus_merged\Mag_sorted_neurons.xls';
 
 % dataset to be used for analysis, see entry 'Set' in the sorted neurons excel file
 % only those sessions belonging to 'Set' = lfp_tfa_cfg.use_datasets will be
@@ -47,16 +48,18 @@ ecg_bna_cfg.monkey='Magnus';
 %       be combined)
 %   'Input_ECG_combined', 'Y:\Data\Magnus_phys_combined_monkeypsych_TDT\20191213', ...
 
-ephys_version='ECG_TaskRest_Magnus_allSessions';
+ephys_version='ECG_TaskRest_Magnus_merged';
 ephys_folder=['Y:\Projects\' project '\ephys\' ephys_version filesep];
-ecg_preprocess_folder='Y:\Data\BodySignals\ECG_CAP\';
+%ecg_preprocess_folder='Y:\Data\BodySignals\ECG_CAP\';
+ecg_preprocess_folder='Y:\Data\BodySignals\ECG\';
 monkeys={'Magnus'};
-sessions{1}=sort([20220921, 20221115]);% finished for , , 20221118, 20221122, 20221125, 20221206, ...
+sessions{1}=sort([20230511]);% finished for , , 20221118, 20221122, 20221125, 20221206, ...
 %     20221222, 20221229, 20230104, 20230106, 20230112, 20230126, ...
 %     20230511, 20230518, 20230519, 20230524, 20230525, 20230526, ...
 %     20230531, 20230601, 20230602, 20230607, 20230608, 20230609, ...
 %     20230614, 20230615, 20230616, 20230621, 20230622, 20230623
 
+     %       'Input_ECG',         [ecg_preprocess_folder filesep monkey filesep date '_ecg_cap.mat'], ...
 cumulative_sessions=0;
 for m=1:numel(monkeys)
     monkey=monkeys{m};
@@ -66,9 +69,10 @@ for m=1:numel(monkeys)
         ecg_bna_cfg.session_info(cumulative_sessions) = ...
             struct('Monkey',        monkey, ...
             'Date',           date, ...
-            'Input_ECG',         [ecg_preprocess_folder filesep monkey filesep date '_ecg_cap.mat'], ...
+            'Input_ECG',         [ecg_preprocess_folder filesep monkey filesep date filesep date '_ecg.mat'], ...
             'Input_ECG_preproc', {{[ephys_folder 'by_block_' monkey '_' date '.mat']}},...
             'Input_spikes', [ephys_folder 'population_' monkey '_' date '.mat'],...
+            'Input_trials', [ephys_folder 'trials_' monkey '_' date '.mat'],...
             'Input_LFP', {{[ephys_folder 'sites_' monkey '_' date '.mat']}},...
             'Preinj_blocks',  0, ...
             'Postinj_blocks', 1);  %% not sure why we need two here........
