@@ -2,16 +2,16 @@
 
 % initialize configuration structure
 ecg_bna_cfg = [];
+ecg_bna_cfg.outNameCap = 0;
 ecg_bna_cfg.LFP_version='ECG_TaskRest_Magnus_merged';
 ecg_bna_cfg.spikes_version='ECG_TaskRest_Magnus_merged';
-ecg_bna_cfg.process_LFP=0;
-ecg_bna_cfg.process_ECG=0;
-ecg_bna_cfg.process_spikes=1;
+ecg_bna_cfg.process_LFP=1;
+ecg_bna_cfg.process_ECG=1;
+ecg_bna_cfg.process_spikes=0;
 ecg_bna_cfg.process_Rpeaks_inhalation_exhalation = 0;
 ecg_bna_cfg.plot_significant=1;
 ecg_bna_cfg.save_fig_format={'pdf'};
-ecg_bna_cfg.outNameCap=0;
-
+   
 %% Settings for data folders
 % versioning, a unique version for the settings file and analysis results
 % the results produced using this settings file would be saved under 
@@ -22,12 +22,12 @@ ecg_bna_cfg.version = version; %'Magnus_Reach_InakdPul_ECG';
 %% this should not be used at this level any more
 % % sorted neurons excel file, from which information about sessions and
 % % individual sites can be obtained
-%ecg_bna_cfg.info_filepath = 'Y:\Projects\Pulv_bodysignal\ephys\ECG_TaskRest_Magnus_merged\Mag_sorted_neurons.xls';
+% ecg_bna_cfg.info_filepath = 'Y:\Projects\Pulv_distractor_spatial_choice\ephys\ECG_taskRest\Bac_sorted_neurons.xls';
 
 % dataset to be used for analysis, see entry 'Set' in the sorted neurons excel file
 % only those sessions belonging to 'Set' = lfp_tfa_cfg.use_datasets will be
 % used for analysis
-ecg_bna_cfg.use_datasets = [4 8];
+ecg_bna_cfg.use_datasets = [6 7 8];
 
 % absolute path to the folder where the results of analysis should be stored
 ecg_bna_cfg.results_folder = ['Y:\Projects\' project];
@@ -73,7 +73,7 @@ for m=1:numel(monkeys)
             'Input_ECG_preproc', {{[ephys_folder 'by_block_' monkey '_' date '.mat']}},...
             'Input_spikes', [ephys_folder 'population_' monkey '_' date '.mat'],...
             'Input_trials', [ephys_folder 'trials_' monkey '_' date '.mat'],...
-            'Input_LFP', {{[ephys_folder 'sites_' monkey '_' date '.mat']}},...
+            'Input_LFP', {{[ephys_folder 'sites_' monkey '_' date '*.mat']}},...
             'Preinj_blocks',  0, ...
             'Postinj_blocks', 1);  %% not sure why we need two here........
     end
@@ -89,14 +89,16 @@ end
 %       'sync'      - LFP-LFP phase synchronization measure for given conditions and
 %           time windows
 %ecg_bna_cfg.analyses = {'Rpeak_evoked_ECG', 'Rpeak_evoked_onset', 'Event_trig_R2Rt'}; % , 'Rpeak_evoked_LFP', 'Rpeak_evoked_TFS'
-ecg_bna_cfg.analyses = {'Rpeak_evoked_spike_histogram'}; % , 'Rpeak_evoked_LFP', 'Rpeak_evoked_TFS', 'Rpeak_evoked_ECG', 
+ecg_bna_cfg.analyses = {'Rpeak_evoked_LFP', 'Rpeak_evoked_ECG', 'Rpeak_evoked_TFS', 'Rpeak_evoked_spike_histogram'}; % , 
 
 % targets to be included in the analysis
 % should be a cell array of strings which indicate the target names
 % the target names should be same as the target field in the LFP data
 % structure
 % Those targets which are not in the analysed sessions will be ignored
-ecg_bna_cfg.compare.targets = {'dPul_R', 'dPul_L','VPL_R', 'VPL_L'}; 
+% Example:
+% 1. lfp_tfa_cfg.compare.targets = {'MIPa_R', 'MIPa_L', 'dPul_R', 'dPul_L'}; 
+ecg_bna_cfg.compare.targets = {'dPul_R', 'dPul_L','VPL_R', 'VPL_L','mdT_L','mdT_R','AIP_R','AIP_L','PCC_L','PCC_R'};
 
 % reference hemisphere for hand-space labelling
 % can be 'R' (for right hemisphere) or 'L' (for left hemisphere)
@@ -224,7 +226,7 @@ ecg_bna_cfg.compare.exclude_handspace = {};
 % lfp_tfa_cfg.compare.perturbation_groups(1) separately
 % lfp_tfa_cfg.compare.perturbations = nan; combine the trials with
 % any perturbation value 
-ecg_bna_cfg.compare.perturbations = [0]; 
+ecg_bna_cfg.compare.perturbations = NaN; 
 
 % differences in conditions to be analysed
 % add new entries for further difference calculations
@@ -244,7 +246,7 @@ ecg_bna_cfg.compare.perturbations = [0];
 % Compute difference between difference between post and pre-injection trials of choice trials and that of instructed trials     
 
 ecg_bna_cfg.diff_condition = {};
-ecg_bna_cfg.diff_condition(1) = {{'type_eff', {[2 1], [0 0]}}};
+ecg_bna_cfg.diff_condition(1) = {{'type_eff', {[1 0],[2 0]}}};
 
 % colors to be used for plotting the comparison plots
 ecg_bna_cfg.diff_color = {};
@@ -503,8 +505,12 @@ end
 %                              lfp_tfa_states.REA_INI,    'Reach',    -0.3,   0.5};
 ecg_bna_cfg.analyse_states = {'ecg', 'ECG peak', -0.25, 0.25};
 
-% whether to perform a permutation test for evoked LFP and evoked ECG with
-% randomly shuffled triggers
+
+% %%%%%% This part is from old ver_Kristin that used for Bacchus:
+% % 
+ecg_bna_cfg.contra_ipsi_relative_to='target';
+% % % whether to perform a permutation test for evoked LFP and evoked ECG with
+% % % randomly shuffled triggers
 ecg_bna_cfg.random_permute_triggers = true;
 
 % PSTH and plotting parameters
@@ -545,9 +551,9 @@ ecg_bna_cfg.event_triggers = {lfp_tfa_states.TAR_ACQ,   'Cue on',    -0.5,   0.5
 % definition of trial period
 ecg_bna_cfg.normalize_R2Rt = true;
                           
-ecg_bna_cfg.analyse_Rpeak_states = {lfp_tfa_states.TAR_ACQ,   'Cue on', [-0.25 0.25], 'afterRpeak'; ...
-                                    lfp_tfa_states.SAC_INI,   'Sac ini', [-0.25 0.25], 'afterRpeak'; ...
-                                    lfp_tfa_states.REWARD,    'Reward', [-0.25 0.25], 'afterRpeak'};
+ecg_bna_cfg.analyse_Rpeak_states = {lfp_tfa_states.TAR_ACQ,   'Cue on', -0.25, 0.25, 'afterRpeak'; ...
+                                    lfp_tfa_states.SAC_INI,   'Sac ini', -0.25, 0.25, 'afterRpeak'; ...
+                                    lfp_tfa_states.REWARD,    'Reward', -0.25, 0.25, 'afterRpeak'};
                                 
 %                                 
 % lfp_tfa_states.INI_TRI       = 1; % initialize trial
@@ -600,7 +606,20 @@ ecg_bna_cfg.analyse_Rpeak_states = {lfp_tfa_states.TAR_ACQ,   'Cue on', [-0.25 0
 % P_norm(t,f) = (P(t, f)) / (mu_P(f))
 % Example:
 % lfp_tfa_cfg.baseline_method = 'relchange';
-ecg_bna_cfg.baseline_method = 'relchange';
+ecg_bna_cfg.baseline_method = 'none';
+
+% method to be used for shuffle predictor normalization
+% can be 'zscore', 'not normalized', 'subtraction', 'division'
+% 'subtraction'- difference between real and shuffled variable
+% P_norm(t,f) = mean(real) - mean(shuffled)
+% 'division' - P_norm(t,f) = mean(real)/mean(shuffled)
+% 'zscore' - P_norm(t,f) = ( mean(real) - mean(shuffled) ) / std(shuffled)
+ecg_bna_cfg.shuffle_normalization_method = 'subtraction';
+
+% method to be used for measuring the Statistical Significance of the real
+% data based on the results of shuffled data.
+ecg_bna_cfg.significance_method = '95Conf_intrvl';
+
 
 % flag to indicate if LFP TFR average should be computed - for future use
 % Set to 0 if LFP TFR average should not be computed, else set to 1
