@@ -27,7 +27,7 @@ ecg_bna_cfg.version = version; %'Magnus_Reach_InakdPul_ECG';
 % dataset to be used for analysis, see entry 'Set' in the sorted neurons excel file
 % only those sessions belonging to 'Set' = lfp_tfa_cfg.use_datasets will be
 % used for analysis
-ecg_bna_cfg.use_datasets = [31];
+ecg_bna_cfg.use_datasets = [6 7 8];
 
 % absolute path to the folder where the results of analysis should be stored
 ecg_bna_cfg.results_folder = ['Y:\Projects\' project];
@@ -53,18 +53,13 @@ ephys_folder=['Y:\Projects\' project '\ephys\' ephys_version filesep];
 %ecg_preprocess_folder='Y:\Data\BodySignals\ECG_CAP\';
 ecg_preprocess_folder='Y:\Data\BodySignals\ECG\';
 monkeys={'Magnus'};
+sessions{1}=sort([20230511]);% finished for , , 20221118, 20221122, 20221125, 20221206, ...
+%     20221222, 20221229, 20230104, 20230106, 20230112, 20230126, ...
+%     20230511, 20230518, 20230519, 20230524, 20230525, 20230526, ...
+%     20230531, 20230601, 20230602, 20230607, 20230608, 20230609, ...
+%     20230614, 20230615, 20230616, 20230621, 20230622, 20230623
 
-sessions{1}=sort([20230623]); 
-% next 20211001, 20211207, 20211208
-% sessions{1}=sort([ 20211014 ,  20211019, 20220309,  20220310  ,  20220315 ,   20220318  ,  20220322 , ...
-%     20210715  , 20210720  ,   20210723 ,   20210729  , 20210730 ,20210803 , 20210805  ,  20210806 , 20210826, 20210827  , ...
-%     20210903 , 20210905  ,  20210906 ,   20210930  ,  20211001  ,  20211005,   20211208 ,   20211102 ,   20211103, ...
-%     20211222  ,  20220105  ,  20220106  , 20220203  ,  20220211  ,  20220221 ,   20220222  ,  20220224  ,  20220225,    20211116  ,  20211117 ,...
-%     20211013,   20211027 20211028  ,  20211207 , 20211214   ,]);
-
-% 20210805, 20211005
-
-% sessions{1}=sort([20211207]);
+     %       'Input_ECG',         [ecg_preprocess_folder filesep monkey filesep date '_ecg_cap.mat'], ...
 cumulative_sessions=0;
 for m=1:numel(monkeys)
     monkey=monkeys{m};
@@ -83,7 +78,6 @@ for m=1:numel(monkeys)
             'Postinj_blocks', 1);  %% not sure why we need two here........
     end
 end
-
 
 % what kind of analyses should be done on LFP
 % should be a cell array of strings which indicate which kind of analyses
@@ -316,10 +310,6 @@ ecg_bna_cfg.trialinfo.ref_tend = 0;
 % details
 ecg_bna_cfg.tfr.method          = 'wavelet';  
 
-
-ecg_bna_cfg.tfr.frequency_bands=[2 4; 4 8; 8 14; 14 30; 30 50; 70 150];
-ecg_bna_cfg.tfr.n_cycles=5;
-
 % frequencies of interest (in Hz)
 % Example: 
 % 1. lfp_tfa_cfg.tfr.foi = logspace(log10(2), log10(120), 60); 60 logspaced
@@ -330,7 +320,7 @@ ecg_bna_cfg.tfr.foi             = logspace(log10(2), log10(120), 60);
 % Example:
 % lfp_tfa_cfg.tfr.timestep  = 25; 
 % the sliding time window steps by an amount equal to 25 lfp samples. 
-ecg_bna_cfg.tfr.timestep        = 25;
+ecg_bna_cfg.tfr.timestep        = 25; 
 
 % depending on the method chosen, other configurations vary
 
@@ -513,7 +503,7 @@ end
 %         lfp_tfa_states.TRI_END], 0.8, 100, 'random'};
 % lfp_tfa_cfg.analyse_states = {lfp_tfa_states.CUE_ON,    'Cue',      -0.5,   0.9;...
 %                              lfp_tfa_states.REA_INI,    'Reach',    -0.3,   0.5};
-ecg_bna_cfg.analyse_states = {'ecg', 'ECG peak', -0.5, 0.5};
+ecg_bna_cfg.analyse_states = {'ecg', 'ECG peak', -0.25, 0.25};
 
 
 % %%%%%% This part is from old ver_Kristin that used for Bacchus:
@@ -522,17 +512,9 @@ ecg_bna_cfg.contra_ipsi_relative_to='target';
 % % % whether to perform a permutation test for evoked LFP and evoked ECG with
 % % % randomly shuffled triggers
 ecg_bna_cfg.random_permute_triggers = true;
-% % 
-% % % number of shuffles required
-% % ecg_bna_cfg.n_shuffles = [];
-% % if ecg_bna_cfg.random_permute_triggers
-% %     %ecg_bna_cfg.n_shuffles = 100;
-% %     ecg_bna_cfg.n_permutations=300; %300;
-% % end
-% % 
 
 % PSTH and plotting parameters
-ecg_bna_cfg.n_permutations= 300; %1000; % number of shuffles required
+ecg_bna_cfg.n_permutations=1000; % number of shuffles required
 ecg_bna_cfg.significance_window=[-0.25 0.25];
 ecg_bna_cfg.PSTH_binwidth=0.01;
 ecg_bna_cfg.kernel_type='gaussian';
@@ -543,8 +525,6 @@ ecg_bna_cfg.unit_exclusion.FR_thresholds              = [2 Inf]; % from 2 on
 ecg_bna_cfg.unit_exclusion.nCardiacCycles             = 600;
 ecg_bna_cfg.unit_exclusion.SNR_thresholds             = [4 26];
 ecg_bna_cfg.unit_exclusion.FR_stability_thresholds    = [0.1 70];
-
-
 
 %define the time windows to analyse event triggered R2Rt
 % Must be a Nx4 cell array, N = number of windows to analyse
@@ -560,8 +540,8 @@ ecg_bna_cfg.unit_exclusion.FR_stability_thresholds    = [0.1 70];
 % Example row: 
 %   lfp_tfa_states.REA_INI,   'Reach ini',    -0.5,   0.5                          
 ecg_bna_cfg.event_triggers = {lfp_tfa_states.TAR_ACQ,   'Cue on',    -0.5,   0.5;...
-                              lfp_tfa_states.SAC_INI,   'Sac ini',   -0.5,   0.5; ...
-                              lfp_tfa_states.REWARD,    'Reward',    -0.5,   0.5};
+                              lfp_tfa_states.SAC_INI,   'Sac ini',      -0.5,   0.5; ...
+                              lfp_tfa_states.REWARD,    'Reward',      -0.5,   0.5};
                           
 % options for normalizing evoked ECG R2R interval 
 % Whether or not to normalize the R2R interval for plotting
@@ -663,4 +643,4 @@ ecg_bna_cfg.significance_method = '95Conf_intrvl';
 % Example: lfp_tfa_cfg.compute_avg_across = 'sites'
 % Example: lfp_tfa_cfg.compute_avg_across = {'sessions', 'sites'};  compute
 % both averages across session averages and across site averages
-ecg_bna_cfg.compute_avg_across = {'sites'}; 
+ecg_bna_cfg.compute_avg_across = {'sessions', 'sites'}; 
