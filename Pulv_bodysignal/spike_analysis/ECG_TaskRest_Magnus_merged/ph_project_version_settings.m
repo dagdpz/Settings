@@ -3,7 +3,7 @@
 % always take all population files in the respective folder
 keys.batching.monkeys               ={'Magnus'};
 keys.Magnus.date                    ='[20220921 20230623]'; % done for 20230511 20230518
-keys.cal.datasets                   = [4, 8]; %% should probably be renamed to batching instead of cal
+keys.cal.datasets                   = [6, 7, 8]; %% should probably be renamed to batching instead of cal
 keys.batching.targets               ={'dPul','VPL', 'MD', 'AIP', 'PCC', 'PPC'};
 
 
