@@ -310,6 +310,9 @@ ecg_bna_cfg.trialinfo.ref_tend = 0;
 % details
 ecg_bna_cfg.tfr.method          = 'wavelet';  
 
+ecg_bna_cfg.tfr.frequency_bands=[2 4; 4 8; 8 14; 14 30; 30 50; 70 150];
+ecg_bna_cfg.tfr.n_cycles=5;
+
 % frequencies of interest (in Hz)
 % Example: 
 % 1. lfp_tfa_cfg.tfr.foi = logspace(log10(2), log10(120), 60); 60 logspaced
