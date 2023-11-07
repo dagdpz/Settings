@@ -19,16 +19,6 @@ ecg_bna_cfg.save_fig_format={'pdf'};
 % eg: 'C:\Data\MIP_timefreq_analysis\LFP_timefrequency_analysis\Data\LFP_TFA_Results\20190506\ver_SN_0.2'
 ecg_bna_cfg.version = version; %'Magnus_Reach_InakdPul_ECG';
 
-%% this should not be used at this level any more
-% % sorted neurons excel file, from which information about sessions and
-% % individual sites can be obtained
-% ecg_bna_cfg.info_filepath = 'Y:\Projects\Pulv_distractor_spatial_choice\ephys\ECG_taskRest\Bac_sorted_neurons.xls';
-
-% dataset to be used for analysis, see entry 'Set' in the sorted neurons excel file
-% only those sessions belonging to 'Set' = lfp_tfa_cfg.use_datasets will be
-% used for analysis
-ecg_bna_cfg.use_datasets = [6 7 8];
-
 % absolute path to the folder where the results of analysis should be stored
 ecg_bna_cfg.results_folder = ['Y:\Projects\' project];
 
@@ -53,11 +43,13 @@ ephys_folder=['Y:\Projects\' project '\ephys\' ephys_version filesep];
 %ecg_preprocess_folder='Y:\Data\BodySignals\ECG_CAP\';
 ecg_preprocess_folder='Y:\Data\BodySignals\ECG\';
 monkeys={'Magnus'};
-sessions{1}=sort([20230525]);% finished for , , 20221118, 20230623, 20221122, 20221125, 20221206, ...
-%     20221222, 20221229, 20230104, 20230106, 20230112, 20230126, ...
-%     20230511, 20230518, 20230519, 20230524, 20230525, 20230526, ...
-%     20230531, 20230601, 20230602, 20230607, 20230608, 20230609, ...
-%     20230614, 20230615, 20230616, 20230621, 20230622, 20230623
+%% Shamim's sessions
+sessions{1}=sort([20230525, 20221118, 20230623, 20221122, 20221125, 20221206, ...
+     20221222, 20221229, 20230104, 20230106, 20230112, 20230126, ...
+     20230511, 20230518, 20230519, 20230524, 20230525, 20230526]);
+%% Lukas' sessions
+sessions{1}=sort([20230531, 20230601, 20230602, 20230607, 20230608, 20230609, ...
+     20230614, 20230615, 20230616, 20230621, 20230622, 20230623]);
 
      %       'Input_ECG',         [ecg_preprocess_folder filesep monkey filesep date '_ecg_cap.mat'], ...
 cumulative_sessions=0;
@@ -106,44 +98,13 @@ ecg_bna_cfg.contra_ipsi_relative_to='target';
 % % % randomly shuffled triggers
 ecg_bna_cfg.random_permute_triggers = true;
 
-% PSTH and plotting parameters
-
-% % reference hemisphere for hand-space labelling
-% % can be 'R' (for right hemisphere) or 'L' (for left hemisphere)
-% % ref_hemisphere is used for labelling contra and ipsi hand and space
-% % set ref_hemisphere to lesioned hemishere for ipsi lesional and contra
-% % lesional labeling
-% % set ref_hemisphere to recorded hemishere for ipsi lateral and contra
-% % lateral labeling
-% ecg_bna_cfg.ref_hemisphere = 'R';   %%% NEEDS TO BE FIXED
-% 
-% % maximum no:of sites to analyse from each session
-% % If maxsites < total number of sites in a session, only maxsite number of
-% % sites will be analysed
-% % Examples:
-% % 1. lfp_tfa_cfg.maxsites = 2; only first two sites will be analysed from 
-% % each session
-% % 1. lfp_tfa_cfg.maxsites = inf; all the sites will be analysed from 
-% % each session
-% ecg_bna_cfg.maxsites = inf; % inf = analyse all sites
-% 
-% % random seed for random number generator for reproducibility
-% % set to a non negative integer below 2^32
-% ecg_bna_cfg.random_seed = rng;
-% 
-% % whether to plot ECG data for individual trials
-% % Set to 1 for plotting individual trials, zero otherwise
-% ecg_bna_cfg.plottrials = 0;
-
 %% Settings for averaging TFR and evoked LFP based on conditions
 ecg_bna_cfg.conditionname{1}='Rest';
 ecg_bna_cfg.condition(1).type=1;
-%ecg_bna_cfg.condition(1).success=1;
 ecg_bna_cfg.condition(1).completed=1;
 
 ecg_bna_cfg.conditionname{2}='Task';
 ecg_bna_cfg.condition(2).type=2;
-%ecg_bna_cfg.condition(2).success=1;
 ecg_bna_cfg.condition(2).completed=1;
 
 
@@ -153,13 +114,12 @@ ecg_bna_cfg.condition(2).completed=1;
 % P_norm(t,f) = mean(real) - mean(shuffled)
 % 'division' - P_norm(t,f) = mean(real)/mean(shuffled)
 % 'zscore' - P_norm(t,f) = ( mean(real) - mean(shuffled) ) / std(shuffled)
-ecg_bna_cfg.shuffle_normalization_method = 'subtraction';
+ecg_bna_cfg.shuffle_normalization_method = 'zscore';
 
 % method to be used for measuring the Statistical Significance of the real
 % data based on the results of shuffled data.
 ecg_bna_cfg.significance_method = '95Conf_intrvl';
 
-ecg_bna_cfg.tfr.method          = 'wavelet';  
 
 % frequencies of interest (in Hz)
 % Example: 
@@ -174,127 +134,15 @@ ecg_bna_cfg.tfr.foi             = logspace(log10(2), log10(120), 60);
 ecg_bna_cfg.tfr.timestep        = 0.01; 
 
 
-ecg_bna_cfg.tfr.frequency_bands=[2 4; 4 8; 8 14; 14 30; 30 50; 70 150];
+ecg_bna_cfg.tfr.frequency_bands=[2 4; 4 8; 8 14; 14 30; 30 50; 70 120];
 ecg_bna_cfg.tfr.n_cycles=5;
-ecg_bna_cfg.smoothWin=3;
-
-ecg_bna_cfg.diff_condition = {};
-ecg_bna_cfg.diff_condition(1) = {{'type_eff', {[1 0],[2 0]}}};
-
-% colors to be used for plotting the comparison plots
-ecg_bna_cfg.diff_color = {};
-ecg_bna_cfg.diff_color{1} = [0, 0.5, 0.5; 0, 1, 1];
-
-% legends to be used for plotting the comparison plots
-ecg_bna_cfg.diff_legend = {};
-ecg_bna_cfg.diff_legend{1} = {'Task', 'Rest'};
-
-%% Time information
-
-% Specify events which mark trial start and end
-ecg_bna_cfg.trialinfo = struct();
-
-% ID of the reference state which indicates start of a trial
-% Example:
-% lfp_tfa_cfg.trialinfo.start_state = lfp_tfa_states.FIX_ACQ; reference for 
-% trial start is the onset of fixation acquisition
-ecg_bna_cfg.trialinfo.start_state = lfp_tfa_states.INI_TRI; %% what dies this do again?
-
-% offset to be considered from the onset of
-% trial start reference state for calculating the trial start time
-% i.e., trial start time = onset of trial start state + start offset
-% Example:
-% 1. lfp_tfa_cfg.trialinfo.ref_tstart = -0.5;
-% trial start time = onset time of lfp_tfa_cfg.trialinfo.start_state - 0.5;
-% 1. lfp_tfa_cfg.trialinfo.ref_tstart = 0.5;
-% trial start time = onset time of lfp_tfa_cfg.trialinfo.start_state + 0.5;
-ecg_bna_cfg.trialinfo.ref_tstart = -0;
-
-% ID of the reference state which indicates end of a trial
-% Example:
-% lfp_tfa_cfg.trialinfo.end_state = lfp_tfa_states.TAR_HOL; reference for 
-% trial start is the onset of target hold
-ecg_bna_cfg.trialinfo.end_state = lfp_tfa_states.TRI_END;
-
-% offset to be considered from the onset of
-% trial end reference state for calculating the trial end time
-% i.e., trial end time = onset of trial end state + end offset
-% Example:
-% 1. lfp_tfa_cfg.trialinfo.ref_tend = 0.5;
-% trial start time = onset time of lfp_tfa_cfg.trialinfo.end_state + 0.5;
-% 1. lfp_tfa_cfg.trialinfo.ref_tend = -0.5;
-% trial start time = onset time of lfp_tfa_cfg.trialinfo.end_state - 0.5;
-ecg_bna_cfg.trialinfo.ref_tend = 0;
+ecg_bna_cfg.smoothWin=5;
 
 
-%% Settings for ft_freqanalysis in FieldTrip
-% Configuration for calculating LFP time frequency spectrogram using
-% ft_freqanalysis function of the fieldtrip toolbox
-
-% method for calculating the LFP power spectra
-% can be 'mtmfft', 'mtmconvol', 'wavelet'
-% Example:
-% 1. lfp_tfa_cfg.tfr.method = 'wavelet'; % implements wavelet time frequency
-%                        transformation (using Morlet wavelets) based on
-%                        multiplication in the frequency domain.
-% 2. lfp_tfa_cfg.tfr.method = 'mtmfft', analyses an entire spectrum for the entire data
-%                        length, implements multitaper frequency transformation.
-% see http://www.fieldtriptoolbox.org/reference/ft_freqanalysis/ for more
-% details
+ecg_bna_cfg.tfr.method          = 'wavelet';  %% i dont think this is used
 
 
-%% Settings to detect noisy trials
-% configuration for lfp noise rejection
-ecg_bna_cfg.noise = [];
-% whether or not to apply noise rejection 
-% Set to 0 to accept all trials
-% Set to 1 to run the noise trial detection methods
-ecg_bna_cfg.noise.detect = 1;
-% combination of methods to be used - future use
-% currently all methods are used together 
-ecg_bna_cfg.noise.methods = {'amp', 'std', 'diff', 'pow'};
-% threshold for lfp raw amplitude (number of std deviations from mean)
-ecg_bna_cfg.noise.amp_thr = 6;
-% number of consecutive samples beyond threshold to be considered for marking 
-% a noisy trial
-ecg_bna_cfg.noise.amp_N = 10;
-% no of standard deviations of trial LFP w.r.t LFP std of all trials
-ecg_bna_cfg.noise.std_thr = 4;
-% threshold for lfp derivative (number of std deviations from mean)
-ecg_bna_cfg.noise.diff_thr = 6;
-% number of consecutive samples beyond threshold to be considered for marking 
-% a noisy trial
-ecg_bna_cfg.noise.diff_N = 10;
-% threshold for lfp power in number of standard deviations from mean
-ecg_bna_cfg.noise.pow_thr = 4;
-% whether single trials should be plotted
-ecg_bna_cfg.noise.plottrials = 0;
-
-%% Settings to compute baseline power
-
-% ID of the reference state around which baseline should be considered, see
-% lfp_tfa_global_define_states
-% Examples
-% 1. lfp_tfa_cfg.baseline_ref_state = lfp_tfa_states.CUE_ON; considers cue
-% onset as the reference state for baseline period
-% 2. lfp_tfa_cfg.baseline_ref_state = ''; consider the whole trial period
-% for baseline
-% ecg_bna_cfg.baseline_ref_state = ''; 
-
-% period of interest relative to onset of baseline_ref_state for baseline power calculation, 
-% Examples: 
-% 1. lfp_tfa_cfg.baseline_ref_period = [-0.5 -0.1]; considers the time 
-% period -0.5 s to -0.1 s from the onset of baseline_ref_state (i.e., if 
-% lfp_tfa_cfg.baseline_ref_state = lfp_tfa_states.CUE_ON, time period from 
-% -0.5 s to -0.1s from the cue onset is considered as baseline period)
-% 2. lfp_tfa_cfg.baseline_ref_period = 'trial'; to consider the complete trial period
-% for baseline power calculation
-% 
-% if isempty(ecg_bna_cfg.baseline_ref_state)
-% 	ecg_bna_cfg.baseline_ref_period = 'trial';
-% else
-% 	ecg_bna_cfg.baseline_ref_period = []; % SET LIMITS OF baseline_ref_period here
-% end
+%% define events
 
 % Example row: 
 %   lfp_tfa_states.CUE_ON,     'Cue',    -1.0 ,    0.5
@@ -374,45 +222,6 @@ ecg_bna_cfg.analyse_Rpeak_states = {lfp_tfa_states.TAR_ACQ,   'Cue on', -0.25, 0
 % lfp_tfa_states.TRI_END       = 90;
 % lfp_tfa_states.ITI_END       = 98;
 % lfp_tfa_states.CLOSE         = 99;
-
-% minimum number of trials per condition to be satisfied to consider a site
-% for averaging, if for a site, for any condition, the  number of valid 
-% (non-noisy) trials is less than mintrials_percondition, the site is not considered for averaging
-% Set lfp_tfa_cfg.mintrials_percondition = 1 to consider a site if atleast
-% one valid trial is obtained (keep minimum value of 1)
-% Example:
-% consider those sites with atleast 5 trials for each condition
-% lfp_tfa_cfg.mintrials_percondition = 5; 
-% By condition, we mean a combination of choice/instr, pre/post-injection, type and effector, hand-space
-% ecg_bna_cfg.mintrials_percondition = 0;
-
-% method to be used for baseline normalization
-% can be 'zscore', 'relchange', 'subtraction', 'division'
-% 'zscore' - computes Z-score for each time freq bin
-% Z(t,f) = (P(t, f) - mu_P(f)) / (sigma_P(f))
-% 'relchange' - relative power change w.r.t. the baseline power
-% P_norm(t,f) = (P(t, f) - mu_P(f)) / (mu_P(f))
-% 'subtraction' - absolute increase in power w.r.t. the baseline
-% P_norm(t,f) = (P(t, f) - mu_P(f))
-% 'division' - relative increase in power w.r.t. the baseline
-% P_norm(t,f) = (P(t, f)) / (mu_P(f))
-% Example:
-% lfp_tfa_cfg.baseline_method = 'relchange';
-%ecg_bna_cfg.baseline_method = 'none';
-
-
-% flag to indicate if LFP TFR average should be computed - for future use
-% Set to 0 if LFP TFR average should not be computed, else set to 1
-% lfp_tfa_cfg.compute_tfr = 1;
-
-% flag to indicate if LFP evoked response average should be computed - for future use
-% Set to 0 if LFP evoked response average should not be computed, else set to 1
-% lfp_tfa_cfg.compute_evoked = 1;
-
-% flag to indicate if LFP power spectrum average should be computed - for future use
-% Set to 0 if LFP power spectrum average should not be computed, else set to 1
-% lfp_tfa_cfg.compute_pow = 1;
-
     
 %% Settings for averaging across sessions or sites
 
@@ -424,3 +233,44 @@ ecg_bna_cfg.analyse_Rpeak_states = {lfp_tfa_states.TAR_ACQ,   'Cue on', -0.25, 0
 % Example: lfp_tfa_cfg.compute_avg_across = {'sessions', 'sites'};  compute
 % both averages across session averages and across site averages
 ecg_bna_cfg.compute_avg_across = {'sessions', 'sites'}; 
+
+
+
+%% Settings to detect noisy trials - irrelevant for now
+% configuration for lfp noise rejection
+ecg_bna_cfg.noise = [];
+% whether or not to apply noise rejection 
+% Set to 0 to accept all trials
+% Set to 1 to run the noise trial detection methods
+ecg_bna_cfg.noise.detect = 1;
+% combination of methods to be used - future use
+% currently all methods are used together 
+ecg_bna_cfg.noise.methods = {'amp', 'std', 'diff', 'pow'};
+% threshold for lfp raw amplitude (number of std deviations from mean)
+ecg_bna_cfg.noise.amp_thr = 6;
+% number of consecutive samples beyond threshold to be considered for marking 
+% a noisy trial
+ecg_bna_cfg.noise.amp_N = 10;
+% no of standard deviations of trial LFP w.r.t LFP std of all trials
+ecg_bna_cfg.noise.std_thr = 4;
+% threshold for lfp derivative (number of std deviations from mean)
+ecg_bna_cfg.noise.diff_thr = 6;
+% number of consecutive samples beyond threshold to be considered for marking 
+% a noisy trial
+ecg_bna_cfg.noise.diff_N = 10;
+% threshold for lfp power in number of standard deviations from mean
+ecg_bna_cfg.noise.pow_thr = 4;
+% whether single trials should be plotted
+ecg_bna_cfg.noise.plottrials = 0;
+
+%% for condition differenes- we are not doing those yet
+ecg_bna_cfg.diff_condition = {};
+ecg_bna_cfg.diff_condition(1) = {{'type_eff', {[1 0],[2 0]}}};
+
+% colors to be used for plotting the comparison plots
+ecg_bna_cfg.diff_color = {};
+ecg_bna_cfg.diff_color{1} = [0, 0.5, 0.5; 0, 1, 1];
+
+% legends to be used for plotting the comparison plots
+ecg_bna_cfg.diff_legend = {};
+ecg_bna_cfg.diff_legend{1} = {'Task', 'Rest'};

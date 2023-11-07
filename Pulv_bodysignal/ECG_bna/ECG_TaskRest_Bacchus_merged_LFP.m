@@ -43,16 +43,13 @@ ephys_folder=['Y:\Projects\' project '\ephys\' ephys_version filesep];
 %ecg_preprocess_folder='Y:\Data\BodySignals\ECG_CAP\';
 ecg_preprocess_folder='Y:\Data\BodySignals\ECG\';
 monkeys={'Bacchus'};
-
-% REDO: 20210715 20210716 20210720 20210722 20210723  
-% PROBLEMATIC:  
+ 
 sessions{1}=unique([...
-20210729 20210730 ...
+20210715 20210716 20210720 20210722 20210723 20210729 20210730 ...
 20210805 20210806 20210826 20210827 20210903 20210905 20210906 ...
 20210930 20211001 20211005 20211007 20211012 20211013 20211014 ...
 20211214 20211222 20220105 20220106 20220203 20220211 20220221 ...
 20220222 20220224 20220225 20220309 20220310 20220315 20220318 20220322]); 
-
      %       'Input_ECG',         [ecg_preprocess_folder filesep monkey filesep date '_ecg_cap.mat'], ...
 cumulative_sessions=0;
 for m=1:numel(monkeys)
@@ -103,12 +100,10 @@ ecg_bna_cfg.random_permute_triggers = true;
 %% Settings for averaging TFR and evoked LFP based on conditions
 ecg_bna_cfg.conditionname{1}='Rest';
 ecg_bna_cfg.condition(1).type=1;
-%ecg_bna_cfg.condition(1).success=1;
 ecg_bna_cfg.condition(1).completed=1;
 
 ecg_bna_cfg.conditionname{2}='Task';
 ecg_bna_cfg.condition(2).type=2;
-%ecg_bna_cfg.condition(2).success=1;
 ecg_bna_cfg.condition(2).completed=1;
 
 
@@ -140,7 +135,7 @@ ecg_bna_cfg.tfr.timestep        = 0.01;
 
 ecg_bna_cfg.tfr.frequency_bands=[2 4; 4 8; 8 14; 14 30; 30 50; 70 120];
 ecg_bna_cfg.tfr.n_cycles=5;
-ecg_bna_cfg.smoothWin=3;
+ecg_bna_cfg.smoothWin=5;
 
 
 ecg_bna_cfg.tfr.method          = 'wavelet';  %% i dont think this is used
