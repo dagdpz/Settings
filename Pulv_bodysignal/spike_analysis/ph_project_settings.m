@@ -21,7 +21,7 @@ keys.cal.automatic_singleunitness       =1;             %
 keys.cal.FR                             =[2,inf];       % min and max value accepted   
 
 %% are only those ones used? -->
-keys.tt.avg_stability                   =[0.1,70];       % min and max value accepted
+keys.tt.avg_stability                   =[0,2.5];       % min and max value accepted
 keys.tt.avg_single_rating               =[0,Inf];         % min and max value accepted          
 keys.tt.avg_SNR                         =[4,26];     % min and max value accepted   
 keys.tt.choice                          =0; 
