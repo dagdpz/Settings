@@ -5,7 +5,7 @@ keys.batching.monkeys               ={'Bacchus'};
 keys.Bacchus.date                   = '[20210706 20220322]';% 20210715
 keys.cal.datasets                   = [5,6,7];
 keys.batching.targets               ={'dPul','VPL', 'mdT'}; 
-
+keys.tt.tasktypes                   ={'Fsac_opt','Vsac_opt'};
 
 % %% Localization (chamberlain keys)
 % cc=0;
