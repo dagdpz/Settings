@@ -24,7 +24,7 @@ keys.cal.FR                             =[2,inf];       % min and max value acce
 keys.tt.avg_stability                   =[0,2.5];       % min and max value accepted
 keys.tt.avg_single_rating               =[0,Inf];         % min and max value accepted          
 keys.tt.avg_SNR                         =[4,26];     % min and max value accepted   
-keys.tt.choice                          =0; 
+keys.tt.choice                          =NaN; 
 
 keys.cal.n_spikes                       =[0,inf];       % min and max value accepted
 keys.cal.min_trials_in                  =5;             % minimum number of trials instructed per condition - replace cal with tt ?
