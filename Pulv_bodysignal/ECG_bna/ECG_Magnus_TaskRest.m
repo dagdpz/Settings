@@ -2,7 +2,7 @@
 
 % initialize configuration structure
 cfg.outNameCap = 0;
-cfg.spikes_version='ECG_TaskRest_Bacchus_merged'; %% this is for loading tuning table (?)
+cfg.spikes_version='ECG_TaskRest_Magnus_merged'; %% this is for loading tuning table (?)
 cfg.process_per_session=1;
 cfg.process_population=1;
 cfg.process_LFP=0;
@@ -27,15 +27,12 @@ cfg.save_fig_format={'pdf'};
 
 ephys_folder=['Y:\Projects\' project '\ephys\' cfg.spikes_version filesep];
 ecg_preprocess_folder='Y:\Data\BodySignals\ECG_CAP\';
-monkeys={'Bacchus'};
-%sessions{1}=20211207; %unique([20211019 20211027 20211028 20211102 20211103 20211116 20211117 20211207]);
-sessions{1}=[20210715, 20210716, 20210720, 20210722, 20210723, 20210729, ...
-    20210730, 20210805, 20210806, 20210826, 20210827, 20210903, 20210905, ...
-    20210906, 20210930, 20211001, 20211005, 20211007, 20211012, 20211013, ...
-    20211014, 20211019, 20211027, 20211028, 20211102, 20211103, 20211116, ...
-    20211117, 20211207, 20211214, 20211222, 20220105, 20220106, 20220203, ...
-    20220211, 20220221, 20220222, 20220224, 20220225, 20220309, 20220310, ...
-    20220315, 20220318, 20220322];
+monkeys={'Magnus'};
+sessions{1}=sort([20220921, 20221115, 20221118, 20221122, 20221125, 20221206, ...
+    20221222, 20221229, 20230104, 20230106, 20230112, 20230126, ...
+    20230511, 20230518, 20230519, 20230524, 20230525, 20230526, ...
+    20230531, 20230601, 20230602, 20230607, 20230608, 20230609, ...
+    20230614, 20230615, 20230616, 20230621, 20230622, 20230623]);
 cumulative_sessions=0;
 for m=1:numel(monkeys)
     monkey=monkeys{m};
@@ -44,16 +41,15 @@ for m=1:numel(monkeys)
         date=num2str(sessions{m}(s));
         cfg.session_info(cumulative_sessions) = ...
             struct('Monkey',        monkey, ...
-            'Date',           date, ...
-            'Input_ECG',         [ecg_preprocess_folder filesep monkey filesep date '_ecg_cap.mat'], ... %% folders have different structures... filesep date 
-            'Input_ECG_preproc', {{[ephys_folder 'by_block_' monkey '_' date '.mat']}},...
-            'Input_spikes', [ephys_folder 'population_' monkey '_' date '.mat'],...
-            'Input_trials', [ephys_folder 'trials_' monkey '_' date '.mat'],...
-            'Input_LFP', {{[ephys_folder 'sites_' monkey '_' date '*.mat']}},...
-            'Input_WC', ['Y:\Data\Sortcodes\' monkey '_phys' filesep date filesep 'WC' filesep]);
+            'Date',                 date, ...
+            'Input_ECG',            [ecg_preprocess_folder filesep monkey filesep date '_ecg_cap.mat'], ... %% folders have different structures... filesep date 
+            'Input_ECG_preproc',    {{[ephys_folder 'by_block_' monkey '_' date '.mat']}},...
+            'Input_spikes',         [ephys_folder 'population_' monkey '_' date '.mat'],...
+            'Input_trials',         [ephys_folder 'trials_' monkey '_' date '.mat'],...
+            'Input_LFP',            {{[ephys_folder 'sites_' monkey '_' date '*.mat']}},...
+            'Input_WC',             ['Y:\Data\Sortcodes\' monkey '_phys' filesep date filesep 'WC' filesep]);
     end
 end
-
 
 % what kind of analyses should be done on LFP
 % should be a cell array of strings which indicate which kind of analyses
@@ -74,11 +70,8 @@ end
 % Those targets which are not in the analysed sessions will be ignored
 % Example:
 % 1. lfp_tfa_cfg.compare.targets = {'MIPa_R', 'MIPa_L', 'dPul_R', 'dPul_L'}; 
-cfg.targets = {'dPul_R', 'dPul_L','VPL_R', 'VPL_L','MD_L','MD_R','AIP_R','AIP_L','PCC_L','PCC_R'};
+cfg.targets = {'dPul_R', 'dPul_L','VPL_R', 'VPL_L','MD_L','MD_R','AIP_R','AIP_L','PCC_L','PCC_R', 'PPC_L', 'PPC_R'};
 cfg.combine_hemispheres = 1;
-%cfg.targets = {'dPul','VPL','md'};
-
-% %%%%%% 
 cfg.contra_ipsi_relative_to='target';
 
 %% Settings for averaging TFR and evoked LFP based on conditions
@@ -128,12 +121,7 @@ cfg.spk.gaussian_kernel=0.02;
 cfg.spk.N_phase_bins=64;
 
 % unit exclusion criteria
-% cfg.unit_exclusion.FR_thresholds              = [2 Inf]; % from 2 on
 cfg.spk.unit_exclusion.nCardiacCycles             = 600;
-% cfg.unit_exclusion.SNR_thresholds             = [4 26];
-% cfg.unit_exclusion.FR_stability_thresholds    = [0.1 70];
-    
-
 
 %% put corresponding settings in these subfields:
 cfg.lfp.field=0;
