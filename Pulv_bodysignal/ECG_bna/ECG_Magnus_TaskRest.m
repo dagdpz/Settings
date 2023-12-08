@@ -80,12 +80,14 @@ cfg.condition(1).color=[0 0 1];
 cfg.condition(1).type=1;
 cfg.condition(1).completed=1;
 cfg.condition(1).accepted=1;  %% works only for spikes 
+cfg.condition(1).Rpeak_field = '';
 
 cfg.condition(2).name='Task';
 cfg.condition(2).color=[1 0 0];
 cfg.condition(2).type=2;
 cfg.condition(2).completed=1;
 cfg.condition(2).accepted=1; %% works only for spikes 
+cfg.condition(2).Rpeak_field = '';
 
 %% define events - only shared 
 cfg.analyse_states = {'ecg', 'R peak', -0.25, 0.25};
