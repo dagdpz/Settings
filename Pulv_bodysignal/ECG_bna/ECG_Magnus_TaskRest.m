@@ -113,6 +113,15 @@ cfg.lfp.significance_method = '95Conf_intrvl';
 
 %% spike settings
 cfg.spk.analyses={'spike_histogram','spike_phase_ECG_cycle'};
+
+cfg.spk.compute_unit_subsets      = 0;
+cfg.spk.move_files                = 0;
+                
+cfg.spk.compute_spike_histograms  = 0;
+cfg.spk.plot_spike_histograms     = 1;
+cfg.spk.compute_spike_phase       = 0;
+cfg.spk.plot_spike_phase          = 0;
+
 cfg.spk.n_permutations=1000; % number of shuffles required
 cfg.spk.significance_window=[-0.25 0.25];
 cfg.spk.PSTH_binwidth=0.01;
@@ -124,10 +133,20 @@ cfg.spk.N_phase_bins=64;
 cfg.spk.unit_exclusion.nCardiacCycles             = 600;
 
 %% put corresponding settings in these subfields:
-cfg.lfp.field=0;
-cfg.spk.field=0;
 cfg.ecg.field=0;
 cfg.cap.field=0;
+
+%% settings for spike analysis
+% for R-peak-triggered histograms
+cfg.spk.histbins=0.2:0.02:0.8; % bins for RR duration histogram
+
+cfg.spk.Fs = 2.44140625e+04; % sampling frequency of BB signal, Hz
+cfg.spk.wf_times_ms = 1000 * (1/cfg.spk.Fs:1/cfg.spk.Fs:32/cfg.spk.Fs); % in ms
+cfg.spk.wf_times_interp_ms = 1000 * (1/4/cfg.spk.Fs:1/4/cfg.spk.Fs:32/cfg.spk.Fs); % in ms
+cfg.spk.peak_id = 10; % sample number of the trough in the spike waveform
+cfg.spk.phase_bins          = linspace(0, 2*pi, cfg.spk.N_phase_bins+1);
+cfg.spk.phase_bin_centers   = 2*pi/cfg.spk.N_phase_bins:2*pi/cfg.spk.N_phase_bins:2*pi;
+cfg.spk.lag_list            = [-11 -7 -3 0 3 7 11];
 
 % %% Settings to detect noisy trials - irrelevant for now
 % % configuration for lfp noise rejection
