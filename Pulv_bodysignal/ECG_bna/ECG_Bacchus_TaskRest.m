@@ -31,7 +31,7 @@ monkeys={'Bacchus'};
 %sessions{1}=20211207; %unique([20211019 20211027 20211028 20211102 20211103 20211116 20211117 20211207]);
 sessions{1}=[20210715, 20210716, 20210720, 20210722, 20210723, 20210729, ...
     20210730, 20210805, 20210806, 20210826, 20210827, 20210903, 20210905, ...
-    20210906, 20210930, 20211001, 20211005, 20211007, 20211012, 20211013, ...
+    20210906, 20210930, 20211001, 20211007, 20211012, 20211013, ...
     20211014, 20211019, 20211027, 20211028, 20211102, 20211103, 20211116, ...
     20211117, 20211207, 20211214, 20211222, 20220105, 20220106, 20220203, ...
     20220211, 20220221, 20220222, 20220224, 20220225, 20220309, 20220310, ...
@@ -87,12 +87,14 @@ cfg.condition(1).color=[0 0 1];
 cfg.condition(1).type=1;
 cfg.condition(1).completed=1;
 cfg.condition(1).accepted=1;  %% works only for spikes 
+cfg.condition(1).Rpeak_field = '';
 
 cfg.condition(2).name='Task';
 cfg.condition(2).color=[1 0 0];
 cfg.condition(2).type=2;
 cfg.condition(2).completed=1;
 cfg.condition(2).accepted=1; %% works only for spikes 
+cfg.condition(2).Rpeak_field = '';
 
 %% define events - only shared 
 cfg.analyse_states = {'ecg', 'R peak', -0.25, 0.25};
@@ -117,9 +119,17 @@ cfg.lfp.normalization = 'zscore';
 % data based on the results of shuffled data.
 cfg.lfp.significance_method = '95Conf_intrvl';
 
-
 %% spike settings
 cfg.spk.analyses={'spike_histogram','spike_phase_ECG_cycle'};
+
+cfg.spk.compute_unit_subsets      = 0;
+cfg.spk.move_files                = 0;
+                
+cfg.spk.compute_spike_histograms  = 0;
+cfg.spk.plot_spike_histograms     = 0;
+cfg.spk.compute_spike_phase       = 1;
+cfg.spk.plot_spike_phase          = 0;
+
 cfg.spk.n_permutations=1000; % number of shuffles required
 cfg.spk.significance_window=[-0.25 0.25];
 cfg.spk.PSTH_binwidth=0.01;
@@ -128,18 +138,25 @@ cfg.spk.gaussian_kernel=0.02;
 cfg.spk.N_phase_bins=64;
 
 % unit exclusion criteria
-% cfg.unit_exclusion.FR_thresholds              = [2 Inf]; % from 2 on
 cfg.spk.unit_exclusion.nCardiacCycles             = 600;
-% cfg.unit_exclusion.SNR_thresholds             = [4 26];
-% cfg.unit_exclusion.FR_stability_thresholds    = [0.1 70];
-    
-
 
 %% put corresponding settings in these subfields:
 cfg.lfp.field=0;
 cfg.spk.field=0;
 cfg.ecg.field=0;
 cfg.cap.field=0;
+
+%% settings for spike analysis
+% for R-peak-triggered histograms
+cfg.spk.histbins=0.2:0.02:0.8; % bins for RR duration histogram
+
+cfg.spk.Fs = 2.44140625e+04; % sampling frequency of BB signal, Hz
+cfg.spk.wf_times_ms = 1000 * (1/cfg.spk.Fs:1/cfg.spk.Fs:32/cfg.spk.Fs); % in ms
+cfg.spk.wf_times_interp_ms = 1000 * (1/4/cfg.spk.Fs:1/4/cfg.spk.Fs:32/cfg.spk.Fs); % in ms
+cfg.spk.peak_id = 10; % sample number of the trough in the spike waveform
+cfg.spk.phase_bins          = linspace(0, 2*pi, cfg.spk.N_phase_bins+1);
+cfg.spk.phase_bin_centers   = 2*pi/cfg.spk.N_phase_bins:2*pi/cfg.spk.N_phase_bins:2*pi;
+cfg.spk.lag_list            = [-11 -7 -3 0 3 7 11];
 
 % %% Settings to detect noisy trials - irrelevant for now
 % % configuration for lfp noise rejection
