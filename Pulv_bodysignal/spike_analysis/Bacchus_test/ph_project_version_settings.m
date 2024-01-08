@@ -7,11 +7,6 @@ keys.cal.datasets                   = [5,6,7];
 keys.batching.targets               ={'dPul','VPL', 'MD'}; 
 keys.tt.tasktypes                   ={'Fsac_opt','Vsac_opt'};
 
-keys.condition_parameters  ={'type'};
-keys.labels.type         ={'Rest','Task'};
-keys.tt.type         =[1,2];
-
-keys.cal.type                      =[1,2]; %% no 's' !!
 
 % %% Localization (chamberlain keys)
 % cc=0;

@@ -4,6 +4,10 @@ keys.cal.effectors                  =[0];
 keys.cal.types                      =[1,2];
 keys.cal.choice                     =[0,1];
 
+keys.condition_parameters   ={'type'};
+keys.labels.type            ={'Rest','Task'};
+keys.tt.type                =[1,2];
+keys.cal.type               =[1,2]; %% no 's' !!
 
 keys.batching.combine_monkeys       =0;                        % for population analysis
 
