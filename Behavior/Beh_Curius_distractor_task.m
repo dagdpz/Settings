@@ -1,7 +1,7 @@
 %% Linus ephys [20160203 20160506] datasets
 
 clc
-clear batch,
+clear
 close all
 warning('off','all')
 % EH_compare_groups(batch,testing)
@@ -16,7 +16,6 @@ GLO.fontsize_labels                 =   12;
 GLO.linewidth                       =   2;
 GLO.plot_raw_endpoints              =   0; %1 means 1 point per trial, 0 means average across trials
 GLO.calculate_statististics         =   1;
-GLO.parametric_testing              =   1;
 GLO.plot_statististics              =   1;
 GLO.plot_it                         =   1;
 GLO.create_pdf                      =   1;
@@ -25,7 +24,6 @@ GLO.parent_folder                   =   '';
 GLO.folder_to_save                  =   'Y:\Projects\Pulv_distractor_spatial_choice\Curius_behavior\';
 GLO.type_of_free_gaze               =   '6';
 GLO.one_subject                     =   0;
-GLO.trial_by_trial                  =   0; % for statistics, 0 means calculate statistics bases on average per run
 GLO.CDF                             =   0; % 1 plot cumulative distribution function
 GLO.text_in_plot                    =   1; % plot mean and std in text
 GLO.same_day                        =   0;
@@ -35,7 +33,6 @@ GLO.choice_only                     =   1;
 GLO.only_significant                =   1; % for sigstar
 GLO.only_success_for_accuracy       =   0;
 GLO.only_between_group_comparissons =   0;
-GLO.point_per_batch                 =   0; %0 average across session , 1 % 1 point per run
 GLO.summary                         =   3; %[1 2 3 5 6 9 10 12]; %which plots (vector of number of -1 for all plots) [1 2 3 5 10]
 GLO.target_locations_in_raw         =   1; %in raw plots, also plot target location
 GLO.saccade_in_raw                  =   0; %only for one plot, see beh_compare_groups
@@ -54,6 +51,12 @@ GLO.saccades.effectors_raw_xy       = {'0'};
 GLO.reaches.effectors_raw_xy        = {'1'};
 GLO.state_raw_traces                = [4 5];
 GLO.remove_outliers                 =   0;
+
+
+
+GLO.trial_by_trial                  =   1; % for statistics, 0 means calculate statistics bases on average per run
+GLO.point_per_batch                 =   0; %0 average across session , 1 % 1 point per run
+GLO.parametric_testing              =   1;
 GLO.clean_data                      =   0;
 
 % 1 ERROR BARS

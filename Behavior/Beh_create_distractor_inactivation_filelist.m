@@ -2,14 +2,16 @@
 
 M1='Y:\Data\Curius\';
 M2='Y:\Data\Cornelius\';
-M1R='Y:\Projects\Pulv_distractor_spatial_choice\behavior\Curius\';
-M2R='Y:\Projects\Pulv_distractor_spatial_choice\behavior\Cornelius\';
+% M1R='Y:\Projects\Pulv_distractor_spatial_choice\behavior\Curius\';
+% M2R='Y:\Projects\Pulv_distractor_spatial_choice\behavior\Cornelius\';
+M1R=M1;
+M2R=M2;
 
 filelist.Curius_inactivation_pre={{[M1 '20190729'], [2 4 6]}, {[M1 '20190801'], [2 5 7]}, {[M1 '20190809'], [3 5 7]}, {[M1 '20190814'], [4 6 8]}, ...
                               {[M1 '20190820'], [3 5 7]}, {[M1 '20190905'], [2 4 6]}, {[M1 '20190913'], [4 6 8]}};
                           
                      
-filelist.Curius_inactivation={{[M1R '20190729'], [9 11 13]}, {[M1R '20190801'], [10 12 15 18 25 26]}, {[M1R '20190809'], [11 14 16 17]}, {[M1R '20190814'], [11 13 15 16 17 21 23 25 27]}, ... %%{[M1R '20190814'], [11 13 15 16 17 18 21 23 25 27]}, 
+filelist.Curius_inactivation={{[M1R '20190729'], [9 11 13]}, {[M1R '20190801'], [10 12 15 18 25 26]}, {[M1R '20190809'], [11 14 16 17]}, {[M1R '20190814'], [11 13 15 16 17 21 23 25 27]},...% {[M1R '20190814'], [11 13 15 16 17]}, ... %%... %% , {[M1R '20190814'], [11 13 15 16 17 18 21 23 25 27]}, 
                               {[M1R '20190820'], [11 13 15 17 19]}, {[M1R '20190905'], [9,11,13,16,18]}, {[M1R '20190913'], [11 13 15 17 20]}}; 
                           
 
