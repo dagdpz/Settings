@@ -2,10 +2,10 @@
 
 M1='Y:\Data\Curius\';
 M2='Y:\Data\Cornelius\';
-% M1R='Y:\Projects\Pulv_distractor_spatial_choice\behavior\Curius\';
-% M2R='Y:\Projects\Pulv_distractor_spatial_choice\behavior\Cornelius\';
-M1R=M1;
-M2R=M2;
+M1R='Y:\Projects\Pulv_distractor_spatial_choice\behavior\Curius\';
+M2R='Y:\Projects\Pulv_distractor_spatial_choice\behavior\Cornelius\';
+% M1R=M1;
+% M2R=M2;
 
 filelist.Curius_inactivation_pre={{[M1 '20190729'], [2 4 6]}, {[M1 '20190801'], [2 5 7]}, {[M1 '20190809'], [3 5 7]}, {[M1 '20190814'], [4 6 8]}, ...
                               {[M1 '20190820'], [3 5 7]}, {[M1 '20190905'], [2 4 6]}, {[M1 '20190913'], [4 6 8]}};

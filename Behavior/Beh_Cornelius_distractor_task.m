@@ -21,7 +21,7 @@ GLO.plot_it                         =   1;
 GLO.create_pdf                      =   1;
 GLO.append_pdfs                     =   0;
 GLO.parent_folder                   =   '';
-GLO.folder_to_save                  =   'Y:\Projects\Pulv_distractor_spatial_choice\Cornelius_behavior\';
+GLO.folder_to_save                  =   'Y:\Projects\Pulv_distractor_spatial_choice\Cornelius_behavior_recalibrated\';
 GLO.type_of_free_gaze               =   '6';
 GLO.one_subject                     =   0;
 GLO.CDF                             =   0; % 1 plot cumulative distribution function
@@ -53,8 +53,8 @@ GLO.state_raw_traces                = [4 5];
 GLO.remove_outliers                 =   0;
 
 
-GLO.trial_by_trial                  =   1; % for statistics, 0 means calculate statistics bases on average per run
-GLO.point_per_batch                 =   0; %0 average across session , 1 % 1 point per run
+GLO.trial_by_trial                  =   0; % for statistics, 0 means calculate statistics bases on average per run
+GLO.point_per_batch                 =   1; %0 average across session , 1 % 1 point per run
 GLO.parametric_testing              =   1;
 GLO.clean_data                      =   0;
 
