@@ -10,13 +10,13 @@ keys.tt.type                =[1,2];
 keys.cal.type               =[1,2]; %% no 's' !!
 
 keys.batching.combine_monkeys       =0;                        % for population analysis
+keys.batching.targets               = {'dPul','VPL', 'MD', 'AIP', 'PCC', 'PPC'}; % for splitting hemispheres: 'VPL_R', 'VPL_L', 'dPul_R', 'dPul_L', 'MD_R', 'MD_L'
 
 %% exclusion criterias
 
 %% are those used even?
 keys.cal.remove_trials_with_outlying_FR =0;             % trials with very high and very low FR are excluded
 keys.cal.remove_trials_without_spikes   =0;             % compute outliar FR ignoring trials with FR=0
-
 
 %% unit selection
 keys.cal.automatic_stablity             =1;             % using automatic stability assessment - Fano factor
@@ -25,7 +25,7 @@ keys.cal.automatic_singleunitness       =1;             %
 keys.cal.FR                             =[2,inf];       % min and max value accepted   
 
 %% are only those ones used? -->
-keys.tt.avg_stability                   =[0,2.5];       % min and max value accepted
+keys.tt.avg_stability                   =[0.85,Inf];       % min and max value accepted
 keys.tt.avg_single_rating               =[0,Inf];         % min and max value accepted          
 keys.tt.avg_SNR                         =[4,26];     % min and max value accepted   
 keys.tt.choice                          =NaN; 
