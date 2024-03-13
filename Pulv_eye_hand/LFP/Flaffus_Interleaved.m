@@ -8,7 +8,7 @@ lfp_tfa_cfg.contra_ipsi_relative_to = 'target';
 %% Settings for data folders
 
 % absolute path to the folder where the results of analysis should be stored
-lfp_tfa_cfg.results_folder = 'Y:\Projects\Pulv_eye_hand\LFP';
+lfp_tfa_cfg.results_folder = 'Y:\Personal\Ece\Pulv_eye_hand\LFP';
 
 % versioning, a unique version for the settings file and analysis results
 % the results produced using this settings file would be saved under 
@@ -32,7 +32,7 @@ lfp_tfa_cfg.process_LFP = true;
 lfp_tfa_cfg.proc_lfp_folder = [];
 if ~lfp_tfa_cfg.process_LFP
     lfp_tfa_cfg.proc_lfp_folder = ...
-        'Y:\Projects\Pulv_eye_hand\LFP\Flaffus_Interleaved\Processed LFP';
+        'Y:\Personal\Ece\Pulv_eye_hand\LFP\Flaffus_Interleaved\Processed LFP';
 end
 
 % whether to calculate the site-wise averages
@@ -52,7 +52,7 @@ lfp_tfa_cfg.compute_site_average = true;
 lfp_tfa_cfg.analyse_lfp_folder = [];
 if ~lfp_tfa_cfg.compute_site_average
     lfp_tfa_cfg.analyse_lfp_folder = ...
-        'Y:\Projects\Pulv_eye_hand\LFP\Flaffus_Interleaved\LFP Analysis';
+        'Y:\Personal\Ece\Pulv_eye_hand\LFP\Flaffus_Interleaved\LFP Analysis';
 end
 
 %%
@@ -330,7 +330,7 @@ lfp_tfa_cfg.compare.choice_trials = 0;
 % which reach hand is left and right separately
 % 4. lfp_tfa_cfg.compare.reach_hands = {'any'}; ignore hand label (trial with
 % any hand label is combined)
-lfp_tfa_cfg.compare.reach_hands = {'L', 'R'};
+lfp_tfa_cfg.compare.reach_hands = {'C', 'I'};
 
 % reach space to be included for analysis
 % should be a cell array that contain only values 'R', 'L', or 'any'
@@ -343,7 +343,7 @@ lfp_tfa_cfg.compare.reach_hands = {'L', 'R'};
 % which acquired target is on left and on right separately
 % 4. lfp_tfa_cfg.compare.reach_hands = {'any'}; ignore space label (trial with
 % any acquired target position is combined)
-lfp_tfa_cfg.compare.reach_spaces = {'L', 'R'}; 
+lfp_tfa_cfg.compare.reach_spaces = {'C', 'I'}; 
 
 % hand space combinations to be excluded from analysis
 % should be a cell array with each element containing the hand and space
@@ -389,8 +389,8 @@ lfp_tfa_cfg.compare.perturbations = [0];
 %    'choice', {0, 1}}};
 % Compute difference between difference between post and pre-injection trials of choice trials and that of instructed trials     
 
-lfp_tfa_cfg.diff_condition(1)={{'reach_hands',{'L','R'}}};
-lfp_tfa_cfg.diff_condition(2)={{'reach_spaces',{'L','R'}}};
+lfp_tfa_cfg.diff_condition(1)={{'reach_hands',{'C','I'}}};
+lfp_tfa_cfg.diff_condition(2)={{'reach_spaces',{'C','I'}}};
 % 
 % lfp_tfa_cfg.diff_condition={};
 
