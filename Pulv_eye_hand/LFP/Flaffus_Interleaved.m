@@ -8,7 +8,7 @@ lfp_tfa_cfg.contra_ipsi_relative_to = 'target';
 %% Settings for data folders
 
 % absolute path to the folder where the results of analysis should be stored
-lfp_tfa_cfg.results_folder = 'Y:\Projects\Pulv_eye_hand\LFP';
+lfp_tfa_cfg.results_folder = 'C:\Users\EIdil\Documents\Pulv_Eye_Hand_EI\LFP';
 
 % versioning, a unique version for the settings file and analysis results
 % the results produced using this settings file would be saved under 
@@ -32,7 +32,7 @@ lfp_tfa_cfg.process_LFP = true;
 lfp_tfa_cfg.proc_lfp_folder = [];
 if ~lfp_tfa_cfg.process_LFP
     lfp_tfa_cfg.proc_lfp_folder = ...
-        'Y:\Projects\Pulv_eye_hand\LFP\Flaffus_Interleaved\Processed LFP';
+        'C:\Users\EIdil\Documents\Pulv_Eye_Hand_EI\LFP\Flaffus_Interleaved\Processed LFP';
 end
 
 % whether to calculate the site-wise averages
@@ -52,7 +52,7 @@ lfp_tfa_cfg.compute_site_average = true;
 lfp_tfa_cfg.analyse_lfp_folder = [];
 if ~lfp_tfa_cfg.compute_site_average
     lfp_tfa_cfg.analyse_lfp_folder = ...
-        'Y:\Projects\Pulv_eye_hand\LFP\Flaffus_Interleaved\LFP Analysis';
+        'C:\Users\EIdil\Documents\Pulv_Eye_Hand_EI\LFP\Flaffus_Interleaved\LFP Analysis';
 end
 
 %%
