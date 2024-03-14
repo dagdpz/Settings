@@ -702,4 +702,5 @@ lfp_tfa_cfg.plot_significant = 1;
 %   lfp_tfa_cfg.save_fig_format = {'png'}; % save figure as png only
 %   lfp_tfa_cfg.save_fig_format = {'png', 'pdf'}; % save figure as png and
 %   pdf
-lfp_tfa_cfg.save_fig_format = {'png', 'pdf'};
+%lfp_tfa_cfg.save_fig_format = {'png', 'pdf'};
+lfp_tfa_cfg.save_fig_format = {'png'};
