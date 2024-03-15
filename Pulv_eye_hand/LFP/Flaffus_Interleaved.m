@@ -5,10 +5,15 @@
 lfp_tfa_cfg = [];
    
 lfp_tfa_cfg.contra_ipsi_relative_to = 'target';
+lfp_tfa_cfg.monkeys = {'Flaffus'};
 %% Settings for data folders
 
 % absolute path to the folder where the results of analysis should be stored
+% <<<<<<< HEAD
+lfp_tfa_cfg.results_folder = 'C:\Users\EIdil\Documents\Pulv_Eye_Hand_EI\LFP';
+% =======
 lfp_tfa_cfg.results_folder = 'Y:\Personal\Ece\Pulv_eye_hand\LFP';
+% >>>>>>> 25ed83db42a18fa529177675a69cb2ed5b942235
 
 % versioning, a unique version for the settings file and analysis results
 % the results produced using this settings file would be saved under 
@@ -26,13 +31,14 @@ lfp_tfa_cfg.version = 'Flaffus_Interleaved';
 % time frequency spectrograms will be calculated and stored in 
 % lfp_tfa_cfg.results_folder.  If the time frequency spectrograms 
 % should be computed, set this variable to true. 
-lfp_tfa_cfg.process_LFP = true;
+lfp_tfa_cfg.process_LFP = false;
 
 % folder where the results of LFP time frequency spectrograms are stored
 lfp_tfa_cfg.proc_lfp_folder = [];
 if ~lfp_tfa_cfg.process_LFP
     lfp_tfa_cfg.proc_lfp_folder = ...
         'Y:\Personal\Ece\Pulv_eye_hand\LFP\Flaffus_Interleaved\Processed LFP';
+%        'C:\Users\EIdil\Documents\Pulv_Eye_Hand_EI\LFP\Flaffus_Interleaved\Processed LFP';
 end
 
 % whether to calculate the site-wise averages
@@ -46,13 +52,18 @@ end
 % should be computed, set this variable to true. 
 % Caution: Set this variable to false only if all settings other than 
 % lfp_tfa_cfg.session_info, remains the same
-lfp_tfa_cfg.compute_site_average = true;
+lfp_tfa_cfg.compute_site_average = false;
 
 % folder where the results of analysed LFP site averages are stored
 lfp_tfa_cfg.analyse_lfp_folder = [];
 if ~lfp_tfa_cfg.compute_site_average
     lfp_tfa_cfg.analyse_lfp_folder = ...
-        'Y:\Personal\Ece\Pulv_eye_hand\LFP\Flaffus_Interleaved\LFP Analysis';
+         'Y:\Personal\Ece\Pulv_eye_hand\LFP\Flaffus_Interleaved\LFP Analysis';
+% <<<<<<< HEAD
+       % 'C:\Users\EIdil\Documents\Pulv_Eye_Hand_EI\LFP\Flaffus_Interleaved\LFP Analysis';
+% =======
+        %'Y:\Personal\Ece\Pulv_eye_hand\LFP\Flaffus_Interleaved\LFP Analysis';
+% >>>>>>> 25ed83db42a18fa529177675a69cb2ed5b942235
 end
 
 %%
@@ -125,13 +136,13 @@ lfp_tfa_cfg.session_info(sess) = ...
            'Input',         'Y:\Projects\Pulv_eye_hand\ephys\Interleaved\sites_Flaffus_20160622.mat', ...
            'Preinj_blocks',  0, ...
            'Postinj_blocks', []);
-sess=sess+1;
-lfp_tfa_cfg.session_info(sess) = ...
-    struct('Monkey',        'Fla', ...
-           'Date',          '20160623', ...
-           'Input',         'Y:\Projects\Pulv_eye_hand\ephys\Interleaved\sites_Flaffus_20160622.mat', ...
-           'Preinj_blocks',  0, ...
-           'Postinj_blocks', []);
+% sess=sess+1;
+% lfp_tfa_cfg.session_info(sess) = ...
+%     struct('Monkey',        'Fla', ...
+%            'Date',          '20160623', ...
+%            'Input',         'Y:\Projects\Pulv_eye_hand\ephys\Interleaved\sites_Flaffus_20160623.mat', ...
+%            'Preinj_blocks',  0, ...
+%            'Postinj_blocks', []);
 sess=sess+1;
 lfp_tfa_cfg.session_info(sess) = ...
     struct('Monkey',        'Fla', ...
