@@ -243,8 +243,8 @@ lfp_tfa_cfg.random_seed = rng;
 % Example row: 
 %   lfp_tfa_states.CUE_ON,     'Cue',    -1.0 ,    0.5
 lfp_tfa_cfg.analyse_states = {'single', lfp_tfa_states.CUE_ON,    'Cue',      -0.5,   0.8;...
-                             'single', lfp_tfa_states.SAC_INI,    'Saccade',    -0.7,   0.4;...
-                             'single', lfp_tfa_states.REA_INI,    'Reach',    -0.9,   0.6};                    
+                             'single', lfp_tfa_states.SAC_INI,    'Saccade',    -0.7,   0.6;...
+                             'single', lfp_tfa_states.REA_INI,    'Reach',    -0.7,   0.6};                    
 
                                                   
 % define the epochs to analyse for LFP power spectrum
