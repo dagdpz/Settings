@@ -5,6 +5,8 @@
 lfp_tfa_cfg = [];
    
 lfp_tfa_cfg.contra_ipsi_relative_to = 'target';
+lfp_tfa_cfg.monkeys = {'Flaffus'};
+
 %% Settings for data folders
 
 % absolute path to the folder where the results of analysis should be stored
@@ -26,7 +28,7 @@ lfp_tfa_cfg.version = 'Flaffus_Interleaved';
 % time frequency spectrograms will be calculated and stored in 
 % lfp_tfa_cfg.results_folder.  If the time frequency spectrograms 
 % should be computed, set this variable to true. 
-lfp_tfa_cfg.process_LFP = true;
+lfp_tfa_cfg.process_LFP = false;
 
 % folder where the results of LFP time frequency spectrograms are stored
 lfp_tfa_cfg.proc_lfp_folder = [];
@@ -46,7 +48,7 @@ end
 % should be computed, set this variable to true. 
 % Caution: Set this variable to false only if all settings other than 
 % lfp_tfa_cfg.session_info, remains the same
-lfp_tfa_cfg.compute_site_average = true;
+lfp_tfa_cfg.compute_site_average = false;
 
 % folder where the results of analysed LFP site averages are stored
 lfp_tfa_cfg.analyse_lfp_folder = [];
@@ -129,7 +131,7 @@ sess=sess+1;
 lfp_tfa_cfg.session_info(sess) = ...
     struct('Monkey',        'Fla', ...
            'Date',          '20160623', ...
-           'Input',         'Y:\Projects\Pulv_eye_hand\ephys\Interleaved\sites_Flaffus_20160622.mat', ...
+           'Input',         'Y:\Projects\Pulv_eye_hand\ephys\Interleaved\sites_Flaffus_20160623.mat', ...
            'Preinj_blocks',  0, ...
            'Postinj_blocks', []);
 sess=sess+1;
@@ -185,7 +187,7 @@ lfp_tfa_cfg.session_info(sess) = ...
 %                   time windows
 %       'sync'      - LFP-LFP phase synchronization spectrum for given 
 %                   conditions and epochs
-lfp_tfa_cfg.analyses = {'tfs', 'evoked', 'pow'}; %
+lfp_tfa_cfg.analyses = {'tfs', 'evoked'}; %
 
 % targets to be included in the analysis
 % should be a cell array of strings which indicate the target names
@@ -240,9 +242,9 @@ lfp_tfa_cfg.random_seed = rng;
 % 
 % Example row: 
 %   lfp_tfa_states.CUE_ON,     'Cue',    -1.0 ,    0.5
-lfp_tfa_cfg.analyse_states = {'single', lfp_tfa_states.CUE_ON,    'Cue',      -0.5,   1.7;...
-                             'single', lfp_tfa_states.SAC_INI,    'Saccade',    -0.7,   0.45;...
-                             'single', lfp_tfa_states.REA_INI,    'Reach',    -0.9,   0.65};                    
+lfp_tfa_cfg.analyse_states = {'single', lfp_tfa_states.CUE_ON,    'Cue',      -0.5,   0.8;...
+                             'single', lfp_tfa_states.SAC_INI,    'Saccade',    -0.7,   0.4;...
+                             'single', lfp_tfa_states.REA_INI,    'Reach',    -0.9,   0.6};                    
 
                                                   
 % define the epochs to analyse for LFP power spectrum
