@@ -85,7 +85,7 @@ end
 % Those targets which are not in the analysed sessions will be ignored
 % Example:
 % 1. lfp_tfa_cfg.compare.targets = {'MIPa_R', 'MIPa_L', 'dPul_R', 'dPul_L'}; 
-cfg.targets = {'VPL_R', 'VPL_L', 'dPul_R', 'dPul_L','MD_L','MD_R'};
+cfg.targets = {'VPL_R', 'VPL_L', 'dPul_R', 'dPul_L', 'MD_L', 'MD_R'};
 cfg.combine_hemispheres = 1;
 cfg.contra_ipsi_relative_to='target';
 
@@ -174,10 +174,10 @@ cfg.fit.cos_mod      = fittype('a*cos(x-b)+c');% a - scaling factor, b - phase o
 cfg.fit.vonMises_mod = fittype('a1*( exp( k1*(cos(x-t1)-1) ) - exp( -2*k1 ) ) / (1 - exp( -2*k1 )) + d1');
 cfg.fit.cos_lower    = [0 -pi -Inf];     % lower parameter bounds: scaling factor, phase, intercept
 cfg.fit.cos_upper    = [Inf 3*pi Inf]; % upper parameter bounds: scaling factor, phase, intercept
-cfg.fit.vMpos_lower  = [0 -10^6 exp(-4) -pi]; % scaling factor, intercept, kappa, phase
-cfg.fit.vMpos_upper  = [10^6 10^6 exp(4) 3*pi];
-cfg.fit.vMneg_lower  = [-10^6 -10^6 exp(-4) -pi];
-cfg.fit.vMneg_upper  = [0 10^6 exp(4) 3*pi];
+cfg.fit.vMpos_lower  = [0 -10^6 exp(-1) -pi]; % scaling factor, intercept, kappa, phase
+cfg.fit.vMpos_upper  = [10^6 10^6 exp(2) 3*pi];
+cfg.fit.vMneg_lower  = [-10^6 -10^6 exp(-1) -pi];
+cfg.fit.vMneg_upper  = [0 10^6 exp(2) 3*pi];
 
 % %% Settings to detect noisy trials - irrelevant for now
 % % configuration for lfp noise rejection
