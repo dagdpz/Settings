@@ -49,7 +49,7 @@ end
 % should be computed, set this variable to true. 
 % Caution: Set this variable to false only if all settings other than 
 % lfp_tfa_cfg.session_info, remains the same
-lfp_tfa_cfg.compute_site_average = false;
+lfp_tfa_cfg.compute_site_average = true;
 
 % folder where the results of analysed LFP site averages are stored
 lfp_tfa_cfg.analyse_lfp_folder = [];
@@ -193,7 +193,7 @@ lfp_tfa_cfg.session_info(sess) = ...
 %                   time windows
 %       'sync'      - LFP-LFP phase synchronization spectrum for given 
 %                   conditions and epochs
-lfp_tfa_cfg.analyses = {'tfs', 'evoked', 'pow'}; %
+lfp_tfa_cfg.analyses = {'sync'}; %{'tfs', 'evoked', 'pow'}; %
 
 % targets to be included in the analysis
 % should be a cell array of strings which indicate the target names
@@ -210,8 +210,8 @@ lfp_tfa_cfg.compare.targets = {'dPulv_l'};
 % the target pairs between which the LFP-LFP phase synchronization should
 % be calculated - valid only if LFP-LFP phase sync should be calculated
 if any(strcmp(lfp_tfa_cfg.analyses, 'sync') | strcmp(lfp_tfa_cfg.analyses, 'syncsp'))
-    lfp_tfa_cfg.compare.target_pairs = {{'MIP_R', 'MIP_R'}, {'MIP_R', 'MIP_L'}, ...
-        {'MIP_L', 'MIP_L'}}; 
+    lfp_tfa_cfg.compare.target_pairs = {{'dPulv_r', 'dPulv_r'}, {'dPulv_l', 'dPulv_r'}, ...
+        {'dPulv_l', 'dPulv_l'}}; 
 end
 
 %%
@@ -249,7 +249,7 @@ lfp_tfa_cfg.random_seed = rng;
 % Example row: 
 %   lfp_tfa_states.CUE_ON,     'Cue',    -1.0 ,    0.5
 lfp_tfa_cfg.analyse_states = {'single', lfp_tfa_states.CUE_ON,    'Cue',      -0.5,   0.8;...
-                             'single', lfp_tfa_states.SAC_INI,    'Saccade',    -0.7,   0.6;...
+                             'single', lfp_tfa_states.SAC_INI,    'Saccade',  -0.7,   0.6;...
                              'single', lfp_tfa_states.REA_INI,    'Reach',    -0.7,   0.6};                    
 
                                                   
