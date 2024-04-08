@@ -12,6 +12,10 @@ cfg.process_ECG=0;
 cfg.plot_significant=1;
 cfg.save_fig_format={'pdf'};
    
+
+
+
+cfg.spk.jitter_method='trigger_jitter'; % 'train_jitter';'interval_jitter';'trigger_jitter'
 %% what and how to process things in spike analysis
 cfg.spk.compute_unit_subsets      = 0;
 cfg.spk.move_files                = 0;
@@ -48,6 +52,11 @@ sessions{1}=sort([20220921, 20221115, 20221118, 20221122, 20221125, 20221206, ..
     20230511, 20230518, 20230519, 20230524, 20230525, 20230526, ...
     20230531, 20230601, 20230602, 20230607, 20230608, 20230609, ...
     20230614, 20230615, 20230616, 20230621, 20230622, 20230623]);
+% sessions{1}=sort([20221115, 20221118, 20221122, 20221125, 20221206, ...
+%     20221222, 20221229, 20230104, 20230106, 20230112, 20230126, ...
+%     20230511, 20230518, 20230519, 20230524, 20230525, 20230526, ...
+%     20230531, 20230601, 20230602, 20230607, 20230608, 20230609, ...
+%     20230614, 20230615, 20230616, 20230621, 20230622, 20230623]);
 cumulative_sessions=0;
 for m=1:numel(monkeys)
     monkey=monkeys{m};
@@ -108,8 +117,8 @@ cfg.condition(2).Rpeak_field = '';
 cfg.analyse_states = {'R',    'Rpeak',1,-0.25, 0.25;...
                       'R_in', 'Rpeak_insp',1,-0.25, 0.25;...
                       'R_ex', 'Rpeak_exp',1,-0.25, 0.25;...
-                      'CAP',  'CAP',1,-0.25, 0.25;...
-                      'Cue',  'state',4,-0.25, 0.25};
+                      'CAP',  'CAP',1,-0.5, 0.5;...
+                      'Cue',  'state',4,-0.10, 0.4};
 
 %% LFP settings
 cfg.lfp.n_permutations  = 100; % number of shuffles required
@@ -163,7 +172,7 @@ cfg.cap.field=0;
 
 %% settings for spike analysis
 % for R-peak-triggered histograms
-cfg.spk.histbins=0.2:0.02:0.8; % bins for RR duration histogram
+cfg.spk.histbins=0:0.05:1; % bins for RR duration histogram
 
 cfg.spk.Fs = 2.44140625e+04; % sampling frequency of BB signal, Hz
 cfg.spk.wf_times_ms = 1000 * (1/cfg.spk.Fs:1/cfg.spk.Fs:32/cfg.spk.Fs); % in ms
