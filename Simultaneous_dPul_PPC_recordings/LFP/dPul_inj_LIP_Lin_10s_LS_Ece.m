@@ -189,15 +189,15 @@ lfp_tfa_cfg.analyses = {'sync'}; %
 % Those targets which are not in the analysed sessions will be ignored
 % Example:
 % 1. lfp_tfa_cfg.compare.targets = {'MIPa_R', 'MIPa_L', 'dPul_R', 'dPul_L'}; 
-lfp_tfa_cfg.compare.targets = {'LIP_L','LIP_R','dPul_R', 'dPul_L'}; 
+lfp_tfa_cfg.compare.targets = {'LIP_I','LIP_C','dPul_I', 'dPul_C'}; 
 
 % target pairs to be included for LFP-LFP sychronization
 % should be a 1xN cell array of 1x2 cell array of strings which indicate
 % the target pairs between which the LFP-LFP phase synchronization should
 % be calculated - valid only if LFP-LFP phase sync should be calculated
 if any(strcmp(lfp_tfa_cfg.analyses, 'sync') | strcmp(lfp_tfa_cfg.analyses, 'syncsp'))
-    lfp_tfa_cfg.compare.target_pairs = {{'LIP_R', 'LIP_R'}, {'dPul_R', 'LIP_R'}, ...
-        {'dPul_R', 'dPul_R'}}; 
+    lfp_tfa_cfg.compare.target_pairs = {{'LIP_I', 'LIP_I'}, {'LIP_I', 'LIP_C'}, {'LIP_C', 'LIP_C'},...
+        {'dPul_I', 'LIP_I'}, {'dPul_C', 'LIP_C'},{'dPul_I', 'LIP_C'},{'dPul_C', 'LIP_I'}}; 
 end
 
 % reference hemisphere for hand-space labelling
@@ -640,7 +640,7 @@ lfp_tfa_cfg.baseline_method = 'relchange';
 % Example: lfp_tfa_cfg.compute_avg_across = 'sites'
 % Example: lfp_tfa_cfg.compute_avg_across = {'sessions', 'sites'};  compute
 % both averages across session averages and across site averages
-lfp_tfa_cfg.compute_avg_across = {'sessions','sites'}; 
+lfp_tfa_cfg.compute_avg_across = {'sites'}; 
 
 %% Settings for statistical test for significance of difference between TFR average across sites
 
