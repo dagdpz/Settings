@@ -12,6 +12,10 @@ cfg.process_ECG=0;
 cfg.plot_significant=1;
 cfg.save_fig_format={'pdf'};
    
+
+
+
+cfg.spk.jitter_method='trigger_jitter'; % 'train_jitter';'interval_jitter';'trigger_jitter'
 %% what and how to process things in spike analysis
 cfg.spk.compute_unit_subsets      = 0;
 cfg.spk.move_files                = 0;
@@ -48,6 +52,11 @@ sessions{1}=sort([20220921, 20221115, 20221118, 20221122, 20221125, 20221206, ..
     20230511, 20230518, 20230519, 20230524, 20230525, 20230526, ...
     20230531, 20230601, 20230602, 20230607, 20230608, 20230609, ...
     20230614, 20230615, 20230616, 20230621, 20230622, 20230623]);
+% sessions{1}=sort([20221115, 20221118, 20221122, 20221125, 20221206, ...
+%     20221222, 20221229, 20230104, 20230106, 20230112, 20230126, ...
+%     20230511, 20230518, 20230519, 20230524, 20230525, 20230526, ...
+%     20230531, 20230601, 20230602, 20230607, 20230608, 20230609, ...
+%     20230614, 20230615, 20230616, 20230621, 20230622, 20230623]);
 cumulative_sessions=0;
 for m=1:numel(monkeys)
     monkey=monkeys{m};
@@ -85,7 +94,7 @@ end
 % Those targets which are not in the analysed sessions will be ignored
 % Example:
 % 1. lfp_tfa_cfg.compare.targets = {'MIPa_R', 'MIPa_L', 'dPul_R', 'dPul_L'}; 
-cfg.targets = {'VPL_R', 'VPL_L', 'dPul_R', 'dPul_L', 'MD_L', 'MD_R'};
+cfg.targets = {'VPL_R', 'VPL_L', 'dPul_R', 'dPul_L','MD_L','MD_R'};
 cfg.combine_hemispheres = 1;
 cfg.contra_ipsi_relative_to='target';
 
@@ -105,7 +114,11 @@ cfg.condition(2).accepted=1; %% works only for spikes
 cfg.condition(2).Rpeak_field = '';
 
 %% define events - only shared 
-cfg.analyse_states = {'ecg', 'R peak', -0.25, 0.25};
+cfg.analyse_states = {'R',    'Rpeak',1,-0.25, 0.25;...
+                      'R_in', 'Rpeak_insp',1,-0.25, 0.25;...
+                      'R_ex', 'Rpeak_exp',1,-0.25, 0.25;...
+                      'CAP',  'CAP',1,-0.5, 0.5;...
+                      'Cue',  'state',4,-0.10, 0.4};
 
 %% LFP settings
 cfg.lfp.n_permutations  = 100; % number of shuffles required
@@ -159,7 +172,7 @@ cfg.cap.field=0;
 
 %% settings for spike analysis
 % for R-peak-triggered histograms
-cfg.spk.histbins=0.2:0.02:0.8; % bins for RR duration histogram
+cfg.spk.histbins=0:0.05:1; % bins for RR duration histogram
 
 cfg.spk.Fs = 2.44140625e+04; % sampling frequency of BB signal, Hz
 cfg.spk.wf_times_ms = 1000 * (1/cfg.spk.Fs:1/cfg.spk.Fs:32/cfg.spk.Fs); % in ms
@@ -174,10 +187,10 @@ cfg.fit.cos_mod      = fittype('a*cos(x-b)+c');% a - scaling factor, b - phase o
 cfg.fit.vonMises_mod = fittype('a1*( exp( k1*(cos(x-t1)-1) ) - exp( -2*k1 ) ) / (1 - exp( -2*k1 )) + d1');
 cfg.fit.cos_lower    = [0 -pi -Inf];     % lower parameter bounds: scaling factor, phase, intercept
 cfg.fit.cos_upper    = [Inf 3*pi Inf]; % upper parameter bounds: scaling factor, phase, intercept
-cfg.fit.vMpos_lower  = [0 -10^6 exp(-1) -pi]; % scaling factor, intercept, kappa, phase
-cfg.fit.vMpos_upper  = [10^6 10^6 exp(2) 3*pi];
-cfg.fit.vMneg_lower  = [-10^6 -10^6 exp(-1) -pi];
-cfg.fit.vMneg_upper  = [0 10^6 exp(2) 3*pi];
+cfg.fit.vMpos_lower  = [0 -10^6 exp(-4) -pi]; % scaling factor, intercept, kappa, phase
+cfg.fit.vMpos_upper  = [10^6 10^6 exp(4) 3*pi];
+cfg.fit.vMneg_lower  = [-10^6 -10^6 exp(-4) -pi];
+cfg.fit.vMneg_upper  = [0 10^6 exp(4) 3*pi];
 
 % %% Settings to detect noisy trials - irrelevant for now
 % % configuration for lfp noise rejection
