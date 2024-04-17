@@ -4,7 +4,7 @@
 cfg.outNameCap = 0;
 cfg.spikes_version='ECG_TaskRest_Magnus_merged'; %% this is for loading tuning table (?)
 cfg.process_per_session=1;
-cfg.process_population=1;
+cfg.process_population=0;
 cfg.process_LFP=1;
 cfg.process_spikes=0;
 cfg.process_Rpeaks_inhalation_exhalation = 0;
@@ -39,8 +39,12 @@ monkeys={'Magnus'};
 % sessions{1}=sort([ 20230106, 20230112]); % already replaced in the old
 % folder
 %
-% these are the ones we want to run for IBI checkinf
-sessions{1}=sort([20230622]); % 20230511 --> Done
+% these are the ones we want to run for IBI check:
+sessions{1}=sort([20230104, 20230126, ...
+    20230511, 20230518, 20230519, 20230524, 20230525, 20230526, ...
+    20230601, 20230602, 20230607, 20230609, ...
+    20230614, 20230615, 20230616, 20230621, 20230622, 20230623
+]); 
 
 
 cumulative_sessions=0;
@@ -111,7 +115,7 @@ cfg.lfp.n_cycles        = 5;
 cfg.lfp.smoothWin       = 5;
 cfg.lfp.IBI             = 1; % logical setting for re-writting the Rpeaks 
 % based on the R2R_valid_consec
-cfg.lfp.IBI_thrsh       = 0.4; % threshold of IBI for Magnus
+cfg.lfp.IBI_thrsh       = [0.4276, 0.4306]; % threshold of IBI for Magnus
 cfg.lfp.IBI_low         = 1;
 cfg.lfp.IBI_high        = 0;
 
