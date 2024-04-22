@@ -47,7 +47,8 @@ sessions{1}=sort([20220921, 20221115, 20221118, 20221122, 20221125, 20221206, ..
 %     20230601, 20230602, 20230607, 20230609, ...
 %     20230614, 20230615, 20230616, 20230621, 20230622, 20230623]);
 
-
+% % these are the ones we want to run for IBI checkinf : 20230622
+% sessions{1}=sort([20221115, 20230511]); % 20230511
 
 
 cumulative_sessions=0;
@@ -116,6 +117,11 @@ cfg.lfp.timestep        = 0.01; %% in ms
 cfg.lfp.frequency_bands = [2 4; 4 8; 8 14; 14 30; 30 50; 70 120];
 cfg.lfp.n_cycles        = 5;
 cfg.lfp.smoothWin       = 5;
+cfg.lfp.IBI             = 0; % logical setting for re-writting the Rpeaks 
+% based on the R2R_valid_consec
+cfg.lfp.IBI_thrsh       = 0.4; % threshold of IBI for Magnus
+cfg.lfp.IBI_low         = 1;
+cfg.lfp.IBI_high        = 0;
 
 % method to be used for shuffle predictor normalization
 % can be 'zscore', 'not normalized', 'subtraction', 'division'
