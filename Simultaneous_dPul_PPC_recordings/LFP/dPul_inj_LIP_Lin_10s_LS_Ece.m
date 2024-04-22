@@ -3,7 +3,7 @@
 % initialize configuration structure
 lfp_tfa_cfg = [];
 
-fp_tfa_cfg.monkeys={'Lin'};
+lfp_tfa_cfg.monkeys={'Lin'};
    
 %% Settings for data folders
 
@@ -27,7 +27,7 @@ lfp_tfa_cfg.contra_ipsi_relative_to='perturbation_site'; %% or 'perturbation_sit
 % time frequency spectrograms will be calculated and stored in 
 % lfp_tfa_cfg.results_folder.  If the time frequency spectrograms 
 % should be computed, set this variable to true. 
-lfp_tfa_cfg.process_LFP = true;
+lfp_tfa_cfg.process_LFP = false;
 
 % folder where the results of LFP time frequency spectrograms are stored
 lfp_tfa_cfg.proc_lfp_folder = [];
@@ -47,7 +47,7 @@ end
 % should be computed, set this variable to true. 
 % Caution: Set this variable to false only if all settings other than 
 % lfp_tfa_cfg.session_info, remains the same
-lfp_tfa_cfg.compute_site_average = true;
+lfp_tfa_cfg.compute_site_average = false;
 
 %wheter to plot site_wise averages
 lfp_tfa_cfg.plot_site_average = false;
@@ -678,4 +678,4 @@ lfp_tfa_cfg.plot_significant = 1;
 %   lfp_tfa_cfg.save_fig_format = {'png'}; % save figure as png only
 %   lfp_tfa_cfg.save_fig_format = {'png', 'pdf'}; % save figure as png and
 %   pdf
-lfp_tfa_cfg.save_fig_format = {'png', 'pdf'};
+lfp_tfa_cfg.save_fig_format = {'png'};
