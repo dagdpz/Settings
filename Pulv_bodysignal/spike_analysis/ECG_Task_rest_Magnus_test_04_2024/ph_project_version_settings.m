@@ -3,9 +3,14 @@
 % always take all population files in the respective folder
 keys.batching.monkeys               ={'Magnus'};
 keys.Magnus.date                    ='[20220921 20230623]'; % done for 20220921 20230623
+%keys.Magnus.date                    ='[20230623 20230623]'; % done for 20220921 20230623
 keys.cal.datasets                   = [6, 7, 8]; %% should probably be renamed to batching instead of cal
 keys.batching.targets               ={'dPul','VPL', 'MD'}; % , 'AIP', 'PCC', 'PPC'
 keys.tt.tasktypes                   ={'Fsac_opt','Vsac_opt'};
+
+
+keys.tt.avg_stability                   =[3,Inf];       % min and max value accepted
+keys.cal.block_stability                =[2,Inf];       % min and max value accepted
 
 %% Localization (chamberlain keys)
 cc=0;
