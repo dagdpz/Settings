@@ -196,8 +196,7 @@ lfp_tfa_cfg.compare.targets = {'LIP_I','LIP_C','dPul_I', 'dPul_C'};
 % the target pairs between which the LFP-LFP phase synchronization should
 % be calculated - valid only if LFP-LFP phase sync should be calculated
 if any(strcmp(lfp_tfa_cfg.analyses, 'sync') | strcmp(lfp_tfa_cfg.analyses, 'syncsp'))
-    lfp_tfa_cfg.compare.target_pairs = {{'LIP_I', 'LIP_I'}, {'LIP_I', 'LIP_C'}, {'LIP_C', 'LIP_C'},...
-        {'dPul_I', 'LIP_I'}, {'dPul_C', 'LIP_C'},{'dPul_I', 'LIP_C'},{'dPul_C', 'LIP_I'}}; 
+    lfp_tfa_cfg.compare.target_pairs = {{'LIP_I', 'LIP_C'}}; 
 end
 
 % reference hemisphere for hand-space labelling
