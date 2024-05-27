@@ -3,17 +3,17 @@
 % initialize configuration structure
 cfg.outNameCap = 0;
 cfg.spikes_version='ECG_TaskRest_Bacchus_merged'; %% this is for loading tuning table (?)
-cfg.process_per_session=1;
-cfg.process_population=1;
-cfg.process_LFP=0;
-cfg.process_spikes=1;
+cfg.process_per_session                  = 1;
+cfg.process_population                   = 0;
+cfg.process_LFP                          = 0;
+cfg.process_spikes                       = 1;
 cfg.process_Rpeaks_inhalation_exhalation = 0;
-cfg.process_ECG=0;
-cfg.plot_significant=1;
-cfg.save_fig_format={'pdf'};
-   
+cfg.process_ECG                          = 0;
+cfg.plot_significant                     = 1;
+cfg.save_fig_format                      = {'pdf'};
+
 %% what and how to process things in spike analysis
-cfg.spk.compute_unit_subsets      = 0;
+cfg.spk.compute_unit_subsets      = 1;
 cfg.spk.move_files                = 0;
 
 % if we want to apply exclusion criteria from spike analysis
@@ -22,10 +22,15 @@ cfg.spk.unit_list                 = 'unitInfo_after_exclusion';
 % for ecg-related exclusion criteria
 cfg.spk.ecg_exclusion_criteria    = 0;
 
-cfg.spk.compute_spike_histograms  = 0;
-cfg.spk.plot_spike_histograms     = 0;
+% keys for processing
+cfg.spk.compute_spike_histograms  = 1;
 cfg.spk.compute_spike_phase       = 1;
+cfg.spk.compute_correlation       = 0;
+
+% keys for plotting
+cfg.spk.plot_spike_histograms     = 0;
 cfg.spk.plot_spike_phase          = 0;
+cfg.spk.plot_correlation          = 0;
 
 %% Settings for data folders
 
@@ -69,7 +74,6 @@ for m=1:numel(monkeys)
     end
 end
 
-
 % what kind of analyses should be done on LFP
 % should be a cell array of strings which indicate which kind of analyses
 % should be performed on LFP
@@ -102,6 +106,7 @@ cfg.condition(1).type=1;
 cfg.condition(1).completed=1;
 cfg.condition(1).accepted=1;  %% works only for spikes 
 cfg.condition(1).Rpeak_field = '';
+cfg.condition(1).saccadeTask = 'F_in';
 
 cfg.condition(2).name='Task';
 cfg.condition(2).color=[1 0 0];
@@ -109,14 +114,18 @@ cfg.condition(2).type=2;
 cfg.condition(2).completed=1;
 cfg.condition(2).accepted=1; %% works only for spikes 
 cfg.condition(2).Rpeak_field = '';
+cfg.condition(2).saccadeTask = 'V_ch';
 
 %% define events - only shared 
-cfg.analyse_states = {'ecg', 'R peak', -0.25, 0.25};
+cfg.analyse_states = { ...
+    {'ecg', 'R peak', -0.25, 0.25, 10, 10} ; ...
+    {'ecg', 'R peak', 0, 0.5, 0, 20} ; ...
+    {'ecg', 'R peak', -0.5, 0, 20, 0}};
 
 %% LFP settings
 cfg.lfp.n_permutations  = 100; % number of shuffles required
 cfg.lfp.foi             = logspace(log10(2), log10(120), 60);
-cfg.lfp.timestep        = 0.01; %% in ms
+cfg.lfp.timestep        = 0.005; %% in ms
 cfg.lfp.frequency_bands = [2 4; 4 8; 8 14; 14 30; 30 50; 70 120];
 cfg.lfp.n_cycles        = 5;
 cfg.lfp.smoothWin       = 5;
@@ -143,13 +152,13 @@ cfg.spk.analyses={'spike_histogram','spike_phase_ECG_cycle'};
 
 cfg.spk.n_permutations=1000; % number of shuffles required
 cfg.spk.significance_window=[-0.25 0.25];
-cfg.spk.PSTH_binwidth=0.01;
+cfg.spk.PSTH_binwidth=0.005;
 cfg.spk.kernel_type='gaussian';
 cfg.spk.gaussian_kernel=0.02;
-cfg.spk.N_phase_bins=64;
+cfg.spk.N_phase_bins=80;
 
 % unit exclusion criteria
-cfg.spk.unit_exclusion.nCardiacCycles             = 600;
+cfg.spk.unit_exclusion.nCardiacCycles             = 200;
 
 % A setting for spike population analysis
 % If there are more than two conditions, choose pairs of conditions that
@@ -174,7 +183,7 @@ cfg.spk.wf_times_interp_ms = 1000 * (1/4/cfg.spk.Fs:1/4/cfg.spk.Fs:32/cfg.spk.Fs
 cfg.spk.peak_id = 10; % sample number of the trough in the spike waveform
 cfg.spk.phase_bins          = linspace(0, 2*pi, cfg.spk.N_phase_bins+1);
 cfg.spk.phase_bin_centers   = pi/cfg.spk.N_phase_bins : 2*pi/cfg.spk.N_phase_bins : 2*pi-pi/cfg.spk.N_phase_bins;
-cfg.spk.lag_list            = [-11 -7 -3 0 3 7 11];
+cfg.spk.lag_list            = [-12 -8 -4 0 4 8 12];
 
 %% settings for fitting functions
 cfg.fit.cos_mod      = fittype('a*cos(x-b)+c');% a - scaling factor, b - phase of the peak, c - intercept
