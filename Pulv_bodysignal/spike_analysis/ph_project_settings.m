@@ -31,7 +31,7 @@ keys.tt.avg_single_rating               =[0, Inf];         % min and max value a
 keys.tt.avg_SNR                         =[4, 26];     % min and max value accepted   
 keys.tt.choice                          =NaN; 
 
-keys.cal.n_spikes                       =[1,inf];       % min and max value accepted
+keys.cal.n_spikes                       =[0,inf];       % min and max value accepted
 keys.cal.min_trials_in                  =5;             % minimum number of trials instructed per condition - replace cal with tt ?
 keys.cal.min_trials_ch                  =5;             % minimum number of trials choice
 
