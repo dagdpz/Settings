@@ -28,7 +28,7 @@ lfp_tfa_cfg.version = 'Flaffus_Interleaved';
 % time frequency spectrograms will be calculated and stored in 
 % lfp_tfa_cfg.results_folder.  If the time frequency spectrograms 
 % should be computed, set this variable to true. 
-lfp_tfa_cfg.process_LFP = false;
+lfp_tfa_cfg.process_LFP = true;
 
 % folder where the results of LFP time frequency spectrograms are stored
 lfp_tfa_cfg.proc_lfp_folder = [];
@@ -193,7 +193,11 @@ lfp_tfa_cfg.session_info(sess) = ...
 %                   time windows
 %       'sync'      - LFP-LFP phase synchronization spectrum for given 
 %                   conditions and epochs
+
+lfp_tfa_cfg.analyses = {'sync'}; %
+
 lfp_tfa_cfg.analyses = {'sync'}; %{'tfs', 'evoked', 'pow'}; %
+
 
 % targets to be included in the analysis
 % should be a cell array of strings which indicate the target names
@@ -203,7 +207,7 @@ lfp_tfa_cfg.analyses = {'sync'}; %{'tfs', 'evoked', 'pow'}; %
 % Example:
 % 1. lfp_tfa_cfg.compare.targets = {'MIPa_R', 'MIPa_L', 'dPul_R', 'dPul_L'}; 
 %lfp_tfa_cfg.compare.targets = {'dPulv_r','dPulv_l'};  
-lfp_tfa_cfg.compare.targets = {'dPulv_l'}; 
+lfp_tfa_cfg.compare.targets = {'dPulv_l','dPulv_r'}; 
 
 % target pairs to be included for LFP-LFP sychronization
 % should be a 1xN cell array of 1x2 cell array of strings which indicate

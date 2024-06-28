@@ -22,12 +22,13 @@ keys.cal.remove_trials_without_spikes   =0;             % compute outliar FR ign
 keys.cal.automatic_stablity             =1;             % using automatic stability assessment - Fano factor
 keys.cal.automatic_SNR                  =1;             % using automatic SNR assessment - (mean waveform amplitude)/(mean of standard deviations in each timepoint)
 keys.cal.automatic_singleunitness       =1;             % 
-keys.cal.FR                             =[2,inf];       % min and max value accepted   
+keys.cal.FR                             =[1,inf];       % min and max value accepted   
+keys.cal.block_stability                =[2.5,Inf];
 
 %% are only those ones used? -->
-keys.tt.avg_stability                   =[0.85,Inf];       % min and max value accepted
-keys.tt.avg_single_rating               =[0,Inf];         % min and max value accepted          
-keys.tt.avg_SNR                         =[4,26];     % min and max value accepted   
+keys.tt.avg_stability                   =[2.5, Inf];       % min and max value accepted
+keys.tt.avg_single_rating               =[0, Inf];         % min and max value accepted          
+keys.tt.avg_SNR                         =[4, 26];     % min and max value accepted   
 keys.tt.choice                          =NaN; 
 
 keys.cal.n_spikes                       =[0,inf];       % min and max value accepted
