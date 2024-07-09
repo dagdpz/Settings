@@ -17,10 +17,10 @@ cfg.spk.compute_unit_subsets      = 1;
 cfg.spk.move_files                = 0;
 
 % if we want to apply exclusion criteria from spike analysis
-cfg.spk.apply_exclusion_criteria  = 0; % 0 if you don't want exclusion, 1 - otherwise
-cfg.spk.unit_list                 = 'unitInfo_after_exclusion';
+cfg.spk.apply_exclusion_criteria = 0; % 0 if you don't want exclusion, 1 - otherwise
+cfg.spk.unit_list                = 'unitInfo_after_exclusion';
 % for ecg-related exclusion criteria
-cfg.spk.ecg_exclusion_criteria    = 0;
+cfg.spk.ecg_exclusion_criteria   = 0;
 
 % keys for processing
 cfg.spk.compute_spike_histograms  = 0;
@@ -31,6 +31,11 @@ cfg.spk.compute_correlation       = 0;
 cfg.spk.plot_spike_histograms     = 0;
 cfg.spk.plot_spike_phase          = 0;
 cfg.spk.plot_correlation          = 0;
+
+%% color settings
+cfg.area_colors = {[1 0.53 0]; % VPL
+                [0.05 0.65 0.7]; % dPul
+                [1 0 0.6]}; % MD
 
 %% Settings for data folders
 
@@ -113,9 +118,9 @@ cfg.condition(2).saccadeTask = 'V';
 
 %% define events - only shared 
 cfg.analyse_states = { ...
-    {'ecg', 'R peak', -0.25, 0.25, 10, 10} ; ...
-    {'ecg', 'R peak', 0, 0.5, 0, 20} ; ...
-    {'ecg', 'R peak', -0.5, 0, 20, 0}};
+    {'ecg', 'R peak', -0.25, 0.25, 10, 10} }; % ; ...
+%     {'ecg', 'R peak', 0, 0.5, 0, 20} ; ...
+%     {'ecg', 'R peak', -0.5, 0, 20, 0}};
 
 %% LFP settings
 cfg.lfp.n_permutations  = 100; % number of shuffles required
@@ -142,19 +147,49 @@ cfg.lfp.normalization = 'zscore';
 % data based on the results of shuffled data.
 cfg.lfp.significance_method = '95Conf_intrvl';
 
-
 %% spike settings
-cfg.spk.analyses={'spike_histogram','spike_phase_ECG_cycle'};
-
-cfg.spk.n_permutations=1000; % number of shuffles required
-cfg.spk.significance_window=[-0.25 0.25];
-cfg.spk.PSTH_binwidth=0.005;
-cfg.spk.kernel_type='gaussian';
-cfg.spk.gaussian_kernel=0.02;
-cfg.spk.N_phase_bins=80;
-
 % unit exclusion criteria
-cfg.spk.unit_exclusion.nCardiacCycles             = 200;
+cfg.spk.unit_exclusion.nCardiacCycles = 400;
+
+% parameters for ECG-triggered averages
+cfg.time.n_permutations      = 1000; % number of shuffles required - should those be 10k ??
+cfg.time.significance_window = [-0.25 0.25];
+cfg.time.PSTH_binwidth       = 0.005; % used to be 0.01
+cfg.time.kernel_type         = 'gaussian';
+cfg.time.gaussian_kernel     = 0.02;
+cfg.time.histbins            = 0.2:0.02:0.8; % bins for RR duration histogram
+% population settings for time domain
+cfg.time.n_sig_bins          = 8; % correspond to 8*5 ms = 40 ms significance cluster
+cfg.time.bar_colors          = [0.8500 0.3250 0.0980; 0 0.4470 0.7410; 1 1 1]; % increase, decrease, non-responsive
+
+% phase analysis
+cfg.phase.N_phase_bins       = 80;
+cfg.phase.phase_bins         = linspace(0, 2*pi, cfg.phase.N_phase_bins+1);
+cfg.phase.phase_bin_centers  = pi/cfg.phase.N_phase_bins : 2*pi/cfg.phase.N_phase_bins : 2*pi-pi/cfg.phase.N_phase_bins;
+cfg.phase.Fs                 = 2.44140625e+04; % sampling frequency of BB signal, Hz
+cfg.phase.wf_times_ms        = 1000 * (1/cfg.phase.Fs:1/cfg.phase.Fs:32/cfg.phase.Fs); % in ms
+cfg.phase.wf_times_interp_ms = 1000 * (1/4/cfg.phase.Fs:1/4/cfg.phase.Fs:32/cfg.phase.Fs); % in ms
+cfg.phase.peak_id            = 10; % sample number of the trough in the spike waveform
+cfg.phase.n_permutations     = 1000;
+% params for function mult_comp_perm_corr - computes corr coef CIs for cc
+% between phase dynamics
+cfg.phase.n_shuffles         = 1000; % eventually this should be set to 10k
+cfg.phase.tail               = 0;
+cfg.phase.alpha_level        = 0.05;
+cfg.phase.stat               = 'linear';
+cfg.phase.reports            = 0;
+cfg.phase.seed_state         = 0;
+
+% correlation analysis parameters
+cfg.correlation.lag_list       = -12:12;%[-12 -8 -4 0 4 8 12];
+% params for function mult_comp_perm_corr - computes cc's between FR and RR
+% durations
+cfg.correlation.n_permutations = 1000; % eventually this should be set to 10k
+cfg.correlation.tail           = 0;
+cfg.correlation.alpha_level    = 0.05;
+cfg.correlation.stat           = 'linear';
+cfg.correlation.reports        = 0;
+cfg.correlation.seed_state     = 0;
 
 % A setting for spike population analysis
 % If there are more than two conditions, choose pairs of conditions that
@@ -166,18 +201,6 @@ cfg.spk.compare_conditions = {[1 2]}; % rest vs. task
 %% put corresponding settings in these subfields:
 cfg.ecg.field=0;
 cfg.cap.field=0;
-
-%% settings for spike analysis
-% for R-peak-triggered histograms
-cfg.spk.histbins=0.2:0.02:0.8; % bins for RR duration histogram
-
-cfg.spk.Fs = 2.44140625e+04; % sampling frequency of BB signal, Hz
-cfg.spk.wf_times_ms = 1000 * (1/cfg.spk.Fs:1/cfg.spk.Fs:32/cfg.spk.Fs); % in ms
-cfg.spk.wf_times_interp_ms = 1000 * (1/4/cfg.spk.Fs:1/4/cfg.spk.Fs:32/cfg.spk.Fs); % in ms
-cfg.spk.peak_id = 10; % sample number of the trough in the spike waveform
-cfg.spk.phase_bins          = linspace(0, 2*pi, cfg.spk.N_phase_bins+1);
-cfg.spk.phase_bin_centers   = pi/cfg.spk.N_phase_bins : 2*pi/cfg.spk.N_phase_bins : 2*pi-pi/cfg.spk.N_phase_bins;
-cfg.spk.lag_list            = [-12 -8 -4 0 4 8 12];
 
 %% settings for fitting functions
 cfg.fit.cos_mod      = fittype('a*cos(x-b)+c');% a - scaling factor, b - phase of the peak, c - intercept
