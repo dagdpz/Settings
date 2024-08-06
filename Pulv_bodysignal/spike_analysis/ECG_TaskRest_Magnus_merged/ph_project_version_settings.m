@@ -23,6 +23,7 @@ cc=0;
 % keys.loc(cc).grid_id = 'GRID.22.2';
 % keys.loc(cc).significance_to_plot = 'ungrouped';
 % keys.loc(cc).saggital_or_coronal = 'coronal';
+% keys.loc(cc).unit_list = 'Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\unit_lists_ECG\unitInfo_after_SNR_exclusion_stable_noLow_amplitude_ccs_any.mat';
 % 
 % % Magnus left VPL - sagittal
 % cc=cc+1;
@@ -37,6 +38,7 @@ cc=0;
 % keys.loc(cc).grid_id = 'GRID.22.2';
 % keys.loc(cc).significance_to_plot = 'ungrouped';
 % keys.loc(cc).saggital_or_coronal = 'sagittal';
+% keys.loc(cc).unit_list = 'Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\unit_lists_ECG\unitInfo_after_SNR_exclusion_stable_noLow_amplitude_ccs_any.mat';
 
 % % % Magnus left dPul - coronal
 % cc=cc+1;
@@ -51,6 +53,7 @@ cc=0;
 % keys.loc(cc).grid_id = 'GRID.22.2';
 % keys.loc(cc).significance_to_plot = 'ungrouped';
 % keys.loc(cc).saggital_or_coronal = 'coronal';
+% keys.loc(cc).unit_list = 'Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\unit_lists_ECG\unitInfo_after_SNR_exclusion_stable_noLow_amplitude_ccs_any.mat';
 % 
 % % Magnus dPul - sagittal
 % cc=cc+1;
@@ -65,7 +68,8 @@ cc=0;
 % keys.loc(cc).grid_id = 'GRID.22.2';
 % keys.loc(cc).significance_to_plot = 'ungrouped';
 % keys.loc(cc).saggital_or_coronal = 'sagittal';
-% 
+% keys.loc(cc).unit_list = 'Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\unit_lists_ECG\unitInfo_after_SNR_exclusion_stable_noLow_amplitude_ccs_any.mat';
+
 % % % right dPul - coronal
 % cc=cc+1;
 % keys.loc(cc).tt.choice = NaN;
@@ -79,6 +83,7 @@ cc=0;
 % keys.loc(cc).grid_id = 'GRID.22.2';
 % keys.loc(cc).significance_to_plot = 'ungrouped';
 % keys.loc(cc).saggital_or_coronal = 'coronal';
+% keys.loc(cc).unit_list = 'Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\unit_lists_ECG\unitInfo_after_SNR_exclusion_stable_noLow_amplitude_ccs_any.mat';
 % 
 % % % right dPul - sagittal
 % cc=cc+1;
@@ -93,6 +98,7 @@ cc=0;
 % keys.loc(cc).grid_id = 'GRID.22.2';
 % keys.loc(cc).significance_to_plot = 'ungrouped';
 % keys.loc(cc).saggital_or_coronal = 'sagittal';
+% keys.loc(cc).unit_list = 'Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\unit_lists_ECG\unitInfo_after_SNR_exclusion_stable_noLow_amplitude_ccs_any.mat';
 
 % Magnus left MD - coronal
 cc=cc+1;
@@ -107,6 +113,7 @@ keys.loc(cc).area_color=[1 0 0.6];
 keys.loc(cc).grid_id = 'GRID.22.2';
 keys.loc(cc).significance_to_plot = 'ungrouped';
 keys.loc(cc).saggital_or_coronal = 'coronal';
+keys.loc(cc).unit_list = 'Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\unit_lists_ECG\unitInfo_after_SNR_exclusion_stable_noLow_amplitude_ccs_any.mat';
 
 % Magnus left MD - sagittal
 cc=cc+1;
@@ -121,3 +128,4 @@ keys.loc(cc).area_color=[1 0 0.6];
 keys.loc(cc).grid_id = 'GRID.22.2';
 keys.loc(cc).significance_to_plot = 'ungrouped';
 keys.loc(cc).saggital_or_coronal = 'sagittal';
+keys.loc(cc).unit_list = 'Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\unit_lists_ECG\unitInfo_after_SNR_exclusion_stable_noLow_amplitude_ccs_any.mat';
