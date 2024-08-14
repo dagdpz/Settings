@@ -157,8 +157,8 @@ cfg.lfp.significance_method = '95Conf_intrvl';
 cfg.spk.unit_exclusion.nCardiacCycles = 400;
 
 % parameters for ECG-triggered averages
-cfg.time.n_permutations      = 1000; % number of shuffles required - should those be 10k ??
-cfg.time.significance_window = [-0.25 0.25];
+cfg.time.n_permutations      = 1000; % number of shuffles required - 1k
+cfg.time.significance_window = {[-0.2 0.2], [0 0.4]};
 cfg.time.PSTH_binwidth       = 0.005; % used to be 0.01
 cfg.time.kernel_type         = 'gaussian';
 cfg.time.gaussian_kernel     = 0.02;

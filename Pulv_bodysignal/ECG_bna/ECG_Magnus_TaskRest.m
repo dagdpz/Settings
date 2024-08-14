@@ -153,11 +153,19 @@ cfg.spk.unit_exclusion.nCardiacCycles = 400;
 
 % parameters for ECG-triggered averages
 cfg.time.n_permutations      = 1000; % number of shuffles required - should those be 10k ??
-cfg.time.significance_window = [-0.25 0.25];
+cfg.time.significance_window = {[-0.2 0.2], [0 0.4]};
 cfg.time.PSTH_binwidth       = 0.005; % used to be 0.01
 cfg.time.kernel_type         = 'gaussian';
 cfg.time.gaussian_kernel     = 0.02;
 cfg.time.histbins            = 0.2:0.02:0.8; % bins for RR duration histogram
+% params for function mult_comp_perm_corr - computes corr coef between
+% PETHs in rest and task
+cfg.time.n_shuffles          = 1000; % eventually this should be set to 10k
+cfg.time.tail                = 0;
+cfg.time.alpha_level         = 0.05;
+cfg.time.stat                = 'linear';
+cfg.time.reports             = 0;
+cfg.time.seed_state          = 0;
 % population settings for time domain
 cfg.time.n_sig_bins          = 8; % correspond to 8*5 ms = 40 ms significance cluster
 cfg.time.bar_colors          = [0.8500 0.3250 0.0980; 0 0.4470 0.7410; 1 1 1]; % increase, decrease, non-responsive
