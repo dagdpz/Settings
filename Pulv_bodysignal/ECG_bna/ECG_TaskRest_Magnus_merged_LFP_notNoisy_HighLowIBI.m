@@ -3,7 +3,7 @@
 % initialize configuration structure
 cfg.outNameCap = 0;
 cfg.spikes_version='ECG_TaskRest_Magnus_merged'; %% this is for loading tuning table (?)
-cfg.process_per_session=0;
+cfg.process_per_session=1;
 cfg.process_population=1;
 cfg.process_LFP=1;
 cfg.process_spikes=0;
@@ -39,13 +39,13 @@ monkeys={'Magnus'};
 % sessions{1}=sort([ 20230106, 20230112]); % already replaced in the old
 % folder
 %
-% % these are the ones we want to run for IBI check:
-sessions{1}=sort([20220921, 20221115, 20221118, 20221122, 20221125, 20221206, ...
-    20221222, 20221229, 20230104, 20230126, ...
-    20230511, 20230518, 20230519, 20230524, 20230525, 20230526, ...
-    20230601, 20230602, 20230607, 20230609, ...
-    20230614, 20230615, 20230616, 20230621, 20230622, 20230623]);
-% sessions{1}=sort([20230622, 20230623]); 
+% % % these are the ones we want to run for IBI check:
+% sessions{1}=sort([20220921, 20221115, 20221118, 20221122, 20221125, 20221206, ...
+%     20221222, 20221229, 20230104, 20230126, ...
+%     20230511, 20230518, 20230519, 20230524, 20230525, 20230526, ...
+%     20230601, 20230602, 20230607, 20230609, ...
+%     20230614, 20230615, 20230616, 20230621, 20230622, 20230623]);
+sessions{1}=sort([20220921,20221115]); 
 
 
 cumulative_sessions=0;
