@@ -111,7 +111,7 @@ cfg.condition(1).type=1;
 cfg.condition(1).completed=1;
 cfg.condition(1).accepted=1;  %% works only for spikes 
 cfg.condition(1).Rpeak_field = '';
-cfg.condition(1).saccadeTask = 'F_in';
+cfg.condition(1).saccadeTask = 'F';
 
 cfg.condition(2).name='Task';
 cfg.condition(2).color=[1 0 0];
@@ -119,7 +119,7 @@ cfg.condition(2).type=2;
 cfg.condition(2).completed=1;
 cfg.condition(2).accepted=1; %% works only for spikes 
 cfg.condition(2).Rpeak_field = '';
-cfg.condition(2).saccadeTask = 'V_ch';
+cfg.condition(2).saccadeTask = 'V';
 
 %% define events - only shared 
 cfg.analyse_states = { ...
@@ -163,6 +163,14 @@ cfg.time.PSTH_binwidth       = 0.005; % used to be 0.01
 cfg.time.kernel_type         = 'gaussian';
 cfg.time.gaussian_kernel     = 0.02;
 cfg.time.histbins            = 0.2:0.02:0.8; % bins for RR duration histogram
+% params for function mult_comp_perm_corr - computes corr coef between
+% PETHs in rest and task
+cfg.time.n_shuffles          = 10000; % eventually this should be set to 10k
+cfg.time.tail                = 0;
+cfg.time.alpha_level         = 0.05;
+cfg.time.stat                = 'linear';
+cfg.time.reports             = 0;
+cfg.time.seed_state          = 0;
 % population settings for time domain
 cfg.time.n_sig_bins          = 8; % correspond to 8*5 ms = 40 ms significance cluster
 cfg.time.bar_colors          = [0.8500 0.3250 0.0980; 0 0.4470 0.7410; 1 1 1]; % increase, decrease, non-responsive
@@ -202,6 +210,10 @@ cfg.correlation.seed_state     = 0;
 % then in the order that the 1st one will be plotted in x-axis and the 2nd
 % one in the y-axis
 cfg.spk.compare_conditions = {[1 2]}; % rest vs. task
+
+%% population analyses settings
+cfg.pop.unit_selection_lists = ...
+    {'unitInfo_after_SNR_exclusion_selected_noLow_amplitude_ccs_any', 'unitInfo_after_SNR_exclusion_stable_noLow_amplitude_ccs_any'};
 
 %% put corresponding settings in these subfields:
 cfg.lfp.field=0;

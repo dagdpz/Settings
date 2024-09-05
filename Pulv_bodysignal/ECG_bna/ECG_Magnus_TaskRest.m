@@ -160,7 +160,7 @@ cfg.time.gaussian_kernel     = 0.02;
 cfg.time.histbins            = 0.2:0.02:0.8; % bins for RR duration histogram
 % params for function mult_comp_perm_corr - computes corr coef between
 % PETHs in rest and task
-cfg.time.n_shuffles          = 1000; % eventually this should be set to 10k
+cfg.time.n_shuffles          = 10000; % eventually this should be set to 10k
 cfg.time.tail                = 0;
 cfg.time.alpha_level         = 0.05;
 cfg.time.stat                = 'linear';
