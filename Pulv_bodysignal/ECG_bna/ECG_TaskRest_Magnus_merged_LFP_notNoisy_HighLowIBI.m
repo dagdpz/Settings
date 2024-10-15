@@ -3,15 +3,15 @@
 % initialize configuration structure
 cfg.outNameCap = 0;
 cfg.spikes_version='ECG_TaskRest_Magnus_merged'; %% this is for loading tuning table (?)
-cfg.process_per_session=1;
-cfg.process_population=0;
+cfg.process_per_session=0;
+cfg.process_population=1;
 cfg.process_LFP=1;
 cfg.process_spikes=0;
 cfg.process_Rpeaks_inhalation_exhalation = 0;
 cfg.process_ECG=0;
 cfg.plot_significant=1;
 cfg.save_fig_format={'pdf'};
-cfg.produce_List_only = 1;
+cfg.produce_List_only = 0;
    
 %% Settings for data folders
 
@@ -118,9 +118,13 @@ cfg.lfp.n_cycles        = 5;
 cfg.lfp.smoothWin       = 5;
 cfg.lfp.IBI             = 1; % logical setting for re-writting the Rpeaks 
 % based on the R2R_valid_consec
-cfg.lfp.IBI_thrsh       = [0.4276, 0.4306]; % threshold of IBI for Magnus [0.4276, 0.4306];
-cfg.lfp.IBI_low         = 0;
-cfg.lfp.IBI_high        = 1;
+cfg.lfp.IBI_thrsh_file      = ['Y:\Projects\Pulv_bodysignal\HeartRate_Changes_all_Blocks\',...
+    monkeys{1},'\All_session_IBIsplit_thresh_Task_Rest.mat']; % threshold of IBI for Magnus [0.4276, 0.4306];
+cfg.lfp.IBI_low         = 1;
+cfg.lfp.IBI_high        = 0;
+cfg.lfp.TaskRest_diff   = 1;
+cfg.lfp.IBI_diff        = 1;
+cfg.lfp.IBIdiff_type    = 'raw'; % can also be the raw;
 
 % method to be used for shuffle predictor normalization
 % can be 'zscore', 'not normalized', 'subtraction', 'division'
