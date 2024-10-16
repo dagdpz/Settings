@@ -120,11 +120,12 @@ cfg.lfp.IBI             = 1; % logical setting for re-writting the Rpeaks
 % based on the R2R_valid_consec
 cfg.lfp.IBI_thrsh_file      = ['Y:\Projects\Pulv_bodysignal\HeartRate_Changes_all_Blocks\',...
     monkeys{1},'\All_session_IBIsplit_thresh_Task_Rest.mat']; % threshold of IBI for Magnus [0.4276, 0.4306];
-cfg.lfp.IBI_low         = 1;
-cfg.lfp.IBI_high        = 0;
+cfg.lfp.IBI_low         = 0;
+cfg.lfp.IBI_high        = 1;
 cfg.lfp.TaskRest_diff   = 1;
 cfg.lfp.IBI_diff        = 1;
-cfg.lfp.IBIdiff_type    = 'raw'; % can also be the raw;
+cfg.lfp.IBIdiff_type    = 'normalized'; % can also be the 'normalized' , 'raw';
+cfg.lfp.cluster_perm    = 1;
 
 % method to be used for shuffle predictor normalization
 % can be 'zscore', 'not normalized', 'subtraction', 'division'
