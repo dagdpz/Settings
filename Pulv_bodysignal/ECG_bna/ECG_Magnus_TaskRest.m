@@ -97,6 +97,7 @@ end
 % Example:
 % 1. lfp_tfa_cfg.compare.targets = {'MIPa_R', 'MIPa_L', 'dPul_R', 'dPul_L'}; 
 cfg.targets = {'VPL_R', 'VPL_L', 'dPul_R', 'dPul_L', 'MD_L', 'MD_R'};
+cfg.targets_spike_data = {{'VPL', 'dPul', 'MD'}, {'PCC', 'AIP', 'PPC'}};
 cfg.combine_hemispheres = 1;
 cfg.contra_ipsi_relative_to='target';
 
@@ -154,7 +155,7 @@ cfg.spk.unit_exclusion.nCardiacCycles = 400;
 
 % parameters for ECG-triggered averages
 cfg.time.n_permutations      = 1000; % number of shuffles required - should those be 10k ??
-cfg.time.significance_window = {[-0.2 0.2], [0 0.4]};
+cfg.time.significance_window = {[-0.25 0.25], [0 0.5]};
 cfg.time.PSTH_binwidth       = 0.005; % used to be 0.01
 cfg.time.kernel_type         = 'gaussian';
 cfg.time.gaussian_kernel     = 0.02;
@@ -169,7 +170,9 @@ cfg.time.reports             = 0;
 cfg.time.seed_state          = 0;
 % population settings for time domain
 cfg.time.n_sig_bins          = 8; % correspond to 8*5 ms = 40 ms significance cluster
-cfg.time.bar_colors          = [0.8500 0.3250 0.0980; 0 0.4470 0.7410; 1 1 1]; % increase, decrease, non-responsive
+cfg.time.bar_colors          = [0 0.4470 0.7410; 0.8500 0.3250 0.0980; 1 1 1]; % increase, decrease, non-responsive
+cfg.time.bar_colors_merged   = [0 0 0.5; 0.7 0.7 0.7];
+cfg.time.y_lims              = [-30 30];
 
 % phase analysis
 cfg.phase.N_phase_bins       = 80;
@@ -190,10 +193,10 @@ cfg.phase.reports            = 0;
 cfg.phase.seed_state         = 0;
 
 % correlation analysis parameters
-cfg.correlation.lag_list       = -12:12;%[-12 -8 -4 0 4 8 12];
+cfg.correlation.lag_list       = -20:20;%[-12 -8 -4 0 4 8 12];
 % params for function mult_comp_perm_corr - computes cc's between FR and RR
 % durations
-cfg.correlation.n_permutations = 1000; % eventually this should be set to 10k
+cfg.correlation.n_permutations = 10000; % eventually this should be set to 10k
 cfg.correlation.tail           = 0;
 cfg.correlation.alpha_level    = 0.05;
 cfg.correlation.stat           = 'linear';
@@ -206,6 +209,10 @@ cfg.correlation.seed_state     = 0;
 % then in the order that the 1st one will be plotted in x-axis and the 2nd
 % one in the y-axis
 cfg.spk.compare_conditions = {[1 2]}; % rest vs. task
+
+%% population analyses settings
+cfg.pop.unit_selection_lists = ...
+    {'unitInfo_after_SNR_exclusion_selected_noLow_amplitude_ccs_any', 'unitInfo_after_SNR_exclusion_stable_noLow_amplitude_ccs_any'};
 
 %% put corresponding settings in these subfields:
 cfg.ecg.field=0;
