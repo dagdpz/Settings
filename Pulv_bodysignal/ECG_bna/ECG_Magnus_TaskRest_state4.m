@@ -184,6 +184,7 @@ cfg.phase.Fs                 = 2.44140625e+04; % sampling frequency of BB signal
 cfg.phase.wf_times_ms        = 1000 * (1/cfg.phase.Fs:1/cfg.phase.Fs:32/cfg.phase.Fs); % in ms
 cfg.phase.wf_times_interp_ms = 1000 * (1/4/cfg.phase.Fs:1/4/cfg.phase.Fs:32/cfg.phase.Fs); % in ms
 cfg.phase.peak_id            = 10; % sample number of the trough in the spike waveform
+cfg.phase.peak_time_range    = [0.32 0.48];
 cfg.phase.n_permutations     = 1000;
 % params for function mult_comp_perm_corr - computes corr coef CIs for cc
 % between phase dynamics
