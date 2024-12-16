@@ -113,35 +113,131 @@ for listNum = 1:length(selection_lists)
 % keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
 % keys.loc(cc).folder_suffix        = selection_lists{listNum};
 
-% Magnus left MD - coronal
+% % Magnus left MD - coronal
+% cc=cc+1;
+% keys.loc(cc).tt.choice            = NaN;
+% keys.loc(cc).tt.tasktypes         = {'Fsac_opt','Vsac_opt'};
+% keys.loc(cc).vmr_path             = 'Y:\Projects\Pulv_bodysignal\scans\MA_20230203_left_chamber_normal_neurological_0.25mm.vmr';
+% keys.loc(cc).z_offset_mm          = 38.5+7; % mm, distance from chamber top to "brain entry", should be different from 0 if z is from top of the chamber
+% keys.loc(cc).monkey_prefix        = 'MA_';
+% keys.loc(cc).monkey               = 'Mag';
+% keys.loc(cc).target_area          = 'MD_L';
+% keys.loc(cc).area_color           = [1 0 0.6];
+% keys.loc(cc).grid_id              = 'GRID.22.2';
+% keys.loc(cc).significance_to_plot = 'ungrouped';
+% keys.loc(cc).saggital_or_coronal  = 'coronal';
+% keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
+% keys.loc(cc).folder_suffix        = selection_lists{listNum};
+% 
+% % Magnus left MD - sagittal
+% cc=cc+1;
+% keys.loc(cc).tt.choice            = NaN;
+% keys.loc(cc).tt.tasktypes         = {'Fsac_opt','Vsac_opt'};
+% keys.loc(cc).vmr_path             = 'Y:\Projects\Pulv_bodysignal\scans\MA_20230203_left_chamber_normal_neurological_0.25mm.vmr';
+% keys.loc(cc).z_offset_mm          = 38.5+7; % mm, distance from chamber top to "brain entry", should be different from 0 if z is from top of the chamber
+% keys.loc(cc).monkey_prefix        = 'MA_';
+% keys.loc(cc).monkey               = 'Mag';
+% keys.loc(cc).target_area          = 'MD_L';
+% keys.loc(cc).area_color           = [1 0 0.6];
+% keys.loc(cc).grid_id              = 'GRID.22.2';
+% keys.loc(cc).significance_to_plot = 'ungrouped';
+% keys.loc(cc).saggital_or_coronal  = 'sagittal';
+% keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
+% keys.loc(cc).folder_suffix        = selection_lists{listNum};
+
+% % % Magnus right AIP - coronal
+% cc=cc+1;
+% keys.loc(cc).tt.choice = NaN;
+% keys.loc(cc).tt.tasktypes = {'Fsac_opt','Vsac_opt'};
+% keys.loc(cc).vmr_path = 'Y:\Projects\Pulv_bodysignal\scans\MA_20230203_right_chamber_normal_neurological_0.25mm.vmr';
+% keys.loc(cc).z_offset_mm = 39+7; % mm, distance from chamber top to "brain entry", should be different from 0 if z is from top of the chamber
+% keys.loc(cc).monkey_prefix = 'MA_';
+% keys.loc(cc).monkey='Mag';
+% keys.loc(cc).target_area='AIP_R';
+% keys.loc(cc).area_color=[0.85 0.15 0.85];
+% keys.loc(cc).grid_id = 'GRID.22.2';
+% keys.loc(cc).significance_to_plot = 'ungrouped';
+% keys.loc(cc).saggital_or_coronal = 'coronal';
+% keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
+% keys.loc(cc).folder_suffix        = selection_lists{listNum};
+% 
+% % Magnus right AIP - sagittal
+% cc=cc+1;
+% keys.loc(cc).tt.choice = NaN;
+% keys.loc(cc).tt.tasktypes = {'Fsac_opt','Vsac_opt'};
+% keys.loc(cc).vmr_path = 'Y:\Projects\Pulv_bodysignal\scans\MA_20230203_right_chamber_normal_neurological_0.25mm.vmr';
+% keys.loc(cc).z_offset_mm = 39+7; % mm, distance from chamber top to "brain entry", should be different from 0 if z is from top of the chamber
+% keys.loc(cc).monkey_prefix = 'MA_';
+% keys.loc(cc).monkey='Mag';
+% keys.loc(cc).target_area='AIP_R';
+% keys.loc(cc).area_color=[0.85 0.15 0.85];
+% keys.loc(cc).grid_id = 'GRID.22.2';
+% keys.loc(cc).significance_to_plot = 'ungrouped';
+% keys.loc(cc).saggital_or_coronal = 'sagittal';
+% keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
+% keys.loc(cc).folder_suffix        = selection_lists{listNum};
+% 
+% % % Magnus left PCC - coronal
+% cc=cc+1;
+% keys.loc(cc).tt.choice = NaN;
+% keys.loc(cc).tt.tasktypes = {'Fsac_opt','Vsac_opt'};
+% keys.loc(cc).vmr_path = 'Y:\Projects\Pulv_bodysignal\scans\MA_20230203_left_chamber_normal_neurological_0.25mm.vmr';
+% keys.loc(cc).z_offset_mm = 38.5+7; % mm, distance from chamber top to "brain entry", should be different from 0 if z is from top of the chamber
+% keys.loc(cc).monkey_prefix = 'MA_';
+% keys.loc(cc).monkey='Mag';
+% keys.loc(cc).target_area='PCC_L';
+% keys.loc(cc).area_color=[0.05 0.65 0.3];
+% keys.loc(cc).grid_id = 'GRID.22.2';
+% keys.loc(cc).significance_to_plot = 'ungrouped';
+% keys.loc(cc).saggital_or_coronal = 'coronal';
+% keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
+% keys.loc(cc).folder_suffix        = selection_lists{listNum};
+% 
+% % Magnus left PCC - sagittal
+% cc=cc+1;
+% keys.loc(cc).tt.choice = NaN;
+% keys.loc(cc).tt.tasktypes = {'Fsac_opt','Vsac_opt'};
+% keys.loc(cc).vmr_path = 'Y:\Projects\Pulv_bodysignal\scans\MA_20230203_left_chamber_normal_neurological_0.25mm.vmr';
+% keys.loc(cc).z_offset_mm = 38.5+7; % mm, distance from chamber top to "brain entry", should be different from 0 if z is from top of the chamber
+% keys.loc(cc).monkey_prefix = 'MA_';
+% keys.loc(cc).monkey='Mag';
+% keys.loc(cc).target_area='PCC_L';
+% keys.loc(cc).area_color=[0.05 0.65 0.3];
+% keys.loc(cc).grid_id = 'GRID.22.2';
+% keys.loc(cc).significance_to_plot = 'ungrouped';
+% keys.loc(cc).saggital_or_coronal = 'sagittal';
+% keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
+% keys.loc(cc).folder_suffix        = selection_lists{listNum};
+% 
+% % Magnus right PPC - coronal
 cc=cc+1;
-keys.loc(cc).tt.choice            = NaN;
-keys.loc(cc).tt.tasktypes         = {'Fsac_opt','Vsac_opt'};
-keys.loc(cc).vmr_path             = 'Y:\Projects\Pulv_bodysignal\scans\MA_20230203_left_chamber_normal_neurological_0.25mm.vmr';
-keys.loc(cc).z_offset_mm          = 38.5+7; % mm, distance from chamber top to "brain entry", should be different from 0 if z is from top of the chamber
-keys.loc(cc).monkey_prefix        = 'MA_';
-keys.loc(cc).monkey               = 'Mag';
-keys.loc(cc).target_area          = 'MD_L';
-keys.loc(cc).area_color           = [1 0 0.6];
-keys.loc(cc).grid_id              = 'GRID.22.2';
+keys.loc(cc).tt.choice = NaN;
+keys.loc(cc).tt.tasktypes = {'Fsac_opt','Vsac_opt'};
+keys.loc(cc).vmr_path = 'Y:\Projects\Pulv_bodysignal\scans\MA_20230203_right_chamber_normal_neurological_0.25mm.vmr';
+keys.loc(cc).z_offset_mm = 39+7; % mm, distance from chamber top to "brain entry", should be different from 0 if z is from top of the chamber
+keys.loc(cc).monkey_prefix = 'MA_';
+keys.loc(cc).monkey='Mag';
+keys.loc(cc).target_area='PPC_R';
+keys.loc(cc).area_color=[1 0.85 0];
+keys.loc(cc).grid_id = 'GRID.22.2';
 keys.loc(cc).significance_to_plot = 'ungrouped';
-keys.loc(cc).saggital_or_coronal  = 'coronal';
+keys.loc(cc).saggital_or_coronal = 'coronal';
 keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
 keys.loc(cc).folder_suffix        = selection_lists{listNum};
 
-% Magnus left MD - sagittal
+% Magnus right PPC - sagittal
 cc=cc+1;
-keys.loc(cc).tt.choice            = NaN;
-keys.loc(cc).tt.tasktypes         = {'Fsac_opt','Vsac_opt'};
-keys.loc(cc).vmr_path             = 'Y:\Projects\Pulv_bodysignal\scans\MA_20230203_left_chamber_normal_neurological_0.25mm.vmr';
-keys.loc(cc).z_offset_mm          = 38.5+7; % mm, distance from chamber top to "brain entry", should be different from 0 if z is from top of the chamber
-keys.loc(cc).monkey_prefix        = 'MA_';
-keys.loc(cc).monkey               = 'Mag';
-keys.loc(cc).target_area          = 'MD_L';
-keys.loc(cc).area_color           = [1 0 0.6];
-keys.loc(cc).grid_id              = 'GRID.22.2';
+keys.loc(cc).tt.choice = NaN;
+keys.loc(cc).tt.tasktypes = {'Fsac_opt','Vsac_opt'};
+keys.loc(cc).vmr_path = 'Y:\Projects\Pulv_bodysignal\scans\MA_20230203_right_chamber_normal_neurological_0.25mm.vmr';
+keys.loc(cc).z_offset_mm = 39+7; % mm, distance from chamber top to "brain entry", should be different from 0 if z is from top of the chamber
+keys.loc(cc).monkey_prefix = 'MA_';
+keys.loc(cc).monkey='Mag';
+keys.loc(cc).target_area='PPC_R';
+keys.loc(cc).area_color=[1 0.85 0];
+keys.loc(cc).grid_id = 'GRID.22.2';
 keys.loc(cc).significance_to_plot = 'ungrouped';
-keys.loc(cc).saggital_or_coronal  = 'sagittal';
+keys.loc(cc).saggital_or_coronal = 'sagittal';
 keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
 keys.loc(cc).folder_suffix        = selection_lists{listNum};
 
