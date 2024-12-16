@@ -30,7 +30,7 @@ for listNum = 1:length(selection_lists)
 % keys.loc(cc).grid_id = 'GRID.22.2';
 % keys.loc(cc).significance_to_plot = 'ungrouped';
 % keys.loc(cc).saggital_or_coronal = 'coronal';
-% keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
+% keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest_state4\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
 % keys.loc(cc).folder_suffix        = selection_lists{listNum};
 % 
 % % Magnus left VPL - sagittal
@@ -46,7 +46,7 @@ for listNum = 1:length(selection_lists)
 % keys.loc(cc).grid_id = 'GRID.22.2';
 % keys.loc(cc).significance_to_plot = 'ungrouped';
 % keys.loc(cc).saggital_or_coronal = 'sagittal';
-% keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
+% keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest_state4\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
 % keys.loc(cc).folder_suffix        = selection_lists{listNum};
 
 % % % Magnus left dPul - coronal
@@ -62,7 +62,7 @@ for listNum = 1:length(selection_lists)
 % keys.loc(cc).grid_id = 'GRID.22.2';
 % keys.loc(cc).significance_to_plot = 'ungrouped';
 % keys.loc(cc).saggital_or_coronal = 'coronal';
-% keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
+% keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest_state4\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
 % keys.loc(cc).folder_suffix        = selection_lists{listNum};
 % 
 % % Magnus dPul - sagittal
@@ -78,7 +78,7 @@ for listNum = 1:length(selection_lists)
 % keys.loc(cc).grid_id = 'GRID.22.2';
 % keys.loc(cc).significance_to_plot = 'ungrouped';
 % keys.loc(cc).saggital_or_coronal = 'sagittal';
-% keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
+% keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest_state4\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
 % keys.loc(cc).folder_suffix        = selection_lists{listNum};
 % 
 % % % right dPul - coronal
@@ -94,7 +94,7 @@ for listNum = 1:length(selection_lists)
 % keys.loc(cc).grid_id = 'GRID.22.2';
 % keys.loc(cc).significance_to_plot = 'ungrouped';
 % keys.loc(cc).saggital_or_coronal = 'coronal';
-% keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
+% keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest_state4\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
 % keys.loc(cc).folder_suffix        = selection_lists{listNum};
 % 
 % % % right dPul - sagittal
@@ -110,7 +110,7 @@ for listNum = 1:length(selection_lists)
 % keys.loc(cc).grid_id = 'GRID.22.2';
 % keys.loc(cc).significance_to_plot = 'ungrouped';
 % keys.loc(cc).saggital_or_coronal = 'sagittal';
-% keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
+% keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest_state4\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
 % keys.loc(cc).folder_suffix        = selection_lists{listNum};
 
 % % Magnus left MD - coronal
@@ -126,7 +126,7 @@ for listNum = 1:length(selection_lists)
 % keys.loc(cc).grid_id              = 'GRID.22.2';
 % keys.loc(cc).significance_to_plot = 'ungrouped';
 % keys.loc(cc).saggital_or_coronal  = 'coronal';
-% keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
+% keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest_state4\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
 % keys.loc(cc).folder_suffix        = selection_lists{listNum};
 % 
 % % Magnus left MD - sagittal
@@ -142,7 +142,7 @@ for listNum = 1:length(selection_lists)
 % keys.loc(cc).grid_id              = 'GRID.22.2';
 % keys.loc(cc).significance_to_plot = 'ungrouped';
 % keys.loc(cc).saggital_or_coronal  = 'sagittal';
-% keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
+% keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest_state4\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
 % keys.loc(cc).folder_suffix        = selection_lists{listNum};
 
 % % % Magnus right AIP - coronal
@@ -158,7 +158,7 @@ for listNum = 1:length(selection_lists)
 % keys.loc(cc).grid_id = 'GRID.22.2';
 % keys.loc(cc).significance_to_plot = 'ungrouped';
 % keys.loc(cc).saggital_or_coronal = 'coronal';
-% keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
+% keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest_state4\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
 % keys.loc(cc).folder_suffix        = selection_lists{listNum};
 % 
 % % Magnus right AIP - sagittal
@@ -174,7 +174,7 @@ for listNum = 1:length(selection_lists)
 % keys.loc(cc).grid_id = 'GRID.22.2';
 % keys.loc(cc).significance_to_plot = 'ungrouped';
 % keys.loc(cc).saggital_or_coronal = 'sagittal';
-% keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
+% keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest_state4\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
 % keys.loc(cc).folder_suffix        = selection_lists{listNum};
 % 
 % % % Magnus left PCC - coronal
@@ -190,7 +190,7 @@ for listNum = 1:length(selection_lists)
 % keys.loc(cc).grid_id = 'GRID.22.2';
 % keys.loc(cc).significance_to_plot = 'ungrouped';
 % keys.loc(cc).saggital_or_coronal = 'coronal';
-% keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
+% keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest_state4\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
 % keys.loc(cc).folder_suffix        = selection_lists{listNum};
 % 
 % % Magnus left PCC - sagittal
@@ -206,7 +206,7 @@ for listNum = 1:length(selection_lists)
 % keys.loc(cc).grid_id = 'GRID.22.2';
 % keys.loc(cc).significance_to_plot = 'ungrouped';
 % keys.loc(cc).saggital_or_coronal = 'sagittal';
-% keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
+% keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest_state4\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
 % keys.loc(cc).folder_suffix        = selection_lists{listNum};
 % 
 % % Magnus right PPC - coronal
@@ -222,7 +222,7 @@ keys.loc(cc).area_color=[1 0.85 0];
 keys.loc(cc).grid_id = 'GRID.22.2';
 keys.loc(cc).significance_to_plot = 'ungrouped';
 keys.loc(cc).saggital_or_coronal = 'coronal';
-keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
+keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest_state4\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
 keys.loc(cc).folder_suffix        = selection_lists{listNum};
 
 % Magnus right PPC - sagittal
@@ -238,7 +238,7 @@ keys.loc(cc).area_color=[1 0.85 0];
 keys.loc(cc).grid_id = 'GRID.22.2';
 keys.loc(cc).significance_to_plot = 'ungrouped';
 keys.loc(cc).saggital_or_coronal = 'sagittal';
-keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
+keys.loc(cc).unit_list            = ['Y:\Projects\Pulv_bodysignal\ECG_triggered_spikes\ECG_Magnus_TaskRest_state4\' list_folders{listNum} '\unitInfo' selection_lists{listNum} '.mat'];
 keys.loc(cc).folder_suffix        = selection_lists{listNum};
 
 end
