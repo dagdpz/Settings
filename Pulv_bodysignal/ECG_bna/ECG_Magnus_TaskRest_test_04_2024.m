@@ -5,8 +5,8 @@ cfg.outNameCap = 0;
 cfg.spikes_version='ECG_TaskRest_Magnus_merged'; %% this is for loading tuning table (?)
 cfg.process_per_session=1;
 cfg.process_population=1;
-cfg.process_LFP=0;
-cfg.process_spikes=1;
+cfg.process_LFP=1;
+cfg.process_spikes=0;
 cfg.process_Rpeaks_inhalation_exhalation = 0;
 cfg.process_ECG=0;
 cfg.plot_significant=1;
@@ -15,7 +15,8 @@ cfg.save_fig_format={'pdf'};
 
 
 
-cfg.spk.jitter_method='trigger_jitter'; % 'train_jitter';'interval_jitter';'trigger_jitter'
+%cfg.spk.jitter_method='trigger_jitter'; % 'train_jitter';'interval_jitter';'trigger_jitter'
+cfg.spk.jitter_method='uniform dithering'; % 'train_jitter';'interval_jitter';'trigger_jitter'
 %% what and how to process things in spike analysis
 cfg.spk.compute_unit_subsets      = 0;
 cfg.spk.move_files                = 0;
@@ -47,11 +48,7 @@ cfg.spk.plot_spike_phase          = 0;
 ephys_folder=['Y:\Projects\' project '\ephys\' cfg.spikes_version filesep];
 ecg_preprocess_folder='Y:\Data\BodySignals\ECG_CAP\';
 monkeys={'Magnus'};
-sessions{1}=sort([20220921, 20221115, 20221118, 20221122, 20221125, 20221206, ...
-    20221222, 20221229, 20230104, 20230106, 20230112, 20230126, ...
-    20230511, 20230518, 20230519, 20230524, 20230525, 20230526, ...
-    20230531, 20230601, 20230602, 20230607, 20230608, 20230609, ...
-    20230614, 20230615, 20230616, 20230621, 20230622, 20230623]);
+sessions{1}=sort([20221115]);
 % sessions{1}=sort([20221115, 20221118, 20221122, 20221125, 20221206, ...
 %     20221222, 20221229, 20230104, 20230106, 20230112, 20230126, ...
 %     20230511, 20230518, 20230519, 20230524, 20230525, 20230526, ...
@@ -117,6 +114,8 @@ cfg.condition(2).Rpeak_field = '';
 cfg.analyse_states = {'R',    'Rpeak',1,-0.25, 0.25;...
                       'R_in', 'Rpeak_insp',1,-0.25, 0.25;...
                       'R_ex', 'Rpeak_exp',1,-0.25, 0.25;...
+                      'R_low', 'Rpeak_lowIBI',1,-0.25, 0.25;...
+                      'R_high', 'Rpeak_highIBI',1,-0.25, 0.25;...
                       'CAP',  'CAP',1,-0.5, 0.5;...
                       'Cue',  'state',4,-0.10, 0.4};
 
@@ -149,7 +148,7 @@ cfg.lfp.significance_method = '95Conf_intrvl';
 %% spike settings
 cfg.spk.analyses={'spike_histogram','spike_phase_ECG_cycle'};
 
-cfg.spk.n_permutations=1000; % number of shuffles required
+cfg.spk.n_permutations=100; % number of shuffles required
 cfg.spk.significance_window=[-0.25 0.25];
 cfg.spk.PSTH_binwidth=0.01;
 cfg.spk.kernel_type='gaussian';
