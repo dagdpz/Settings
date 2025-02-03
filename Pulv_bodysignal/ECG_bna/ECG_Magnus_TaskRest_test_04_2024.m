@@ -122,7 +122,7 @@ cfg.analyse_states = {'R',    'Rpeak',1,-0.25, 0.25;...
 %% LFP settings
 cfg.lfp.n_permutations  = 100; % number of shuffles required
 cfg.lfp.foi             = logspace(log10(2), log10(120), 60);
-cfg.lfp.timestep        = 0.01; %% in ms
+cfg.lfp.timestep        = 0.01; %% in s
 cfg.lfp.frequency_bands = [2 4; 4 8; 8 14; 14 30; 30 50; 70 120];
 cfg.lfp.n_cycles        = 5;
 cfg.lfp.smoothWin       = 5;
