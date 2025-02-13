@@ -91,7 +91,7 @@ end
 % Example:
 % 1. lfp_tfa_cfg.compare.targets = {'MIPa_R', 'MIPa_L', 'dPul_R', 'dPul_L'}; 
 cfg.targets = {'dPul_R', 'dPul_L','VPL_R', 'VPL_L','MD_L','MD_R','AIP_R','AIP_L','PCC_L','PCC_R', 'PPC_L', 'PPC_R'};
-cfg.combine_hemispheres = 1;
+cfg.combine_hemispheres = 0;
 cfg.contra_ipsi_relative_to='target';
 
 %% Settings for averaging TFR and evoked LFP based on conditions
@@ -123,11 +123,11 @@ cfg.lfp.IBI             = 1; % logical setting for re-writting the Rpeaks
 % based on the R2R_valid_consec
 cfg.lfp.IBI_thrsh_file      = ['Y:\Projects\Pulv_bodysignal\HeartRate_Changes_all_Blocks\',...
     monkeys{1},'\All_session_IBIsplit_thresh_Task_Rest.mat']; % threshold of IBI for Magnus [0.4276, 0.4306];
-cfg.lfp.IBI_low         = 0;
+cfg.lfp.IBI_low         = 0; %%%
 cfg.lfp.IBI_high        = 1;
 cfg.lfp.TaskRest_diff   = 1;
 cfg.lfp.IBI_diff        = 1;
-cfg.lfp.IBIdiff_type    = 'raw'; % can also be the 'normalized' , 'raw';
+cfg.lfp.IBIdiff_type    = 'normalized'; % can also be the 'normalized' , 'raw';
 cfg.lfp.cluster_perm    = 1;
 
 % method to be used for shuffle predictor normalization

@@ -85,7 +85,7 @@ end
 % Example:
 % 1. lfp_tfa_cfg.compare.targets = {'MIPa_R', 'MIPa_L', 'dPul_R', 'dPul_L'}; 
 cfg.targets = {'dPul_R', 'dPul_L','VPL_R', 'VPL_L','MD_L','MD_R','AIP_R','AIP_L','PCC_L','PCC_R', 'PPC_L', 'PPC_R'};
-cfg.combine_hemispheres = 1;
+cfg.combine_hemispheres = 0;
 cfg.contra_ipsi_relative_to='target';
 
 %% Settings for averaging TFR and evoked LFP based on conditions
