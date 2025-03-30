@@ -2,8 +2,9 @@
 
 % initialize configuration structure
 cfg.outNameCap = 0;
-cfg.spikes_version='ECG_TaskRest_Magnus_merged'; %% this is for loading tuning table (?)
-cfg.process_per_session=1;
+% cfg.spikes_version='ECG_TaskRest_Magnus_merged'; %% this is for loading tuning table (?)
+cfg.spikes_version='ECG_TaskRest_Magnus_state4'; %% this is for loading tuning table (?)
+cfg.process_per_session=0;
 cfg.process_population=1;
 cfg.process_LFP=1;
 cfg.process_spikes=0;
@@ -45,12 +46,13 @@ cfg.spk.plot_spike_phase          = 0;
 ephys_folder=['Y:\Projects\' project '\ephys\' cfg.spikes_version filesep];
 ecg_preprocess_folder='Y:\Data\BodySignals\ECG_CAP\';
 monkeys={'Magnus'};
-sessions{1}=sort([20230623]);
-% sessions{1}=sort([20221115, 20221118, 20221122, 20221125, 20221206, ...
-%     20221222, 20221229, 20230104, 20230106, 20230112, 20230126, ...
+
+sessions{1}=sort([20230623]); 
+% sessions{1}=sort(unique([20220921, 20221115, 20221118, 20221122,...
+%     20221206, 20221222, 20230106, 20221229, 20230104, 20230112, 20230126, ...
 %     20230511, 20230518, 20230519, 20230524, 20230525, 20230526, ...
-%     20230531, 20230601, 20230602, 20230607, 20230608, 20230609, ...
-%     20230614, 20230615, 20230616, 20230621, 20230622, 20230623]);
+%     20230601, 20230602, 20230607, 20230609, 20230614, 20230615,...
+%     20230616, 20230621, 20230623])); % skipped 20221125, - wrong electrode alignment;
 
 cumulative_sessions=0;
 for m=1:numel(monkeys)
@@ -91,7 +93,7 @@ end
 % 1. lfp_tfa_cfg.compare.targets = {'MIPa_R', 'MIPa_L', 'dPul_R', 'dPul_L'}; 
 cfg.targets = {'VPL_R', 'VPL_L', 'dPul_R', 'dPul_L','MD_L','MD_R'};
 cfg.combine_hemispheres = 1;
-cfg.contra_ipsi_relative_to = 'target';
+cfg.contra_ipsi_relative_to = 'target'; 
 
 %% Settings for averaging TFR and evoked LFP based on conditions
 cfg.condition(1).name='Rest';
@@ -129,6 +131,8 @@ cfg.lfp.IBI             = 0; % logical setting for re-writting the Rpeaks
 cfg.lfp.IBI_thrsh       = 0.4; % threshold of IBI for Magnus
 cfg.lfp.IBI_low         = 1;
 cfg.lfp.IBI_high        = 0;
+
+cfg.lfp.Reref           = 0;
 
 % method to be used for shuffle predictor normalization
 % can be 'zscore', 'not normalized', 'subtraction', 'division'

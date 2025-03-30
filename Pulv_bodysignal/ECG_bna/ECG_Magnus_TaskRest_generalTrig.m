@@ -2,8 +2,8 @@
 
 % initialize configuration structure
 cfg.outNameCap = 0;
-% cfg.spikes_version='ECG_TaskRest_Bacchus_merged'; %% this is for loading tuning table (?)
-cfg.spikes_version='ECG_TaskRest_Bacchus_state4'; %% this is for loading tuning table (?)
+% cfg.spikes_version='ECG_TaskRest_Magnus_merged'; %% this is for loading tuning table (?)
+cfg.spikes_version='ECG_TaskRest_Magnus_state4'; %% this is for loading tuning table (?)
 cfg.process_per_session=1;
 cfg.process_population=1;
 cfg.process_LFP=1;
@@ -45,21 +45,14 @@ cfg.spk.plot_spike_phase          = 0;
 
 ephys_folder=['Y:\Projects\' project '\ephys\' cfg.spikes_version filesep];
 ecg_preprocess_folder='Y:\Data\BodySignals\ECG_CAP\';
-monkeys={'Bacchus'};
-% sessions{1}=sort([20211103]);
-%todo:, 20211214, 20220222,20220225, 20220309,  
-%done:20220322, 20210903, 20220315,20211012, 20220318,20211214
+monkeys={'Magnus'};
 
-
-sessions{1}=sort(unique([20210715, 20210716,20210720, 20210722, 20210723, 20210729, ...
-    20210730, 20210805, 20210806, 20210826, 20210827, 20210903, 20210905, ...
-    20210906, 20210930, 20211007, 20211012, 20211013, ...
-    20211014, 20211019, 20211027, 20211028, 20211102, 20211103, 20211116, ...
-    20211117, 20211207, 20211214, 20220105, 20220106, 20220203, ...
-    20220211, 20220221, 20220222, 20220224, 20220225, 20220309, 20220310, ...
-    20220315, 20220318, 20220322])); % skipped 20211001, 20211005, 20211222, 
-
-
+sessions{1}=sort([20230106]); 
+% sessions{1}=sort(unique([20220921, 20221115, 20221118, 20221122,...
+%     20221206, 20221222, 20230106, 20221229, 20230104, 20230112, 20230126, ...
+%     20230511, 20230518, 20230519, 20230524, 20230525, 20230526, ...
+%     20230601, 20230602, 20230607, 20230609, 20230614, 20230615,...
+%     20230616, 20230621, 20230623])); % skipped 20221125, - wrong electrode alignment;
 
 cumulative_sessions=0;
 for m=1:numel(monkeys)
@@ -100,7 +93,7 @@ end
 % 1. lfp_tfa_cfg.compare.targets = {'MIPa_R', 'MIPa_L', 'dPul_R', 'dPul_L'}; 
 cfg.targets = {'VPL_R', 'VPL_L', 'dPul_R', 'dPul_L','MD_L','MD_R'};
 cfg.combine_hemispheres = 1;
-cfg.contra_ipsi_relative_to = 'target';
+cfg.contra_ipsi_relative_to = 'target'; 
 
 %% Settings for averaging TFR and evoked LFP based on conditions
 cfg.condition(1).name='Rest';
@@ -118,16 +111,13 @@ cfg.condition(2).accepted=1; %% works only for spikes
 cfg.condition(2).Rpeak_field = '';
 
 %% define events - only shared 
-% cfg.analyse_states = {'R',    'Rpeak',1,-0.25, 0.25;...
-%                       'R_in', 'Rpeak_insp',1,-0.25, 0.25;...
-%                       'R_ex', 'Rpeak_exp',1,-0.25, 0.25;...
-%                       'R_low', 'Rpeak_lowIBI',1,-0.25, 0.25;...
-%                       'R_high', 'Rpeak_highIBI',1,-0.25, 0.25;...
-%                       'CAP',  'CAP',1,-0.5, 0.5;...
-%                       'Cue',  'state',4,-0.10, 0.4};
 cfg.analyse_states = {'R',    'Rpeak',1,-0.25, 0.25;...
+                      'R_in', 'Rpeak_insp',1,-0.25, 0.25;...
+                      'R_ex', 'Rpeak_exp',1,-0.25, 0.25;...
                       'R_low', 'Rpeak_lowIBI',1,-0.25, 0.25;...
-                      'R_high', 'Rpeak_highIBI',1,-0.25, 0.25};
+                      'R_high', 'Rpeak_highIBI',1,-0.25, 0.25;...
+                      'CAP',  'CAP',1,-0.5, 0.5;...
+                      'Cue',  'state',4,-0.10, 0.4};
 
 %% LFP settings
 cfg.lfp.n_permutations  = 100; % number of shuffles required
@@ -143,6 +133,7 @@ cfg.lfp.IBI_low         = 1;
 cfg.lfp.IBI_high        = 0;
 
 cfg.lfp.Reref           = 0;
+cfg.lfp.removeComplete  = 1;
 
 % method to be used for shuffle predictor normalization
 % can be 'zscore', 'not normalized', 'subtraction', 'division'
