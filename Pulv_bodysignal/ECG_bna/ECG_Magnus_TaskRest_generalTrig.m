@@ -5,7 +5,7 @@ cfg.outNameCap = 0;
 % cfg.spikes_version='ECG_TaskRest_Magnus_merged'; %% this is for loading tuning table (?)
 cfg.spikes_version='ECG_TaskRest_Magnus_state4'; %% this is for loading tuning table (?)
 cfg.process_per_session=1;
-cfg.process_population=1;
+cfg.process_population=0;
 cfg.process_LFP=1;
 cfg.process_spikes=0;
 cfg.process_Rpeaks_inhalation_exhalation = 0;
@@ -14,7 +14,7 @@ cfg.plot_significant=1;
 cfg.save_fig_format={'pdf'};
    
 %cfg.spk.jitter_method='trigger_jitter'; % 'train_jitter';'interval_jitter';'trigger_jitter'
-cfg.spk.jitter_method='uniform dithering'; % 'train_jitter';'interval_jitter';'trigger_jitter'
+cfg.spk.jitter_method= 'train_jitter';%'uniform dithering';'interval_jitter';'trigger_jitter'
 %% what and how to process things in spike analysis
 cfg.spk.compute_unit_subsets      = 0;
 cfg.spk.move_files                = 0;
@@ -47,7 +47,10 @@ ephys_folder=['Y:\Projects\' project '\ephys\' cfg.spikes_version filesep];
 ecg_preprocess_folder='Y:\Data\BodySignals\ECG_CAP\';
 monkeys={'Magnus'};
 
-sessions{1}=sort([20230106]); 
+% sample session that I worked on until 24.04.25 : 20230106
+sessions{1}=sort([20230519, 20230524, 20230525, 20230526, ...
+    20230601, 20230602, 20230607, 20230609, 20230614, 20230615,...
+    20230616, 20230621, 20230623]); 
 % sessions{1}=sort(unique([20220921, 20221115, 20221118, 20221122,...
 %     20221206, 20221222, 20230106, 20221229, 20230104, 20230112, 20230126, ...
 %     20230511, 20230518, 20230519, 20230524, 20230525, 20230526, ...
@@ -120,7 +123,7 @@ cfg.analyse_states = {'R',    'Rpeak',1,-0.25, 0.25;...
                       'Cue',  'state',4,-0.10, 0.4};
 
 %% LFP settings
-cfg.lfp.n_permutations  = 100; % number of shuffles required
+cfg.lfp.n_permutations  = 500; % number of shuffles required
 cfg.lfp.foi             = logspace(log10(2), log10(120), 60);
 cfg.lfp.timestep        = 0.01; %% in s
 cfg.lfp.frequency_bands = [2 4; 4 8; 8 14; 14 30; 30 50; 70 120];
@@ -133,7 +136,9 @@ cfg.lfp.IBI_low         = 1;
 cfg.lfp.IBI_high        = 0;
 
 cfg.lfp.Reref           = 0;
+cfg.lfp.runICA          = 1;
 cfg.lfp.removeComplete  = 1;
+cfg.lfp.TaskRest_SigClust  = 0;
 
 % method to be used for shuffle predictor normalization
 % can be 'zscore', 'not normalized', 'subtraction', 'division'
@@ -151,7 +156,7 @@ cfg.lfp.significance_method = '95Conf_intrvl';
 %% spike settings
 cfg.spk.analyses={'spike_histogram','spike_phase_ECG_cycle'};
 
-cfg.spk.n_permutations=100; % number of shuffles required
+cfg.spk.n_permutations=500; % number of shuffles required
 cfg.spk.significance_window=[-0.25 0.25];
 cfg.spk.PSTH_binwidth=0.01;
 cfg.spk.kernel_type='gaussian';

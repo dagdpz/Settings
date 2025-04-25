@@ -4,7 +4,7 @@
 cfg.outNameCap = 0;
 % cfg.spikes_version='ECG_TaskRest_Bacchus_merged'; %% this is for loading tuning table (?)
 cfg.spikes_version='ECG_TaskRest_Bacchus_state4'; %% this is for loading tuning table (?)
-cfg.process_per_session=1;
+cfg.process_per_session=0;
 cfg.process_population=1;
 cfg.process_LFP=1;
 cfg.process_spikes=0;
@@ -46,15 +46,13 @@ cfg.spk.plot_spike_phase          = 0;
 ephys_folder=['Y:\Projects\' project '\ephys\' cfg.spikes_version filesep];
 ecg_preprocess_folder='Y:\Data\BodySignals\ECG_CAP\';
 monkeys={'Bacchus'};
-% sessions{1}=sort([20211103]);
-%todo:, 20211214, 20220222,20220225, 20220309,  
-%done:20220322, 20210903, 20220315,20211012, 20220318,20211214
 
 
-sessions{1}=sort(unique([20210715, 20210716,20210720, 20210722, 20210723, 20210729, ...
-    20210730, 20210805, 20210806, 20210826, 20210827, 20210903, 20210905, ...
+% excluded due to error: 20210806,  20210903, 20211027, 20211102, 
+sessions{1}=sort(unique([ 20210715, 20210716,20210720, 20210722, 20210723,...
+    20210729, 20210730, 20210805, 20210826, 20210827, 20210905, ...
     20210906, 20210930, 20211007, 20211012, 20211013, ...
-    20211014, 20211019, 20211027, 20211028, 20211102, 20211103, 20211116, ...
+    20211014, 20211019, 20211028, 20211103, 20211116, ...
     20211117, 20211207, 20211214, 20220105, 20220106, 20220203, ...
     20220211, 20220221, 20220222, 20220224, 20220225, 20220309, 20220310, ...
     20220315, 20220318, 20220322])); % skipped 20211001, 20211005, 20211222, 
@@ -127,7 +125,8 @@ cfg.condition(2).Rpeak_field = '';
 %                       'Cue',  'state',4,-0.10, 0.4};
 cfg.analyse_states = {'R',    'Rpeak',1,-0.25, 0.25;...
                       'R_low', 'Rpeak_lowIBI',1,-0.25, 0.25;...
-                      'R_high', 'Rpeak_highIBI',1,-0.25, 0.25};
+                      'R_high', 'Rpeak_highIBI',1,-0.25, 0.25;...
+                      'Cue',  'state',4,-0.10, 0.4};
 
 %% LFP settings
 cfg.lfp.n_permutations  = 100; % number of shuffles required
@@ -143,6 +142,7 @@ cfg.lfp.IBI_low         = 1;
 cfg.lfp.IBI_high        = 0;
 
 cfg.lfp.Reref           = 0;
+cfg.lfp.removeComplete  = 1;
 
 % method to be used for shuffle predictor normalization
 % can be 'zscore', 'not normalized', 'subtraction', 'division'

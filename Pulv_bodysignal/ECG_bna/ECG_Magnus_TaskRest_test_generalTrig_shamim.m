@@ -47,12 +47,13 @@ ephys_folder=['Y:\Projects\' project '\ephys\' cfg.spikes_version filesep];
 ecg_preprocess_folder='Y:\Data\BodySignals\ECG_CAP\';
 monkeys={'Magnus'};
 
-sessions{1}=sort([20230623]); 
-% sessions{1}=sort(unique([20220921, 20221115, 20221118, 20221122,...
-%     20221206, 20221222, 20230106, 20221229, 20230104, 20230112, 20230126, ...
-%     20230511, 20230518, 20230519, 20230524, 20230525, 20230526, ...
-%     20230601, 20230602, 20230607, 20230609, 20230614, 20230615,...
-%     20230616, 20230621, 20230623])); % skipped 20221125, - wrong electrode alignment;
+% sessions{1}=sort([20230623]); 
+sessions{1}=sort(unique([20220921, 20221115, 20221118, 20221122,...
+    20221206, 20221222, 20230106, 20221229, 20230104, 20230112, 20230126, ...
+    20230511, 20230518, 20230519, 20230524, 20230525, 20230526, ...
+    20230601, 20230602, 20230607, 20230609, 20230614, 20230615,...
+    20230616, 20230621, 20230623])); % skipped 20221125, - wrong electrode alignment;
+
 
 cumulative_sessions=0;
 for m=1:numel(monkeys)
@@ -133,7 +134,7 @@ cfg.lfp.IBI_low         = 1;
 cfg.lfp.IBI_high        = 0;
 
 cfg.lfp.Reref           = 0;
-
+cfg.lfp.removeComplete  = 1;
 % method to be used for shuffle predictor normalization
 % can be 'zscore', 'not normalized', 'subtraction', 'division'
 % 'subtraction'- difference between real and shuffled variable
