@@ -14,7 +14,7 @@ cfg.plot_significant=1;
 cfg.save_fig_format={'pdf'};
    
 %cfg.spk.jitter_method='trigger_jitter'; % 'train_jitter';'interval_jitter';'trigger_jitter'
-cfg.spk.jitter_method= 'train_jitter';%'uniform dithering';%'interval_jitter';'trigger_jitter'
+cfg.spk.jitter_method= 'uniform dithering';%'train_jitter';%'interval_jitter';'trigger_jitter'
 %% what and how to process things in spike analysis
 cfg.spk.compute_unit_subsets      = 0;
 cfg.spk.move_files                = 0;
@@ -43,8 +43,8 @@ cfg.spk.plot_spike_phase          = 0;
 %       Input_file:     Absolute path to the file containing LFP data for the session
 %       'Input_ECG_combined', 'Y:/Data/Bacchus_phys_combined_monkeypsych_TDT/20191213', ...
 
-ephys_folder=['/home/shamim/fileserver/Projects/' project '/ephys/' cfg.spikes_version filesep];
-ecg_preprocess_folder='/home/shamim/fileserver/Data/BodySignals/ECG_CAP/';
+ephys_folder=['Y:',filesep,'Projects',filesep,project,filesep,'ephys',filesep,cfg.spikes_version filesep];
+ecg_preprocess_folder=['Y:',filesep,'Data',filesep,'BodySignals',filesep,'ECG_CAP'];
 monkeys={'Magnus'};
 
 % % sample session that I worked on until 24.04.25 : 20230106
@@ -52,12 +52,12 @@ monkeys={'Magnus'};
 %     20230518, 20230519, 20230524, 20230525, 20230526, 20230601, ...
 %     20230602, 20230607, 20230609, 20230614, 20230615, 20230616, 20230621,...
 %     20230623]); % Done!
-sessions{1}=sort([20230616]); % sample ICA removal sessions
+sessions{1}=sort([20230614,20230621]);
 % sessions{1}=sort(unique([20220921, 20221115, 20221118, 20221122,...
 %     20221206, 20221222, 20230106, 20221229, 20230104, 20230112, 20230126, ...
 %     20230511, 20230518, 20230519, 20230524, 20230525, 20230526, ...
 %     20230601, 20230602, 20230607, 20230609, 20230614, 20230615,...
-%     20230608 ,20230531, 20230616, 20230621, 20230623])); % skipped 20221125, - wrong electrode alignment, 20230621 -raw file missing! ;
+%     20230608 ,20230531, 20230616, 20230621, 20230623])); % skipped 20221125, - wrong electrode alignment, 20230622 -raw file missing! ;
 
 cumulative_sessions=0;
 for m=1:numel(monkeys)
@@ -73,7 +73,7 @@ for m=1:numel(monkeys)
             'Input_spikes',         [ephys_folder 'population_' monkey '_' date '.mat'],...
             'Input_trials',         [ephys_folder 'trials_' monkey '_' date '.mat'],...
             'Input_LFP',            {{[ephys_folder 'sites_' monkey '_' date '*.mat']}},...
-            'Input_WC',             ['/home/shamim/fileserver/Data/Sortcodes/' monkey '_phys' filesep date filesep 'WC' filesep]);
+            'Input_WC',             ['Y:',filesep,'Data',filesep,'Sortcodes',filesep,monkey, '_phys' filesep date filesep 'WC' filesep]);
     end
 end
 
@@ -129,7 +129,7 @@ cfg.analyse_states = {'R',    'Rpeak',1,-0.25, 0.25;...
                       'Cue',  'state',4,-0.10, 0.4};
 
 %% LFP settings
-cfg.lfp.n_permutations  = 500; % number of shuffles required
+cfg.lfp.n_permutations  = 100; % number of shuffles required
 cfg.lfp.foi             = logspace(log10(2), log10(120), 60);
 cfg.lfp.timestep        = 0.01; %% in s
 cfg.lfp.frequency_bands = [2 4; 4 8; 8 14; 14 30; 30 50; 70 120];
@@ -162,7 +162,7 @@ cfg.lfp.significance_method = '95Conf_intrvl';
 %% spike settings
 cfg.spk.analyses={'spike_histogram','spike_phase_ECG_cycle'};
 
-cfg.spk.n_permutations=500; % number of shuffles required
+cfg.spk.n_permutations=100; % number of shuffles required
 cfg.spk.significance_window=[-0.25 0.25];
 cfg.spk.PSTH_binwidth=0.01;
 cfg.spk.kernel_type='gaussian';
@@ -215,7 +215,7 @@ cfg.spk.lag_list            = [-11 -7 -3 0 3 7 11];
 % % combination of methods to be used - future use
 % % currently all methods are used together 
 % cfg.noise.methods = {'amp', 'std', 'diff', 'pow'};
-% % threshold for lfp raw amplitude (number of std deviations from mean)
+% % % threshold for lfp raw amplitude (number of std deviations from mean)
 % cfg.noise.amp_thr = 6;
 % % number of consecutive samples beyond threshold to be considered for marking 
 % % a noisy trial
