@@ -4,8 +4,8 @@
 cfg.outNameCap = 0;
 % cfg.spikes_version='ECG_TaskRest_Magnus_merged'; %% this is for loading tuning table (?)
 cfg.spikes_version='ECG_TaskRest_Magnus_state4'; %% this is for loading tuning table (?)
-cfg.process_per_session=1;
-cfg.process_population=0;
+cfg.process_per_session=0;
+cfg.process_population=1;
 cfg.process_LFP=1;
 cfg.process_spikes=0;
 cfg.process_Rpeaks_inhalation_exhalation = 0;
@@ -133,6 +133,10 @@ cfg.lfp.n_permutations  = 100; % number of shuffles required
 cfg.lfp.foi             = logspace(log10(2), log10(120), 60);
 cfg.lfp.timestep        = 0.01; %% in s
 cfg.lfp.frequency_bands = [2 4; 4 8; 8 14; 14 30; 30 50; 70 120];
+cfg.lfp.freqb = {'delta 2-4 Hz','theta 4-8 Hz','alpha 8-14 Hz','beta 14-30 Hz','lowgamma 30-50 Hz','highgamma 70-150 Hz'};
+cfg.lfp.freqName = {'delta','theta','alpha','beta','lowGamma','highGamma'};
+
+
 cfg.lfp.n_cycles        = 5;
 cfg.lfp.smoothWin       = 5;
 cfg.lfp.IBI             = 0; % logical setting for re-writting the Rpeaks 
