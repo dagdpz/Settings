@@ -97,7 +97,8 @@ end
 % Those targets which are not in the analysed sessions will be ignored
 % Example:
 % 1. lfp_tfa_cfg.compare.targets = {'MIPa_R', 'MIPa_L', 'dPul_R', 'dPul_L'}; 
-cfg.targets = {'VPL_R', 'VPL_L', 'dPul_R', 'dPul_L','MD_L','MD_R'};
+%cfg.targets = {'VPL_R', 'VPL_L', 'dPul_R', 'dPul_L','MD_L','MD_R'};
+cfg.targets = {'VPL', 'dPul', 'MD'};
 cfg.combine_hemispheres = 0;
 cfg.contra_ipsi_relative_to = 'target'; 
 
@@ -131,7 +132,7 @@ cfg.analyse_states = {'R',    'Rpeak',1,-0.25, 0.25;...
 
 %% LFP settings
 cfg.lfp.n_permutations  = 100; % number of shuffles required
-cfg.lfp.foi             = logspace(log10(4), log10(120), 60);
+cfg.lfp.foi             = logspace(log10(2), log10(120), 60);
 cfg.lfp.timestep        = 0.01; %% in s
 cfg.lfp.frequency_bands = [2 4; 4 8; 8 14; 14 30; 30 50; 70 120];
 cfg.lfp.freqb = {'delta 2-4 Hz','theta 4-8 Hz','alpha 8-14 Hz','beta 14-30 Hz','lowgamma 30-50 Hz','highgamma 70-150 Hz'};
