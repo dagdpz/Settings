@@ -4,12 +4,13 @@ root_drive = 'Y:';%'/home/shamim/fileserver';
 % initialize configuration structure
 %cfg.spikes_version='ECG_TaskRest_Bacchus_state4'; %% this is for loading tuning table (?)
 cfg.spikes_version='ECG_TaskRest_Bacchus_MUA'; %% this is for loading tuning table (?)
-cfg.process_per_session=0;
+cfg.process_per_session=1;
 cfg.process_population=1;
-cfg.process_LFP=0;
+cfg.process_LFP=1;
 cfg.process_spikes=0;
 cfg.process_ECG=0;
 cfg.process_MUA=1;
+cfg.plot_per_site=0;
 
 cfg.save_fig_format={'pdf'};
    
@@ -63,11 +64,6 @@ sessions{1}=sort(unique([20210716, 20210720, 20210723,...
     20211117, 20211207, 20211214, 20220105, 20220106, ...
     20220203, 20220211, 20220221, 20220222, 20220224, ...
     20220225, 20220309, 20220310, 20220315, 20220318, 20220322])); 
-
-
-sessions{1}=sort(unique([20220322])); 
-
-
 
 
 % skipped 20211001, 20211005, 20211222, 
@@ -150,7 +146,8 @@ cfg.lfp.smoothWin       = 5;
 
 cfg.lfp.Reref           = 0;
 cfg.lfp.runICA          = 0;
-cfg.lfp.compare_conditions  = {[2 1]}; % task-rest
+%cfg.lfp.compare_conditions  = {[2 1]}; % task-rest
+cfg.lfp.compare_conditions  = {}; % no comparisons
 cfg.lfp.removeComplete  = 1;
 
 % method to be used for surrogate normalization

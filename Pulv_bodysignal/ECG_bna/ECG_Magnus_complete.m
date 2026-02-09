@@ -4,12 +4,13 @@ root_drive = 'Y:';%'/home/shamim/fileserver';
 % initialize configuration structure
 %cfg.spikes_version='ECG_TaskRest_Bacchus_state4'; %% this is for loading tuning table (?)
 cfg.spikes_version='ECG_TaskRest_Magnus_MUA'; %% this is for loading tuning table (?)
-cfg.process_per_session=0;
+cfg.process_per_session=1;
 cfg.process_population=1;
-cfg.process_LFP=0;
+cfg.process_LFP=1;
 cfg.process_spikes=0;
 cfg.process_ECG=0;
 cfg.process_MUA=1;
+cfg.plot_per_site=0;
 
 cfg.save_fig_format={'pdf'};
    
@@ -46,17 +47,12 @@ ephys_folder=[root_drive,filesep,'Projects',filesep,project,filesep,'ephys',file
 ecg_preprocess_folder=[root_drive,filesep,'Data',filesep,'BodySignals',filesep,'ECG_CAP'];
 monkeys={'Magnus'};
 % 
-% sessions{1}=sort(unique([20221115, 20221118, 20221122,...
-%     20221206, 20221222, 20221229, 20230104, 20230106,20230112, 20230126, ...
-%     20230511, 20230518, 20230519, 20230524, 20230525, 20230526, ...
-%     20230601, 20230602, 20230607, 20230609, 20230614, 20230615,...
-%     20230616, 20230621, 20230623])); 
-
-
-sessions{1}=sort(unique([20221222, 20221229, 20230104, 20230106,20230112, 20230126, ...
+sessions{1}=sort(unique([20221115, 20221118, 20221122,...
+    20221206, 20221222, 20221229, 20230104, 20230106,20230112, 20230126, ...
     20230511, 20230518, 20230519, 20230524, 20230525, 20230526, ...
     20230601, 20230602, 20230607, 20230609, 20230614, 20230615,...
     20230616, 20230621, 20230623])); 
+
 
 % skipped: 20220921,20230608 ,20230531, (not both tasks or invalid target)
 %          20221125, - wrong electrode alignment, 20230622 -raw file missing! ;
@@ -135,7 +131,8 @@ cfg.lfp.smoothWin       = 5;
 
 cfg.lfp.Reref           = 0;
 cfg.lfp.runICA          = 0;
-cfg.lfp.compare_conditions  = {[2 1]}; % task-rest
+%cfg.lfp.compare_conditions  = {[2 1]}; % task-rest
+cfg.lfp.compare_conditions  = {}; % task-rest
 cfg.lfp.removeComplete  = 1;
 
 % method to be used for surrogate normalization
@@ -169,7 +166,8 @@ cfg.spk.unit_exclusion.nCardiacCycles             = 600;
 % you would like to plot scatters for. If you have only two conditions put
 % then in the order that the 1st one will be plotted in x-axis and the 2nd
 % one in the y-axis
-cfg.spk.compare_conditions = {[1 2]}; % rest vs. task
+%cfg.spk.compare_conditions = {[1 2]}; % rest vs. task
+cfg.spk.compare_conditions = {}; % no comparisons
 
 %% put corresponding settings in these subfields:
 cfg.ecg.field=0;
