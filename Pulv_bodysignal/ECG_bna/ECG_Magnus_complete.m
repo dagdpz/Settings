@@ -4,9 +4,9 @@ root_drive = 'Y:';%'/home/shamim/fileserver';
 % initialize configuration structure
 %cfg.spikes_version='ECG_TaskRest_Bacchus_state4'; %% this is for loading tuning table (?)
 cfg.spikes_version='ECG_TaskRest_Magnus_MUA'; %% this is for loading tuning table (?)
-cfg.process_per_session=1;
-cfg.process_population=0;
-cfg.process_LFP=1;
+cfg.process_per_session=0;
+cfg.process_population=1;
+cfg.process_LFP=0;
 cfg.process_spikes=0;
 cfg.process_ECG=0;
 cfg.process_MUA=1;
@@ -45,12 +45,19 @@ cfg.spk.plot_spike_phase          = 0;
 ephys_folder=[root_drive,filesep,'Projects',filesep,project,filesep,'ephys',filesep,cfg.spikes_version filesep];
 ecg_preprocess_folder=[root_drive,filesep,'Data',filesep,'BodySignals',filesep,'ECG_CAP'];
 monkeys={'Magnus'};
+% 
+% sessions{1}=sort(unique([20221115, 20221118, 20221122,...
+%     20221206, 20221222, 20221229, 20230104, 20230106,20230112, 20230126, ...
+%     20230511, 20230518, 20230519, 20230524, 20230525, 20230526, ...
+%     20230601, 20230602, 20230607, 20230609, 20230614, 20230615,...
+%     20230616, 20230621, 20230623])); 
 
-sessions{1}=sort(unique([20221115, 20221118, 20221122,...
-    20221206, 20221222, 20221229, 20230104, 20230106,20230112, 20230126, ...
+
+sessions{1}=sort(unique([20221222, 20221229, 20230104, 20230106,20230112, 20230126, ...
     20230511, 20230518, 20230519, 20230524, 20230525, 20230526, ...
     20230601, 20230602, 20230607, 20230609, 20230614, 20230615,...
     20230616, 20230621, 20230623])); 
+
 % skipped: 20220921,20230608 ,20230531, (not both tasks or invalid target)
 %          20221125, - wrong electrode alignment, 20230622 -raw file missing! ;
 
