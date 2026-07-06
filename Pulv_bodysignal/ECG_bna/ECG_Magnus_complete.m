@@ -4,9 +4,9 @@ root_drive = 'Y:';%'/home/shamim/fileserver';
 % initialize configuration structure
 %cfg.spikes_version='ECG_TaskRest_Bacchus_state4'; %% this is for loading tuning table (?)
 cfg.spikes_version='ECG_TaskRest_Magnus_MUA'; %% this is for loading tuning table (?)
-cfg.process_per_session=1;
+cfg.process_per_session=0;
 cfg.process_population=1;
-cfg.process_LFP=1;
+cfg.process_LFP=0;
 cfg.process_spikes=0;
 cfg.process_ECG=0;
 cfg.process_MUA=1;

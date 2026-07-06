@@ -3,7 +3,7 @@
 % always take all population files in the respective folder
 keys.batching.monkeys               ={'Magnus'};
 %keys.Magnus.date                    ='[20220921 20230623]'; % redo !! 20230526
-keys.Magnus.date                    ='[20230527 20230623]'; % done for 20220921 20230623
+keys.Magnus.date                    ='[20220921 20230623]'; % done for 20220921 20230623
 keys.cal.datasets                   = [6, 7, 8]; %% should probably be renamed to batching instead of cal
 keys.batching.targets               ={'dPul','VPL', 'MD'}; % , 'AIP', 'PCC', 'PPC', 'dPul','VPL', 'MD'
 keys.tt.tasktypes                   ={'Fsac_opt','Vsac_opt'};

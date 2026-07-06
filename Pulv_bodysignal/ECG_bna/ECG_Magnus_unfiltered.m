@@ -1,18 +1,17 @@
 %% Initialization
-driver_path = 'Y:';%'/home/shamim/fileserver';
+driver_path = 'Y:';% '/home/shamim/fileserver';
 
 % initialize configuration structure
 cfg.outNameCap = 0;
 % cfg.spikes_version='ECG_TaskRest_Magnus_merged'; %% this is for loading tuning table (?)
-cfg.spikes_version='ECG_TaskRest_Bacchus_MUA'; %% this is for loading tuning table (?)
+cfg.spikes_version='ECG_TaskRest_Magnus_state4'; %% this is for loading tuning table (?)
 cfg.process_per_session=0;
 cfg.process_population=1;
-cfg.process_LFP=0;
+cfg.process_LFP=1;
 cfg.process_spikes=0;
-cfg.process_MUA=1;
-
 cfg.process_Rpeaks_inhalation_exhalation = 0;
 cfg.process_ECG=0;
+cfg.process_MUA=0;
 cfg.plot_significant=1;
 cfg.save_fig_format={'pdf'};
    
@@ -48,27 +47,19 @@ cfg.spk.plot_spike_phase          = 0;
 
 ephys_folder=[driver_path,filesep,'Projects',filesep,project,filesep,'ephys',filesep,cfg.spikes_version filesep];
 ecg_preprocess_folder=[driver_path,filesep,'Data',filesep,'BodySignals',filesep,'ECG_CAP'];
-monkeys={'Bacchus'};
+monkeys={'Magnus'};
 
-% % excluded due to error: 20210806,  20210903, 20211027, 20211102, 
-%sessions{1}=sort(unique([20210720,20210730,20220211])); 
-
-sessions{1}=sort(unique([ 20210715, 20210716,20210720, 20210722, 20210723,...
-    20210729, 20210730, 20210805, 20210826, 20210827, 20210905, ...
-    20210906, 20210930, 20211007, 20211012, 20211013, ...
-    20211014, 20211019, 20211028, 20211103, 20211116, ...
-    20211117, 20211207, 20211214, 20220105, 20220106, 20220203, ...
-    20220211, 20220221, 20220222, 20220224, 20220225, 20220309, 20220310, ...
-    20220315, 20220318, 20220322]));
-
-
-
-% skipped 20211001, 20211005, 20211222, 
-% done with eegfilt in "Not Filtered": 20210715, 20210716,20210720, 20210722, 20210723,...
-%     20210729, 20210730, 20210805, 20210826, 20210827, 20210905, ...
-%     20210906, 20210930, 
-
-
+% % sample session that I worked on until 24.04.25 : 20230106
+% sessions{1}=sort([20230104, 20230106, 20230112, 20230126, 20230511,...
+%     20230518, 20230519, 20230524, 20230525, 20230526, 20230601, ...
+%     20230602, 20230607, 20230609, 20230614, 20230615, 20230616, 20230621,...
+%     20230623]); % Done!
+% sessions{1}=sort([20230614,20230621]);
+sessions{1}=sort(unique([20220921, 20221115, 20221118, 20221122,...
+    20221206, 20221222, 20230106, 20221229, 20230104, 20230112, 20230126, ...
+    20230511, 20230518, 20230519, 20230524, 20230525, 20230526, ...
+    20230601, 20230602, 20230607, 20230609, 20230614, 20230615,...
+    20230608 ,20230531, 20230616, 20230621, 20230623])); % skipped 20221125, - wrong electrode alignment, 20230622 -raw file missing! ;
 
 cumulative_sessions=0;
 for m=1:numel(monkeys)
@@ -107,8 +98,7 @@ end
 % Those targets which are not in the analysed sessions will be ignored
 % Example:
 % 1. lfp_tfa_cfg.compare.targets = {'MIPa_R', 'MIPa_L', 'dPul_R', 'dPul_L'}; 
-% cfg.targets = {'VPL_R', 'VPL_L', 'dPul_R', 'dPul_L','MD_L','MD_R'};
-% cfg.combine_hemispheres = 1;
+%cfg.targets = {'VPL_R', 'VPL_L', 'dPul_R', 'dPul_L','MD_L','MD_R'};
 cfg.targets = {'VPL', 'dPul', 'MD'};
 cfg.combine_hemispheres = 0;
 cfg.contra_ipsi_relative_to = 'target'; 
@@ -129,15 +119,28 @@ cfg.condition(2).accepted=1; %% works only for spikes
 cfg.condition(2).Rpeak_field = '';
 
 %% define events - only shared 
+% % % cfg.analyse_states = {'R',    'Rpeak',1,-0.25, 0.25;...
+% % %                       'R_in', 'Rpeak_insp',1,-0.25, 0.25;...
+% % %                       'R_ex', 'Rpeak_exp',1,-0.25, 0.25;...
+% % %                       'R_low', 'Rpeak_lowIBI',1,-0.25, 0.25;...
+% % %                       'R_high', 'Rpeak_highIBI',1,-0.25, 0.25;...
+% % %                       'CAP',  'CAP',1,-0.5, 0.5;...
+% % %                       'Cue',  'state',4,-0.10, 0.4};
 cfg.analyse_states = {'R',    'Rpeak',1,-0.25, 0.25;...
                       'R_low', 'Rpeak_lowIBI',1,-0.25, 0.25;...
                       'R_high', 'Rpeak_highIBI',1,-0.25, 0.25;...
                       'Cue',  'state',4,-0.10, 0.4};
+
 %% LFP settings
+cfg.lfp.filter          = {0,4,[]};
 cfg.lfp.n_permutations  = 100; % number of shuffles required
-cfg.lfp.foi             = logspace(log10(4), log10(120), 60);
+cfg.lfp.foi             = logspace(log10(2), log10(120), 60);
 cfg.lfp.timestep        = 0.01; %% in s
-cfg.lfp.frequency_bands = [4 8; 8 14; 14 30; 30 50; 70 120];
+cfg.lfp.frequency_bands = [2 4; 4 8; 8 14; 14 30; 30 50; 70 120];
+cfg.lfp.freqb = {'delta 2-4 Hz','theta 4-8 Hz','alpha 8-14 Hz','beta 14-30 Hz','lowgamma 30-50 Hz','highgamma 70-150 Hz'};
+cfg.lfp.freqName = {'delta','theta','alpha','beta','lowGamma','highGamma'};
+
+
 cfg.lfp.n_cycles        = 5;
 cfg.lfp.smoothWin       = 5;
 cfg.lfp.IBI             = 0; % logical setting for re-writting the Rpeaks 
@@ -199,40 +202,3 @@ cfg.spk.peak_id = 10; % sample number of the trough in the spike waveform
 cfg.spk.phase_bins          = linspace(0, 2*pi, cfg.spk.N_phase_bins+1);
 cfg.spk.phase_bin_centers   = pi/cfg.spk.N_phase_bins : 2*pi/cfg.spk.N_phase_bins : 2*pi-pi/cfg.spk.N_phase_bins;
 cfg.spk.lag_list            = [-11 -7 -3 0 3 7 11];
-
-% %% settings for fitting functions
-% cfg.fit.cos_mod      = fittype('a*cos(x-b)+c');% a - scaling factor, b - phase of the peak, c - intercept
-% cfg.fit.vonMises_mod = fittype('a1*( exp( k1*(cos(x-t1)-1) ) - exp( -2*k1 ) ) / (1 - exp( -2*k1 )) + d1');
-% cfg.fit.cos_lower    = [0 -pi -Inf];     % lower parameter bounds: scaling factor, phase, intercept
-% cfg.fit.cos_upper    = [Inf 3*pi Inf]; % upper parameter bounds: scaling factor, phase, intercept
-% cfg.fit.vMpos_lower  = [0 -10^6 exp(-4) -pi]; % scaling factor, intercept, kappa, phase
-% cfg.fit.vMpos_upper  = [10^6 10^6 exp(4) 3*pi];
-% cfg.fit.vMneg_lower  = [-10^6 -10^6 exp(-4) -pi];
-% cfg.fit.vMneg_upper  = [0 10^6 exp(4) 3*pi];
-
-% %% Settings to detect noisy trials - irrelevant for now
-% % configuration for lfp noise rejection
-% cfg.noise = [];
-% % whether or not to apply noise rejection 
-% % Set to 0 to accept all trials
-% % Set to 1 to run the noise trial detection methods
-% cfg.noise.detect = 1;
-% % combination of methods to be used - future use
-% % currently all methods are used together 
-% cfg.noise.methods = {'amp', 'std', 'diff', 'pow'};
-% % % threshold for lfp raw amplitude (number of std deviations from mean)
-% cfg.noise.amp_thr = 6;
-% % number of consecutive samples beyond threshold to be considered for marking 
-% % a noisy trial
-% cfg.noise.amp_N = 10;
-% % no of standard deviations of trial LFP w.r.t LFP std of all trials
-% cfg.noise.std_thr = 4;
-% % threshold for lfp derivative (number of std deviations from mean)
-% cfg.noise.diff_thr = 6;
-% % number of consecutive samples beyond threshold to be considered for marking 
-% % a noisy trial
-% cfg.noise.diff_N = 10;
-% % threshold for lfp power in number of standard deviations from mean
-% cfg.noise.pow_thr = 4;
-% % whether single trials should be plotted
-% cfg.noise.plottrials = 0;
