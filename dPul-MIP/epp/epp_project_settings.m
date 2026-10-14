@@ -1,75 +1,24 @@
-% Minimal project settings for epp_initiation_units.
-% Project: TDT_brain
-
-cfg.datasets = [31];
-
-% cfg.CONDITIONS = struct( ...
-%     'name', {'Ipsi', 'Contra'}, ...
-%     'color', {[200 55 12], [100 55 22]}, ...
-%     'parameters', num2cell(struct('choice',{0,0},'hemifield',{-1,1})));
-% 
+% Global/general project-specific settings for epp_initiation_units.
 
 
-k=0;
+cfg.CONDITIONS = struct( ...
+    'name', {'IHIS_control', 'IHCS_control', 'CHIS_control', 'CHCS_control', ...
+             'IHIS_choice', 'IHCS_choice', 'CHIS_choice', 'CHCS_choice'}, ...
+    'color', {[0 128 255], [255 0 255], [0 255 0], [255 128 0], ...
+              [0 128 255]/2, [255 0 255]/2, [0 255 0]/2, [255 128 0]/2}, ...
+    'parameters', num2cell(struct( ...
+        'choice', {0, 0, 0, 0, 1, 1, 1, 1}, ...
+        'hemifield', {-1, 1, -1, 1, -1, 1, -1, 1}, ...
+        'reach_hand', {-1, -1, 1, 1, -1, -1, 1, 1}, ...
+        'perturbation', {0, 0, 0, 0, 0, 0, 0, 0}, ...
+        'success', {1, 1, 1, 1, 1, 1, 1, 1}));
 
-k=k+1;
-cfg.CONDITIONS(k).name='IHIS_control';
-cfg.CONDITIONS(k).color=[0 128 255];
-cfg.CONDITIONS(k).parameters.choice=0;
-cfg.CONDITIONS(k).parameters.hemifield=-1;
-cfg.CONDITIONS(k).parameters.reach_hand=-1;
-cfg.CONDITIONS(k).parameters.perturbation=0;
-k=k+1;
-cfg.CONDITIONS(k).name='IHCS_control';
-cfg.CONDITIONS(k).color=[255 0 255];
-cfg.CONDITIONS(k).parameters.choice=0;
-cfg.CONDITIONS(k).parameters.hemifield=1;
-cfg.CONDITIONS(k).parameters.reach_hand=-1;
-cfg.CONDITIONS(k).parameters.perturbation=0;
-k=k+1;
-cfg.CONDITIONS(k).name='CHIS_control';
-cfg.CONDITIONS(k).color=[0 255 0];
-cfg.CONDITIONS(k).parameters.choice=0;
-cfg.CONDITIONS(k).parameters.hemifield=-1;
-cfg.CONDITIONS(k).parameters.reach_hand=1;
-cfg.CONDITIONS(k).parameters.perturbation=0;
-k=k+1;
-cfg.CONDITIONS(k).name='CHCS_control';
-cfg.CONDITIONS(k).color=[255 128 0];
-cfg.CONDITIONS(k).parameters.choice=0;
-cfg.CONDITIONS(k).parameters.hemifield=1;
-cfg.CONDITIONS(k).parameters.reach_hand=1;
-cfg.CONDITIONS(k).parameters.perturbation=0;
 
-k=k+1;
-cfg.CONDITIONS(k).name='IHIS_inactivation';
-cfg.CONDITIONS(k).color=[0 128 255]/2;
-cfg.CONDITIONS(k).parameters.choice=0;
-cfg.CONDITIONS(k).parameters.hemifield=-1;
-cfg.CONDITIONS(k).parameters.reach_hand=-1;
-cfg.CONDITIONS(k).parameters.perturbation=[1 2 3];
-k=k+1;
-cfg.CONDITIONS(k).name='IHCS_inactivation';
-cfg.CONDITIONS(k).color=[255 0 255]/2;
-cfg.CONDITIONS(k).parameters.choice=0;
-cfg.CONDITIONS(k).parameters.hemifield=1;
-cfg.CONDITIONS(k).parameters.reach_hand=-1;
-cfg.CONDITIONS(k).parameters.perturbation=[1 2 3];
-k=k+1;
-cfg.CONDITIONS(k).name='CHIS_inactivation';
-cfg.CONDITIONS(k).color=[0 255 0]/2;
-cfg.CONDITIONS(k).parameters.choice=0;
-cfg.CONDITIONS(k).parameters.hemifield=-1;
-cfg.CONDITIONS(k).parameters.reach_hand=1;
-cfg.CONDITIONS(k).parameters.perturbation=[1 2 3];
-k=k+1;
-cfg.CONDITIONS(k).name='CHCS_inactivation';
-cfg.CONDITIONS(k).color=[255 128 0]/2;
-cfg.CONDITIONS(k).parameters.choice=0;
-cfg.CONDITIONS(k).parameters.hemifield=1;
-cfg.CONDITIONS(k).parameters.reach_hand=1;
-cfg.CONDITIONS(k).parameters.perturbation=[1 2 3];
-
+cfg.WINDOWS = struct( ...
+    'name', {'Cue','Reach'}, ...
+    'align_state', {6, 62}, ...
+    't_start_s', {-0.5, -0.5}, ...
+    't_end_s', {0.5, 0.5});
 
 
 cfg.EPOCHS = { ...
@@ -98,8 +47,65 @@ cfg.statistics.across_epochs = { ...
 cfg.statistics.within_epoch_test = 'unpaired_ttest';
 cfg.statistics.across_epochs_test = 'paired_ttest';
 
-cfg.WINDOWS = struct( ...
-    'name', {'Cue','Delay Period', 'Reach'}, ...
-    'align_state', {3, 6, 62}, ...
-    't_start_s', {-0.2, -0.2, -0.5}, ...
-    't_end_s', {0.5, 0.5, 0.5});
+
+    if 0 % simple way to fill
+        k=0;
+        
+        k=k+1;
+        cfg.CONDITIONS(k).name='IHIS_control';
+        cfg.CONDITIONS(k).color=[0 128 255];
+        cfg.CONDITIONS(k).parameters.choice=0;
+        cfg.CONDITIONS(k).parameters.hemifield=-1;
+        cfg.CONDITIONS(k).parameters.reach_hand=-1;
+        cfg.CONDITIONS(k).parameters.perturbation=0;
+        k=k+1;
+        cfg.CONDITIONS(k).name='IHCS_control';
+        cfg.CONDITIONS(k).color=[255 0 255];
+        cfg.CONDITIONS(k).parameters.choice=0;
+        cfg.CONDITIONS(k).parameters.hemifield=1;
+        cfg.CONDITIONS(k).parameters.reach_hand=-1;
+        cfg.CONDITIONS(k).parameters.perturbation=0;
+        k=k+1;
+        cfg.CONDITIONS(k).name='CHIS_control';
+        cfg.CONDITIONS(k).color=[0 255 0];
+        cfg.CONDITIONS(k).parameters.choice=0;
+        cfg.CONDITIONS(k).parameters.hemifield=-1;
+        cfg.CONDITIONS(k).parameters.reach_hand=1;
+        cfg.CONDITIONS(k).parameters.perturbation=0;
+        k=k+1;
+        cfg.CONDITIONS(k).name='CHCS_control';
+        cfg.CONDITIONS(k).color=[255 128 0];
+        cfg.CONDITIONS(k).parameters.choice=0;
+        cfg.CONDITIONS(k).parameters.hemifield=1;
+        cfg.CONDITIONS(k).parameters.reach_hand=1;
+        cfg.CONDITIONS(k).parameters.perturbation=0;
+        
+        k=k+1;
+        cfg.CONDITIONS(k).name='IHIS_inactivation';
+        cfg.CONDITIONS(k).color=[0 128 255]/2;
+        cfg.CONDITIONS(k).parameters.choice=0;
+        cfg.CONDITIONS(k).parameters.hemifield=-1;
+        cfg.CONDITIONS(k).parameters.reach_hand=-1;
+        cfg.CONDITIONS(k).parameters.perturbation=[1 2 3];
+        k=k+1;
+        cfg.CONDITIONS(k).name='IHCS_inactivation';
+        cfg.CONDITIONS(k).color=[255 0 255]/2;
+        cfg.CONDITIONS(k).parameters.choice=0;
+        cfg.CONDITIONS(k).parameters.hemifield=1;
+        cfg.CONDITIONS(k).parameters.reach_hand=-1;
+        cfg.CONDITIONS(k).parameters.perturbation=[1 2 3];
+        k=k+1;
+        cfg.CONDITIONS(k).name='CHIS_inactivation';
+        cfg.CONDITIONS(k).color=[0 255 0]/2;
+        cfg.CONDITIONS(k).parameters.choice=0;
+        cfg.CONDITIONS(k).parameters.hemifield=-1;
+        cfg.CONDITIONS(k).parameters.reach_hand=1;
+        cfg.CONDITIONS(k).parameters.perturbation=[1 2 3];
+        k=k+1;
+        cfg.CONDITIONS(k).name='CHCS_inactivation';
+        cfg.CONDITIONS(k).color=[255 128 0]/2;
+        cfg.CONDITIONS(k).parameters.choice=0;
+        cfg.CONDITIONS(k).parameters.hemifield=1;
+        cfg.CONDITIONS(k).parameters.reach_hand=1;
+        cfg.CONDITIONS(k).parameters.perturbation=[1 2 3];
+        end
